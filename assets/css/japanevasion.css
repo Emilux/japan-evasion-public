@@ -106,12 +106,15 @@ body {
         margin-top: 150px;
         background-color: transparent;
     }
+
     .text-header-back h1 {
         display: none;
     }
+
     .text-header-back h5 {
         display: none;
     }
+
     #bouton {
         display: none;
     }
@@ -272,14 +275,17 @@ body {
     #section1 {
         margin-top: 0px;
     }
+
     .card-deck {
         margin: 10px;
         display: block;
         margin-top: 20px;
     }
+
     .card {
         margin-top: 40px;
     }
+
     .card-split {
         min-width: 100%;
         margin-top: 20px;
@@ -615,46 +621,45 @@ body {
 }
 
 /* POPUP */
-.popup .form-control{
+.popup .form-control {
     background: white;
     border-radius: 0%;
     border: 1px solid black;
 }
 
-.popup .modal-content{
-    background-color: rgba(255,255,255,0.9);
+.popup .modal-content {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
-.popup .close{
+.popup .close {
     position: absolute;
     right: 10px;
     top: 10px;
     z-index: 10;
 }
 
-.popup .row{
+.popup .row {
 
 }
 
-.popup .log{
+.popup .log {
     border-right: white solid 2px;
 }
 
-.popup .register{
+.popup .register {
     border-left: white solid 2px;
 }
 
 @media screen and (max-width: 992px) {
-    .popup .log{
+    .popup .log {
         border-right: 0;
     }
-    .popup .register{
+
+    .popup .register {
         border-left: 0;
     }
 
 }
-
-
 
 
 /* CONTACT */
@@ -746,21 +751,26 @@ body {
         min-width: 100%;
         text-align: center;
     }
+
     #formu {
         margin-top: 30px;
     }
+
     .formulaire {
         min-width: 70%;
         text-align: center;
     }
+
     .form-row {
         display: inherit;
         margin-top: 20px;
     }
+
     .btn-dark {
         margin-top: 20px;
         margin-bottom: 30px;
     }
+
     .form-control {
         border-radius: 0%;
         width: 100%;
@@ -815,7 +825,7 @@ body {
     background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
 }
 
 @media screen and (min-width: 320px) and (max-width: 576px) {
@@ -921,7 +931,7 @@ footer {
     background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
 }
 
 @media screen and (min-width: 320px) and (max-width: 576px) {
@@ -983,22 +993,27 @@ footer {
     .email {
         text-align: center;
     }
+
     .email h1 {
         font-size: 1.25rem;
     }
+
     .email h5 {
         font-size: 0.9375rem;
     }
+
     #abonne {
         margin-top: 30px;
         min-width: 100%;
         background-color: none !important;
     }
+
     #email-form .btn {
         color: white;
         background-color: #91060e;
         border-radius: 0%;
     }
+
     #email {
         width: 100% !important;
     }
@@ -1110,6 +1125,7 @@ footer {
     .titre-footer h1 {
         font-size: 1.25rem;
     }
+
     .titre-footer h5 {
         font-size: 0.9375rem;
     }
@@ -1185,6 +1201,7 @@ footer {
     #text-footer {
         font-size: 10px;
     }
+
     #text-left {
         color: white;
         min-width: 100%;
@@ -1192,11 +1209,13 @@ footer {
         margin-top: 10px;
         font-size: 6px;
     }
+
     #text-right {
         margin-top: 20px;
         display: inline;
         min-width: 100% !important;
     }
+
     #text-right ul {
         text-align: center;
         padding-left: 0;
@@ -1330,38 +1349,47 @@ a {
         z-index: 10;
         justify-content: center;
     }
+
     .logo {
         display: none;
     }
+
     .navbar-toggler {
         border: transparent;
         margin: auto;
     }
+
     .navbar-collapse {
         height: auto;
     }
+
     .navbar ul,
     .navbar a {
         display: inline-block;
         margin-top: 10px;
     }
+
     .dropdown-menu {
         background-color: #1e1e1e;
         -webkit-box-shadow: 0px 0px 5px 0.5px #ffffff;
         -moz-box-shadow: 0px 0px 5px 0.5px #ffffff;
         box-shadow: 0px 0px 5px 0.5px #ffffff;
     }
+
     #logo-burger {
         max-width: 200px;
     }
+
     #background {
         width: auto;
         height: 60vh;
     }
+
     #navbarContent {
         padding: inherit;
         margin-top: 10px;
     }
+
     #recherche-mobile .form-control {
         width: 80%;
     }
@@ -1423,10 +1451,12 @@ a {
         margin-top: 150px;
         background: none;
     }
+
     .text-header-back h1 {
         font-size: 1rem;
         display: none;
     }
+
     #bouton {
         font-size: 1rem;
     }
@@ -1503,7 +1533,7 @@ a {
     font-family: 'Fjalla One';
 }
 
-.breadcrumb-item+.breadcrumb-item::before {
+.breadcrumb-item + .breadcrumb-item::before {
     display: inline-block;
     font-family: 'Fjalla One';
     padding-right: 0.5rem;
@@ -1715,7 +1745,7 @@ li.plan {
     background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
 }
 
 @media screen and (min-width: 320px) and (max-width: 576px) {
@@ -1831,6 +1861,7 @@ li.plan {
     .card-deck {
         padding: 15px;
     }
+
     .nos-sejours h4 {
         font-family: 'Mulish';
         font-size: 0.9375rem;
@@ -1935,9 +1966,11 @@ li.plan {
         text-align: center;
         padding: 10px;
     }
+
     .background-avis {
         height: 100vh;
     }
+
     .avis-card {
         height: 400px !important;
     }
@@ -1971,6 +2004,7 @@ li.plan {
     .paiement {
         display: block;
     }
+
     .paiement-content {
         min-width: 80%;
         margin: auto;
