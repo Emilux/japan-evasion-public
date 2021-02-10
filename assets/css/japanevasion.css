@@ -1475,7 +1475,7 @@ a {
 
 /* BACKGROUND HEADER */
 
-#background #mentions {
+#background.mentions-legales {
     background-image: url("../media/image-mentions-légales/background-image.jpg");
 }
 
@@ -1702,7 +1702,7 @@ li.plan {
 
 /* BACKGROUND HEADER */
 
-#background.sejour {
+#background.sejours {
     background-image: url("../media/image-sejours/background-image.jpg");
 }
 
