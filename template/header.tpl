@@ -37,6 +37,8 @@
 
     <!-- BACKGROUND IMAGE -->
 
+    ANUS
+
     <div id="background" class="{$pagename}">
 
         <!-- NAVBAR -->
