@@ -26,7 +26,7 @@
     <div class="d-flex justify-content-center">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">ACCUEIL</a></li>
+                <li class="breadcrumb-item"><a href="./">ACCUEIL</a></li>
                 <li class="breadcrumb-item active" aria-current="page">PLAN DU SITE</li>
             </ol>
         </nav>
@@ -37,11 +37,11 @@
     <div class="mentions container">
         <h1 class="row justify-content-center big">PLAN DU SITE</h1>
         <ul>
-            <li class="plan"><a href="accueil.html">ACCUEIL</a></li>
+            <li class="plan"><a href="./">ACCUEIL</a></li>
             <li class="plan">A PROPOS
                 <ul>
-                    <li class="plan"><a href="quisommesnous.html">QUI SOMMES NOUS?</a></li>
-                    <li class="plan"><a href="contact.html">CONTACT</a></li>
+                    <li class="plan"><a href="?page=quisommesnous">QUI SOMMES NOUS?</a></li>
+                    <li class="plan"><a href="?page=contact">CONTACT</a></li>
                 </ul>
             </li>
             <li class="plan">BLOG
@@ -53,7 +53,7 @@
                     <li class="plan"><a href="article5.html">WAKAYAMA, UN SECRET MÉCONNU AU JAPON</a></li>
                 </ul>
             </li>
-            <li><a href="sejours.html">SÉJOURS</a></li>
-            <li><a href="mentions-legales.html">MENTIONS LÉGALES</a></li>
+            <li><a href="?page=sejours">SÉJOURS</a></li>
+            <li><a href="?page=mentions-legales">MENTIONS LÉGALES</a></li>
         </ul>
     </div>

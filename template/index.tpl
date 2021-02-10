@@ -4,7 +4,7 @@
                 <div class="text-header-back">
                     <h1>ENVOLE TOI VERS LE JAPON</h1>
                     <h5>CARNET DE VOYAGE</h5>
-                    <a class="btn" href="quisommesnous.html" id="bouton">EN SAVOIR PLUS</a>
+                    <a class="btn" href="?page=quisommesnous" id="bouton">EN SAVOIR PLUS</a>
                 </div>
             </div>
 

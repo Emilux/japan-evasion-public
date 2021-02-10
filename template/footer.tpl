@@ -180,7 +180,7 @@
                 <div class="container position-relative" id="text-footer">
                     <div class="row justify-content-center">
                         <div class="logo-footer">
-                            <a href="index.html">
+                            <a href="./">
                                 <img class="img " src="assets/media/image-index/japan-evasion-logo.png" alt="logo">
                             </a>
                         </div>
@@ -195,16 +195,16 @@
                             <div class="justify-content-end">
                                 <ul>
                                     <li>
-                                        <a href="plan-du-site.html">PLAN DU SITE</a>
+                                        <a href="?page=plan">PLAN DU SITE</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">CONTACT</a>
+                                        <a href="?page=contact">CONTACT</a>
                                     </li>
                                     <li>
-                                        <a href="sejours.html">SÉJOURS</a>
+                                        <a href="?page=sejours">SÉJOURS</a>
                                     </li>
                                     <li>
-                                        <a href="mentions-legales.html">MENTIONS LÉGALES</a>
+                                        <a href="?page=mentions-legales">MENTIONS LÉGALES</a>
                                     </li>
                                 </ul>
                             </div>
