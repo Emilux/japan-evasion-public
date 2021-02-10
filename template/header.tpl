@@ -31,6 +31,92 @@
     <link rel="SHORTCUT ICON" href="favicon.ico" />
 </head>
 <body>
+<!-- HEADER -->
+
+<header>
+
+    <!-- BACKGROUND IMAGE -->
+
+    <div id="background" class="{$pagename}">
+
+        <!-- NAVBAR -->
+
+        <div class="container" id="index">
+            <div class="row justify-content-center" id="navbar">
+                <nav class="navbar navbar-dark row navbar-expand-sm">
+
+                    <!-- BTN BURGER NAV -->
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <img class="img" id="logo-burger" src="assets/media/image-index/japan-evasion-logo.png" alt="logo">
+                    </button>
+
+                    <div class="navburger collapse navbar-collapse" id="navbarContent">
+
+                        <!-- RECHERCHE MOBILE -->
+
+
+
+                        <!-- LISTE A PUCE NAV -->
+
+                        <ul class="navbar-nav align-items-center">
+
+
+                            <!-- DROPDOWN MENU -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    ARTICLES
+                                </a>
+                                <div class="dropdown-menu">
+                                    <span class="last-article dropdown-item">NOS DERNIERS ARTICLES</span>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="article1.html">Magome : visiter la préfecture de Nakasendo</a>
+                                    <a class="dropdown-item" href="article2.html">Voyage nature sur l’île de Kyushu au Japon</a>
+                                    <a class="dropdown-item" href="article3.html">5 lieux à visiter à Okayama</a>
+                                    <a class="dropdown-item" href="article4.html">Hors des sentiers battus dans la préfecture de Mie</a>
+                                    <a class="dropdown-item" href="article5.html">Wakayama, un secret méconnu au Japon</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="sejours.html">SEJOURS</a>
+                            </li>
+
+                            <!-- LOGO-->
+
+                            <li class="nav-item">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img class="img" src="assets/media/image-index/japan-evasion-logo.png" alt="logo">
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    A PROPOS
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="quisommesnous.html">QUI SOMMES NOUS ?</a>
+                                    <a class="dropdown-item" href="contact.html">CONTACT</a>
+
+                                </div>
+                            </li>
+
+
+                            <!-- CONNEXION USER -->
+                            <li class="nav-item" id="user">
+                                <a class="nav-link" href="#"><i class="fas fa-user" id="user_icon"></i>CONNEXION</a>
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
 <!-- SCROLLTOP BTN  -->
 
 <button id="topBtn">
