@@ -37,7 +37,7 @@
 
     <!-- BACKGROUND IMAGE -->
 
-    <div id="background" class="{$pagename}">
+    <div id="background" class="{$pagenames}">
 
         <!-- NAVBAR -->
 
