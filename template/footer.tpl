@@ -1,3 +1,80 @@
+ <!-- POP UP CONNEXION/INSCRIPTION -->
+
+  <div class="modal rounded-0 fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content" style="background-color: rgba(255,255,255,0.9);">
+                <div class="modal-body p-0">
+                    <button type="button" class="close" style="position: absolute;right: 10px;top: 10px;z-index: 10;" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="row">
+                        <div class="col p-5" style="border-right: white solid 2px;">
+                            <h2>S'identifier</h2>
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="usernameLog">Pseudo ou e-mail</label>
+                                    <input class="form-control" id="usernameLog" type="text" name="usernameLog" placeholder="Votre pseudo ou e-mail ici..">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="passwordLog">Mot de passe</label>
+                                    <input class="form-control" id="passwordLog" type="password" name="passwordLog" placeholder="Votre mot de passe ici..">
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="stillConnect" name="stillConnect">
+                                        <label class="form-check-label" for="stillConnect">Resté connecté</label>
+                                    </div>
+                                </div>
+
+                                <input class="btn btn-dark" type="submit" value="Connexion">
+                            </form>
+                        </div>
+                        <div class="col p-5" style="border-left: white solid 2px;">
+                            <h2>S'enregistrer</h2>
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="emailReg">E-mail</label>
+                                    <input class="form-control" id="emailReg" type="email" name="emailReg" placeholder="Votre e-mail ici..">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="usernameReg">Pseudo</label>
+                                    <input class="form-control" id="usernameReg" type="text" name="usernameReg" placeholder="Votre pseudo ici..">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="passwordReg">Mot de passe</label>
+                                    <input class="form-control" id="passwordReg" type="password" name="passwordReg" placeholder="Votre mot de passe ici..">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                        <label class="form-check-label" for="newsletter">Je souhaite m'inscrire à la newsletter quotidienne</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="cgu" name="cgu">
+                                        <label class="form-check-label" for="cgu">j'ai lu et accepte les conditions générales d'utilisation</label>
+                                    </div>
+                                </div>
+
+                                <input class="btn btn-dark" type="submit" value="Créer un compte">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0 bg-white">
+                    <a class="mx-auto" style="color: black!important;" href="#">Tu n'arrives pas à te connecter ? Mot de passe oublié ?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+ 
  <!-- FOOTER -->
 
     <footer>
@@ -111,7 +188,7 @@
                     <div class="row">
                         <div class="col-6" id="text-left">
                             <div class="justify-content-start">
-                                &copy; 2020 - Japan <span id="dot">• </span> Evasion - HERTH Jordan. Tous droits réservés.
+                                &copy; 2020 - Japan <span id="dot">• </span> Evasion 
                             </div>
                         </div>
                         <div class="col-6" id="text-right">
