@@ -9,13 +9,6 @@
         </div>
     </header>
 
-    <!-- SCROLLTOP BTN -->
-
-    <button id="topBtn">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-
     <!-- TITRE MOBILE -->
 
     <div class="d-flex  justify-content-center">
