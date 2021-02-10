@@ -631,7 +631,7 @@ body {
 
 /* BACKGROUND HEADER */
 
-#background #contact {
+#background.contact {
     background-image: url("../media/image-contact/background-image.jpg");
 }
 
