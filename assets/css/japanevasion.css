@@ -589,7 +589,8 @@ body {
     border-color: transparent;
 }
 
-.form-check-label {
+
+.contact .form-check-label {
     color: #909294;
     font-size: 0.7rem;
 }
@@ -598,7 +599,7 @@ body {
     margin-top: 10px;
 }
 
-.form-check {
+.contact .form-check {
     text-align: center !important;
     margin-top: 10px;
 }
@@ -612,6 +613,48 @@ body {
         min-width: 80%;
     }
 }
+
+/* POPUP */
+.popup .form-control{
+    background: white;
+    border-radius: 0%;
+    border: 1px solid black;
+}
+
+.popup .modal-content{
+    background-color: rgba(255,255,255,0.9);
+}
+
+.popup .close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10;
+}
+
+.popup .row{
+
+}
+
+.popup .log{
+    border-right: white solid 2px;
+}
+
+.popup .register{
+    border-left: white solid 2px;
+}
+
+@media screen and (max-width: 992px) {
+    .popup .log{
+        border-right: 0;
+    }
+    .popup .register{
+        border-left: 0;
+    }
+
+}
+
+
 
 
 /* CONTACT */
@@ -682,7 +725,7 @@ body {
     border-color: transparent;
 }
 
-.form-check {
+.contact .form-check {
     margin-top: 5px;
     font-size: 0.8rem;
 }

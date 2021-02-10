@@ -1,57 +1,62 @@
  <!-- POP UP CONNEXION/INSCRIPTION -->
 
-  <div class="modal rounded-0 fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="popup modal rounded-0 fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content" style="background-color: rgba(255,255,255,0.9);">
+            <div class="modal-content rounded-0">
                 <div class="modal-body p-0">
-                    <button type="button" class="close" style="position: absolute;right: 10px;top: 10px;z-index: 10;" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <div class="row">
-                        <div class="col p-5" style="border-right: white solid 2px;">
+                        <div class="col p-5 log">
                             <h2>S'identifier</h2>
                             <form action="">
                                 <div class="form-group">
-                                    <label for="usernameLog">Pseudo ou e-mail</label>
-                                    <input class="form-control" id="usernameLog" type="text" name="usernameLog" placeholder="Votre pseudo ou e-mail ici..">
+                                    <label for="pseudo_utilisateur">Pseudo ou e-mail</label>
+                                    <input class="form-control" id="pseudo_utilisateur" type="text" name="pseudo_utilisateur" placeholder="Votre pseudo ou e-mail ici..">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="passwordLog">Mot de passe</label>
-                                    <input class="form-control" id="passwordLog" type="password" name="passwordLog" placeholder="Votre mot de passe ici..">
+                                    <label for="mdp_utilisateur">Mot de passe</label>
+                                    <input class="form-control" id="mdp_utilisateur" type="password" name="mdp_utilisateur" placeholder="Votre mot de passe ici..">
                                 </div>
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="stillConnect" name="stillConnect">
-                                        <label class="form-check-label" for="stillConnect">Resté connecté</label>
+                                        <input class="form-check-input" type="checkbox" id="reste_connecte" name="reste_connecte">
+                                        <label class="form-check-label" for="reste_connecte">Resté connecté</label>
                                     </div>
                                 </div>
 
-                                <input class="btn btn-dark" type="submit" value="Connexion">
+                                <input class="btn btn-dark" type="submit" name="connexion" value="Connexion">
                             </form>
                         </div>
-                        <div class="col p-5" style="border-left: white solid 2px;">
+                        <div class="col p-5 register">
                             <h2>S'enregistrer</h2>
                             <form action="">
                                 <div class="form-group">
-                                    <label for="emailReg">E-mail</label>
-                                    <input class="form-control" id="emailReg" type="email" name="emailReg" placeholder="Votre e-mail ici..">
+                                    <label for="email_utilisateurReg">E-mail</label>
+                                    <input class="form-control" id="email_utilisateurReg" type="email" name="email_utilisateur" placeholder="Votre e-mail ici..">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="usernameReg">Pseudo</label>
-                                    <input class="form-control" id="usernameReg" type="text" name="usernameReg" placeholder="Votre pseudo ici..">
+                                    <label for="pseudo_utilisateurReg">Pseudo</label>
+                                    <input class="form-control" id="pseudo_utilisateurReg" type="text" name="pseudo_utilisateur" placeholder="Votre pseudo ici..">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="passwordReg">Mot de passe</label>
-                                    <input class="form-control" id="passwordReg" type="password" name="passwordReg" placeholder="Votre mot de passe ici..">
+                                    <label for="mdp_utilisateurReg">Mot de passe</label>
+                                    <input class="form-control" id="mdp_utilisateurReg" type="password" name="mdp_utilisateur" placeholder="Votre mot de passe ici..">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mdp_utilisateur_confirmationReg">Confirmer le mot de passe</label>
+                                    <input class="form-control" id="mdp_utilisateur_confirmationReg" type="password" name="mdp_utilisateur_confirmation" placeholder="Votre mot de passe ici..">
                                 </div>
 
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
-                                        <label class="form-check-label" for="newsletter">Je souhaite m'inscrire à la newsletter quotidienne</label>
+                                        <input class="form-check-input" type="checkbox" id="newsletter_utilisateurReg" name="newsletter_utilisateur">
+                                        <label class="form-check-label" for="newsletter_utilisateurReg">Je souhaite m'inscrire à la newsletter quotidienne</label>
                                     </div>
                                 </div>
 
@@ -62,19 +67,19 @@
                                     </div>
                                 </div>
 
-                                <input class="btn btn-dark" type="submit" value="Créer un compte">
+                                <input class="btn btn-dark" type="submit" name="creer_compte" value="Créer un compte">
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer border-top-0 bg-white">
+                <div class="modal-footer border-top-0 bg-white rounded-0">
                     <a class="mx-auto" style="color: black!important;" href="#">Tu n'arrives pas à te connecter ? Mot de passe oublié ?</a>
                 </div>
             </div>
         </div>
     </div>
- 
- 
+
+
  <!-- FOOTER -->
 
     <footer>
@@ -188,7 +193,7 @@
                     <div class="row">
                         <div class="col-6" id="text-left">
                             <div class="justify-content-start">
-                                &copy; 2020 - Japan <span id="dot">• </span> Evasion 
+                                &copy; 2020 - Japan <span id="dot">• </span> Evasion
                             </div>
                         </div>
                         <div class="col-6" id="text-right">
