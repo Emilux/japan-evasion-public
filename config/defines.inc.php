@@ -7,7 +7,7 @@ if (!isset($_SERVER['DOCUMENT_ROOT']))
 if (isset($_SERVER['HTTP_HOST'])){
     //Test si le site est lancé dans un environnement local
     if ($_SERVER['HTTP_HOST'] === "127.0.0.1" || $_SERVER['HTTP_HOST'] === "localhost") {
-        //echo '<p style="margin-top:15px;margin-bottom:15px;text-align: center;">(Site lancé en local)</p>';
+        echo '<p style="margin-top:15px;margin-bottom:15px;text-align: center;">(Site lancé en local)</p>';
         define('_PATH_', '');
     } else {
         define('_PATH_', $_SERVER['DOCUMENT_ROOT'].'/');
