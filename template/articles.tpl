@@ -108,54 +108,58 @@
 
 <!-- PARTIE COMMENTAIRE -->
 
-<div class="commentaire container">
+    <div class="commentaire container">
 
-    <div class="row justify-content-center">
-        <div class="formulaire col-7">
-            <div class="fake-com">
-                <h1>
+        <div class="row justify-content-center">
+            <div class="formulaire col-7">
+                <h1 class="commentaire-compteur">
                     3 Commentaires
                 </h1>
-                <p>
-                    <span class="pseudo">Emilien </span>dit:
-                </p>
-                <span class="date">01 décembre 2020 à 03:33 </span>
-                <p class="fake">Quel génie ce Jordent... &#128525;</p>
-            </div>
-            <div class="row justify-content-end">
-                <a href="#"><span class="btn-rep">Répondre</span></a>
-            </div>
+                <div class="com">
+                    <img class="avatar_utilisateur" src="assets/media/avatar/mimil.jpg" alt="avatar">
+                    <p><span class="pseudo">Emilien </span>dit:</p>
+                    <span class="date">01 décembre 2020 à 03:33 </span>
+                    <div class="compteur_like"> <i class="fas fa-thumbs-up"></i></div>
+                    <p class="contenu_commentaire">Quel génie ce Jordent... &#128525;</p>
 
-            <div class="line"></div>
-
-            <div class="fake-com2">
-                <p><span class="pseudo">Anaïs </span>dit:</p>
-                <span class="date">01 décembre 2020 à 04:30 </span>
-                <div class="reponse">
-                    <span class="pseudo">Emilien</span> 01/12/2020 03:33
-                    <p class="reponse-mini"> Quel génie ce Jordent... &#128525;</p>
                 </div>
-                <p class="fake">Mais tellement ! WOW</p>
-
                 <div class="row justify-content-end">
-                    <a href="#"><span class="btn-rep">Répondre</span></a>
-                </div>
-            </div>
-
-            <div class="line"></div>
-
-            <div class="fake-com3">
-                <p><span class="pseudo">Stéve </span>dit:</p>
-                <span class="date">03 décembre 2020 à 04:30 </span>
-                <p class="fake">T'es vraiment très fort (à Krunker &#x1F609;)</p>
-
-                <div class="row justify-content-end">
-                    <a href="#"><span class="btn-rep">Répondre</span></a>
+                    <a href="#"><span class="btn-rep"><i class="fas fa-reply"></i>Répondre</span></a>
                 </div>
 
-            </div>
+                <div class="line"></div>
 
-            <div class="line"></div>
+                <div class="com">
+                    <img class="avatar_utilisateur" src="assets/media/avatar/kolt1ra.png" alt="avatar">
+                    <p><span class="pseudo">Anaïs </span>dit:</p>
+                    <span class="date">01 décembre 2020 à 04:30 </span>
+                    <div class="reponse">
+                        <span class="pseudo">Emilien</span> 01/12/2020 03:33
+                        <p class="reponse_de"> Quel génie ce Jordent... &#128525;</p>
+                    </div>
+                    <div class="compteur_like"> <i class="fas fa-thumbs-up"></i></div>
+                    <p class="contenu_commentaire">Mais tellement ! WOW</p>
+
+                    <div class="row justify-content-end">
+                        <a href="#"><span class="btn-rep"><i class="fas fa-reply"></i>Répondre</span></a>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="com">
+                    <img class="avatar_utilisateur" src="assets/media/avatar/ninja.png" alt="avatar">
+                    <p><span class="pseudo">Stéve </span>dit:</p>
+                    <span class="date">03 décembre 2020 à 04:30 </span>
+                    <div class="compteur_like"> <i class="fas fa-thumbs-up"></i></div>
+                    <p class="contenu_commentaire">T'es vraiment très fort (à Krunker &#x1F609;)</p>
+                    <div class="row justify-content-end">
+                        <a href="#"><span class="btn-rep"><i class="fas fa-reply"></i>Répondre</span></a>
+                    </div>
+
+                </div>
+
+                <div class="line"></div>
 
             <h2>Laisser un commentaire</h2>
             <h5>Votre adresse de messagerie ne sera pas publiée. Les champs obligatoires sont indiqués avec *</h5>
