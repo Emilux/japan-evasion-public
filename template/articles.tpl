@@ -22,7 +22,7 @@
 <div class="d-flex justify-content-center">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">ACCUEIL</a></li>
+            <li class="breadcrumb-item"><a href="./">ACCUEIL</a></li>
             <li class="breadcrumb-item active" aria-current="page">MAGOME : VISITER LA PRÉFECTURE DE NAKASENDO</li>
         </ol>
     </nav>

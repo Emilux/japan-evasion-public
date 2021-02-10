@@ -29,7 +29,7 @@
     <div class="d-flex justify-content-center">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">ACCUEIL</a></li>
+                <li class="breadcrumb-item"><a href="./">ACCUEIL</a></li>
                 <li class="breadcrumb-item active" aria-current="page">QUI SOMMES NOUS?</li>
             </ol>
         </nav>
@@ -61,7 +61,7 @@
                     Nous vous proposons aussi de réaliser la conception de votre voyage sur mesure, vous bénifierez de notre expertise pour effectuer l'organisation et la réservation de votre voyage personnalisé.
                 </p>
                 <p>
-                    Pour toute question, n'hésitez pas à passer directement par le <a class="contacter" href="contact.html">formulaire de contact.</a>
+                    Pour toute question, n'hésitez pas à passer directement par le <a class="contacter" href="?page=contact">formulaire de contact.</a>
                 </p>
             </div>
         </div>

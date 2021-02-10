@@ -80,14 +80,14 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="sejours.html">SEJOURS</a>
+                                <a class="nav-link" href="?page=sejours">SEJOURS</a>
                             </li>
 
                             <!-- LOGO-->
 
                             <li class="nav-item">
                                 <div class="logo">
-                                    <a href="index.html">
+                                    <a href="./">
                                         <img class="img" src="assets/media/image-index/japan-evasion-logo.png" alt="logo">
                                     </a>
                                 </div>
@@ -98,8 +98,8 @@
                                     A PROPOS
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="quisommesnous.html">QUI SOMMES NOUS ?</a>
-                                    <a class="dropdown-item" href="contact.html">CONTACT</a>
+                                    <a class="dropdown-item" href="?page=quisommesnous">QUI SOMMES NOUS ?</a>
+                                    <a class="dropdown-item" href="?page=contact">CONTACT</a>
 
                                 </div>
                             </li>

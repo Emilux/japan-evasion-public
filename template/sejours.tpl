@@ -28,7 +28,7 @@
     <div>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item"><a href="index.html">ACCUEIL</a></li>
+                <li class="breadcrumb-item"><a href="./">ACCUEIL</a></li>
                 <li class="breadcrumb-item active" aria-current="page">SÉJOURS</li>
             </ol>
         </nav>
