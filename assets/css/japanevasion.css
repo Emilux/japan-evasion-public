@@ -569,7 +569,7 @@ body {
     font-size: 0.8rem;
 }
 
-.btn-dark {
+.commentaire .btn-dark {
     margin-top: 50px !important;
     background-color: #1e1e1e;
     margin: auto;
@@ -663,10 +663,13 @@ body {
 }
 
 .btn-dark {
-    margin-top: 20px !important;
     background-color: #1e1e1e;
     margin: auto;
     border-radius: 0%;
+}
+
+.formulaire .btn-dark {
+    margin-top: 20px !important;
 }
 
 .btn-dark:hover {
