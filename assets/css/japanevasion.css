@@ -1193,7 +1193,7 @@ h3.big {
 /* PLAN DU SITE */
 /* VARIABLES */
 /* BACKGROUND HEADER */
-#background #plan {
+#background.plan {
   background-image: url("../media/image-mentions-légales/background-image.jpg");
 }
 @media screen and (min-width: 320px) and (max-width: 576px) {
@@ -1237,7 +1237,7 @@ li.plan {
   box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, 0.75);
 }
 /* BACKGROUND HEADER */
-#background #quisommesnous {
+#background.quisommesnous {
   background-image: url("../media/image-quisommesnous/background-image.jpg");
 }
 /* A PROPOS */
@@ -1332,7 +1332,7 @@ li.plan {
   box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, 0.75);
 }
 /* BACKGROUND HEADER */
-#background #sejour {
+#background.sejour {
   background-image: url("../media/image-sejours/background-image.jpg");
 }
 /* TEXTE HEADER BACK */
