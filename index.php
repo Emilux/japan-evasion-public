@@ -5,7 +5,7 @@ require('./config/config_init.php');
 
 /* ROUTER */
 // Gestion de Routing
-if (isset($_GET['action']) && file_exists(_CTRL_.str_replace('.', '', $_GET['action']).'.php'))
+if (isset($_GET['page']) && file_exists(_CTRL_.str_replace('.', '', $_GET['page']).'.php'))
     require(_CTRL_.$_GET['page'].'.php');
 else
     require(_CTRL_.'index.php');

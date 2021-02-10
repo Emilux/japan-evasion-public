@@ -1,7 +1,6 @@
 <!-- HEADER -->
 
 <header>
-
     <!-- BACKGROUND IMAGE -->
 
     <div id="background" class="small articleheader">

@@ -9,6 +9,10 @@ templates_c
 
 ### CSS ###
 *.css
+*.css.map
+!slick.css
+!slick-theme.css
+!bootstrap.css
 !japanevasion.css
 
 ### Less ###
