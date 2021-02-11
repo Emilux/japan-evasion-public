@@ -8,6 +8,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <div class="row">
+                        <!-- FORMULAIRE DE CONNEXION -->
                         <div class="col p-5 log">
                             <h2>S'IDENTIFIER</h2>
                             <form action="">
@@ -30,6 +31,8 @@
                                 <input class="btn btn-dark" type="submit" name="connexion" value="CONNEXION">
                             </form>
                         </div>
+
+                        <!-- FORMULAIRE D'INSCRIPTION -->
                         <div class="col p-5 register">
                             <h2>S'ENREGISTRER</h2>
                             <form action="">
@@ -73,7 +76,7 @@
                     </div>
                 </div>
                 <div class="modal-footer border-top-0 bg-white rounded-0">
-                    <a class="mx-auto" style="color: black!important;" href="#">Tu n'arrives pas à te connecter ? Mot de passe oublié ?</a>
+                    <a class="mx-auto" href="#">Tu n'arrives pas à te connecter ? Mot de passe oublié ?</a>
                 </div>
             </div>
         </div>
