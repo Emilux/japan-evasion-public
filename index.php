@@ -7,7 +7,7 @@ require('./config/config_init.php');
 
 // Gestion de Routing
 if (isset($_GET['page']) && file_exists(_CTRL_.str_replace('.', '', $_GET['page']).'.php'))
-    require(_CTRL_.uppercase($_GET['page']).'Controller.php');
+    require(_CTRL_.ucfirst($_GET['page']).'Controller.php');
 else
     require(_CTRL_.'IndexController.php');
 
