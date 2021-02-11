@@ -9,7 +9,7 @@
                     </button>
                     <div class="row">
                         <div class="col p-5 log">
-                            <h2>S'identifier</h2>
+                            <h2>S'IDENTIFIER</h2>
                             <form action="">
                                 <div class="form-group">
                                     <label for="pseudo_utilisateur">Pseudo ou e-mail</label>
@@ -23,15 +23,15 @@
                                 <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="reste_connecte" name="reste_connecte">
-                                        <label class="form-check-label" for="reste_connecte">Resté connecté</label>
+                                        <label class="form-check-label" for="reste_connecte">Rester connecté</label>
                                     </div>
                                 </div>
 
-                                <input class="btn btn-dark" type="submit" name="connexion" value="Connexion">
+                                <input class="btn btn-dark" type="submit" name="connexion" value="CONNEXION">
                             </form>
                         </div>
                         <div class="col p-5 register">
-                            <h2>S'enregistrer</h2>
+                            <h2>S'ENREGISTRER</h2>
                             <form action="">
                                 <div class="form-group">
                                     <label for="email_utilisateurReg">E-mail</label>
@@ -63,11 +63,11 @@
                                 <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="cgu" name="cgu">
-                                        <label class="form-check-label" for="cgu">j'ai lu et accepte les conditions générales d'utilisation</label>
+                                        <label class="form-check-label" for="cgu">J'ai lu et accepte les conditions générales d'utilisation</label>
                                     </div>
                                 </div>
 
-                                <input class="btn btn-dark" type="submit" name="creer_compte" value="Créer un compte">
+                                <input class="btn btn-dark" type="submit" name="creer_compte" value="CRÉER UN COMPTE">
                             </form>
                         </div>
                     </div>
