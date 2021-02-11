@@ -635,6 +635,10 @@ body {
     background-color: rgba(255, 255, 255, 0.9);
 }
 
+.popup .modal-footer a{
+    color: black!important;
+}
+
 .popup .close {
     position: absolute;
     right: 10px;
