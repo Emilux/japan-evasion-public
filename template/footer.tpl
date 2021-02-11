@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="modal-footer border-top-0 bg-white rounded-0">
-                    <a class="mx-auto" href="#">Tu n'arrives pas à te connecter ? Mot de passe oublié ?</a>
+                    <a class="mx-auto"href="#">Tu n'arrives pas à te connecter ? Mot de passe oublié ?</a>
                 </div>
             </div>
         </div>
