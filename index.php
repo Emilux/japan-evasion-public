@@ -1,8 +1,6 @@
 <?php
 
 require('./config/config_init.php');
-
-
 /* ROUTER */
 
 // Gestion de Routing
