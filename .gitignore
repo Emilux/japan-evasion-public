@@ -16,7 +16,7 @@ templates_c
 !japanevasion.css
 
 ### BDD ###
-config_bdd.php
+config/config_bdd.php
 
 ### Less ###
 *.less
