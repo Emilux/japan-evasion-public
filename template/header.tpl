@@ -104,11 +104,18 @@
                                 </div>
                             </li>
 
-
-                            <!-- CONNEXION USER -->
-                            <li class="nav-item" id="user">
-                                <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"><i class="fas fa-user" id="user_icon"></i>CONNEXION</a>
-                            </li>
+                            {if !isset($smarty.session.utilisateur)}
+                                <!-- CONNEXION USER -->
+                                <li class="nav-item" id="user">
+                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"><i class="fas fa-user" id="user_icon"></i>CONNEXION</a>
+                                </li>
+                            {/if}
+                            {if isset($smarty.session.utilisateur)}
+                                <!-- DECONNEXION USER -->
+                                <li class="nav-item" id="user">
+                                    <a class="nav-link" href="?page=deconnexion"><i class="fas fa-user" id="user_icon"></i>DECONNEXION</a>
+                                </li>
+                            {/if}
 
 
 

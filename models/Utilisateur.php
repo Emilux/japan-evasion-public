@@ -42,7 +42,7 @@ class Utilisateur extends Model {
     }
 
     public function getEmail_Utilisateur(){
-        return $this->_email_utilisateur
+        return $this->_email_utilisateur;
     }
 
     public function getBio_Utilisateur(){
@@ -67,11 +67,11 @@ class Utilisateur extends Model {
 
     //SETTERS
 
-    public function setId_Utilisateur(int $id_utilisateur){
+    public function setId_Utilisateur($id_utilisateur){
 		$this->_id_utilisateur = $id_utilisateur;
     }
 
-    public function setPseudo_Utilisateur(string $pseudo_utilisateur){
+    public function setPseudo_Utilisateur($pseudo_utilisateur){
 		$this->_pseudo_utilisateur = $pseudo_utilisateur;
     }
 
@@ -79,39 +79,39 @@ class Utilisateur extends Model {
 		$this->_avatar_utilisateur = $avatar_utilisateur;
     }
 
-    public function setPrenom_Utilisateur(string $prenom_utilisateur){
+    public function setPrenom_Utilisateur($prenom_utilisateur){
 		$this->_prenom_utilisateur = $prenom_utilisateur;
     }
 
-    public function setNom_Utilisateur(string $nom_utilisateur){
+    public function setNom_Utilisateur($nom_utilisateur){
 		$this->_nom_utilisateur = $nom_utilisateur;
     }
 
-    public function setDate_Naissance_Utilisateur(datetime $date_naissance_utilisateur){
+    public function setDate_Naissance_Utilisateur($date_naissance_utilisateur){
         $this->_date_naissance_utilisateur = $date_naissance_utilisateur;
     }
 
-    public function setEmail_Utilisateur(string $email_utilisateur){
+    public function setEmail_Utilisateur($email_utilisateur){
         $this->_email_utilisateur = $email_utilisateur;
     }
     
-    public function setBio_Utilisateur(text $bio_utilisateur){
+    public function setBio_Utilisateur($bio_utilisateur){
         $this->_bio_utilisateur = $bio_utilisateur;
     }
 
-    public function setMdp_Utilisateur(string $mdp_utilisateur){
+    public function setMdp_Utilisateur($mdp_utilisateur){
         $this->_mdp_utilisateur = $mdp_utilisateur;
     }
 
-    public function setNewsletter_Utilisateur(boolval $newsletter_utilisateur){
+    public function setNewsletter_Utilisateur($newsletter_utilisateur){
         $this->_newsletter_utilisateur = $newsletter_utilisateur;
     }
 
-    public function setBanni_Utilisateur(boolval $banni_utilisateur){
+    public function setBanni_Utilisateur($banni_utilisateur){
         $this->_banni_utilisateur = $banni_utilisateur;
     }
 
-    public function setId_Role(int $id_role){
+    public function setId_Role($id_role){
         $this->_id_role = $id_role;
     }
 
@@ -123,12 +123,34 @@ class Utilisateur extends Model {
 
     }
 
-    public function connexion(){
-
+    public function getIdRole($nom_role){
+        $sql = $this->getItem('nom_role',$nom_role,'role');
+        return $sql['id_role'];
     }
 
-    public function creerCompte(){
+    public function getNameRole($id){
+        $sql = $this->getItem('id_role',$id,'role');
+        return $sql['nom_role'];
+    }
 
+    public function getUtilisateurByEmail($mail){
+        $utilisateur = new Utilisateur($this->getItem('email_utilisateur',$mail));
+        return $utilisateur;
+    }
+
+    public function verifierEmail($mail){
+        if ($this->getItem('email_utilisateur',$mail) === false){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function creerCompte($role){
+        $role = $this->getIdRole($role);
+        $role = $role;
+        $sql = $this->_bdd->prepare('INSERT INTO '.$this->_table.' (pseudo_utilisateur, email_utilisateur, mdp_utilisateur, banni_utilisateur, newsletter_utilisateur, id_role) VALUES ("'.$this->getPseudo_Utilisateur().'", "'.$this->getEmail_Utilisateur().'", "'.$this->getMdp_Utilisateur().'", "0","0","'.$role.'")');
+        $sql->execute();
     }
 
     public function voirArticle(){

@@ -52,7 +52,7 @@
             </div>
         </div>
     </form>
-    <div class="row">
+    <!--<div class="row">
         <div class="card-deck">
             {if isset($article)}
                 {foreach from=$article item=$value}
@@ -70,6 +70,6 @@
                 {/foreach}
             {/if}
 
-        </div>
+        </div>-->
     </div>
 </div>
