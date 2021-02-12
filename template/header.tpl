@@ -107,7 +107,7 @@
 
                             <!-- CONNEXION USER -->
                             <li class="nav-item" id="user">
-                                <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user" id="user_icon"></i>CONNEXION</a>
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"><i class="fas fa-user" id="user_icon"></i>CONNEXION</a>
                             </li>
 
 

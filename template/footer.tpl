@@ -11,7 +11,7 @@
                         <!-- FORMULAIRE DE CONNEXION -->
                         <div class="col p-5 log">
                             <h2>S'IDENTIFIER</h2>
-                            <form action="">
+                            <form action="" method="post">
                                 <div class="form-group">
                                     <label for="pseudo_utilisateur">Pseudo ou e-mail</label>
                                     <input class="form-control" id="pseudo_utilisateur" type="text" name="pseudo_utilisateur" placeholder="Votre pseudo ou e-mail ici..">
@@ -35,7 +35,7 @@
                         <!-- FORMULAIRE D'INSCRIPTION -->
                         <div class="col p-5 register">
                             <h2>S'ENREGISTRER</h2>
-                            <form action="">
+                            <form action="" method="post">
                                 <div class="form-group">
                                     <label for="email_utilisateurReg">E-mail</label>
                                     <input class="form-control" id="email_utilisateurReg" type="email" name="email_utilisateur" placeholder="Votre e-mail ici..">
