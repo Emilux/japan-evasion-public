@@ -17,6 +17,9 @@ if (isset($_GET['page']) && file_exists(_TPL_.$_GET['page'].'.tpl')){
     $smarty->assign('pagename','');
 }
 
+// Charge Controller de la création ou connexion à son compte sur
+// Toutes les pages du site
+require (_CTRL_.'CompteController.php');
 
 // Affichage des templates
 $smarty->display('template/header.tpl');
