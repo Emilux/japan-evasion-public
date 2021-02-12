@@ -1,5 +1,5 @@
  <!-- POP UP CONNEXION/INSCRIPTION -->
-
+ {if !isset($smarty.session.utilisateur)}
   <div class="popup modal rounded-0 fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content rounded-0">
@@ -81,6 +81,7 @@
             </div>
         </div>
     </div>
+ {/if}
 
 
  <!-- FOOTER -->
@@ -282,4 +283,4 @@
                 }]
             });
         </script>
-        </body>
+ </body>

@@ -8,6 +8,12 @@ require('libs/Smarty.class.php');
 require ('config_bdd.php');
 require ('models/Model.php');
 
+function chargerClass($classe){
+    require('models/'.$classe.'.php');
+}
+
+spl_autoload_register('chargerClass');
+
 //connexion à la bdd
 try {
     $dbh = new PDO('mysql:host='.$server.';dbname='.$bdd, $user, $password);
