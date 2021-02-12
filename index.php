@@ -4,8 +4,9 @@ require('./config/config_init.php');
 /* ROUTER */
 
 // Gestion de Routing
-if (isset($_GET['page']) && file_exists(_CTRL_.str_replace('.', '', $_GET['page']).'.php'))
+if (isset($_GET['page']) && file_exists(_CTRL_.str_replace('.', '', ucfirst($_GET['page'])).'Controller.php')){
     require(_CTRL_.ucfirst($_GET['page']).'Controller.php');
+}
 else
     require(_CTRL_.'IndexController.php');
 
@@ -22,11 +23,4 @@ if (isset($_GET['page']) && file_exists(_TPL_.$_GET['page'].'.tpl')){
 require (_CTRL_.'CompteController.php');
 
 // Affichage des templates
-$smarty->display('template/header.tpl');
-
-if (isset($_GET['page']) && file_exists(_TPL_.$_GET['page'].'.tpl'))
-    $smarty->display(_TPL_.$_GET['page'].'.tpl');
-else
-    $smarty->display(_TPL_.'index.tpl');
-
-$smarty->display(_TPL_.'footer.tpl');
+$smarty->display(_TPL_.'template.tpl');
