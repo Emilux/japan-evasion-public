@@ -5,6 +5,6 @@
 
 class Newsletter extends Model {
 
-    private $_mail_newsletter
+    private $_mail_newsletter;
 
 }
