@@ -14,7 +14,7 @@ class Article extends Model {
     private $_vu_article;
     private $_tag_article;
     private $_id_utilisateur;
-    private $_table = 'article'
+    private $_table = 'article';
     
 
     //GETTERS

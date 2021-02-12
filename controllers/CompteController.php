@@ -44,7 +44,7 @@ if(isset($_POST['connexion'])){
                                 'banni_utilisateur' => $utilisateur->getBanni_Utilisateur(),
                                 'role' => $utilisateur->getNameRole($utilisateur->getId_Role()),
                             ];
-                            header('Location: http://www.example.com/');
+                            header('Location: ./?page=profiles');
                         } else {
                             echo 'wrong mdp';
                             var_dump($utilisateur->getMdp_Utilisateur());
