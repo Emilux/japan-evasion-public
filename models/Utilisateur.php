@@ -125,6 +125,7 @@ class Utilisateur extends Model {
 
     public function getIdRole($nom_role){
         $sql = $this->getItem('nom_role',$nom_role,'role');
+        var_dump($sql);
         return $sql['id_role'];
     }
 

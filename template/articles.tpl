@@ -2,13 +2,15 @@
 
             <div class="d-flex justify-content-center">
                 <div class="text-header-back">
-                    <h1>MAGOME : VISITER LA PRÉFECTURE DE NAKASENDO</h1>
+                    <h1>{$article.titre_article|upper}</h1>
                 </div>
             </div>
         </div>
     </div>
 </header>
-SSS
+
+
+
 <!-- TITRE MOBILE -->
 
 <div class="d-flex justify-content-center">
@@ -23,7 +25,7 @@ SSS
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./">ACCUEIL</a></li>
-            <li class="breadcrumb-item active" aria-current="page">MAGOME : VISITER LA PRÉFECTURE DE NAKASENDO</li>
+            <li class="breadcrumb-item active" aria-current="page">{$article.titre_article|upper}</li>
         </ol>
     </nav>
 </div>
