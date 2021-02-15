@@ -2,19 +2,19 @@
 
 class Article extends Model {
 
-    private $_id_article;
-    private $_contenu_article;
-    private $_titre_article;
-    private $_date_publication_article;
-    private $_photo_article;
-    private $_temps_lecture_article;
-    private $_statut_article;
-    private $_like_article;
-    private $_signale_article;
-    private $_vu_article;
-    private $_tag_article;
-    private $_id_utilisateur;
-    private $_table = 'article';
+    protected $_id_article;
+    protected $_contenu_article;
+    protected $_titre_article;
+    protected $_date_publication_article;
+    protected $_photo_article;
+    protected $_temps_lecture_article;
+    protected $_statut_article;
+    protected $_like_article;
+    protected $_signale_article;
+    protected $_vu_article;
+    protected $_tag_article;
+    protected $_id_utilisateur;
+    protected $_table = 'article';
     
 
     //GETTERS
