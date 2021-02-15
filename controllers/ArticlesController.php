@@ -7,7 +7,7 @@ if(isset($_GET['id'])){
  
     $article = new Article();
 
-    $article = $article->getItem('id', $_GET['id']);
+    $article = $article->getItem('id_article', $_GET['id']);
 
     if($article){
         $smarty->assign(array(

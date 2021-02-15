@@ -48,11 +48,10 @@ class Model {
         
         if ($table === null){
 
-            $sql = $this->_bdd->query('SELECT * FROM '.$this->_table.' WHERE '.$champ.'_'.$this->_table.' = "'.$valeur.'"');
+            $sql = $this->_bdd->query('SELECT * FROM '.$this->_table.' WHERE '.$champ.' = "'.$valeur.'"');
         } else {
             $sql = $this->_bdd->query('SELECT * FROM '.$table.' WHERE '.$champ.' = "'.$valeur.'"');
         }
-        
 
         $sql = $sql->fetch(PDO::FETCH_ASSOC);
         return $sql;
