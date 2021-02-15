@@ -14,7 +14,7 @@ function chargerClass($classe){
 
 spl_autoload_register('chargerClass');
 
-//connexion à la bdd
+// Connexion à la bdd
 try {
     $dbh = new PDO('mysql:host='.$server.';dbname='.$bdd, $user, $password);
 } catch (PDOException $e) {
