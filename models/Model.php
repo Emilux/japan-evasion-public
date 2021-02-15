@@ -56,5 +56,56 @@ class Model {
     }
 
 
+    //supprimer un élément
+    public function Delete(int $id){
+
+        $this->_bdd->exec('DELETE FROM '.$this->_table.' WHERE id_'.$this->_table.' = '.$id);
+
+
+    }
+
+    public function Add($objet){
+
+        $champs = '';
+        $valeurs = '';
+
+        foreach($objet as $key => $value){
+            if($value){
+                $champs .= substr($key,1).' , ';
+                $valeurs .= '"'.$value.'" , ';
+            }
+        }
+
+        $valeurs = substr($valeurs,0,-2);
+        $champs = substr($champs,0,-2);
+
+        $sql = $this->_bdd->prepare('INSERT INTO '.$this->_table.'('.$champs.') VALUES ('.$valeurs.')');
+        $sql->execute();
+
+    }
+
+    public function Update(array $data, $id){
+
+        $valeurs = '';
+
+        foreach($data as $key => $value){
+            if($value){
+                $valeurs .= $key.' = "'.$value.'" , ';
+            }
+        }
+
+        $valeurs = substr($valeurs,0,-2);
+
+        $sql = $this->_bdd->prepare('UPDATE '.$this->_table.' SET '.$valeurs.' WHERE id_'.$this->_table.' = '.$id);
+
+        var_dump($sql);
+
+        $sql->execute();
+
+    }
+
+
+
+
 
 }
