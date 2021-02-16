@@ -37,7 +37,13 @@
 
     <!-- BACKGROUND IMAGE -->
 
-    <div id="background" class="{$page}">
+    <div id="background" class="{$page}{if $page !== 'index'} small{/if}"
+    
+    {if isset($background)}
+
+    style="background-image:url('{$background}')"
+
+    {/if}>
 
         <!-- NAVBAR -->
 
