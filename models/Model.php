@@ -34,6 +34,7 @@ class Model {
 
 }
 
+    //Récupérer une liste d'élément
     public function getList(int $limit=null){
         if ($limit===null){
             $sql = $this->_bdd->query('SELECT * FROM '.$this->_table);
@@ -44,6 +45,7 @@ class Model {
         return $sql;
     }
 
+    //Récupérer un élément
     public function getItem($champ, $valeur,$table = null){
         
         if ($table === null){
@@ -59,7 +61,7 @@ class Model {
     
 
 
-    //supprimer un élément
+    //Supprimer un élément
     public function Delete(int $id){
 
         $this->_bdd->exec('DELETE FROM '.$this->_table.' WHERE id_'.$this->_table.' = '.$id);
@@ -67,6 +69,7 @@ class Model {
 
     }
 
+    //Ajouter un élément
     public function Add($objet){
 
         $champs = '';
@@ -87,6 +90,7 @@ class Model {
 
     }
 
+    //Modifier un élément
     public function Update(array $data, $id){
 
         $valeurs = '';
@@ -105,6 +109,38 @@ class Model {
 
         $sql->execute();
 
+    }
+
+    //Récupérer un nombre de commentaire selon l'article
+    public function Count($champs = NULL, $valeur = NULL, $table = NULL)
+    {
+        if($table === NULL){
+            
+            if($champs === NULL && $valeurs === NULL){
+
+                $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table);
+            }
+            else{
+
+                $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table.' WHERE '.$champs.' ='.$valeur);
+
+            }
+        }
+        else{
+
+            if($champs === NULL && $valeurs === NULL){
+
+                $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$table);
+            }
+            else{
+
+                $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$table.' WHERE '.$champs.' ='.$valeur);
+
+            }
+            
+        }
+
+        return $sql->fetchColumn();
     }
 
 

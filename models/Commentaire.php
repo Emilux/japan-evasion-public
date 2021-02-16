@@ -2,10 +2,11 @@
 
 class Commentaire extends Model {
 
-    private $_id_commentaire;
-    private $_contenu_commentaire;
-    private $_datetime_commentaire;
-    private $_id_article;
+    protected $_id_commentaire;
+    protected $_contenu_commentaire;
+    protected $_datetime_commentaire;
+    protected $_id_article;
+    protected $_table = 'commentaire';
 
     //GETTERS
 
@@ -40,8 +41,24 @@ class Commentaire extends Model {
     }
 
     public function setId_Article(int $id_article){
-        $this->_id_article = $id_article
+        $this->_id_article = $id_article;
     }
 
     
+    //Permet de récupérer un commentaire ainsi que les infos lié au profil
+    public function getCommentaire($article){
+        $sql = $this->_bdd->query('
+                SELECT * FROM `commentaire` 
+                LEFT JOIN commente ON commentaire.id_commentaire = commente.id_commentaire
+                LEFT JOIN utilisateur ON utilisateur.id_utilisateur = commente.id_utilisateur
+                LEFT JOIN commentaire_visiteur ON commentaire_visiteur.id_commentaire = commentaire.id_commentaire
+                LEFT JOIN visiteur ON visiteur.id_visiteur = commentaire_visiteur.id_visiteur
+                LEFT JOIN reponse_de ON reponse_de.id_commentaire = commentaire.id_commentaire
+                WHERE commentaire.id_article = '.$article);
+        $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $sql;
+    }
+
 }
+
+
