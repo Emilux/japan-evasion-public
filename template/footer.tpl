@@ -13,8 +13,8 @@
                             <h2>S'IDENTIFIER</h2>
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label for="pseudo_utilisateur">Pseudo ou e-mail</label>
-                                    <input class="form-control" id="pseudo_utilisateur" type="text" name="pseudo_utilisateur" placeholder="Votre pseudo ou e-mail ici..">
+                                     <label for="email_utilisateur">E-mail</label>
+                                    <input class="form-control" id="email_utilisateur" type="text" name="email_utilisateur" placeholder="Votre e-mail ici..">
                                 </div>
 
                                 <div class="form-group">
