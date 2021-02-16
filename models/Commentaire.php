@@ -40,7 +40,7 @@ class Commentaire extends Model {
     }
 
     public function setId_Article(int $id_article){
-        $this->_id_article = $id_article
+        $this->_id_article = $id_article;
     }
 
     

@@ -10,6 +10,7 @@
                     <div class="row">
                         <!-- FORMULAIRE DE CONNEXION -->
                         <div class="col p-5 log">
+                            <p>{if isset($erreur)}{$erreur}{/if}</p>
                             <h2>S'IDENTIFIER</h2>
                             <form action="" method="post">
                                 <div class="form-group">
@@ -35,7 +36,7 @@
                         <!-- FORMULAIRE D'INSCRIPTION -->
                         <div class="col p-5 register">
                             <h2>S'ENREGISTRER</h2>
-                            <form action="" method="post">
+                            <form id="creer_compte_form" method="post">
                                 <div class="form-group">
                                     <label for="email_utilisateurReg">E-mail</label>
                                     <input class="form-control" id="email_utilisateurReg" type="email" name="email_utilisateur" placeholder="Votre e-mail ici..">
@@ -70,12 +71,13 @@
                                     </div>
                                 </div>
 
-                                <input class="btn btn-dark" type="submit" name="creer_compte" value="CRÉER UN COMPTE">
+                                <input id="submit_creer_compte" class="btn btn-dark" type="submit" name="creer_compte" value="CRÉER UN COMPTE">
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer border-top-0 bg-white rounded-0">
+                    <p id="error"></p>
                     <a class="mx-auto"href="#">Tu n'arrives pas à te connecter ? Mot de passe oublié ?</a>
                 </div>
             </div>
