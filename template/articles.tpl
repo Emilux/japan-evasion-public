@@ -30,6 +30,28 @@
     </nav>
 </div>
 
+<!-- EDIT ARTICLE -->
+
+<div class="article-blog container">
+    <div class="editer-par row justify-content-center">
+        <h5>Publié le {$article.date_publication_article|date_format:"%A %e %B  %Y"|utf8_encode|lower}</h5>
+    </div>
+    <div class="editer-par row justify-content-center">
+        <h3>par Jordan</h3>
+    </div>
+    <div class="editer-par row justify-content-center">
+        <h4>6 min de lecture</h4>
+    </div>
+
+    <div class="partage row justify-content-center">
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fas fa-share-alt"></i></a>
+    </div>
+    
+
 <!-- PARTIE COMMENTAIRE -->
 
     <div class="commentaire container">

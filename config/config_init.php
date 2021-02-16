@@ -3,6 +3,11 @@
 session_start();
 header("Cache-Control: no-cache");
 
+
+
+//Changer la langue en FR
+setlocale (LC_TIME, 'fr_FR');
+
 require('defines.inc.php');
 require('libs/Smarty.class.php');
 require ('config_bdd.php');
@@ -23,3 +28,5 @@ try {
 
 // Initialisation Smarty
 $smarty = new Smarty();
+
+

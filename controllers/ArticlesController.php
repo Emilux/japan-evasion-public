@@ -2,6 +2,8 @@
 
 $smarty->assign('page', 'articles');
 
+setlocale (LC_TIME, 'fr_FR');
+
 
 if(isset($_GET['id'])){
  
