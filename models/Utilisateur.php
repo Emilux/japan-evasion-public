@@ -125,7 +125,6 @@ class Utilisateur extends Model {
 
     public function getIdRole($nom_role){
         $sql = $this->getItem('nom_role',$nom_role,'role');
-        var_dump($sql);
         return $sql['id_role'];
     }
 
@@ -151,7 +150,8 @@ class Utilisateur extends Model {
         $role = $this->getIdRole($role);
         $role = $role;
         $sql = $this->_bdd->prepare('INSERT INTO '.$this->_table.' (pseudo_utilisateur, email_utilisateur, mdp_utilisateur, banni_utilisateur, newsletter_utilisateur, id_role) VALUES ("'.$this->getPseudo_Utilisateur().'", "'.$this->getEmail_Utilisateur().'", "'.$this->getMdp_Utilisateur().'", "0","0","'.$role.'")');
-        $sql->execute();
+        $sql = $sql->execute();
+        return $sql;
     }
 
     public function voirArticle(){

@@ -22,17 +22,17 @@ class Model {
 
     public function hydrate(array $donnees){
 
-    foreach ($donnees as $attribut => $valeur) {
+        foreach ($donnees as $attribut => $valeur) {
 
-        $method = 'set'.ucfirst($attribut);
+            $method = 'set'.ucfirst($attribut);
 
-        if(method_exists($this, $method)){
+            if(method_exists($this, $method)){
 
-            $this->$method($valeur);
+                $this->$method($valeur);
+            }
         }
-    }
 
-}
+    }
 
     //Récupérer une liste d'élément
     public function getList(int $limit=null){
@@ -65,7 +65,6 @@ class Model {
     public function Delete(int $id){
 
         $this->_bdd->exec('DELETE FROM '.$this->_table.' WHERE id_'.$this->_table.' = '.$id);
-
 
     }
 
