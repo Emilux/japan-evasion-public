@@ -1,9 +1,9 @@
 <?php
+
+
+
 $utilisateur = new Utilisateur();
 //test si le formulaire de création de compte a été envoyé
-if (isset($_POST['creer_compte'])){
-   
-}
 
 /*if (isset($_POST['creer_compte'])){
     //check if email is empty
@@ -44,7 +44,7 @@ if (isset($_POST['creer_compte'])){
 
 
 }*/
-
+  
 
 if (isset($_POST['creer_compte'])){
     if(empty($_POST['email_utilisateur']) || empty($_POST['pseudo_utilisateur']) || 
@@ -52,7 +52,7 @@ if (isset($_POST['creer_compte'])){
         header('Location: ./?creer_compte=emtpty');
         exit();
     } else {
-        if(!preg_match("/^[a-zA-Z]*$/", $_POST['pseudo_utilisateur'])){
+        if(!preg_match("/^[A-Za-z0-9]*$/", $_POST['pseudo_utilisateur'])){
             header('Location: ./?creer_compte=char'); 
             exit();
         }else {
@@ -74,6 +74,8 @@ if (isset($_POST['creer_compte'])){
         }
     }
 }
+
+
 
 
 
