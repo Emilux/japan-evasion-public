@@ -17,10 +17,10 @@ if (isset($_POST['connexion'])){
 if(isset($_POST['connexion'])){
     if (!isset($_SESSION['utilisateur'])){
         //Vérifier que l'email et le mot de passe sont bien envoyé dans la requête post
-        if (isset($_POST['pseudo_utilisateur']) && $_POST['mdp_utilisateur']) {
+        if (isset($_POST['email_utilisateur']) && $_POST['mdp_utilisateur']) {
 
             //Récuperer l'adresse mail entrée dans le formulaire et le nettoie
-            $mail = trim(strip_tags($_POST['pseudo_utilisateur']));
+            $mail = trim(strip_tags($_POST['email_utilisateur']));
 
             //Récuperer le mot de passe entrée dans le formulaire et le nettoie
             $mdp = trim(strip_tags($_POST['mdp_utilisateur']));

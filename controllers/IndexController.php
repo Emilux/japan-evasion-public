@@ -1,5 +1,9 @@
 <?php
 
-setlocale (LC_TIME, 'fr_FR');
-
 $smarty->assign('page', 'index');
+
+$article = new Article();
+$article = $article->getList('5');
+$smarty->assign(array(
+    'article' => $article,
+));
