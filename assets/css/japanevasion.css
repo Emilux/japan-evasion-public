@@ -499,6 +499,8 @@ body {
 
 .date {
     color: #8c8c8c;
+    font-size: 12.8px;
+    font-weight: 400;
 }
 
 .contenu_commentaire {
@@ -635,7 +637,7 @@ body {
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-.popup .modal-footer a{
+.popup .modal-footer a {
     color: black!important;
 }
 
@@ -663,28 +665,34 @@ body {
     }
 }
 
+
 /* PROFILE */
 
-body{
+body {
     margin: 0;
     box-sizing: border-box;
-
 }
 
-@media screen and (min-width: 992px){
-    body{
-    }
-}
+@media screen and (min-width: 992px) {}
+
+
 /*All Cards design*/
-.profile, .profile-edit, .carnet-voyage, .article, .setting{
+
+.profile,
+.profile-edit,
+.carnet-voyage,
+.article,
+.setting {
     background: #fff;
     padding: 30px;
     box-shadow: 0px 0px 5px #ddd;
     margin-bottom: 20px;
 }
 
+
 /*profile image area*/
-.profile-images{
+
+.profile-images {
     width: 150px;
     height: 150px;
     background: #fff;
@@ -693,89 +701,95 @@ body{
     border: 1px solid rgb(201, 199, 199);
 }
 
-@media screen and (min-width: 320px) and (max-width: 460px){
+@media screen and (min-width: 320px) and (max-width: 460px) {
     .profile-images-card {
         margin: 0 auto;
     }
-
-    .profile-images-card .row{
+    .profile-images-card .row {
         margin: 0 auto;
-
     }
-
-    .profile-images-card ul:first-of-type{
+    .profile-images-card ul:first-of-type {
         padding: 0!important;
     }
-
-    .profile-images{
+    .profile-images {
         width: 100px !important;
         height: 100px !important;
         text-align: center;
-
     }
     .custom-file label i {
         font-size: 18px !important;
     }
 }
 
+
 /*profile image*/
-.profile-images img{
+
+.profile-images img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
+
 /*upload image area name*/
-.custom-file input[type='file']{
+
+.custom-file input[type='file'] {
     display: none;
 }
 
-.custom-file label{
+.custom-file label {
     cursor: pointer;
     margin-top: -33px;
     padding-left: 2px;
     display: table;
-
 }
 
 .custom-file label i {
     color: #02374C;
     font-size: 30px;
+}
 
-}
-.custom-file label i:hover{
+.custom-file label i:hover {
     color: #7A0B11;
-    box-shadow:rgb(201, 199, 199);
+    box-shadow: rgb(201, 199, 199);
 }
+
 .buttons ul.text-center {
     margin: 0 !important;
 }
-.buttons ul li{
+
+.buttons ul li {
     list-style-type: none;
     font-weight: bold;
     font-size: clamp(12px, 3vw, 20px);
-
 }
-div.button{
+
+div.button {
     margin-left: 30px;
 }
-@media screen and (min-width: 770px){
-    .buttons{
+
+@media screen and (min-width: 770px) {
+    .buttons {
         margin: auto;
     }
 }
 
+
 /***************Edit Profile*********/
-.profile-edit input , textarea, .carnet-voyage input {
+
+.profile-edit input,
+textarea,
+.carnet-voyage input {
     width: 100%;
     border: none;
     box-shadow: 0 0 3px gray;
-
 }
+
 label {
     padding-top: 5px;
 }
 
-.text-dark{
+.text-dark {
     color: black!important;
 }
 
@@ -2035,10 +2049,6 @@ li.plan {
 
 .pseudo {
     font-weight: 900;
-}
-
-.date {
-    font-weight: 100;
 }
 
 .notation {
