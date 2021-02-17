@@ -15,6 +15,7 @@ if(isset($_GET['id'])){
     $nombre_commentaire = $commentaire->Count('id_article', $_GET['id']);
     $commentaires = $commentaire->getCommentaire($_GET['id']);
     
+    
 
 
     if($article){
@@ -28,12 +29,21 @@ if(isset($_GET['id'])){
 
         $smarty->assign('background', $article['photo_article']);
 
+
+        if(isset($_POST['submit_add'])){
+
+            $commentaire->Add($_POST);
+        
+        }
+
     }
     else{
         header('Location: ./');
     }
     
 } 
+
+
 
 
 

@@ -21,7 +21,7 @@
                         <span class="pseudo">{if $commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].pseudo_visiteur === NULL} {$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].pseudo_utilisateur|capitalize}
                     {else} {$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].pseudo_visiteur|capitalize}
                     {/if} 
-                        </span> 01/12/2020 03:33
+                        </span> {$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].datetime_commentaire}
                         <p class="reponse-mini">{$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].contenu_commentaire}</p>
                     </div>
                     {/if}
@@ -43,16 +43,16 @@
                 <div class="form-row">
 
                     <label class="formu">Message *</label>
-                    <textarea class="form-control" id="textArea" maxlength="1000" minlength="10" rows="8" required></textarea>
+                    <textarea class="form-control" id="textArea" maxlength="1000" minlength="10" rows="8" name="contenu_commentaire" required></textarea>
 
-                    <label class="formu">Nom *</label>
-                    <input type="text" class="form-control" id="nom-form" required>
+                    <label class="formu">Pseudo *</label>
+                    <input type="text" class="form-control" name="pseudo_visiteur" id="nom-form" required>
                     <div class="invalid-feedback">
-                        Entrer un nom
+                        Entrer un pseudo
                     </div>
 
                     <label class="formu">Email *</label>
-                    <input type="email" class="form-control" id="mail-form" required>
+                    <input type="email" class="form-control" name="email_visiteur" id="mail-form" required>
                     <div class="invalid-feedback">
                         Entrer un e-mail valide
                     </div>
@@ -64,7 +64,7 @@
                         </label>
                     </div>
 
-                    <button class="btn btn-dark" type="submit">ENVOYER</button>
+                    <button class="btn btn-dark" type="submit" name="submit_add">ENVOYER</button>
                 </div>
             </form>
         </div>
