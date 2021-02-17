@@ -10,7 +10,7 @@ if (isset($_SERVER['HTTP_HOST'])){
         //echo '<p style="margin-top:15px;margin-bottom:15px;text-align: center;">(Site lancé en local)</p>';
         define('_PATH_', '');
     } else {
-        define('_PATH_', $_SERVER['DOCUMENT_ROOT'].'/');
+        define('_PATH_', './');
     }
 } else {
     die();
