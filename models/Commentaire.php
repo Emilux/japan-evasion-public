@@ -61,6 +61,17 @@ class Commentaire extends Model {
         return $sql;
     }
 
+    //Ajout commentaire par un visiteur
+    public function addCommentaireVisiteur(){
+
+
+        $sql = $this->_bdd->prepare('INSERT INTO '.$this->_table.' (contenu_commentaire, datetime_commentaire, id_article) VALUES ("'.$this->getContenu_Commentaire.'", "'.$this->getDatetime_Commentaire.'", "'.$this->getId_Article.'")');
+        $sql->execute();
+
+        CURRENT_TIMESTAMP;
+
+    }
+
 }
 
 
