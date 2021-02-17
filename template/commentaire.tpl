@@ -6,6 +6,7 @@
                     {$nombre_commentaire} Commentaires
                 </h1>
                 {foreach from=$commentaires item=commentaire key=i}
+                    {$commentaire.aime_commentaire}
                 <div class="com">
                     <img class="avatar_utilisateur" src="{if $commentaire.pseudo_visiteur === NULL} {$commentaire.avatar_utilisateur}
                     {else} https://eu.ui-avatars.com/api/?background=random&color=random&length=1&bold=true&name={$commentaire.pseudo_visiteur}
