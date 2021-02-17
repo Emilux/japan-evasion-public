@@ -7,50 +7,38 @@
                 <h1 class="commentaire-compteur">
                     {$nombre_commentaire} Commentaires
                 </h1>
+                {foreach from=$commentaires item=commentaire key=i}
                 <div class="com">
-                    <img class="avatar_utilisateur" src="assets/media/avatar/mimil.jpg" alt="avatar">
-                    <p><span class="pseudo">Emilien </span>dit:</p>
-                    <span class="date">01 décembre 2020 à 03:33 </span>
+                    <img class="avatar_utilisateur" src="{if $commentaire.pseudo_visiteur === NULL} {$commentaire.avatar_utilisateur}
+                    {else} https://eu.ui-avatars.com/api/?background=random&color=random&length=1&bold=true&name={$commentaire.pseudo_visiteur}
+                    {/if}" alt="avatar">
+                    <p><span class="pseudo">
+                    {if $commentaire.pseudo_visiteur === NULL} {$commentaire.pseudo_utilisateur|capitalize}
+                    {else} {$commentaire.pseudo_visiteur|capitalize}
+                    {/if} 
+                      </span>dit:</p>
+                    <span class="date">{$commentaire.datetime_commentaire|date_format : "%e %B  %Y à %T"}</span>
+                    {if $commentaire.id_reponse !== NULL} 
+                    <div class="reponse">
+                        <span class="pseudo">{if $commentaires[$commentaire.id_reponse-1].pseudo_visiteur === NULL} {$commentaires[$commentaire.id_reponse-1].pseudo_utilisateur|capitalize}
+                    {else} {$commentaires[$commentaire.id_reponse-1].pseudo_visiteur|capitalize}
+                    {/if} 
+                        </span> 01/12/2020 03:33
+                        <p class="reponse-mini">{$commentaires[$commentaire.id_reponse-1].contenu_commentaire}</p>
+                    </div>
+                    {var_dump($commentaires['id_reponse'])};
+                    {/if}
                     <div class="compteur_like"> <i class="fas fa-thumbs-up"></i></div>
-                    <p class="contenu_commentaire">Quel génie ce Jordent... &#128525;</p>
+                    
+                    <p class="contenu_commentaire">{$commentaire.contenu_commentaire}</p>
+                    
                 </div>
                 <div class="row justify-content-end">
                     <a href="#"><span class="btn-rep"><i class="fas fa-reply"></i>Répondre</span></a>
                 </div>
 
                 <div class="line"></div>
-
-                <div class="com">
-                    <img class="avatar_utilisateur" src="assets/media/avatar/kolt1ra.png" alt="avatar">
-                    <p><span class="pseudo">Anaïs </span>dit:</p>
-                    <span class="date">01 décembre 2020 à 04:30 </span>
-                    <div class="reponse">
-                        <span class="pseudo">Emilien</span> 01/12/2020 03:33
-                        <p class="reponse_de"> Quel génie ce Jordent... &#128525;</p>
-                    </div>
-                    <div class="compteur_like"> <i class="fas fa-thumbs-up"></i></div>
-                    <p class="contenu_commentaire">Mais tellement ! WOW</p>
-
-                    <div class="row justify-content-end">
-                        <a href="#"><span class="btn-rep"><i class="fas fa-reply"></i>Répondre</span></a>
-                    </div>
-                </div>
-
-                <div class="line"></div>
-
-                <div class="com">
-                    <img class="avatar_utilisateur" src="assets/media/avatar/ninja.png" alt="avatar">
-                    <p><span class="pseudo">Stéve </span>dit:</p>
-                    <span class="date">03 décembre 2020 à 04:30 </span>
-                    <div class="compteur_like"> <i class="fas fa-thumbs-up"></i></div>
-                    <p class="contenu_commentaire">T'es vraiment très fort (à Krunker &#x1F609;)</p>
-                    <div class="row justify-content-end">
-                        <a href="#"><span class="btn-rep"><i class="fas fa-reply"></i>Répondre</span></a>
-                    </div>
-
-                </div>
-
-                <div class="line"></div>
+                {/foreach}
 
             <h2>Laisser un commentaire</h2>
             <h5>Votre adresse de messagerie ne sera pas publiée. Les champs obligatoires sont indiqués avec *</h5>
