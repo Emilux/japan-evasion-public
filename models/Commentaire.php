@@ -47,10 +47,10 @@ class Commentaire extends Model {
     
     //Permet de récupérer un commentaire ainsi que les infos lié au profil
     public function getCommentaire($article){
-        $sql = $this->_bdd->query('
-               SELECT datetime_commentaire, pseudo_visiteur,avatar_utilisateur, pseudo_utilisateur,contenu_commentaire,
-       reponse_de.id_reponse AS reponse, commentaire.id_commentaire AS commentaire, COUNT(aime_commentaire.id_commentaire) AS aime_commentaire
-        FROM '.$this->_table.'
+        $sql = $this->_bdd->query(
+                'SELECT datetime_commentaire, pseudo_visiteur,avatar_utilisateur, pseudo_utilisateur,contenu_commentaire,
+                reponse_de.id_reponse AS reponse, commentaire.id_commentaire AS commentaire, COUNT(aime_commentaire.id_commentaire) AS aime_commentaire
+                FROM '.$this->_table.'
                 LEFT JOIN commente ON commentaire.id_commentaire = commente.id_commentaire
                 LEFT JOIN utilisateur ON utilisateur.id_utilisateur = commente.id_utilisateur
                 LEFT JOIN commentaire_visiteur ON commentaire_visiteur.id_commentaire = commentaire.id_commentaire
@@ -64,7 +64,7 @@ class Commentaire extends Model {
         return $sql;
     }
 
-    //Ajout commentaire par un visiteur
+    /*Ajout commentaire par un visiteur
     public function addCommentaireVisiteur(){
 
 
@@ -73,7 +73,7 @@ class Commentaire extends Model {
 
         CURRENT_TIMESTAMP;
 
-    }
+    }*/
 
 }
 
