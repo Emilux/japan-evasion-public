@@ -48,7 +48,9 @@ class Commentaire extends Model {
     //Permet de récupérer un commentaire ainsi que les infos lié au profil
     public function getCommentaire($article){
         $sql = $this->_bdd->query(
-               'SELECT * FROM `commentaire` 
+               'SELECT datetime_commentaire, pseudo_visiteur,avatar_utilisateur, pseudo_utilisateur,contenu_commentaire,
+       reponse_de.id_reponse AS reponse, commentaire.id_commentaire AS commentaire
+        FROM `commentaire` 
                 LEFT JOIN commente ON commentaire.id_commentaire = commente.id_commentaire
                 LEFT JOIN utilisateur ON utilisateur.id_utilisateur = commente.id_utilisateur
                 LEFT JOIN commentaire_visiteur ON commentaire_visiteur.id_commentaire = commentaire.id_commentaire

@@ -1,7 +1,5 @@
 <!-- PARTIE COMMENTAIRE -->
-
     <div class="commentaire container">
-
         <div class="row justify-content-center">
             <div class="formulaire col-7">
                 <h1 class="commentaire-compteur">
@@ -18,15 +16,14 @@
                     {/if} 
                       </span>dit:</p>
                     <span class="date">{$commentaire.datetime_commentaire|date_format : "%e %B  %Y à %T"}</span>
-                    {if $commentaire.id_reponse !== NULL} 
+                    {if $commentaire.reponse !== NULL}
                     <div class="reponse">
-                        <span class="pseudo">{if $commentaires[$commentaire.id_reponse-1].pseudo_visiteur === NULL} {$commentaires[$commentaire.id_reponse-1].pseudo_utilisateur|capitalize}
-                    {else} {$commentaires[$commentaire.id_reponse-1].pseudo_visiteur|capitalize}
+                        <span class="pseudo">{if $commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].pseudo_visiteur === NULL} {$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].pseudo_utilisateur|capitalize}
+                    {else} {$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].pseudo_visiteur|capitalize}
                     {/if} 
                         </span> 01/12/2020 03:33
-                        <p class="reponse-mini">{$commentaires[$commentaire.id_reponse-1].contenu_commentaire}</p>
+                        <p class="reponse-mini">{$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].contenu_commentaire}</p>
                     </div>
-                    {var_dump($commentaires['id_reponse'])};
                     {/if}
                     <div class="compteur_like"> <i class="fas fa-thumbs-up"></i></div>
                     
