@@ -6,7 +6,7 @@ header("Cache-Control: no-cache");
 
 
 //Changer la langue en FR
-setlocale (LC_TIME, 'fr_FR');
+setlocale (LC_TIME, 'fr_FR.utf8');
 
 require('defines.inc.php');
 require('libs/Smarty.class.php');
