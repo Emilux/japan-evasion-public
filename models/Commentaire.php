@@ -47,16 +47,19 @@ class Commentaire extends Model {
     
     //Permet de récupérer un commentaire ainsi que les infos lié au profil
     public function getCommentaire($article){
-        $sql = $this->_bdd->query(
-               'SELECT datetime_commentaire, pseudo_visiteur,avatar_utilisateur, pseudo_utilisateur,contenu_commentaire,
-       reponse_de.id_reponse AS reponse, commentaire.id_commentaire AS commentaire
-        FROM `commentaire` 
+        $sql = $this->_bdd->query('
+               SELECT datetime_commentaire, pseudo_visiteur,avatar_utilisateur, pseudo_utilisateur,contenu_commentaire,
+       reponse_de.id_reponse AS reponse, commentaire.id_commentaire AS commentaire, COUNT(aime_commentaire.id_commentaire) AS aime_commentaire
+        FROM '.$this->_table.'
                 LEFT JOIN commente ON commentaire.id_commentaire = commente.id_commentaire
                 LEFT JOIN utilisateur ON utilisateur.id_utilisateur = commente.id_utilisateur
                 LEFT JOIN commentaire_visiteur ON commentaire_visiteur.id_commentaire = commentaire.id_commentaire
                 LEFT JOIN visiteur ON visiteur.id_visiteur = commentaire_visiteur.id_visiteur
                 LEFT JOIN reponse_de ON reponse_de.id_commentaire = commentaire.id_commentaire
-                WHERE commentaire.id_article = '.$article.' ORDER BY datetime_commentaire');
+                LEFT JOIN aime_commentaire ON aime_commentaire.id_commentaire = commentaire.id_commentaire
+                WHERE commentaire.id_article = '.$article.'
+                GROUP BY commentaire.id_commentaire
+                ORDER BY datetime_commentaire');
         $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $sql;
     }
