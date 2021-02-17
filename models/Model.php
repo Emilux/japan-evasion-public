@@ -35,11 +35,11 @@ class Model {
     }
 
     //Récupérer une liste d'élément
-    public function getList(int $limit=null, $order = 'DESC'){
+    public function getList(int $limit=null, $order = 'DESC', $champs = 'id'){
         if ($limit===null){
-            $sql = $this->_bdd->query('SELECT * FROM '.$this->_table.' ORDER BY '.$order);
+            $sql = $this->_bdd->query('SELECT * FROM '.$this->_table.' ORDER BY '.$champs.'_'.$this->_table.' '.$order);
         } else {
-            $sql = $this->_bdd->query('SELECT * FROM '.$this->_table.' LIMIT '.$limit.' ORDER BY '.$order);
+            $sql = $this->_bdd->query('SELECT * FROM '.$this->_table.' ORDER BY '.$champs.'_'.$this->_table.' '.$order.' LIMIT '.$limit);
         }
         $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $sql;
