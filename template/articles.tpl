@@ -34,7 +34,7 @@
 
 <div class="article-blog container">
     <div class="editer-par row justify-content-center">
-        <h5>Publié le {$article.date_publication_article|date_format:"%A %e %B  %Y"|utf8_encode|lower}</h5>
+        <h5>Publié le {$article.date_publication_article|date_format:"%A %e %B  %Y"|lower}</h5>
     </div>
     <div class="editer-par row justify-content-center">
         <h3>par {$redacteur.pseudo_utilisateur|capitalize}</h3>
