@@ -5,6 +5,7 @@
 
 
 /* MIXINS  */
+
 .boxshadow {
     -webkit-box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, 0.75);
@@ -56,9 +57,9 @@ body {
     background-color: #fff;
 }
 
-#background {
+#background.index {
     height: 100vh;
-    background-image: url("../media/image-index/background-image-redim.jpg");
+    background-image: url("../media/image-index/back.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -671,9 +672,14 @@ body {
 
 /* PROFILE */
 
+#background.profiles {
+    background-image: url("../media/image-profile/back.jpg");
+}
+
 body {
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Mulish';
 }
 
 @media screen and (min-width: 992px) {}
@@ -699,9 +705,7 @@ body {
     width: 150px;
     height: 150px;
     background: #fff;
-    border-radius: 50%;
     overflow: hidden;
-    border: 1px solid rgb(201, 199, 199);
 }
 
 @media screen and (min-width: 320px) and (max-width: 460px) {
@@ -742,13 +746,14 @@ body {
 
 .custom-file label {
     cursor: pointer;
-    margin-top: -33px;
-    padding-left: 2px;
+    margin-top: -20px;
     display: table;
+    position: absolute;
+    margin-left: -15px;
 }
 
 .custom-file label i {
-    color: #02374C;
+    color: #1e1e1e;
     font-size: 30px;
 }
 
