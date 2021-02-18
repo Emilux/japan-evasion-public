@@ -49,26 +49,26 @@ $utilisateur = new Utilisateur();
 if (isset($_POST['creer_compte'])){
     if(empty($_POST['email_utilisateur']) || empty($_POST['pseudo_utilisateur']) || 
     empty($_POST['mdp_utilisateur']) || empty($_POST['mdp_utilisateur_confirmation'])){
-        header('Location: ./?creer_compte=emtpty');
+        header('Location: ./?creer_compte=emtpty#exampleModal');
         exit();
     } else {
         if(!preg_match("/^[A-Za-z0-9]*$/", $_POST['pseudo_utilisateur'])){
-            header('Location: ./?creer_compte=char'); 
+            header('Location: ./?creer_compte=char#exampleModal');
             exit();
         }else {
             if(!filter_var($_POST['email_utilisateur'], FILTER_VALIDATE_EMAIL)){
-                header('Location: ./?creer_compte=email'); 
+                header('Location: ./?creer_compte=email#exampleModal');
                 exit();  
             }else {
                 if ($_POST["mdp_utilisateur"] != $_POST["mdp_utilisateur_confirmation"]){
-                    header('Location: ./?creer_compte=unsuccess');
+                    header('Location: ./?creer_compte=unsuccess#exampleModal');
                     exit();
                 }else{
                     $utilisateur->setPseudo_Utilisateur($_POST['pseudo_utilisateur']);
                     $utilisateur->setEmail_Utilisateur($_POST['email_utilisateur']);
                     $utilisateur->setMdp_Utilisateur(password_hash($_POST['mdp_utilisateur'], PASSWORD_DEFAULT));
                     $utilisateur->creerCompte('membre');
-                    header('Location: ./?creer_compte=success');
+                    header('Location: ./?creer_compte=success#exampleModal');
                 }
             }
         }
