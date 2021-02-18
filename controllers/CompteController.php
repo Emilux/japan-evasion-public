@@ -69,6 +69,7 @@ if (isset($_POST['creer_compte'])){
                     $utilisateur->setMdp_Utilisateur(password_hash($_POST['mdp_utilisateur'], PASSWORD_DEFAULT));
                     $utilisateur->creerCompte('membre');
                     header('Location: ./?creer_compte=success#exampleModal');
+                    exit();
                 }
             }
         }
