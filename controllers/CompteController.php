@@ -1,17 +1,84 @@
 <?php
+
+
+
 $utilisateur = new Utilisateur();
 //test si le formulaire de création de compte a été envoyé
+
+/*if (isset($_POST['creer_compte'])){
+    //check if email is empty
+    if (isset($_POST['email_utilisateur']) && !empty($_POST['email_utilisateur'])) {
+        $email=mysqli_real_escape_string($dbh,trim($_POST['email_utilisateur']));
+    }else{
+        $empty_email="Email cannot be empty.";
+        echo $empty_email.'<br>';
+    }
+    //check if pseudo is empty
+    if (isset($_POST['pseudo_utilisateur']) && !empty($_POST['pseudo_utilisateur'])) {
+        $username=mysqli_real_escape_string($dbh,trim($_POST['pseudo_utilisateur']));
+    }else{
+        $empty_username="Username Cannot be empty.";
+        echo $empty_username.'<br>';
+    }
+    //check if password is empty or confirm password is empty
+    if (isset($_POST['mdp_utilisateur']) && !empty($_POST['mdp_utilisateur'])) {
+        $psw=mysqli_real_escape_string($dbh,trim($_POST['mdp_utilisateur']));
+    }else{
+        $empty_password="Password cannot be empty";
+        echo $empty_password.'<br>';
+    }
+    //or confirm password is empty
+    if (isset($_POST['mdp_utilisateur_confirmation']) && !empty($_POST['mdp_utilisateur_confirmation'])) {
+        $repsw=mysqli_real_escape_string($dbh,trim($_POST['mdp_utilisateur_confirmation']));
+    }else{
+        $empty_repassword="Retype password cannot be empty";
+        echo $empty_repassword.'<br>';
+    }
+
+    //check if password dosn't match
+    if ($_POST["mdp_utilisateur"] === $_POST["mdp_utilisateur_confirmation"]){
+        echo 'success';
+    }else{
+        echo'failed';
+    }
+
+
+}*/
+  
+
 if (isset($_POST['creer_compte'])){
-    $utilisateur->setPseudo_Utilisateur($_POST['pseudo_utilisateur']);
-    $utilisateur->setEmail_Utilisateur($_POST['email_utilisateur']);
-    $utilisateur->setMdp_Utilisateur(password_hash($_POST['mdp_utilisateur'], PASSWORD_DEFAULT));
-    $utilisateur->creerCompte('membre');
+    if(empty($_POST['email_utilisateur']) || empty($_POST['pseudo_utilisateur']) || 
+    empty($_POST['mdp_utilisateur']) || empty($_POST['mdp_utilisateur_confirmation'])){
+        header('Location: ./?creer_compte=emtpty');
+        exit();
+    } else {
+        if(!preg_match("/^[A-Za-z0-9]*$/", $_POST['pseudo_utilisateur'])){
+            header('Location: ./?creer_compte=char'); 
+            exit();
+        }else {
+            if(!filter_var($_POST['email_utilisateur'], FILTER_VALIDATE_EMAIL)){
+                header('Location: ./?creer_compte=email'); 
+                exit();  
+            }else {
+                if ($_POST["mdp_utilisateur"] != $_POST["mdp_utilisateur_confirmation"]){
+                    header('Location: ./?creer_compte=unsuccess');
+                    exit();
+                }else{
+                    $utilisateur->setPseudo_Utilisateur($_POST['pseudo_utilisateur']);
+                    $utilisateur->setEmail_Utilisateur($_POST['email_utilisateur']);
+                    $utilisateur->setMdp_Utilisateur(password_hash($_POST['mdp_utilisateur'], PASSWORD_DEFAULT));
+                    $utilisateur->creerCompte('membre');
+                    header('Location: ./?creer_compte=success');
+                }
+            }
+        }
+    }
 }
 
-if (isset($_POST['connexion'])){
 
 
-}
+
+
 
 //test si le formulaire de connexion a été envoyé
 if(isset($_POST['connexion'])){
