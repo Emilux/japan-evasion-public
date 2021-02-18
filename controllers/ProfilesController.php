@@ -15,14 +15,14 @@ if(isset($_GET['utilisateur'])){
 
     $user = $utilisateur->getItem('pseudo_utilisateur', $_GET['utilisateur']);
     $carnet= $utilisateur->getItem('id_utilisateur', $user['id_utilisateur'], 'carnet_de_voyage');
-    var_dump($carnet);
+
 
     $nbFollower = $utilisateur->count('id_followed', $user['id_utilisateur'],'follow');
   
    $nbCommentaire = $utilisateur->count('id_utilisateur', $user['id_utilisateur'],'commente');
 
    $nbArticle = $utilisateur->count('id_utilisateur', $user['id_utilisateur'],'article');
-   var_dump($nbArticle);
+
 
     //afficher l'article si il est publié et s'il est NEW l'affiché que au utilisateur connectés
     if($utilisateur){
