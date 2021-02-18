@@ -51,7 +51,7 @@
             </div>
 
             <div class="formulaire col-5">
-                <form class="needs-validation" novalidate>
+                <form method="post" class="needs-validation" novalidate>
                     <div class="form-row">
 
                         <label>Prénom *</label>
@@ -76,7 +76,7 @@
                         <textarea class="form-control" id="textArea" maxlength="1000" minlength="10" rows="4" name="msgcntc" required></textarea>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="invalidCheck2" required>
+                            <input class="form-check-input" type="checkbox" id="invalidCheck2" name="cgu" required>
                             <label class="form-check-label" for="invalidCheck2">
                                     En soumettant ce formulaire, vous acceptez les conditions d'utilisation du site. 
                                     </label>

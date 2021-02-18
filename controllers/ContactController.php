@@ -12,7 +12,19 @@ if(isset($_POST['send_message'])){
     $headers = 'From:'.$mailFrom;
     $txt = 'You have received an email from'.$name.'.\n\n'.$message;
 
-    mail($mailTo, $message, $txt, $headers);
+    //verify if cgu checkbox is checked
+    if (isset($_POST['cgu']) && $_POST['cgu'] === 'on'){
+        echo 'coché';
 
-    header('Location: ./?mailSend');
+        //send email
+        mail($mailTo, $message, $txt, $headers);
+
+        header('Location: ./?mailSend');
+    } else {
+
+        //error
+        echo 'pas coché';
+    }
+
+
 }
