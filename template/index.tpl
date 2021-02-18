@@ -23,7 +23,6 @@
             </div>
         </div>
     </div>
-
 </header>
 
 <!-- TITRE MOBILE -->
@@ -52,24 +51,26 @@
             </div>
         </div>
     </form>
-    <!--<div class="row">
+    <div class="row">
         <div class="card-deck">
             {if isset($article)}
-                {foreach from=$article item=$value}
+                {foreach from=$article item=value}
+                    {if $value.statut_article !== 'PENDING'}
             <div class="card shadow  bg-white rounded">
                 <img class="card-img-top" src="{$value.photo_article}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"><span class="dot">• </span>TOKYO</h5>
+                    <h5 class="card-title"><span class="dot">• </span>{$value.statut_article}</h5>
                     <h2>{$value.titre_article}</h2>
                     <p class="card-text">{$value.contenu_article}</p>
                     <div class="row justify-content-center">
-                        <a class="btn-lire" href="?page=articles&article={$value.id_article}">LIRE L'ARTICLE</a>
+                        <a class="btn-lire" href="?page=articles&id={$value.id_article}">LIRE L'ARTICLE</a>
                     </div>
                 </div>
             </div>
+                    {/if}
                 {/foreach}
             {/if}
 
-        </div>-->
+        </div>
     </div>
 </div>

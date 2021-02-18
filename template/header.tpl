@@ -15,8 +15,9 @@
     <link rel="stylesheet" type="text/css" href="assets/css/japanevasion.css" />
     <!-- JQUERY BOOTSTRAPS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
     <!-- GOOGLEFONTS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -113,7 +114,7 @@
                             {if !isset($smarty.session.utilisateur)}
                                 <!-- CONNEXION USER -->
                                 <li class="nav-item" id="user">
-                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"><i class="fas fa-user" id="user_icon"></i>CONNEXION</a>
+                                    <a class="nav-link" href="#exampleModal" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user" id="user_icon"></i>CONNEXION</a>
                                 </li>
                             {/if}
                             {if isset($smarty.session.utilisateur)}

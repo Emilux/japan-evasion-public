@@ -51,32 +51,32 @@
             </div>
 
             <div class="formulaire col-5">
-                <form class="needs-validation" novalidate>
+                <form method="post" class="needs-validation" novalidate>
                     <div class="form-row">
 
                         <label>Prénom *</label>
-                        <input type="text" class="form-control" id="prenom-form" required>
+                        <input type="text" class="form-control" id="prenom-form" name="prenom" required>
                         <div class="invalid-feedback">
                             Entrer un prénom
                         </div>
 
                         <label class="formu">Nom *</label>
-                        <input type="text" class="form-control" id="nom-form" required>
+                        <input type="text" class="form-control" id="nom-form" name="nom" required>
                         <div class="invalid-feedback">
                             Entrer un nom
                         </div>
 
                         <label class="formu">Email *</label>
-                        <input type="email" class="form-control" id="mail-form" required>
+                        <input type="email" class="form-control" id="mail-form" name="emailcntc" required>
                         <div class="invalid-feedback">
                             Entrer un e-mail valide
                         </div>
 
                         <label class="formu">Message *</label>
-                        <textarea class="form-control" id="textArea" maxlength="1000" minlength="10" rows="4" required></textarea>
+                        <textarea class="form-control" id="textArea" maxlength="1000" minlength="10" rows="4" name="msgcntc" required></textarea>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="invalidCheck2" required>
+                            <input class="form-check-input" type="checkbox" id="invalidCheck2" name="cgu" required>
                             <label class="form-check-label" for="invalidCheck2">
                                     En soumettant ce formulaire, vous acceptez les conditions d'utilisation du site. 
                                     </label>
@@ -84,7 +84,7 @@
                         <h5>Les champs obligatoires sont indiqués avec *</h5>
                     </div>
                     <div class="row justify-content-center">
-                        <button class="btn btn-dark" type="submit">ENVOYER</button>
+                        <button class="btn btn-dark" type="submit" name="send_message">ENVOYER</button>
                     </div>
                 </form>
             </div>
