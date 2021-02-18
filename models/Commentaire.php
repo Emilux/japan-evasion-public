@@ -53,7 +53,6 @@ class Commentaire extends Model {
              insert into `commentaire_visiteur`(id_visiteur,id_commentaire) VALUES(@b,@a);'
         );
         $sql = $sql->execute();
-        var_dump($sql->get_result);
         return $sql;
 
     }
