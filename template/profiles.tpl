@@ -2,15 +2,15 @@
     </div>
 </header>
 
-<style>
-
+    <style>
+    
     #background {
 
-        height : 40vh !important;
+        height : 20vh !important;
 
     }
 
-</style>
+    </style>
 
 <!--Profile image followers like and follow buttons-->
 <div class="container mt-5">
@@ -29,24 +29,24 @@
         <!--Nombre followers , commentaire, article-->
         <div class="profile-images-card buttons  py-3">
             <div class="row">
-                <ul class="text-center">
+                <ul class="text-center pr-3 pl-3">
                     <li>{$follow}</li>
                     <li>Followers</li>
                 </ul>
 
-                <ul class="text-center">
+                <ul class="text-center pr-3 pl-3">
                     <li>{$commente}</li>
                     <li>Commentaire</li>
                 </ul>
 
-                <ul class="text-center">
+                <ul class="text-center pr-3 pl-3">
                     <li>{$article}</li>
                     <li>Article</li>
                 </ul>
             </div>
             <!--button like & follow-->
-            <div class="button mt-4 d-flex flex-row align-items-center py-3">
-                <button class="btn btn-sm btn-outline-dark w-100">Follow</button>
+            <div class="button ml-0 mt-4 d-flex flex-row align-items-center py-3">
+                <button class="btn-dark btn-sm btn-outline-dark w-100 ">SUIVRE</button>
             </div>
         </div>
     </div>
