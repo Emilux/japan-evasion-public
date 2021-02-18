@@ -5,6 +5,7 @@
 
 
 /* MIXINS  */
+
 .boxshadow {
     -webkit-box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, 0.75);
@@ -476,6 +477,10 @@ body {
     margin-right: 5px;
 }
 
+.thumb-blue {
+    color: #0072b1;
+}
+
 .com {
     font-family: 'Mulish';
 }
@@ -675,7 +680,7 @@ body {
 @media screen and (min-width: 992px) {}
 
 
-/*All Cards design*/
+/* ALL CARDS DESIGN */
 
 .profile,
 .profile-edit,
@@ -685,11 +690,11 @@ body {
     background: #fff;
     padding: 30px;
     box-shadow: 0px 0px 5px #ddd;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 
-/*profile image area*/
+/* PROFILE IMAGE AREA */
 
 .profile-images {
     width: 150px;
@@ -721,7 +726,7 @@ body {
 }
 
 
-/*profile image*/
+/* PROFILE IMAGE */
 
 .profile-images img {
     width: 100%;
@@ -730,7 +735,7 @@ body {
 }
 
 
-/*upload image area name*/
+/*UPLOAD IMAGE NAME AREA */
 
 .custom-file input[type='file'] {
     display: none;
@@ -774,7 +779,7 @@ div.button {
 }
 
 
-/***************Edit Profile*********/
+/* EDIT PROFILE */
 
 .profile-edit input,
 textarea,
@@ -790,6 +795,10 @@ label {
 
 .text-dark {
     color: black!important;
+}
+
+.profile-edit .btn {
+    margin-top: 10px;
 }
 
 

@@ -1,11 +1,9 @@
 <?php
 
-$smarty->assign('page', 'profiles');
+$smarty->assign('page', 'profiles-edit');
 
-
-
-if(isset($_GET['utilisateur'])){
-
+if(isset($_SESSION['utilisateur'])){
+ 
    
     //Appel à la classe Utilisateur
     $utilisateur = new Utilisateur();
@@ -13,12 +11,10 @@ if(isset($_GET['utilisateur'])){
 
     //récupérer le contenu de l'article visionné
 
-    $user = $utilisateur->getItem('pseudo_utilisateur', $_GET['utilisateur']);
+    $user = $utilisateur->getItem('pseudo_utilisateur', $_SESSION['utilisateur']['pseudo_utilisateur']);
 
     //afficher l'article si il est publié et s'il est NEW l'affiché que au utilisateur connectés
     if($user){
-
-        $carnet= $utilisateur->getItem('id_utilisateur', $user['id_utilisateur'], 'carnet_de_voyage');
 
         $nbFollower = $utilisateur->count('id_followed', $user['id_utilisateur'],'follow');
       
@@ -32,9 +28,20 @@ if(isset($_GET['utilisateur'])){
             'follow' => $nbFollower,
             'commente' =>$nbCommentaire,
             'article' =>$nbArticle,
-            'carnet' => $carnet,
             'connecte' => isset($_SESSION['utilisateur'])
         ));
+        
+        if(isset($_POST['submit_update'])){
+
+            $utilisateur->Update($_POST, $_SESSION['utilisateur']['id_utilisateur']);
+            if(isset($_POST['pseudo_utilisateur'])){
+                $_SESSION['utilisateur']['pseudo_utilisateur'] = $_POST['pseudo_utilisateur'];
+            }
+            if(isset($_POST['email_utilisateur'])){
+                $_SESSION['utilisateur']['email_utilisateur'] = $_POST['email_utilisateur'];
+            }
+        
+        }
  
     }
     else {
