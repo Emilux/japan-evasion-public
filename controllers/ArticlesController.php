@@ -49,7 +49,7 @@ if(isset($_GET['id'])){
         }
     }
     else {
-        header('Location: ./');
+        header('Location: ./#exampleModal');
         exit();
     }
     
