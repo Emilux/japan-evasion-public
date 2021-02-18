@@ -43,8 +43,9 @@ class Commentaire extends Model {
     public function setId_Article(int $id_article){
         $this->_id_article = $id_article;
     }
-    //attribut Commentaire $commentaire, Visiteur $visiteur,$id_article
-    public function addCommentaire(){
+    
+
+    public function addCommentaire(Commentaire $commentaire, Visiteur $visiteur){
         $sql = $this->_bdd->prepare(
             'insert into `commentaire` (contenu_commentaire,datetime_commentaire,id_article) VALUES ("test",current_timestamp(),1);
              select @a := last_insert_id();
@@ -57,7 +58,13 @@ class Commentaire extends Model {
 
     }
 
-    
+    /*
+     *
+     *
+     *
+     *
+     *
+     */
     //Permet de récupérer un commentaire ainsi que les infos lié au profil
     public function getCommentaire($article,$limit=5){
         $sql = $this->_bdd->query(
