@@ -1,5 +1,5 @@
 <!-- PARTIE COMMENTAIRE -->
-    <div class="commentaire container" id="espace_commentaire">
+    <div class="commentaire container">
         <div class="row justify-content-center">
             <div class="formulaire col-7">
                 <h1 class="commentaire-compteur">
@@ -7,7 +7,7 @@
                 </h1>
                 {foreach from=$commentaires item=commentaire key=i}
                     {$commentaire.aime_commentaire}
-                <div class="com" id="commentaire_{$commentaire.commentaire}">
+                <div class="com">
                     <img class="avatar_utilisateur" src="{if $commentaire.pseudo_visiteur === NULL} {$commentaire.avatar_utilisateur}
                     {else} https://eu.ui-avatars.com/api/?background=random&color=random&length=1&bold=true&name={$commentaire.pseudo_visiteur}
                     {/if}" alt="avatar">
@@ -40,13 +40,12 @@
 
             <h2>Laisser un commentaire</h2>
             <h5>Votre adresse de messagerie ne sera pas publiée. Les champs obligatoires sont indiqués avec *</h5>
-            <form method="post" class="needs-validation" novalidate>
+            <form class="needs-validation" novalidate>
                 <div class="form-row">
 
                     <label class="formu">Message *</label>
                     <textarea class="form-control" id="textArea" maxlength="1000" minlength="10" rows="8" name="contenu_commentaire" required></textarea>
 
-                    {if !$connecte}
                     <label class="formu">Pseudo *</label>
                     <input type="text" class="form-control" name="pseudo_visiteur" id="nom-form" required>
                     <div class="invalid-feedback">
@@ -65,7 +64,6 @@
                         Enregistrer mon nom, mon e-mail et mon site web dans le navigateur pour mon prochain commentaire.
                         </label>
                     </div>
-                    {/if}
 
                     <button class="btn btn-dark" type="submit" name="submit_add">ENVOYER</button>
                 </div>

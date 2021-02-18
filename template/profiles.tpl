@@ -17,8 +17,7 @@
     <div class="row profile">
         <div class="profile-images-card ">
             <div class="profile-images">
-                <!--<img src="assets/media/profile-image/pngtree-cartoon-european-and-american-character-avatar-design-png-image_4366075.jpg" id="upload-img" alt="">-->
-                <img src="{$utilisateur.avatar_utilisateur}" alt="">
+                <img src="assets/media/profile-image/pngtree-cartoon-european-and-american-character-avatar-design-png-image_4366075.jpg" id="upload-img" alt="">
             </div>
             <div class="custom-file">
                 <label for="fileupload"><i class="fas fa-cloud-upload-alt"></i></label>
@@ -30,17 +29,17 @@
         <div class="profile-images-card buttons  py-3">
             <div class="row">
                 <ul class="text-center">
-                    <li>{$follow}</li>
+                    <li>100</li>
                     <li>Followers</li>
                 </ul>
 
                 <ul class="text-center">
-                    <li>{$commente}</li>
+                    <li>80</li>
                     <li>Commentaire</li>
                 </ul>
 
                 <ul class="text-center">
-                    <li>{$article}</li>
+                    <li>30</li>
                     <li>Article</li>
                 </ul>
             </div>
@@ -57,21 +56,32 @@
     <div class="row gutters">
         <div class="col-lg-4 profile-edit">
             <div class="profile-header-info">
-                <h4 class="m-auto pt-2">{$utilisateur.pseudo_utilisateur}</h4>
+                <h4 class="m-auto pt-2">Jaculin </h4>
+                <h4 class="m-auto pt-2">Fernandos</h4>
                 <h3 class="m-auto pt-2">Bio</h3>
-                <p class="m-auto pt-2">{$utilisateur.bio_utilisateur}</p>
-                <a href="#" id="aa">{$utilisateur.email_utilisateur}</a>
+                <p class="m-auto pt-2">Graphic Designer</p>
+                <p>Teaching Quality designto grow your biz</p>
+                <p>Single mama to a human + a dog in MO</p>
+                <p>Author of Strong Girls, Brave Girl</p>
+                <p>Free Design Workshop</p>
+                <a href="#">www.paperondoats.com</a>
                 <p>followed by 1200 people</p>
             </div>
         </div>
         <div class="col-1"></div>
         <div class="col-lg-7 carnet-voyage">
             <h3 class="m-auto pt-2">Carnet du Voyage</h3>
-            {if $carnet}
-            <a href="{$carnet.contenu_carnet}" class="btn btn-dark my-3">Telechargez</a>
-            {else}
-            <p>Pas encore de carnet de voyage!</p>
-            {/if}
+            <p class="m-auto pt-2">Nom du Voyage <strong>: Kanazawa</strong> </p>
+            <p class="m-auto pt-2">Date du debut <strong>: 1/6/2021</strong> </p>
+            <p class="m-auto pt-2">Date du Fin <strong>: 1/7/2021</strong> </p>
+            <p class="m-auto pt-2">Prix Total <strong>: 2000 $</strong> </p>
+            <p class="m-auto pt-2">Detail du Voyage :
+                Kanazawa is an old city. It flourished in the late 16th century under great leadership of the Maeda family.
+                Kanazawa is a small city, but you can discover all kinds of Japanese traditional culture, food, and arts in Kanazawa.
+                As there are so many places to explore in the city,
+                it might be difficult for you to choose where to go. For your information, here are top 7 places you must visit.
+            </p>
+            <button class="btn btn-dark my-3">Telechargez</button>
         </div>
     </div>
 </div>

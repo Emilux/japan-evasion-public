@@ -13,7 +13,6 @@ else
 // Charge Controller de la création ou connexion à son compte sur
 // Toutes les pages du site
 require (_CTRL_.'CompteController.php');
-require (_CTRL_.'HeaderController.php');
 
 // Affichage des templates
 $smarty->display(_TPL_.'template.tpl');

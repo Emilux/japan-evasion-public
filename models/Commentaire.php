@@ -43,43 +43,23 @@ class Commentaire extends Model {
     public function setId_Article(int $id_article){
         $this->_id_article = $id_article;
     }
+
     
-
-    public function addCommentaire(Commentaire $commentaire, Visiteur $visiteur){
-        $sql = $this->_bdd->prepare(
-            'insert into `commentaire` (contenu_commentaire,datetime_commentaire,id_article) VALUES ("test",current_timestamp(),1);
-             select @a := last_insert_id();
-             insert into `visiteur` (pseudo_visiteur,email_visiteur) VALUES ("test","test@test.test");
-             select  @b :=  last_insert_id();
-             insert into `commentaire_visiteur`(id_visiteur,id_commentaire) VALUES(@b,@a);'
-        );
-        $sql = $sql->execute();
-        return $sql;
-
-    }
-
-    /*
-     *
-     *
-     *
-     *
-     *
-     */
     //Permet de récupérer un commentaire ainsi que les infos lié au profil
-    public function getCommentaire($article,$limit=5){
+    public function getCommentaire($article){
         $sql = $this->_bdd->query(
-            'SELECT ANY_VALUE(datetime_commentaire) as datetime_commentaire, ANY_VALUE(pseudo_visiteur) as pseudo_visiteur,ANY_VALUE(avatar_utilisateur) as avatar_utilisateur, ANY_VALUE(pseudo_utilisateur) as pseudo_utilisateur,ANY_VALUE(contenu_commentaire) as contenu_commentaire,
-            ANY_VALUE(reponse_de.id_reponse) AS reponse, ANY_VALUE(commentaire.id_commentaire) AS commentaire, COUNT(aime_commentaire.id_commentaire) AS aime_commentaire
-            FROM '.$this->_table.'
-            LEFT JOIN commente ON commentaire.id_commentaire = commente.id_commentaire
-            LEFT JOIN utilisateur ON utilisateur.id_utilisateur = commente.id_utilisateur
-            LEFT JOIN commentaire_visiteur ON commentaire_visiteur.id_commentaire = commentaire.id_commentaire
-            LEFT JOIN visiteur ON visiteur.id_visiteur = commentaire_visiteur.id_visiteur
-            LEFT JOIN reponse_de ON reponse_de.id_commentaire = commentaire.id_commentaire
-            LEFT JOIN aime_commentaire ON aime_commentaire.id_commentaire = commentaire.id_commentaire
-            WHERE commentaire.id_article = '.$article.'
-            GROUP BY commentaire.id_commentaire
-            ORDER BY datetime_commentaire DESC LIMIT '.$limit);
+                'SELECT ANY_VALUE(datetime_commentaire) as datetime_commentaire, ANY_VALUE(pseudo_visiteur) as pseudo_visiteur,ANY_VALUE(avatar_utilisateur) as avatar_utilisateur, ANY_VALUE(pseudo_utilisateur) as pseudo_utilisateur,ANY_VALUE(contenu_commentaire) as contenu_commentaire,
+                ANY_VALUE(reponse_de.id_reponse) AS reponse, ANY_VALUE(commentaire.id_commentaire) AS commentaire, COUNT(aime_commentaire.id_commentaire) AS aime_commentaire
+                FROM '.$this->_table.'
+                LEFT JOIN commente ON commentaire.id_commentaire = commente.id_commentaire
+                LEFT JOIN utilisateur ON utilisateur.id_utilisateur = commente.id_utilisateur
+                LEFT JOIN commentaire_visiteur ON commentaire_visiteur.id_commentaire = commentaire.id_commentaire
+                LEFT JOIN visiteur ON visiteur.id_visiteur = commentaire_visiteur.id_visiteur
+                LEFT JOIN reponse_de ON reponse_de.id_commentaire = commentaire.id_commentaire
+                LEFT JOIN aime_commentaire ON aime_commentaire.id_commentaire = commentaire.id_commentaire
+                WHERE commentaire.id_article = '.$article.'
+                GROUP BY commentaire.id_commentaire
+                ORDER BY datetime_commentaire');
         $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $sql;
     }
