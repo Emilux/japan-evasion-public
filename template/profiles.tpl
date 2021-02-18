@@ -110,14 +110,16 @@
 
 
 <!--Settings-->
+{if $connecte && $smarty.session.utilisateur.id_utilisateur === $utilisateur.id_utilisateur}
 <div class="container mb-5">
     <div class="row setting">
-        <h3 class="col-12">Setting</h3>
+        <h3 class="col-12">PARAMETRE</h3>
         <div class="col-4">
-            <a class="text-dark" href="?page=profiles-edit"><i class="fas fa-cog pr-3"></i>Edit profile</a>
+            <a class="text-dark" href="?page=profiles-edit"><i class="fas fa-cog pr-3"></i>Modifier mon profil</a></a>
         </div>
     </div>
 </div>
+{/if}
 
         <!--js function for image upload-->
         <script>
