@@ -23,7 +23,6 @@
             </div>
         </div>
     </div>
-
 </header>
 
 <!-- TITRE MOBILE -->
@@ -55,9 +54,8 @@
     <div class="row">
         <div class="card-deck">
             {if isset($article)}
-                {foreach from=$article item=$value}
+                {foreach from=$article item=value}
                     {if $value.statut_article !== 'PENDING'}
-
             <div class="card shadow  bg-white rounded">
                 <img class="card-img-top" src="{$value.photo_article}" alt="Card image cap">
                 <div class="card-body">

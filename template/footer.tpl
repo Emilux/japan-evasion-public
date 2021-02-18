@@ -228,7 +228,21 @@
     <!-- SCROLLTOP JAVASCRIPT -->
         <script>
             $(document).ready(function() {
+                let hashText = window.location.hash.substr();
+                if (hashText){
+                    if ($(hashText).length){
+                        $(hashText).modal(
+                            'show'
+                        );
+                        $(hashText).on(
+                            'hide.bs.modal', function () {
+                                window.location.hash = '';
+                            }
+                        );
+                    }
 
+
+                }
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 40) {
                         $('#topBtn').fadeIn();

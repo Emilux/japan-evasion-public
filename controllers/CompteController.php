@@ -45,6 +45,7 @@ if(isset($_POST['connexion'])){
                                 'role' => $utilisateur->getNameRole($utilisateur->getId_Role()),
                             ];
                             header('Location: ./?page=profiles');
+                            exit();
                         } else {
                             echo 'wrong mdp';
                             var_dump($utilisateur->getMdp_Utilisateur());
