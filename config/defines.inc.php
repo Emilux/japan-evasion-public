@@ -1,7 +1,7 @@
 <?php
 // Si on a pas ces infos, rien ne peut fonctionner : die
 if (!isset($_SERVER['DOCUMENT_ROOT']))
-    die();
+    exit();
 
 // Define de la racine du site
 if (isset($_SERVER['HTTP_HOST'])){
@@ -13,7 +13,7 @@ if (isset($_SERVER['HTTP_HOST'])){
         define('_PATH_', './');
     }
 } else {
-    die();
+    exit();
 }
 
 
