@@ -157,11 +157,6 @@ class Utilisateur extends Model {
     public function voirArticle(){
 
     }
-    
-    public function getActivity(){
-        $sql = $this->_bdd->query('SELECT * FROM commentaire ORDER BY '.$champs.'_'.$this->_table.' '.$order);
-        $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
-    }
 }
 
 

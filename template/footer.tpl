@@ -10,6 +10,7 @@
                     <div class="row">
                         <!-- FORMULAIRE DE CONNEXION -->
                         <div class="col p-5 log">
+                            <p>{if isset($erreur)}{$erreur}{/if}</p>
                             <h2>S'IDENTIFIER</h2>
                             <form action="" method="post">
                                 <div class="form-group">
@@ -72,13 +73,11 @@
 
                                 <input id="submit_creer_compte" class="btn btn-dark" type="submit" name="creer_compte" value="CRÉER UN COMPTE">
                             </form>
-                            <p>{if isset($smarty.get.creer_compte)}
-                                    {$smarty.get.creer_compte}
-                            {/if}</p>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer border-top-0 bg-white rounded-0">
+                    <p id="error"></p>
                     <a class="mx-auto"href="#">Tu n'arrives pas à te connecter ? Mot de passe oublié ?</a>
                 </div>
             </div>
@@ -229,21 +228,7 @@
     <!-- SCROLLTOP JAVASCRIPT -->
         <script>
             $(document).ready(function() {
-                let hashText = window.location.hash.substr();
-                if (hashText){
-                    if ($(hashText).length){
-                        $(hashText).modal(
-                            'show'
-                        );
-                        $(hashText).on(
-                            'hide.bs.modal', function () {
-                                window.location.hash = '';
-                            }
-                        );
-                    }
 
-
-                }
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 40) {
                         $('#topBtn').fadeIn();
