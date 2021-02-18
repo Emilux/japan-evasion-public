@@ -45,7 +45,8 @@
 
                     <label class="formu">Message *</label>
                     <textarea class="form-control" id="textArea" maxlength="1000" minlength="10" rows="8" name="contenu_commentaire" required></textarea>
-                    {if !connecte}
+
+                    {if !$connecte}
                     <label class="formu">Pseudo *</label>
                     <input type="text" class="form-control" name="pseudo_visiteur" id="nom-form" required>
                     <div class="invalid-feedback">
