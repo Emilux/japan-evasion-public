@@ -6,8 +6,8 @@
                     {$nombre_commentaire} Commentaires
                 </h1>
                 {foreach from=$commentaires item=commentaire key=i}
-                    {$commentaire.aime_commentaire}
-                <div class="com">
+                    
+                <div class="com" id="commentaire_{$commentaire.commentaire}">
                     <img class="avatar_utilisateur" src="{if $commentaire.pseudo_visiteur === NULL} {$commentaire.avatar_utilisateur}
                     {else} https://eu.ui-avatars.com/api/?background=random&color=random&length=1&bold=true&name={$commentaire.pseudo_visiteur}
                     {/if}" alt="avatar">
@@ -26,7 +26,11 @@
                         <p class="reponse-mini">{$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].contenu_commentaire}</p>
                     </div>
                     {/if}
-                    <div class="compteur_like"> <i class="fas fa-thumbs-up"></i></div>
+                    <div class="compteur_like"><i class="far fa-thumbs-up"><span class="number_like"> 
+                    {if $commentaire.aime_commentaire != 0}
+                    {$commentaire.aime_commentaire}
+                    {/if}
+                    </span></i></div>
                     
                     <p class="contenu_commentaire">{$commentaire.contenu_commentaire}</p>
                     
