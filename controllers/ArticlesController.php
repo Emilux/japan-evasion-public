@@ -15,8 +15,6 @@ if(isset($_GET['id'])){
     $nombre_commentaire = $commentaire->Count('id_article', $_GET['id']);
     $commentaires = $commentaire->getCommentaire($_GET['id']);
     
-    
-
 
     if($article){
 
