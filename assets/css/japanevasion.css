@@ -701,11 +701,17 @@ body {
 
 /* PROFILE IMAGE AREA */
 
+.pseudo-user h4 {
+    font-weight: 900;
+    font-size: 20px !important;
+}
+
 .profile-images {
     width: 150px;
     height: 150px;
     background: #fff;
     overflow: hidden;
+    border: 2px black solid;
 }
 
 @media screen and (min-width: 320px) and (max-width: 460px) {
@@ -728,8 +734,47 @@ body {
     }
 }
 
+.number-profil li {
+    font-weight: 800;
+    font-size: 5px;
+}
+
+.background-carnet {
+    background-image: url("../media/image-profile/back.jpg");
+    background-size: contain;
+}
+
+.number-profil {
+    color: #91060e;
+}
+
+.profile-images-card h3 {
+    font-weight: 900;
+    font-size: 15px;
+}
+
+#bio_user {
+    font-weight: 800;
+}
+
+.editer-par-profil h5 {
+    font-family: 'Playfair Display';
+    font-size: 1.25rem;
+}
+
+.editer-par-profil h4 {
+    font-family: 'Playfair Display';
+    margin-top: 20px;
+    margin-bottom: 35px;
+    font-size: .875rem;
+}
+
 
 /* PROFILE IMAGE */
+
+#aa {
+    color: black !important;
+}
 
 .profile-images img {
     width: 100%;
@@ -791,6 +836,25 @@ textarea,
     width: 100%;
     border: none;
     box-shadow: 0 0 3px gray;
+}
+
+.carnet-voyage h3 {
+    font-weight: 900;
+    font-size: 22.4px;
+}
+
+.profile-header-info h3 {
+    font-weight: 900;
+    font-size: 22.4px;
+}
+
+.profile-header-info h4 {
+    font-weight: 900;
+    font-size: 22.4px;
+}
+
+.carnet-voyage p {
+    margin-top: 10px;
 }
 
 label {
