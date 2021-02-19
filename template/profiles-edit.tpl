@@ -1,16 +1,12 @@
-        </div>
-    </div>
+</div>
+</div>
 </header>
 
-        <style>
-
-            #background {
-
-                height : 40vh !important;
-
-            }
-
-        </style>
+<style>
+    #background {
+        height: 40vh !important;
+    }
+</style>
 
 <div class="container ">
     <div class="row  gutters justify-content-center ">
@@ -30,25 +26,6 @@
                 </div>
             </div>
 
-            <!-- NOMBRE FOLLOWERS, COMMENTAIRE, ARTICLE -->
-            <div class="profile-images-card buttons py-3">
-                <div class="row justify-content-center">
-                    <ul class="text-center pl-3 pr-3">
-                        <li>100</li>
-                        <li>Followers</li>
-                    </ul>
-
-                    <ul class="text-center pl-3 pr-3">
-                        <li>80</li>
-                        <li>Commentaire</li>
-                    </ul>
-
-                    <ul class="text-center pl-3 pr-3">
-                        <li>30</li>
-                        <li>Article</li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -57,8 +34,40 @@
 <div class="container">
     <div class="row gutters justify-content-center">
         <div class="col-8 profile-edit">
+            <div class="formulaire col-12">
+                <form method="post" class="needs-validation" novalidate>
+
+                    <h3>Modifier mon profil</h3>
+                    <div class="form-row">
+                        <label>Prénom *</label>
+                        <input type="text" class="form-control" id="prenom-form" name="prenom" required>
+                        <div class="invalid-feedback">
+                            Entrer un prénom
+                        </div>
+
+                        <label class="formu">Nom *</label>
+                        <input type="text" class="form-control" id="nom-form" name="nom" required>
+                        <div class="invalid-feedback">
+                            Entrer un nom
+                        </div>
+
+                        <label class="formu">Email *</label>
+                        <input type="email" class="form-control" id="mail-form" name="emailcntc" required>
+                        <div class="invalid-feedback">
+                            Entrer un e-mail valide
+                        </div>
+
+                        <label class="formu">Message *</label>
+                        <textarea class="form-control" id="textArea" maxlength="1000" minlength="10" rows="4" name="msgcntc" required></textarea>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <button class="btn btn-dark" type="submit" name="send_message">ENVOYER</button>
+                    </div>
+                </form>
+            </div>
             <form method="post">
-                <h3>Modifier mon profil</h3>
+
                 <label for="pseudo">Pseudo</label> <br>
                 <input type="text" name="pseudo_utilisateur" value="{$utilisateur.pseudo_utilisateur|capitalize}"> <br>
                 <label for="nom">Nom</label> <br>
@@ -74,18 +83,18 @@
                 <label for="text">Votre description</label> <br>
                 <textarea name="" cols="30" rows="5"></textarea> <br>
                 <div class="row justify-content-center">
-                <button class="btn btn-dark submit_update" type="submit" name="submit_update">MODIFIER</button>
+                    <button class="btn btn-dark submit_update" type="submit" name="submit_update">MODIFIER</button>
                 </div>
             </form>
         </div>
-</div>
-<!-- FUNCTION JS POUR UPLOADER UN AVATAR -->
-<script>
-    $(function(){
-        $('#fileupload').change(function(event){
-            var x = URL.createObjectURL(event.target.files[0]);
-            $('#upload-img').attr('src', x);
-            console.log(event);
-        });
-    })
-</script>
+    </div>
+    <!-- FUNCTION JS POUR UPLOADER UN AVATAR -->
+    <script>
+        $(function() {
+            $('#fileupload').change(function(event) {
+                var x = URL.createObjectURL(event.target.files[0]);
+                $('#upload-img').attr('src', x);
+                console.log(event);
+            });
+        })
+    </script>
