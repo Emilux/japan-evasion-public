@@ -7,32 +7,31 @@ $smarty->assign('page', 'profiles');
 if(isset($_GET['utilisateur'])){
 
    
-    //Appel à la classe Utilisateur
+    //Appel à la classe Utilisateur et Visiteur
     $utilisateur = new Utilisateur();
-    
+    $visiteur = new Visiteur();
+    $commentaire = new Commentaire();
+    $article = new Article();
 
-    //récupérer le contenu de l'article visionné
 
-    $user = $utilisateur->getItem('pseudo_utilisateur', $_GET['utilisateur']);
+    //récupérer le contenu de l'utilisateur visionné
+    $utilisateur = $utilisateur->getItem('pseudo_visiteur',$_GET['utilisateur']);
 
     //afficher l'article si il est publié et s'il est NEW l'affiché que au utilisateur connectés
-    if($user){
+    if($utilisateur){
+        //$carnet= $utilisateur->getItem('id_utilisateur', $user['id_utilisateur'], 'carnet_de_voyage');
 
-        $carnet= $utilisateur->getItem('id_utilisateur', $user['id_utilisateur'], 'carnet_de_voyage');
+        //$nbFollower = $utilisateur->count('id_followed', $user['id_utilisateur'],'follow');
 
-        $nbFollower = $utilisateur->count('id_followed', $user['id_utilisateur'],'follow');
-      
-        $nbCommentaire = $utilisateur->count('id_utilisateur', $user['id_utilisateur'],'commente');
-    
-        $nbArticle = $utilisateur->count('id_utilisateur', $user['id_utilisateur'],'article');
+        $nbCommentaire = $commentaire->count('id_visiteur', $utilisateur->getId_Visiteur());
+
+        $nbArticle = $article->count('id_utilisateur', $utilisateur->getId_Utilisateur());
 
         //Envoie des informations récupéré pour des différentes entités à smarty
         $smarty->assign(array(
-            'utilisateur' => $user, 
-            'follow' => $nbFollower,
+            'utilisateur' => $utilisateur,
             'commente' =>$nbCommentaire,
             'article' =>$nbArticle,
-            'carnet' => $carnet,
             'connecte' => isset($_SESSION['utilisateur'])
         ));
  

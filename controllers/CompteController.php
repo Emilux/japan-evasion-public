@@ -1,8 +1,5 @@
 <?php
-
-
-
-$utilisateur = new Utilisateur();
+var_dump($_SESSION);
 //test si le formulaire de création de compte a été envoyé
 
 /*if (isset($_POST['creer_compte'])){
@@ -64,12 +61,21 @@ if (isset($_POST['creer_compte'])){
                     header('Location: ./?creer_compte=unsuccess#exampleModal');
                     exit();
                 }else{
-                    $utilisateur->setPseudo_Utilisateur($_POST['pseudo_utilisateur']);
-                    $utilisateur->setEmail_Utilisateur($_POST['email_utilisateur']);
+                    $visiteur = new visiteur();
+                    $utilisateur = new Utilisateur();
+
+                    //SETTERS
+                    $utilisateur->setPseudo_Visiteur($_POST['pseudo_utilisateur']);
+                    $utilisateur->setEmail_Visiteur($_POST['email_utilisateur']);
                     $utilisateur->setMdp_Utilisateur(password_hash($_POST['mdp_utilisateur'], PASSWORD_DEFAULT));
-                    $utilisateur->creerCompte('membre');
-                    header('Location: ./?creer_compte=success#exampleModal');
-                    exit();
+                    $utilisateur->setId_Role('membre');
+
+                    if ($utilisateur->creerCompte()){
+                        echo 'compte crée';
+                        header('Location: ./?page=profiles&utilisateur='.$utilisateur->getPseudo_Visiteur());
+                    } else {
+                        echo 'erreur lors de la création de votre compte visiteur';
+                    }
                 }
             }
         }
@@ -87,32 +93,35 @@ if(isset($_POST['connexion'])){
         //Vérifier que l'email et le mot de passe sont bien envoyé dans la requête post
         if (isset($_POST['email_utilisateur']) && $_POST['mdp_utilisateur']) {
 
-            //Récuperer l'adresse mail entrée dans le formulaire et le nettoie
+            //Récuperer l'adresse mail entrée dans le formulaire et la nettoier
             $mail = trim(strip_tags($_POST['email_utilisateur']));
 
-            //Récuperer le mot de passe entrée dans le formulaire et le nettoie
+            //Récuperer le mot de passe entrée dans le formulaire et la nettoier
             $mdp = trim(strip_tags($_POST['mdp_utilisateur']));
 
             //Vérifier que l'email et le mot de passe sont bien remplient
             if (!empty($mail)){
                 if (!empty($mdp)){
-                    //Vérifier si l'email existe dans la table utilisateur
-                    if ($utilisateur->verifierEmail($mail)){
+                    $utilisateur = new Utilisateur();
 
-                        //récupèrer l'utilisateur ayant l'email correspondentent
-                        $utilisateur = $utilisateur->getUtilisateurByEmail($mail);
+                    $utilisateur = $utilisateur->getItem('email_visiteur', $mail);
+                    //Vérifier si l'email existe dans la table visiteur
+                    if ($utilisateur){
 
                         //Vérifier que le mot de passe entré et celui de l'utilisateur correspondent
                         if (password_verify($mdp,$utilisateur->getMdp_Utilisateur())){
+                            $role = new Role();
+                            $role = $role->getItem('id_role',$utilisateur->getId_role());
                             //Creer la session et rediriger vers la page d'edition du profil
                             $_SESSION['utilisateur'] = [
-                                'id_utilisateur' => $utilisateur->getId_Utilisateur(),
-                                'pseudo_utilisateur' => $utilisateur->getPseudo_Utilisateur(),
-                                'email_utilisateur' => $utilisateur->getEmail_Utilisateur(),
+                                'id_utilisateur' => $utilisateur->getId_Visiteur(),
+                                'id_visiteur' => $utilisateur->getId_Utilisateur(),
+                                'pseudo_visiteur' => $utilisateur->getPseudo_Visiteur(),
+                                'email_visiteur' => $utilisateur->getEmail_Visiteur(),
                                 'banni_utilisateur' => $utilisateur->getBanni_Utilisateur(),
-                                'role' => $utilisateur->getNameRole($utilisateur->getId_Role()),
+                                'role' => $role->getNom_Role(),
                             ];
-                            header('Location: ./?page=profiles');
+                            header('Location: ./?page=profiles&utilisateur='.$utilisateur->getPseudo_Visiteur());
                             exit();
                         } else {
                             echo 'wrong mdp';
