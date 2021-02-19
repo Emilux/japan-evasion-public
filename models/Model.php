@@ -4,8 +4,6 @@ class Model {
 
     protected $_bdd;
 
-
-
     public function __construct($donnees = null,$bdd = null){
         if ($bdd === null){
             global $dbh;
@@ -46,20 +44,25 @@ class Model {
     }
 
     //Récupérer un élément
-    public function getItem($champ, $valeur,$table = null){
+    public function getItem($champ, $valeur,$selecteur = "*",$table = null){
         
         if ($table === null){
 
-            $sql = $this->_bdd->query('SELECT * FROM '.$this->_table.' WHERE '.$champ.' = "'.$valeur.'"');
+            $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' WHERE '.$champ.' = "'.$valeur.'"');
         } else {
-            $sql = $this->_bdd->query('SELECT * FROM '.$table.' WHERE '.$champ.' = "'.$valeur.'"');
+            $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$table.' WHERE '.$champ.' = "'.$valeur.'"');
         }
 
-        $sql = $sql->fetch(PDO::FETCH_ASSOC);
-        return $sql;
-    }
-    
+        if ($sql){
+            $sql = $sql->fetch(PDO::FETCH_ASSOC);
+            var_dump('SELECT '.$selecteur.' FROM '.$table.' WHERE '.$champ.' = "'.$valeur.'"');
+            $object = new $this->_table($sql);
+            return $object;
+        }
 
+         return $sql;
+
+    }
 
     //Supprimer un élément
     public function Delete(int $id){
@@ -139,7 +142,11 @@ class Model {
             
         }
 
-        return $sql->fetchColumn();
+        if ($sql){
+            return $sql->fetchColumn();
+        }
+
+        return $sql;
     }
 
 

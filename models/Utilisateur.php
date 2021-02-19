@@ -1,16 +1,16 @@
 <?php
 
-class Utilisateur extends Model {
+class Utilisateur extends Visiteur {
 
 	protected $_id_utilisateur;
-	protected $_pseudo_utilisateur;
 	protected $_avatar_utilisateur;
 	protected $_prenom_utilisateur;
 	protected $_nom_utilisateur;
 	protected $_bio_utilisateur;
+	protected $_date_naissance_utilisateur;
     protected $_mdp_utilisateur;
-    protected $_newsletter_utilisateur;
     protected $_banni_utilisateur;
+    protected $_date_creation_utilisateur;
     protected $_id_role;
 	protected $_table = 'utilisateur';
 
@@ -19,10 +19,6 @@ class Utilisateur extends Model {
 
     public function getId_Utilisateur(){
         return $this->_id_utilisateur;
-    }
-
-    public function getPseudo_Utilisateur(){
-        return $this->_pseudo_utilisateur;
     }
 
     public function getAvatar_Utilisateur(){
@@ -41,20 +37,12 @@ class Utilisateur extends Model {
         return $this->_date_naissance_utilisateur;
     }
 
-    public function getEmail_Utilisateur(){
-        return $this->_email_utilisateur;
-    }
-
     public function getBio_Utilisateur(){
         return $this->_bio_utilisateur;
     }
 
     public function getMdp_Utilisateur(){
         return $this->_mdp_utilisateur;
-    }
-
-    public function getNewsletter_Utilisateur(){
-        return $this->_newsletter_utilisateur;
     }
 
     public function getBanni_Utilisateur(){
@@ -65,14 +53,16 @@ class Utilisateur extends Model {
         return $this->_id_role;
     }
 
+    public function getId_Date_Creation_Utilisateur(){
+        return $this->_date_creation_utilisateur;
+    }
+
+
+
     //SETTERS
 
     public function setId_Utilisateur($id_utilisateur){
 		$this->_id_utilisateur = $id_utilisateur;
-    }
-
-    public function setPseudo_Utilisateur($pseudo_utilisateur){
-		$this->_pseudo_utilisateur = $pseudo_utilisateur;
     }
 
     public function setAvatar_Utilisateur($avatar_utilisateur){
@@ -90,10 +80,6 @@ class Utilisateur extends Model {
     public function setDate_Naissance_Utilisateur($date_naissance_utilisateur){
         $this->_date_naissance_utilisateur = $date_naissance_utilisateur;
     }
-
-    public function setEmail_Utilisateur($email_utilisateur){
-        $this->_email_utilisateur = $email_utilisateur;
-    }
     
     public function setBio_Utilisateur($bio_utilisateur){
         $this->_bio_utilisateur = $bio_utilisateur;
@@ -101,10 +87,6 @@ class Utilisateur extends Model {
 
     public function setMdp_Utilisateur($mdp_utilisateur){
         $this->_mdp_utilisateur = $mdp_utilisateur;
-    }
-
-    public function setNewsletter_Utilisateur($newsletter_utilisateur){
-        $this->_newsletter_utilisateur = $newsletter_utilisateur;
     }
 
     public function setBanni_Utilisateur($banni_utilisateur){
@@ -115,6 +97,10 @@ class Utilisateur extends Model {
         $this->_id_role = $id_role;
     }
 
+    public function setId_Date_Creation_Utilisateur($date_creation_utilisateur){
+        $this->_date_creation_utilisateur = $date_creation_utilisateur;
+    }
+
 
     //METHODE
 
@@ -123,35 +109,65 @@ class Utilisateur extends Model {
 
     }
 
-    public function getIdRole($nom_role){
-        $sql = $this->getItem('nom_role',$nom_role,'role');
-        return $sql['id_role'];
-    }
+    //Récupérer un élément
+    public function getItem($champ, $valeur,$selecteur = "*",$table=NULL){
 
-    public function getNameRole($id){
-        $sql = $this->getItem('id_role',$id,'role');
-        return $sql['nom_role'];
-    }
+        $sql = $this->_bdd->query(
+            'SELECT '.$selecteur.' FROM '.$this->_table.' 
+                      INNER JOIN Visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur 
+                      WHERE '.$champ.' = "'.$valeur.'"'
+        );
 
-    public function getUtilisateurByEmail($mail){
-        $utilisateur = new Utilisateur($this->getItem('email_utilisateur',$mail));
-        return $utilisateur;
-    }
-
-    public function verifierEmail($mail){
-        if ($this->getItem('email_utilisateur',$mail) === false){
-            return false;
-        } else {
-            return true;
+        if ($sql){
+            $sql = $sql->fetch(PDO::FETCH_ASSOC);
+            $object = new $this->_table($sql);
+            return $object;
         }
+
+        return false;
+
     }
 
-    public function creerCompte($role){
-        $role = $this->getIdRole($role);
-        $role = $role;
-        $sql = $this->_bdd->prepare('INSERT INTO '.$this->_table.' (pseudo_utilisateur, email_utilisateur, mdp_utilisateur, banni_utilisateur, newsletter_utilisateur, id_role) VALUES ("'.$this->getPseudo_Utilisateur().'", "'.$this->getEmail_Utilisateur().'", "'.$this->getMdp_Utilisateur().'", "0","0","'.$role.'")');
-        $sql = $sql->execute();
-        return $sql;
+
+
+    public function creerCompte(){
+
+        $visiteur = new Visiteur();
+        $role = new Role();
+        $role = $role->getItem('nom_role',$this->getId_Role());
+        $this->setId_Role($role->getId_role());
+
+        $visiteur->setPseudo_Visiteur($this->getPseudo_Visiteur());
+        $visiteur->setEmail_Visiteur($this->getEmail_Visiteur());
+
+        /* LANCER TRANSACTION MYSQL */
+        $this->_bdd->beginTransaction();
+
+        //Créer visiteur
+        if ($visiteur->creerVisiteur()) {
+            echo 'user crée';
+
+            //Récuperer id_visiteur du visiteur créer
+            $visiteur = $visiteur->getItem('pseudo_visiteur', $this->getPseudo_Visiteur(), 'id_visiteur');
+            $this->setId_Visiteur($visiteur->getId_visiteur());
+
+            //Création utilisateur
+            $sql = $this->_bdd->prepare(
+                'INSERT INTO ' . $this->_table . ' (mdp_utilisateur, id_role, id_visiteur) VALUE ("' . $this->getMdp_Utilisateur() . '","' . $this->getId_Role() . '","' . $this->getId_Visiteur() . '")'
+            );
+            $sql = $sql->execute();
+
+            //Annuler toute la requete si l'utilisateur n'est pas crée
+            if (!$sql)
+                $this->_bdd->rollBack();
+            else
+                $this->_bdd->commit();
+            return $sql;
+        }
+        else
+            $this->_bdd->rollBack();
+
+        return false;
     }
 
     public function voirArticle(){

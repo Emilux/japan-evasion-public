@@ -16,17 +16,18 @@ if(isset($_GET['id'])){
     //récupérer le contenu de l'article visionné
     $article = $article->getItem('id_article', $_GET['id']);
 
-    //récupérer les informations du rédacteur de l'article
-    $redacteur = $utilisateur->getItem('id_utilisateur', $article['id_utilisateur']);
-
-    //récupérer le nombre de commentaire de l'article
-    $nombre_commentaire = $commentaire->Count('id_article', $_GET['id']);
-    
-    //récupérer les commentaires sous l'article
-    $commentaires = $commentaire->getCommentaire($_GET['id']);
 
     //afficher l'article si il est publié et s'il est NEW l'affiché que au utilisateur connectés
     if(($article && $article['statut_article'] === 'PUBLISHED') || ($article['statut_article'] === 'NEW' && isset($_SESSION['utilisateur']))){
+
+        //récupérer les informations du rédacteur de l'article
+        $redacteur = $utilisateur->getItem('id_utilisateur', $article['id_utilisateur']);
+
+        //récupérer le nombre de commentaire de l'article
+        $nombre_commentaire = $commentaire->Count('id_article', $_GET['id']);
+
+        //récupérer les commentaires sous l'article
+        $commentaires = $commentaire->getCommentaire($_GET['id']);
 
         //Envoie des informations récupéré pour des différentes entités à smarty
         $smarty->assign(array(

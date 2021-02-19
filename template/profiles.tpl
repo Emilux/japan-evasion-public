@@ -13,12 +13,12 @@
     </style>
 
 <!--Profile image followers like and follow buttons-->
-<div class="container mt-5">
+<div class="container mt-4">
     <div class="row profile">
         <div class="profile-images-card ">
             <div class="profile-images">
                 <!--<img src="assets/media/profile-image/pngtree-cartoon-european-and-american-character-avatar-design-png-image_4366075.jpg" id="upload-img" alt="">-->
-                <img src="{$utilisateur.avatar_utilisateur}" alt="">
+                <img src="{$utilisateur->getAvatar_Utilisateur()}" alt="">
             </div>
             <div class="custom-file">
                 <label for="fileupload"><i class="fas fa-cloud-upload-alt"></i></label>
@@ -30,8 +30,10 @@
         <div class="profile-images-card buttons  py-3">
             <div class="row">
                 <ul class="text-center pr-3 pl-3">
-                    <li>{$follow}</li>
-                    <li>Followers</li>
+                    <li class="number-profil">{}</li>
+                    <li>
+                        <h3 class="mt-3">FOLLOWERS</h3>
+                    </li>
                 </ul>
 
                 <ul class="text-center pr-3 pl-3">
@@ -57,17 +59,18 @@
     <div class="row gutters">
         <div class="col-lg-4 profile-edit">
             <div class="profile-header-info">
-                <h4 class="m-auto pt-2">{$utilisateur.pseudo_utilisateur}</h4>
-                <h3 class="m-auto pt-2">Bio</h3>
-                <p class="m-auto pt-2">{$utilisateur.bio_utilisateur}</p>
-                <a href="#" id="aa">{$utilisateur.email_utilisateur}</a>
-                <p>followed by 1200 people</p>
+                <h4 class="m-auto pt-2">{$utilisateur->getPseudo_Visiteur()}</h4>
+                <h4 class="m-auto ">BIO</h4>
+                <div class="bio ">
+                    <p class="m-auto pt-2 " id="bio_user ">{$utilisateur->getBio_Utilisateur()}</p>
+                </div>
+                <a href="#" id="aa">{$utilisateur->getEmail_Visiteur()}</a>
             </div>
         </div>
         <div class="col-1"></div>
         <div class="col-lg-7 carnet-voyage">
             <h3 class="m-auto pt-2">Carnet du Voyage</h3>
-            {if $carnet}
+            {if isset($carnet)}
             <a href="{$carnet.contenu_carnet}" class="btn btn-dark my-3">Telechargez</a>
             {else}
             <p>Pas encore de carnet de voyage!</p>
@@ -110,7 +113,8 @@
 
 
 <!--Settings-->
-{if $connecte && $smarty.session.utilisateur.id_utilisateur === $utilisateur.id_utilisateur}
+{if $connecte && $smarty.session.utilisateur.id_utilisateur === $utilisateur->getId_Utilisateur}
+
 <div class="container mb-5">
     <div class="row setting">
         <h3 class="col-12">PARAMETRE</h3>
