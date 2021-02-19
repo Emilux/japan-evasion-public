@@ -27,6 +27,8 @@ if(isset($_GET['utilisateur'])){
 
         $nbArticle = $article->count('id_utilisateur', $utilisateur->getId_Utilisateur());
 
+
+
         //Envoie des informations récupéré pour des différentes entités à smarty
         $smarty->assign(array(
             'utilisateur' => $utilisateur,
