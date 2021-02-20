@@ -7,3 +7,5 @@ $article = $article->getList('5');
 $smarty->assign(array(
     'article' => $article,
 ));
+
+
