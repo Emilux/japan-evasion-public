@@ -9,7 +9,6 @@ if(isset($_GET['utilisateur'])){
    
     //Appel à la classe Utilisateur et Visiteur
     $utilisateur = new Utilisateur();
-    $visiteur = new Visiteur();
     $commentaire = new Commentaire();
     $article = new Article();
 
@@ -26,8 +25,6 @@ if(isset($_GET['utilisateur'])){
         $nbCommentaire = $commentaire->count('id_visiteur', $utilisateur->getId_Visiteur());
 
         $nbArticle = $article->count('id_utilisateur', $utilisateur->getId_Utilisateur());
-
-
 
         //Envoie des informations récupéré pour des différentes entités à smarty
         $smarty->assign(array(
