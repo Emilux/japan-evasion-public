@@ -53,7 +53,7 @@
     </form>
     <div class="row">
         <div class="card-deck" id="article">
-            {if isset($article)}
+            {if $article}
                 {foreach from=$article item=value}
                     {if $value->getStatut_Article() !== 'PENDING'}
             <div class="card shadow  bg-white rounded">
@@ -69,6 +69,8 @@
             </div>
                     {/if}
                 {/foreach}
+            {else}
+                <p>Pas d'articles pour le moment..</p>
             {/if}
 
         </div>

@@ -66,6 +66,7 @@ if (isset($_POST['creer_compte'])){
                     //SETTERS
                     $utilisateur->setPseudo_Visiteur($_POST['pseudo_utilisateur']);
                     $utilisateur->setEmail_Visiteur($_POST['email_utilisateur']);
+                    $utilisateur->setAvatar_Utilisateur("https://eu.ui-avatars.com/api/?background=random&color=random&length=1&bold=true&name=".$utilisateur->getPseudo_Visiteur());
                     $utilisateur->setMdp_Utilisateur(password_hash($_POST['mdp_utilisateur'], PASSWORD_DEFAULT));
                     $utilisateur->setId_Role('membre');
 
