@@ -31,51 +31,46 @@
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
     <link rel="SHORTCUT ICON" href="favicon.ico" />
 </head>
+
 <body>
-<!-- HEADER -->
+    <!-- HEADER -->
 
-<header>
+    <header>
 
-    <!-- BACKGROUND IMAGE -->
+        <!-- BACKGROUND IMAGE -->
 
-    <div id="background" class="{$page}{if $page !== 'index'} small{/if}"
-    
-    {if isset($background)}
+        <div id="background" class="{$page}{if $page !== 'index'} small{/if}" {if isset($background)} style="background-image:url('{$background}')" {/if}>
 
-    style="background-image:url('{$background}')"
+            <!-- NAVBAR -->
 
-    {/if}>
+            <div class="container" id="index">
+                <div class="row justify-content-center" id="navbar">
+                    <nav class="navbar navbar-dark row navbar-expand-sm">
 
-        <!-- NAVBAR -->
+                        <!-- BTN BURGER NAV -->
 
-        <div class="container" id="index">
-            <div class="row justify-content-center" id="navbar">
-                <nav class="navbar navbar-dark row navbar-expand-sm">
-
-                    <!-- BTN BURGER NAV -->
-
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         <img class="img" id="logo-burger" src="assets/media/image-index/japan-evasion-logo.png" alt="logo">
                     </button>
 
-                    <div class="navburger collapse navbar-collapse" id="navbarContent">
+                        <div class="navburger collapse navbar-collapse" id="navbarContent">
 
-                        <!-- RECHERCHE MOBILE -->
-
-
-
-                        <!-- LISTE A PUCE NAV -->
-
-                        <ul class="navbar-nav align-items-center">
+                            <!-- RECHERCHE MOBILE -->
 
 
-                            <!-- DROPDOWN MENU -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            <!-- LISTE A PUCE NAV -->
+
+                            <ul class="navbar-nav align-items-center">
+
+
+                                <!-- DROPDOWN MENU -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     ARTICLES
                                 </a>
-                                <div class="dropdown-menu">
+                               <div class="dropdown-menu">
                                     <span class="last-article dropdown-item">NOS DERNIERS ARTICLES</span>
                                     <div class="dropdown-divider"></div>
                                     {foreach from=$article_header item=article_value}
@@ -90,48 +85,61 @@
                             </li>
 
                             <!-- LOGO-->
+                                <li class="nav-item">
+                                    <div class="logo">
+                                        <a href="./">
+                                            <img class="img" src="assets/media/image-index/japan-evasion-logo.png" alt="logo">
+                                        </a>
+                                    </div>
+                                </li>
 
-                            <li class="nav-item">
-                                <div class="logo">
-                                    <a href="./">
-                                        <img class="img" src="assets/media/image-index/japan-evasion-logo.png" alt="logo">
-                                    </a>
-                                </div>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     A PROPOS
                                 </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="?page=quisommesnous">QUI SOMMES NOUS ?</a>
-                                    <a class="dropdown-item" href="?page=contact">CONTACT</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="?page=quisommesnous">QUI SOMMES NOUS ?</a>
+                                        <a class="dropdown-item" href="?page=contact">CONTACT</a>
 
-                                </div>
-                            </li>
+                                    </div>
+                                </li>
 
-                            {if !isset($smarty.session.utilisateur)}
                                 <!-- CONNEXION USER -->
+                                {if !isset($smarty.session.utilisateur)}
                                 <li class="nav-item" id="user">
                                     <a class="nav-link" href="#exampleModal" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user" id="user_icon"></i>CONNEXION</a>
                                 </li>
-                            {/if}
-                            {if isset($smarty.session.utilisateur)}
-                                <!-- DECONNEXION USER -->
+
+                                <!-- DROPDEAD USER/DECONNEXION -->
+                                {/if} {if isset($smarty.session.utilisateur)}
                                 <li class="nav-item" id="user">
                                     <a class="nav-link" href="?page=deconnexion"><i class="fas fa-user" id="user_icon"></i>DECONNEXION</a>
                                 </li>
-                            {/if}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="/assets/media/avatar/mimil.jpg" alt="">
+                                    </a>
+                                    <div class="dropdown-menu deconnexion-user">
+                                        <span class="dropdown-pseudo">EMILIEN</span>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="nav-link dropdown-pseudo" href="?page=profile-edit">MON PROFIL</a>
+                                        <a class="nav-link dropdown-pseudo" href="?page=profile-edit">PARAMETRES</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="nav-link dropdown-pseudo" href="?page=deconnexion"></i>DECONNEXION</a>
+                                    </div>
+                                </li>
+
+                                {/if}
 
 
 
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
 
-<!-- SCROLLTOP BTN  -->
+                <!-- SCROLLTOP BTN  -->
 
-<button id="topBtn">
+                <button id="topBtn">
     <i class="fas fa-chevron-up"></i>
 </button>
