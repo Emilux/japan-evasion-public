@@ -73,9 +73,13 @@
                                <div class="dropdown-menu">
                                     <span class="last-article dropdown-item">NOS DERNIERS ARTICLES</span>
                                     <div class="dropdown-divider"></div>
+                                   {if $article_header}
                                     {foreach from=$article_header item=article_value}
                                         <a class="dropdown-item" href="./?page=articles&id={$article_value->getId_Article()}">{$article_value->getTitre_Article()}</a>
                                     {/foreach}
+                                   {else}
+                                       <p>Pas d'articles pour le moment..</p>
+                                   {/if}
                                     <a class="dropdown-item" href="./#article">Voir plus d'articles</a>
                                 </div>
                             </li>
@@ -105,25 +109,22 @@
                                 </li>
 
                                 <!-- CONNEXION USER -->
-                                {if !isset($smarty.session.utilisateur)}
+                                {if !$connecte_header}
                                 <li class="nav-item" id="user">
                                     <a class="nav-link" href="#exampleModal" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user" id="user_icon"></i>CONNEXION</a>
                                 </li>
 
                                 <!-- DROPDEAD USER/DECONNEXION -->
-                                {/if} {if isset($smarty.session.utilisateur)}
-                                <li class="nav-item" id="user">
-                                    <a class="nav-link" href="?page=deconnexion"><i class="fas fa-user" id="user_icon"></i>DECONNEXION</a>
-                                </li>
+                                {else}
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="/assets/media/avatar/mimil.jpg" alt="">
+                                        <img src="{$utilisateur_header->getAvatar_Utilisateur()}" width="32" alt="">
                                     </a>
                                     <div class="dropdown-menu deconnexion-user">
-                                        <span class="dropdown-pseudo">EMILIEN</span>
+                                        <span class="dropdown-pseudo">{$utilisateur_header->getPseudo_Visiteur()}</span>
                                         <div class="dropdown-divider"></div>
-                                        <a class="nav-link dropdown-pseudo" href="?page=profile-edit">MON PROFIL</a>
-                                        <a class="nav-link dropdown-pseudo" href="?page=profile-edit">PARAMETRES</a>
+                                        <a class="nav-link dropdown-pseudo" href="?page=profiles&utilisateur={$utilisateur_header->getPseudo_Visiteur()}">MON PROFIL</a>
+                                        <a class="nav-link dropdown-pseudo" href="?page=profiles-edit">PARAMETRES</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="nav-link dropdown-pseudo" href="?page=deconnexion"></i>DECONNEXION</a>
                                     </div>

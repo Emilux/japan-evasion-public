@@ -152,7 +152,7 @@ class Utilisateur extends Visiteur {
 
             //Création utilisateur
             $sql = $this->_bdd->prepare(
-                'INSERT INTO ' . $this->_table . ' (mdp_utilisateur, id_role, id_visiteur) VALUE ("' . $this->getMdp_Utilisateur() . '","' . $this->getId_Role() . '","' . $this->getId_Visiteur() . '")'
+                'INSERT INTO ' . $this->_table . ' (avatar_utilisateur,mdp_utilisateur, id_role, id_visiteur) VALUE ("'.$this->getAvatar_Utilisateur().'","' . $this->getMdp_Utilisateur() . '","' . $this->getId_Role() . '","' . $this->getId_Visiteur() . '")'
             );
             $sql = $sql->execute();
 
