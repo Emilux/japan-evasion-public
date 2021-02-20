@@ -1588,6 +1588,19 @@ a {
 }
 
 
+/* DROPDOWN CONNEXION/DECONNEXION USER */
+
+.deconnexion-user {
+    text-align: center;
+    color: white;
+}
+
+.deconnexion-user i {
+    text-align: inherit !important;
+    color: red !important;
+}
+
+
 /* CONNEXION USER */
 
 #user {
