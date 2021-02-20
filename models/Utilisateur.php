@@ -29,7 +29,7 @@ class Utilisateur extends Visiteur {
         return $this->_prenom_utilisateur;
     }
 
-    public function getnNom_Utilisateur(){
+    public function getNom_Utilisateur(){
         return $this->_nom_utilisateur;
     }
 
@@ -117,9 +117,8 @@ class Utilisateur extends Visiteur {
                       INNER JOIN Visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur 
                       WHERE '.$champ.' = "'.$valeur.'"'
         );
-
+        $sql = $sql->fetch(PDO::FETCH_ASSOC);
         if ($sql){
-            $sql = $sql->fetch(PDO::FETCH_ASSOC);
             $object = new $this->_table($sql);
             return $object;
         }

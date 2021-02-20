@@ -1,5 +1,4 @@
 <?php
-var_dump($_SESSION);
 //test si le formulaire de création de compte a été envoyé
 
 /*if (isset($_POST['creer_compte'])){
@@ -71,8 +70,22 @@ if (isset($_POST['creer_compte'])){
                     $utilisateur->setId_Role('membre');
 
                     if ($utilisateur->creerCompte()){
-                        echo 'compte crée';
+                        $role = new Role();
+
+                        $utilisateur = $utilisateur->getItem('visiteur.id_visiteur', $utilisateur->getId_Visiteur());
+                        $role = $role->getItem('id_role',$utilisateur->getId_role());
+
+                        //Creer la session et rediriger vers la page d'edition du profil
+                        $_SESSION['utilisateur'] = [
+                            'id_utilisateur' => $utilisateur->getId_Utilisateur(),
+                            'id_visiteur' => $utilisateur->getId_Visiteur(),
+                            'pseudo_visiteur' => $utilisateur->getPseudo_Visiteur(),
+                            'email_visiteur' => $utilisateur->getEmail_Visiteur(),
+                            'banni_utilisateur' => 0,
+                            'role' => $role->getNom_Role(),
+                        ];
                         header('Location: ./?page=profiles&utilisateur='.$utilisateur->getPseudo_Visiteur());
+                        exit();
                     } else {
                         echo 'erreur lors de la création de votre compte visiteur';
                     }
@@ -114,8 +127,8 @@ if(isset($_POST['connexion'])){
                             $role = $role->getItem('id_role',$utilisateur->getId_role());
                             //Creer la session et rediriger vers la page d'edition du profil
                             $_SESSION['utilisateur'] = [
-                                'id_utilisateur' => $utilisateur->getId_Visiteur(),
-                                'id_visiteur' => $utilisateur->getId_Utilisateur(),
+                                'id_utilisateur' => $utilisateur->getId_Utilisateur(),
+                                'id_visiteur' => $utilisateur->getId_Visiteur(),
                                 'pseudo_visiteur' => $utilisateur->getPseudo_Visiteur(),
                                 'email_visiteur' => $utilisateur->getEmail_Visiteur(),
                                 'banni_utilisateur' => $utilisateur->getBanni_Utilisateur(),
@@ -125,7 +138,6 @@ if(isset($_POST['connexion'])){
                             exit();
                         } else {
                             echo 'wrong mdp';
-                            var_dump($utilisateur->getMdp_Utilisateur());
                         }
 
                     }

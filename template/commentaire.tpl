@@ -6,32 +6,30 @@
                     {$nombre_commentaire} Commentaires
                 </h1>
                 {foreach from=$commentaires item=commentaire key=i}
-                <div class="com" id="commentaire_{$commentaire.commentaire}">
-                    <img class="avatar_utilisateur" src="{if $commentaire.pseudo_visiteur === NULL} {$commentaire.avatar_utilisateur}
-                    {else} https://eu.ui-avatars.com/api/?background=random&color=random&length=1&bold=true&name={$commentaire.pseudo_visiteur}
+                <div class="com" id="commentaire_{$commentaire->getId_Commentaire()}">
+                    <img class="avatar_utilisateur" src="{if $commentaire->getId_Utilisateur() !== NULL} {$commentaire->getAvatar_Utilisateur()}
+                    {else} https://eu.ui-avatars.com/api/?background=random&color=random&length=1&bold=true&name={$commentaire->getPseudo_Visiteur()}
                     {/if}" alt="avatar">
-                    <p><span class="pseudo">
-                    {if $commentaire.pseudo_visiteur === NULL} {$commentaire.pseudo_utilisateur|capitalize}
-                    {else} {$commentaire.pseudo_visiteur|capitalize}
-                    {/if} 
-                      </span>dit:</p>
-                    <span class="date">{$commentaire.datetime_commentaire|date_format : "%e %B  %Y à %T"}</span>
-                    {if $commentaire.reponse !== NULL}
+                    <span class="pseudo"><a class="" href="?page=profiles&utilisateur={$commentaire->getPseudo_Visiteur()}">
+                        {$commentaire->getPseudo_Visiteur()|capitalize}
+                      </a></span>dit:
+                    <span class="date">{$commentaire->getDatetime_Commentaire()|date_format : "%e %B  %Y à %T"}</span>
+
+                    {assign var=reponse_de value=$reponse->getItem('id_commentaire',$commentaire->getId_commentaire())}
+
+                    {if $reponse_de}
+                        {assign var=commentaire_reponse value=$commentaire->getItem('id_commentaire',$reponse_de->getId_Reponse())}
                     <div class="reponse">
-                        <span class="pseudo">{if $commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].pseudo_visiteur === NULL} {$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].pseudo_utilisateur|capitalize}
-                    {else} {$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].pseudo_visiteur|capitalize}
-                    {/if} 
-                        </span> {$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].datetime_commentaire}
-                        <p class="reponse-mini">{$commentaires[array_search($commentaire.reponse,array_column($commentaires, 'commentaire'))].contenu_commentaire}</p>
+                        <span class="pseudo">{$commentaire_reponse->getPseudo_Visiteur()|capitalize}
+                        </span> {$commentaire_reponse->getDatetime_Commentaire()|date_format : "%e %B  %Y à %T"}
+                        <p class="reponse-mini">{$commentaire_reponse->getContenu_Commentaire()}</p>
                     </div>
                     {/if}
-                    <div class="compteur_like"><i class="far fa-thumbs-up"><span class="number_like"> 
-                    {if $commentaire.aime_commentaire != 0}
-                    {$commentaire.aime_commentaire}
-                    {/if}
+                    <div class="compteur_like"><i class="far fa-thumbs-up"><span class="number_like">
+                    {$aime_commentaire}
                     </span></i></div>
                     
-                    <p class="contenu_commentaire">{$commentaire.contenu_commentaire}</p>
+                    <p class="contenu_commentaire">{$commentaire->getContenu_Commentaire()}</p>
                     
                 </div>
                 <div class="row justify-content-end">

@@ -78,11 +78,10 @@
                                 <div class="dropdown-menu">
                                     <span class="last-article dropdown-item">NOS DERNIERS ARTICLES</span>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="article1.html">Magome : visiter la préfecture de Nakasendo</a>
-                                    <a class="dropdown-item" href="article2.html">Voyage nature sur l’île de Kyushu au Japon</a>
-                                    <a class="dropdown-item" href="article3.html">5 lieux à visiter à Okayama</a>
-                                    <a class="dropdown-item" href="article4.html">Hors des sentiers battus dans la préfecture de Mie</a>
-                                    <a class="dropdown-item" href="article5.html">Wakayama, un secret méconnu au Japon</a>
+                                    {foreach from=$article_header item=article_value}
+                                        <a class="dropdown-item" href="./?page=articles&id={$article_value->getId_Article()}">{$article_value->getTitre_Article()}</a>
+                                    {/foreach}
+                                    <a class="dropdown-item" href="./#article">Voir plus d'articles</a>
                                 </div>
                             </li>
 

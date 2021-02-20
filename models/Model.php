@@ -33,29 +33,38 @@ class Model {
     }
 
     //Récupérer une liste d'élément
-    public function getList(int $limit=null, $order = 'DESC', $champs = 'id'){
-        if ($limit===null){
-            $sql = $this->_bdd->query('SELECT * FROM '.$this->_table.' ORDER BY '.$champs.'_'.$this->_table.' '.$order);
-        } else {
-            $sql = $this->_bdd->query('SELECT * FROM '.$this->_table.' ORDER BY '.$champs.'_'.$this->_table.' '.$order.' LIMIT '.$limit);
-        }
+    public function getList(int $limit=null, $order = 'DESC', $champs = 'id',$selecteur = '*', $where=null){
+        if ($where !== null) $where = 'WHERE '.$where;
+        if ($limit !== null) $limit = 'LIMIT '.$limit;
+        if ($champs === 'id') $champs = $champs.'_'.$this->_table;
+        $lists = [];
+
+        $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' '.$where.' ORDER BY '.$champs.' '.$order.' '.$limit);
+
         $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
-        return $sql;
+
+        if ($sql){
+            foreach($sql as $donnees){
+
+                $lists[] = new $this->_table($donnees);
+            }
+            return $lists;
+        }
+        return false;
     }
 
     //Récupérer un élément
     public function getItem($champ, $valeur,$selecteur = "*",$table = null){
-        
+
         if ($table === null){
 
             $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' WHERE '.$champ.' = "'.$valeur.'"');
         } else {
             $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$table.' WHERE '.$champ.' = "'.$valeur.'"');
         }
-
+        $sql = $sql->fetch(PDO::FETCH_ASSOC);
         if ($sql){
-            $sql = $sql->fetch(PDO::FETCH_ASSOC);
-            var_dump('SELECT '.$selecteur.' FROM '.$table.' WHERE '.$champ.' = "'.$valeur.'"');
+
             $object = new $this->_table($sql);
             return $object;
         }
@@ -106,9 +115,6 @@ class Model {
         $valeurs = substr($valeurs,0,-2);
 
         $sql = $this->_bdd->prepare('UPDATE '.$this->_table.' SET '.$valeurs.' WHERE id_'.$this->_table.' = '.$id);
-
-        var_dump($sql);
-
         $sql->execute();
 
     }

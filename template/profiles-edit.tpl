@@ -13,15 +13,15 @@
         <div class="col-8 profile">
             <div class="profile-images-card ">
                 <div class="profile-images">
-                    <img src="{$utilisateur.avatar_utilisateur}" id="upload-img" alt="" class="img-fluid">
+                    <img src="{$utilisateur->getAvatar_Utilisateur()}" id="upload-img" alt="" class="img-fluid">
                 </div>
                 <div class="custom-file">
                     <label for="fileupload"><i class="fas fa-cloud-upload-alt"></i></label>
                     <input type="file" id="fileupload">
                 </div>
                 <div class="profile-header-info">
-                    <h4 class="m-auto">{$utilisateur.pseudo_utilisateur}</h4>
-                    <a class="text-dark" href="#">{$utilisateur.email_utilisateur}</a>
+                    <h4 class="m-auto">{$utilisateur->getPseudo_Visiteur()|upper}</h4>
+                    <a class="text-dark" href="#">{$utilisateur->getEmail_Visiteur()}</a>
                     <p class="m-auto"></p>
                 </div>
             </div>
@@ -67,15 +67,14 @@
                 </form>
             </div>
             <form method="post">
-
                 <label for="pseudo">Pseudo</label> <br>
-                <input type="text" name="pseudo_utilisateur" value="{$utilisateur.pseudo_utilisateur|capitalize}"> <br>
+                <input type="text" name="pseudo_utilisateur" value="{$utilisateur->getPseudo_Visiteur()|capitalize}"> <br>
                 <label for="nom">Nom</label> <br>
-                <input type="text" name="nom_utilisateur" value="{$utilisateur.nom_utilisateur|capitalize}"> <br>
+                <input type="text" name="nom_utilisateur" value="{if $utilisateur->getNom_Utilisateur()}{$utilisateur->getNom_Utilisateur()|capitalize}{/if}"> <br>
                 <label for="prenom">Prenom</label> <br>
-                <input type="text" name="prenom_utilisateur" value="{$utilisateur.prenom_utilisateur|capitalize}"> <br>
+                <input type="text" name="prenom_utilisateur" value="{$utilisateur->getPrenom_Utilisateur()|capitalize}"> <br>
                 <label for="email">Email</label> <br>
-                <input type="email" id="email" name="email_utilisateur" value="{$utilisateur.email_utilisateur}"> <br>
+                <input type="email" id="email" name="email_utilisateur" value="{$utilisateur->getEmail_Visiteur()}"><br>
                 <label for="psd">Mot de passe</label> <br>
                 <input type="password" name="mdp_utilisateur" autocomplete="off"> <br>
                 <label for="cpsd">Confirmer le mot de passe</label> <br>

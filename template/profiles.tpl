@@ -137,7 +137,7 @@
 
 
 <!--Settings-->
-{if $connecte && $smarty.session.utilisateur.id_utilisateur === $utilisateur->getId_Utilisateur}
+{if $connecte && $smarty.session.utilisateur.id_visiteur === $utilisateur->getId_Visiteur()}
 <div class="container mb-5 ">
     <div class="row setting ">
         <h3 class="col-12 ">PARAMETRE</h3>
