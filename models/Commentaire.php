@@ -99,10 +99,7 @@ class Commentaire extends Utilisateur {
             'SELECT '.$selecteur.' FROM '.$this->_table.' 
                         INNER JOIN visiteur ON commentaire.id_visiteur = visiteur.id_visiteur
                         LEFT OUTER JOIN utilisateur ON visiteur.id_visiteur = utilisateur.id_visiteur
-                        LEFT OUTER JOIN aime_commentaire ON aime_commentaire.id_commentaire = commentaire.id_commentaire
-                        WHERE '.$champ.' = "'.$valeur.'"
-                        GROUP BY commentaire.id_commentaire
-                        ');
+                        WHERE '.$champ.' = "'.$valeur.'"');
         $sql = $sql->fetch(PDO::FETCH_ASSOC);
         if ($sql){
 
@@ -133,10 +130,8 @@ class Commentaire extends Utilisateur {
             'SELECT '.$selecteur.' FROM '.$this->_table.' 
                         INNER JOIN visiteur ON commentaire.id_visiteur = visiteur.id_visiteur
                         LEFT OUTER JOIN utilisateur ON visiteur.id_visiteur = utilisateur.id_visiteur
-                        LEFT OUTER JOIN aime_commentaire ON aime_commentaire.id_commentaire = commentaire.id_commentaire 
                         '.$where.'
-                        ORDER BY '.$champs.' '.$order.' '.$limit.
-        'GROUP BY commentaire.id_commentaire');
+                        ORDER BY '.$champs.' '.$order.' '.$limit);
             
         $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
 
