@@ -1,6 +1,6 @@
 <?php
 
-class Article extends Utilisateur {
+class Article extends Model {
 
     protected $_id_article;
     protected $_contenu_article;
@@ -123,63 +123,10 @@ class Article extends Utilisateur {
         $this->_tag_article = $tag_article;
     }
 
-    public function setId_utilisateur($id_utilisateur){
+    public function setId_utilisateur(int $id_utilisateur){
         $this->_id_utilisateur = $id_utilisateur;
     }
 
-    //Récupérer un élément
-    public function getItem($champ, $valeur, $selecteur = "*",$table = null){
-
-        $sql = $this->_bdd->query(
-            'SELECT '.$selecteur.' FROM '.$this->_table.' 
-                        INNER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
-                        INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur
-                        WHERE '.$champ.' = "'.$valeur.'"');
-        $sql = $sql->fetch(PDO::FETCH_ASSOC);
-
-        if ($sql){
-
-            $object = new $this->_table($sql);
-            return $object;
-        }
-
-        return $sql;
-
-    }
-
-    /*
-     *
-     *
-     *
-     *
-     *
-     */
-    //Permet de récupérer un commentaire ainsi que les infos lié au profil
-    public function getList(int $limit=null, $order = 'DESC', $champs = 'id',$selecteur = '*', $where=null){
-        if ($where !== null) $where = 'WHERE '.$where;
-        if ($limit !== null) $limit = 'LIMIT '.$limit;
-        if ($champs === 'id') $champs = $champs.'_'.$this->_table;
-
-        $lists = [];
-
-        $sql = $this->_bdd->query(
-            'SELECT '.$selecteur.' FROM '.$this->_table.' 
-                        INNER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
-                        INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur
-                        '.$where.'
-                        ORDER BY '.$champs.' '.$order.' '.$limit);
-        $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-
-        if ($sql){
-            foreach($sql as $donnees){
-
-                $lists[] = new $this->_table($donnees);
-            }
-            return $lists;
-        }
-        return false;
-    }
 
 
 
