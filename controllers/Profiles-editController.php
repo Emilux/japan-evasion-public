@@ -51,12 +51,12 @@ if(isset($_SESSION['utilisateur'])){
  
     }
     else {
-        /*header('Location: ./#exampleModal');
-        exit();*/
+        header('Location: ./#exampleModal');
+        exit();
     }
     
 } else {
-    /*header('Location: ./');
-    exit();*/
+    header('Location: ./');
+    exit();
 }
 
