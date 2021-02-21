@@ -185,10 +185,6 @@ class Utilisateur extends Visiteur {
         ' WHERE visiteur.id_visiteur = '.$id
 
         );
-
-
-
-
         
         $sql->execute();
 

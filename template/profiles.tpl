@@ -52,10 +52,11 @@
             </div>
 
             <!-- BUTTON FOLLOW -->
-
+            {if $connecte}
             <div class="button ml-0 mt-4 d-flex flex-row align-items-center py-3 ">
                 <button class="btn-dark btn-sm btn-outline-dark w-100 "><i class="fas fa-bell "></i>  SUIVRE</button>
             </div>
+            {/if}
         </div>
     </div>
 </div>
