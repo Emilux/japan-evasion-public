@@ -59,7 +59,6 @@
                         <div class="invalid-feedback">
                             Entrer un prénom
                         </div>
-
                         <label class="formu">Nom *</label>
                         <input type="text" class="form-control" id="nom-form" name="nom" required>
                         <div class="invalid-feedback">
@@ -81,11 +80,16 @@
                                     En soumettant ce formulaire, vous acceptez les conditions d'utilisation du site. 
                                     </label>
                         </div>
-                        <h5>Les champs obligatoires sont indiqués avec *</h5>
+                        {if isset($error)}
+                        <h6 class="errormail">{$error}</h6>
+                        {else}
+                        <br><h5>Les champs obligatoires sont indiqués avec *</h5><br>
+                        {/if}
                     </div>
                     <div class="row justify-content-center">
                         <button class="btn btn-dark" type="submit" name="send_message">ENVOYER</button>
                     </div>
+                    
                 </form>
             </div>
         </div>
