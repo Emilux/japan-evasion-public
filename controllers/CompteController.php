@@ -105,7 +105,7 @@ if (isset($_POST['creer_compte'])){
 if(isset($_POST['connexion'])){
     if (!isset($_SESSION['utilisateur'])){
         //Vérifier que l'email et le mot de passe sont bien envoyé dans la requête post
-        if (isset($_POST['email_utilisateur']) && $_POST['mdp_utilisateur']) {
+        if (isset($_POST['email_utilisateur']) && isset($_POST['mdp_utilisateur'])) {
 
             //Récuperer l'adresse mail entrée dans le formulaire et la nettoier
             $mail = trim(strip_tags($_POST['email_utilisateur']));
@@ -119,13 +119,27 @@ if(isset($_POST['connexion'])){
                     $utilisateur = new Utilisateur();
 
                     $utilisateur = $utilisateur->getItem('email_visiteur', $mail);
+
                     //Vérifier si l'email existe dans la table visiteur
                     if ($utilisateur){
 
                         //Vérifier que le mot de passe entré et celui de l'utilisateur correspondent
                         if (password_verify($mdp,$utilisateur->getMdp_Utilisateur())){
+
                             $role = new Role();
                             $role = $role->getItem('id_role',$utilisateur->getId_role());
+
+                            if (isset($_POST['reste_connecte']) && $_POST['reste_connecte'] === 'on'){
+                                echo 'on';
+                                setcookie('id_utilisateur', $utilisateur->getId_Utilisateur(), time() + 6*30*24*3600, null, null, false, true);
+                                setcookie('id_utilisateur', $utilisateur->getId_Visiteur(), time() + 6*30*24*3600, null, null, false, true);
+                                setcookie('id_utilisateur', $utilisateur->getPseudo_Visiteur(), time() + 6*30*24*3600, null, null, false, true);
+                                setcookie('id_utilisateur', $utilisateur->getEmail_Visiteur(), time() + 6*30*24*3600, null, null, false, true);
+                                setcookie('id_utilisateur', $utilisateur->getBanni_Utilisateur(), time() + 6*30*24*3600, null, null, false, true);
+                                setcookie('id_utilisateur', $utilisateur->getId_Utilisateur(), time() + 6*30*24*3600, null, null, false, true);
+                                setcookie('id_utilisateur', $utilisateur->getId_Utilisateur(), time() + 6*30*24*3600, null, null, false, true);
+                            }
+
                             //Creer la session et rediriger vers la page d'edition du profil
                             $_SESSION['utilisateur'] = [
                                 'id_utilisateur' => $utilisateur->getId_Utilisateur(),
@@ -152,8 +166,5 @@ if(isset($_POST['connexion'])){
     } else {
         echo 'deja co';
     }
-
-
-
 
 }
