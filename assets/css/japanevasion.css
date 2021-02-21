@@ -1545,6 +1545,10 @@ a {
     left: -120px;
 }
 
+#avatar_utilisateur_dropdown {
+    left: -55px;
+}
+
 .dropdown-item {
     font-size: small;
     text-align: left;
@@ -1563,6 +1567,10 @@ a {
     font-size: 1rem !important;
     color: white !important;
     cursor: default;
+}
+
+#avatar_utilisateur img {
+    border: 1px black solid;
 }
 
 .last-article:hover {

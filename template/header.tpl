@@ -114,13 +114,13 @@
                                     <a class="nav-link" href="#exampleModal" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user" id="user_icon"></i>CONNEXION</a>
                                 </li>
 
-                                <!-- DROPDEAD USER/DECONNEXION -->
+                                <!-- DROPDOWN USER/DECONNEXION -->
                                 {else}
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <li class="nav-item dropdown" >
+                                    <a class="nav-link dropdown-toggle" id="avatar_utilisateur" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img src="{$utilisateur_header->getAvatar_Utilisateur()}" width="32" alt="">
                                     </a>
-                                    <div class="dropdown-menu deconnexion-user">
+                                    <div class="dropdown-menu deconnexion-user"  id="avatar_utilisateur_dropdown">
                                         <span class="dropdown-pseudo">{$utilisateur_header->getPseudo_Visiteur()|upper}</span>
                                         <div class="dropdown-divider"></div>
                                         <a class="nav-link dropdown-pseudo" href="?page=profiles&utilisateur={$utilisateur_header->getPseudo_Visiteur()}">MON PROFIL</a>
