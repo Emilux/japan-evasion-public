@@ -30,14 +30,17 @@ if(isset($_GET['utilisateur'])){
 
         $ActiviteCommentaire = $commentaire->getList(3, 'DESC', 'datetime_commentaire', '*', 'commentaire.id_visiteur = '.$utilisateur->getId_Visiteur());
 
+        $ActiviteArticle = $article->getList(3, 'DESC', 'date_publication_article', '*', 'article.id_utilisateur = '.$utilisateur->getId_Utilisateur());
+
         //Envoie des informations récupéré pour des différentes entités à smarty
         $smarty->assign(array(
             'utilisateur' => $utilisateur,
             'commente' =>$nbCommentaire,
-            'article' =>$nbArticle,
+            'nbArticle' =>$nbArticle,
             'carnet' => $carnet,
             'followers' => $nbFollower,
-            'commentaire' => $ActiviteCommentaire,
+            'commentaires' => $ActiviteCommentaire,
+            'articles' => $ActiviteArticle,
             'connecte' => isset($_SESSION['utilisateur'])
 
         ));

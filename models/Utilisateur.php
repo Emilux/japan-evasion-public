@@ -105,10 +105,6 @@ class Utilisateur extends Visiteur {
     //METHODE
 
 
-    public function commenterArticle(){
-
-    }
-
     //Récupérer un élément
     public function getItem($champ, $valeur,$selecteur = "*",$table=NULL){
 
@@ -128,7 +124,7 @@ class Utilisateur extends Visiteur {
     }
 
 
-
+    //Créer un compte
     public function creerCompte(){
 
         $visiteur = new Visiteur();
@@ -168,14 +164,39 @@ class Utilisateur extends Visiteur {
 
         return false;
     }
+   
+    //Modifier le profil de l'utilisateur
+    public function Update(array $data, $id){
 
-    public function voirArticle(){
+        $valeurs = '';
 
-    }
-    
-    public function getActivity(){
-        $sql = $this->_bdd->query('SELECT * FROM commentaire ORDER BY '.$champs.'_'.$this->_table.' '.$order);
-        $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
+        foreach($data as $key => $value){
+            if($value){
+                $valeurs .= $key.' = "'.$value.'" , ';
+            }
+        }
+
+        $valeurs = substr($valeurs,0,-2);
+
+        $sql = $this->_bdd->prepare(
+
+        ' UPDATE '.$this->_table.
+        ' INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_utilisateur'.' SET '.$valeurs.
+        ' WHERE visiteur.id_visiteur = '.$id
+
+        );
+
+
+
+
+        var_dump(' UPDATE '.$this->_table.
+        ' INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_utilisateur'.' SET '.$valeurs.
+        ' WHERE visiteur.id_visiteur = '.$id
+
+
+        );
+        $sql->execute();
+
     }
 }
 

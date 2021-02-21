@@ -43,7 +43,7 @@
                 </ul>
 
                 <ul class="text-center pr-3 pl-3">
-                    <li class="number-profil">{$article}</li>
+                    <li class="number-profil">{$nbArticle}</li>
                     <li>
                         <h3 class="mt-3">ARTICLE</h3>
                     </li>
@@ -92,55 +92,56 @@
         <!-- COMMENTAIRE -->
 
         <div class="col-12 ">
-        
+
+            {if $commentaires}
             <div class="card ">
+                
+                {foreach from=$commentaires item=commentaire key=i}
+
                 <div class="card-body">
                     <h3 class="card-title ">COMMENTAIRE</h3>
-                    <p class="card-text ">T'es vraiment très fort (à Krunker 😉)<br/><i class="fas fa-comment "> Publié le </i></p>
+                    <p class="card-text ">« {$commentaire->getContenu_Commentaire()} »<br/><i class="fas fa-comment mt-3"> Publié le {$commentaire->getDatetime_Commentaire()|date_format : "%e %B  %Y à %T"}</i></p>
 
-                    <a href="# " class="btn btn-dark ">Voir Commentaire</a>
+                    <a href="?page=articles&id={$commentaire->getId_Article()}#commentaire_{$commentaire->getId_Commentaire()}" class="btn btn-dark ">Voir Commentaire</a>
                 </div>
-                <div class="card-body">
-                    <h3 class="card-title ">COMMENTAIRE</h3>
-                    <p class="card-text ">T'es vraiment très fort (à Krunker 😉)<br/><i class="fas fa-comment "> Publié le </i></p>
 
-                    <a href="# " class="btn btn-dark ">Voir Commentaire</a>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title ">COMMENTAIRE</h3>
-                    <p class="card-text "><br/><i class="fas fa-comment "> Publié le </i></p>
-
-                    <a href="# " class="btn btn-dark ">Voir Commentaire</a>
-                </div>
+                {/foreach}
+                
             </div>
+            {/if}
+
         </div>
 
 
         <!-- ARTICLE -->
 
         <div class="col-12 my-3 ">
+
+            {if $articles} <!-- Si il y a un article, affiche les articles-->
             <div class="card ">
+
+                {foreach from=$articles item=article key=i}
+
                 <div class="card-body ">
                     <h3 class="card-title ">ARTICLE</h3>
                     <div class="photo-text no-gutter d-flex justify-content-center ">
 
                         <div class="col-8 " id="photo-text-img2 ">
                             <h2>
-                                5 LIEUX À VISITER À OKAYAMA
+                                {$article->getTitre_Article()}
                             </h2>
                             <div class="editer-par-profil ">
-                                <h5>Publié le mercredi 2 décembre 2020</h5>
+                                <h5>Publié le {$article->getDate_Publication_Article()|date_format : "%e %B  %Y à %T"}</h5>
 
                             </div>
                             <div class="editer-par-profil ">
-                                <h3>par BigorneauVoyageur</h3>
+                                <h3>par {$utilisateur->getPseudo_Visiteur()}</h3>
                             </div>
                             <div class="editer-par-profil ">
-                                <h4>8 min de lecture</h4>
+                                <h4>{$article->getTemps_Lecture_Article()} min de lecture</h4>
                             </div>
                             <p>
-                                Kurashiki est une ville japonaise de 476.000 habitants située dans la préfecture d'Okayama sur l'île de Honshu. Cœur historique traversé par le fleuve Takahashi et ses canaux, le quartier Bikan témoigne des heures glorieuses du Japon féodal et accueille
-                                aujourd'hui plusieurs musées d'art réputés.
+                            {$article->getContenu_Article()|truncate:200}
                             </p>
                         </div>
                         <div class="col-4 " id="photo-text-img ">
@@ -152,7 +153,12 @@
                     </div>
                     <a href="# " class="btn btn-dark ">Voir Article</a>
                 </div>
+
+                {/foreach}
+                
             </div>
+            {/if}
+
         </div>
     </div>
 </div>
@@ -169,9 +175,9 @@ Affichera le bouton "Parametre" pour les utilisateurs présent sur leurs propre 
 {if $connecte && $smarty.session.utilisateur.id_visiteur === $utilisateur->getId_Visiteur()}
 <div class="container mb-5 ">
     <div class="row setting ">
-        <h3 class="col-12 ">PARAMETRE</h3>
-        <div class="col-4 ">
-            <a class="text-dark " href="?page=profiles-edit "><i class="fas fa-cog pr-3 "></i>Modifier mon profil</a></a>
+        <h3 class="col-12 ">PARAMETRES</h3>
+        <div class="col-4 mt-2">
+            <a class="text-dark" href="?page=profiles-edit "><i class="fas fa-cog pr-3 "></i>Modifier mon profil</a></a>
         </div>
     </div>
 </div>

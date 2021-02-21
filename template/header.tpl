@@ -75,7 +75,7 @@
                                     <div class="dropdown-divider"></div>
                                    {if $article_header}
                                     {foreach from=$article_header item=article_value}
-                                        <a class="dropdown-item" href="./?page=articles&id={$article_value->getId_Article()}">{$article_value->getTitre_Article()}</a>
+                                        <a class="dropdown-item" href="./?page=articles&id={$article_value->getId_Article()}">{$article_value->getTitre_Article()|upper}</a>
                                     {/foreach}
                                    {else}
                                        <p>Pas d'articles pour le moment..</p>

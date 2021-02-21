@@ -37,7 +37,7 @@ if(isset($_SESSION['utilisateur'])){
 
 
             //UPADATE DE L'UTILISATEUR (ajouter update inner visiteur)
-            $utilisateur->Update($_POST, $_SESSION['utilisateur']['id_utilisateur']);
+            $utilisateur->Update($_POST, $_SESSION['utilisateur']['id_visiteur']);
 
             //CHANGER LE PSEUDO DE L'UTILISATEUR ET SON EMAIL DANS LA SESSION SI ILS SONT CHANGES
             if(isset($_POST['pseudo_utilisateur'])){

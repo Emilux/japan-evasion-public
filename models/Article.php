@@ -80,7 +80,7 @@ class Article extends Model {
     }
 
     public function setContenu_Article($contenu_article){
-        $this->_contenu_artciel = $contenu_article;
+        $this->_contenu_article = $contenu_article;
     }
 
     public function setTitre_Article(string $titre_article){

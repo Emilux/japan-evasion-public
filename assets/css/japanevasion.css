@@ -708,6 +708,12 @@ body {
     margin-bottom: 40px;
 }
 
+.setting h3 {
+    font-family: 'Mulish';
+    font-weight: 900;
+    font-size: 20px !important;
+}
+
 .pseudo-user i {
     margin-top: 10px;
     margin-right: 5px !important;
@@ -816,7 +822,7 @@ body {
 }
 
 .custom-file label i {
-    color: #1e1e1e;
+    color: #7A0B11;
     font-size: 30px;
 }
 
@@ -911,7 +917,8 @@ label {
 
 
 /* CONTACT */
-.errormail{
+
+.errormail {
     color: red;
 }
 

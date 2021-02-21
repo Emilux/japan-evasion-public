@@ -61,7 +61,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><span class="dot">• </span>{$value->getStatut_Article()}</h5>
                     <h2>{$value->getTitre_Article()}</h2>
-                    <p class="card-text">{$value->getContenu_Article()}</p>
+                    <p class="card-text">{$value->getContenu_Article()|truncate:100}</p>
                     <div class="row justify-content-center">
                         <a class="btn-lire" href="?page=articles&id={$value->getId_Article()}">LIRE L'ARTICLE</a>
                     </div>
