@@ -36,6 +36,7 @@ if(isset($_GET['id'])){
                 'reponse' => $reponse,
                 'nombre_commentaire' => $nbCommentaire,
                 'commentaires' => $commentaires,
+                'aime_commentaire' => 0,
                 'connecte' => isset($_SESSION['utilisateur'])
             ));
 

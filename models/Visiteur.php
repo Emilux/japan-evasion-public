@@ -46,9 +46,8 @@ class Visiteur extends Model {
 
     public function creerVisiteur(){
         $sql = $this->_bdd->prepare(
-            'INSERT INTO '.$this->_table.' (pseudo_visiteur, email_visiteur) VALUE ("'.$this->getPseudo_Visiteur().'","'.$this->getEmail_Visiteur().'")'
+            'INSERT INTO '.$this->_table.' (pseudo_visiteur, email_visiteur,newsletter_visiteur) VALUE ("'.$this->getPseudo_Visiteur().'","'.$this->getEmail_Visiteur().'","'.$this->getNewsletter_Visiteur().'")'
         );
-
         $sql = $sql->execute();
         return $sql;
     }

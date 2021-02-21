@@ -41,7 +41,10 @@ class Model {
 
         $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' '.$where.' ORDER BY '.$champs.' '.$order.' '.$limit);
 
-        $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
+        if ($sql)
+            $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
+        else
+            return false;
 
         if ($sql){
             foreach($sql as $donnees){
@@ -62,9 +65,14 @@ class Model {
         } else {
             $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$table.' WHERE '.$champ.' = "'.$valeur.'"');
         }
-        $sql = $sql->fetch(PDO::FETCH_ASSOC);
-        if ($sql){
 
+        if ($sql)
+            $sql = $sql->fetch(PDO::FETCH_ASSOC);
+        else
+            return false;
+
+
+        if ($sql){
             $object = new $this->_table($sql);
             return $object;
         }
@@ -120,32 +128,16 @@ class Model {
     }
 
     //Récupérer un nombre de commentaire selon l'article
-    public function Count($champs = NULL, $valeur = NULL, $table = NULL)
+    public function Count($champs = NULL, $valeur = NULL)
     {
-        if($table === NULL){
-            
-            if($champs === NULL && $valeurs === NULL){
+        if($champs === NULL && $valeurs === NULL){
 
-                $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table);
-            }
-            else{
-
-                $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table.' WHERE '.$champs.' ='.$valeur);
-
-            }
+            $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table);
         }
         else{
 
-            if($champs === NULL && $valeurs === NULL){
+            $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table.' WHERE '.$champs.' ='.$valeur);
 
-                $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$table);
-            }
-            else{
-
-                $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$table.' WHERE '.$champs.' ='.$valeur);
-
-            }
-            
         }
 
         if ($sql){

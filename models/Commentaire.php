@@ -100,7 +100,11 @@ class Commentaire extends Utilisateur {
                         INNER JOIN visiteur ON commentaire.id_visiteur = visiteur.id_visiteur
                         LEFT OUTER JOIN utilisateur ON visiteur.id_visiteur = utilisateur.id_visiteur
                         WHERE '.$champ.' = "'.$valeur.'"');
-        $sql = $sql->fetch(PDO::FETCH_ASSOC);
+        if ($sql)
+            $sql = $sql->fetch(PDO::FETCH_ASSOC);
+        else
+            return false;
+
         if ($sql){
 
             $object = new $this->_table($sql);
@@ -133,7 +137,11 @@ class Commentaire extends Utilisateur {
                         '.$where.'
                         ORDER BY '.$champs.' '.$order.' '.$limit);
             
-        $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($sql)
+            $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
+        else
+            return false;
 
         if ($sql){
             foreach($sql as $donnees){

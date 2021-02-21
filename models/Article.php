@@ -135,7 +135,10 @@ class Article extends Utilisateur {
                         INNER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
                         INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur
                         WHERE '.$champ.' = "'.$valeur.'"');
-        $sql = $sql->fetch(PDO::FETCH_ASSOC);
+        if ($sql)
+            $sql = $sql->fetch(PDO::FETCH_ASSOC);
+        else
+            return false;
 
         if ($sql){
 
@@ -168,7 +171,13 @@ class Article extends Utilisateur {
                         INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur
                         '.$where.'
                         ORDER BY '.$champs.' '.$order.' '.$limit);
-        $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($sql)
+            $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
+        else
+            return false;
+
+
 
 
         if ($sql){

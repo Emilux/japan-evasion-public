@@ -110,10 +110,15 @@ class Utilisateur extends Visiteur {
 
         $sql = $this->_bdd->query(
             'SELECT '.$selecteur.' FROM '.$this->_table.' 
-                      INNER JOIN Visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur 
+                      INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur 
                       WHERE '.$champ.' = "'.$valeur.'"'
         );
-        $sql = $sql->fetch(PDO::FETCH_ASSOC);
+
+        if ($sql)
+            $sql = $sql->fetch(PDO::FETCH_ASSOC);
+        else
+            return false;
+
         if ($sql){
             $object = new $this->_table($sql);
             return $object;
@@ -134,13 +139,14 @@ class Utilisateur extends Visiteur {
 
         $visiteur->setPseudo_Visiteur($this->getPseudo_Visiteur());
         $visiteur->setEmail_Visiteur($this->getEmail_Visiteur());
+        $visiteur->setNewsletter_Visiteur($this->getNewsletter_Visiteur());
 
         /* LANCER TRANSACTION MYSQL */
         $this->_bdd->beginTransaction();
 
         //Créer visiteur
         if ($visiteur->creerVisiteur()) {
-            echo 'user crée';
+
 
             //Récuperer id_visiteur du visiteur créer
             $visiteur = $visiteur->getItem('pseudo_visiteur', $this->getPseudo_Visiteur(), 'id_visiteur');

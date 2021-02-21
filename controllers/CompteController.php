@@ -43,57 +43,69 @@
   
 
 if (isset($_POST['creer_compte'])){
-    if(empty($_POST['email_utilisateur']) || empty($_POST['pseudo_utilisateur']) || 
-    empty($_POST['mdp_utilisateur']) || empty($_POST['mdp_utilisateur_confirmation'])){
-        header('Location: ./?creer_compte=emtpty#exampleModal');
-        exit();
-    } else {
-        if(!preg_match("/^[A-Za-z0-9]*$/", $_POST['pseudo_utilisateur'])){
-            header('Location: ./?creer_compte=char#exampleModal');
+    if (isset($_POST['email_utilisateur']) || isset($_POST['pseudo_utilisateur']) ||
+        isset($_POST['mdp_utilisateur']) || isset($_POST['mdp_utilisateur_confirmation'])){
+        if(empty($_POST['email_utilisateur']) || empty($_POST['pseudo_utilisateur']) ||
+            empty($_POST['mdp_utilisateur']) || empty($_POST['mdp_utilisateur_confirmation'])){
+            header('Location: ./?creer_compte=emtpty#exampleModal');
             exit();
-        }else {
-            if(!filter_var($_POST['email_utilisateur'], FILTER_VALIDATE_EMAIL)){
-                header('Location: ./?creer_compte=email#exampleModal');
-                exit();  
+        } else {
+            if(!preg_match("/^[A-Za-z0-9]*$/", $_POST['pseudo_utilisateur'])){
+                header('Location: ./?creer_compte=char#exampleModal');
+                exit();
             }else {
-                if ($_POST["mdp_utilisateur"] != $_POST["mdp_utilisateur_confirmation"]){
-                    header('Location: ./?creer_compte=unsuccess#exampleModal');
+                if(!filter_var($_POST['email_utilisateur'], FILTER_VALIDATE_EMAIL)){
+                    header('Location: ./?creer_compte=email#exampleModal');
                     exit();
-                }else{
-                    $visiteur = new visiteur();
-                    $utilisateur = new Utilisateur();
-
-                    //SETTERS
-                    $utilisateur->setPseudo_Visiteur($_POST['pseudo_utilisateur']);
-                    $utilisateur->setEmail_Visiteur($_POST['email_utilisateur']);
-                    $utilisateur->setAvatar_Utilisateur("https://eu.ui-avatars.com/api/?background=1e1e1e&color=ffffff&length=1&bold=true&size=128&name=".$utilisateur->getPseudo_Visiteur());
-                    $utilisateur->setMdp_Utilisateur(password_hash($_POST['mdp_utilisateur'], PASSWORD_DEFAULT));
-                    $utilisateur->setId_Role('membre');
-
-                    if ($utilisateur->creerCompte()){
-                        $role = new Role();
-
-                        $utilisateur = $utilisateur->getItem('visiteur.id_visiteur', $utilisateur->getId_Visiteur());
-                        $role = $role->getItem('id_role',$utilisateur->getId_role());
-
-                        //Creer la session et rediriger vers la page d'edition du profil
-                        $_SESSION['utilisateur'] = [
-                            'id_utilisateur' => $utilisateur->getId_Utilisateur(),
-                            'id_visiteur' => $utilisateur->getId_Visiteur(),
-                            'pseudo_visiteur' => $utilisateur->getPseudo_Visiteur(),
-                            'email_visiteur' => $utilisateur->getEmail_Visiteur(),
-                            'banni_utilisateur' => 0,
-                            'role' => $role->getNom_Role(),
-                        ];
-                        header('Location: ./?page=profiles&utilisateur='.$utilisateur->getPseudo_Visiteur());
+                }else {
+                    if ($_POST["mdp_utilisateur"] != $_POST["mdp_utilisateur_confirmation"]){
+                        header('Location: ./?creer_compte=unsuccess#exampleModal');
                         exit();
-                    } else {
-                        echo 'erreur lors de la création de votre compte visiteur';
+                    }else{
+                        $visiteur = new visiteur();
+                        $utilisateur = new Utilisateur();
+                        if (isset($_POST['newsletter_utilisateur']) && $_POST['newsletter_utilisateur'] === 'on'){
+                            $utilisateur->setNewsletter_Visiteur(1);
+                        } else {
+                            $utilisateur->setNewsletter_Visiteur(0);
+                        }
+
+                        //SETTERS
+                        $utilisateur->setPseudo_Visiteur($_POST['pseudo_utilisateur']);
+                        $utilisateur->setEmail_Visiteur($_POST['email_utilisateur']);
+                        $utilisateur->setAvatar_Utilisateur("https://eu.ui-avatars.com/api/?background=1e1e1e&color=ffffff&length=1&bold=true&size=128&name=".$utilisateur->getPseudo_Visiteur());
+                        $utilisateur->setMdp_Utilisateur(password_hash($_POST['mdp_utilisateur'], PASSWORD_DEFAULT));
+                        $utilisateur->setId_Role('membre');
+
+                        if ($utilisateur->creerCompte()){
+                            $role = new Role();
+
+                            $utilisateur = $utilisateur->getItem('visiteur.id_visiteur', $utilisateur->getId_Visiteur());
+                            $role = $role->getItem('id_role',$utilisateur->getId_role());
+
+                            //Creer la session et rediriger vers la page d'edition du profil
+                            $_SESSION['utilisateur'] = [
+                                'id_utilisateur' => $utilisateur->getId_Utilisateur(),
+                                'id_visiteur' => $utilisateur->getId_Visiteur(),
+                                'pseudo_visiteur' => $utilisateur->getPseudo_Visiteur(),
+                                'email_visiteur' => $utilisateur->getEmail_Visiteur(),
+                                'banni_utilisateur' => 0,
+                                'role' => $role->getNom_Role(),
+                            ];
+                            header('Location: ./?page=profiles&utilisateur='.$utilisateur->getPseudo_Visiteur());
+                            exit();
+                        } else {
+                            echo 'erreur lors de la création de votre compte visiteur';
+                        }
                     }
                 }
             }
         }
+    } else {
+        header('Location: ./#exampleModal');
+        exit();
     }
+
 }
 
 
