@@ -26,6 +26,7 @@ if(isset($_GET['utilisateur'])){
     
         $nbArticle = $utilisateur->count('id_utilisateur', $user['id_utilisateur'],'article');
 
+
         //Envoie des informations récupéré pour des différentes entités à smarty
         $smarty->assign(array(
             'utilisateur' => $user, 
@@ -34,8 +35,8 @@ if(isset($_GET['utilisateur'])){
             'article' =>$nbArticle,
             'carnet' => $carnet,
             'connecte' => isset($_SESSION['utilisateur'])
+
         ));
- 
     }
     else {
         header('Location: ./#exampleModal');
