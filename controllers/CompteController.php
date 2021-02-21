@@ -130,14 +130,8 @@ if(isset($_POST['connexion'])){
                             $role = $role->getItem('id_role',$utilisateur->getId_role());
 
                             if (isset($_POST['reste_connecte']) && $_POST['reste_connecte'] === 'on'){
-                                echo 'on';
-                                setcookie('id_utilisateur', $utilisateur->getId_Utilisateur(), time() + 6*30*24*3600, null, null, false, true);
-                                setcookie('id_utilisateur', $utilisateur->getId_Visiteur(), time() + 6*30*24*3600, null, null, false, true);
-                                setcookie('id_utilisateur', $utilisateur->getPseudo_Visiteur(), time() + 6*30*24*3600, null, null, false, true);
-                                setcookie('id_utilisateur', $utilisateur->getEmail_Visiteur(), time() + 6*30*24*3600, null, null, false, true);
-                                setcookie('id_utilisateur', $utilisateur->getBanni_Utilisateur(), time() + 6*30*24*3600, null, null, false, true);
-                                setcookie('id_utilisateur', $utilisateur->getId_Utilisateur(), time() + 6*30*24*3600, null, null, false, true);
-                                setcookie('id_utilisateur', $utilisateur->getId_Utilisateur(), time() + 6*30*24*3600, null, null, false, true);
+                                //Creer un cookie avec un ID unique
+                                setcookie('JUID', $utilisateur->getId_Utilisateur().'::'.password_hash($utilisateur->getPseudo_Visiteur().$utilisateur->getEmail_Visiteur().$utilisateur->getMdp_Utilisateur().$_SERVER['HTTP_USER_AGENT'].$_SERVER['HTTP_ACCEPT'].$_SERVER['HTTP_ACCEPT_ENCODING'].$_SERVER['HTTP_ACCEPT_LANGUAGE'], PASSWORD_DEFAULT), time() + 60*60*24*7, null, null, false, true);
                             }
 
                             //Creer la session et rediriger vers la page d'edition du profil
