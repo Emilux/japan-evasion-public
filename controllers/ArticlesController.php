@@ -12,6 +12,8 @@ if(isset($_GET['id'])){
     $utilisateur = new Utilisateur();
     $commentaire = new Commentaire();
     $reponse = new Reponse_de();
+    $aime_commentaire = new Aime_Commentaire();
+    $role = new Role();
 
     //récupérer le contenu de l'article visionné
     $article = $article->getItem('id_article', $_GET['id']);
@@ -26,6 +28,9 @@ if(isset($_GET['id'])){
             //récupérer le nombre de commentaire de l'article
             $nbCommentaire = $commentaire->count('id_article', $article->getId_Article());
 
+            //Récuperer le nombre de like par commentaire
+            
+
             //récupérer les commentaires sous l'article
             $commentaires = $commentaire->getList(5,'DESC','datetime_commentaire','*','id_article = '.$article->getId_Article());
 
@@ -36,7 +41,9 @@ if(isset($_GET['id'])){
                 'reponse' => $reponse,
                 'nombre_commentaire' => $nbCommentaire,
                 'commentaires' => $commentaires,
-                'connecte' => isset($_SESSION['utilisateur'])
+                'connecte' => isset($_SESSION['utilisateur']),
+                'aime_commentaire' => $aime_commentaire,
+                'role' => $role,
             ));
 
             $smarty->assign('background', $article->getPhoto_Article());

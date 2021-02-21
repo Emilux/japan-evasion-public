@@ -6,13 +6,19 @@
                     {$nombre_commentaire} Commentaires
                 </h1>
                 {if $commentaires} {foreach from=$commentaires item=commentaire key=i}
+
+
+                {assign var=nom_role value=$role->getItem('id_role',$commentaire->getId_Role())}
+
+
                 <div class="com" id="commentaire_{$commentaire->getId_Commentaire()}">
                     <img class="avatar_utilisateur" src="{if $commentaire->getId_Utilisateur() !== NULL} {$commentaire->getAvatar_Utilisateur()}
                     {else} https://eu.ui-avatars.com/api/?background=1e1e1e&color=ffffff&length=1&bold=true&size=128true&name={$commentaire->getPseudo_Visiteur()}
                     {/if}" alt="avatar">
-                    <span class="pseudo"><a class="" href="?page=profiles&utilisateur={$commentaire->getPseudo_Visiteur()}">
-                        {$commentaire->getPseudo_Visiteur()|capitalize}
-                      </a></span>dit:<br>
+                    <span class="pseudo">
+                    <a class="{if $nom_role}{$nom_role->getNom_role()}{/if}" href="?page=profiles&utilisateur={$commentaire->getPseudo_Visiteur()}">
+                    {$commentaire->getPseudo_Visiteur()|capitalize}</i>
+                    </a></span>dit:<br>
                     <span class="date">{$commentaire->getDatetime_Commentaire()|date_format : "%e %B  %Y à %T"}</span>
 
                     {assign var=reponse_de value=$reponse->getItem('id_commentaire',$commentaire->getId_commentaire())}
@@ -26,11 +32,16 @@
                     </div>
                     {/if}
 
+                    {assign var=nb_aime_commentaire value=$aime_commentaire->count('id_commentaire',$commentaire->getId_Commentaire())}
                     <div class="row justify-content-end compteur_like">    
                         <span class="number_like">
-                            {$aime_commentaire}
+                            {if $nb_aime_commentaire}
+                             {$nb_aime_commentaire}
+                             
                         </span>
                         <i class="fas fa-heart"></i>
+                            {/if}
+                            
                     </div>
                     
                     

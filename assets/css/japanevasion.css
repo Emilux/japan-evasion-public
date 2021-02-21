@@ -706,6 +706,21 @@ body {
 }
 
 
+/* CLASS ROLE */
+
+.pseudo a.redacteur {
+    color: #248899 !important;
+}
+
+.pseudo a.administrateur {
+    color: #91060e !important;
+}
+
+.pseudo a.moderateur {
+    color: #03384c !important;
+}
+
+
 /* PROFILE */
 
 #background.profiles {
