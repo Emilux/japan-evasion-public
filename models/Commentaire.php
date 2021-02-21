@@ -1,6 +1,6 @@
 <?php
 
-class Commentaire extends Model {
+class Commentaire extends Utilisateur {
 
     protected $_id_commentaire;
     protected $_contenu_commentaire;
@@ -19,7 +19,7 @@ class Commentaire extends Model {
     }
 
     public function getDatetime_Commentaire(){
-        return $this->_date_commentaire;
+        return $this->_datetime_commentaire;
     }
 
     public function getId_Article(){
@@ -32,7 +32,7 @@ class Commentaire extends Model {
 		$this->_id_commentaire = $id_commentaire;
     }
 
-    public function setContenu_Commentaire(int $contenu_commentaire){
+    public function setContenu_Commentaire(string $contenu_commentaire){
 		$this->_contenu_commentaire = $contenu_commentaire;
     }
 
@@ -45,15 +45,68 @@ class Commentaire extends Model {
     }
     
 
-    public function addCommentaire(Commentaire $commentaire, Visiteur $visiteur){
-        $sql = $this->_bdd->prepare(
-            'insert into `commentaire` (contenu_commentaire,datetime_commentaire,id_article) VALUES ("test",current_timestamp(),1);
-             select @a := last_insert_id();
-             insert into `visiteur` (pseudo_visiteur,email_visiteur) VALUES ("test","test@test.test");
-             select  @b :=  last_insert_id();
-             insert into `commentaire_visiteur`(id_visiteur,id_commentaire) VALUES(@b,@a);'
-        );
-        $sql = $sql->execute();
+    public function addCommentaire($estVisiteur){
+        $visiteur = new Visiteur();
+
+        $visiteur->setPseudo_Visiteur($this->getPseudo_Visiteur());
+        $visiteur->setEmail_Visiteur($this->getEmail_Visiteur());
+
+        if ($estVisiteur){
+            /* LANCER TRANSACTION MYSQL */
+            $this->_bdd->beginTransaction();
+
+            //Créer visiteur
+            if ($visiteur->creerVisiteur()) {
+                echo 'user crée';
+
+                //Récuperer id_visiteur du visiteur créer
+                $visiteur = $visiteur->getItem('pseudo_visiteur', $this->getPseudo_Visiteur(), 'id_visiteur');
+                $this->setId_Visiteur($visiteur->getId_visiteur());
+
+                //Création utilisateur
+                $sql = $this->_bdd->prepare(
+                    'insert into `commentaire` (contenu_commentaire,datetime_commentaire,id_article,id_visiteur) VALUES ("'.$this->getContenu_Commentaire().'",current_timestamp(),"'.$this->getId_Article().'","'.$this->getId_Visiteur().'")'
+                );
+                $sql = $sql->execute();
+
+                //Annuler toute la requete si l'utilisateur n'est pas crée
+                if (!$sql)
+                    $this->_bdd->rollBack();
+                else
+                    $this->_bdd->commit();
+                return $sql;
+            }
+            else
+                $this->_bdd->rollBack();
+
+            return false;
+        } else {
+            //Création utilisateur
+            $sql = $this->_bdd->prepare(
+                'insert into `commentaire` (contenu_commentaire,datetime_commentaire,id_article,id_visiteur) VALUES ("'.$this->getContenu_Commentaire().'",current_timestamp(),"'.$this->getId_Article().'","'.$this->getId_Visiteur().'")'
+            );
+            $sql = $sql->execute();
+            return $sql;
+        }
+
+    }
+
+    //Récupérer un élément
+    public function getItem($champ, $valeur, $selecteur = "*",$table = null){
+
+        $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' WHERE '.$champ.' = "'.$valeur.'"');
+        $sql = $this->_bdd->query(
+            'SELECT '.$selecteur.' FROM '.$this->_table.' 
+                        INNER JOIN visiteur ON commentaire.id_visiteur = visiteur.id_visiteur
+                        LEFT OUTER JOIN utilisateur ON visiteur.id_visiteur = utilisateur.id_visiteur
+                        WHERE '.$champ.' = "'.$valeur.'"');
+        $sql = $sql->fetch(PDO::FETCH_ASSOC);
+        if ($sql){
+
+            $object = new $this->_table($sql);
+            return $object;
+        }
+
         return $sql;
 
     }
@@ -66,34 +119,32 @@ class Commentaire extends Model {
      *
      */
     //Permet de récupérer un commentaire ainsi que les infos lié au profil
-    public function getCommentaire($article,$limit=5){
+    public function getList(int $limit=null, $order = 'DESC', $champs = 'id',$selecteur = '*', $where=null){
+        if ($where !== null) $where = 'WHERE '.$where;
+        if ($limit !== null) $limit = 'LIMIT '.$limit;
+        if ($champs === 'id') $champs = $champs.'_'.$this->_table;
+
+        $lists = [];
+
         $sql = $this->_bdd->query(
-            'SELECT ANY_VALUE(datetime_commentaire) as datetime_commentaire, ANY_VALUE(pseudo_visiteur) as pseudo_visiteur,ANY_VALUE(avatar_utilisateur) as avatar_utilisateur, ANY_VALUE(pseudo_utilisateur) as pseudo_utilisateur,ANY_VALUE(contenu_commentaire) as contenu_commentaire,
-            ANY_VALUE(reponse_de.id_reponse) AS reponse, ANY_VALUE(commentaire.id_commentaire) AS commentaire, COUNT(aime_commentaire.id_commentaire) AS aime_commentaire
-            FROM '.$this->_table.'
-            LEFT JOIN commente ON commentaire.id_commentaire = commente.id_commentaire
-            LEFT JOIN utilisateur ON utilisateur.id_utilisateur = commente.id_utilisateur
-            LEFT JOIN commentaire_visiteur ON commentaire_visiteur.id_commentaire = commentaire.id_commentaire
-            LEFT JOIN visiteur ON visiteur.id_visiteur = commentaire_visiteur.id_visiteur
-            LEFT JOIN reponse_de ON reponse_de.id_commentaire = commentaire.id_commentaire
-            LEFT JOIN aime_commentaire ON aime_commentaire.id_commentaire = commentaire.id_commentaire
-            WHERE commentaire.id_article = '.$article.'
-            GROUP BY commentaire.id_commentaire
-            ORDER BY datetime_commentaire DESC LIMIT '.$limit);
+            'SELECT '.$selecteur.' FROM '.$this->_table.' 
+                        INNER JOIN visiteur ON commentaire.id_visiteur = visiteur.id_visiteur
+                        LEFT OUTER JOIN utilisateur ON visiteur.id_visiteur = utilisateur.id_visiteur
+                        '.$where.'
+                        ORDER BY '.$champs.' '.$order.' '.$limit);
+            
         $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
-        return $sql;
+
+        if ($sql){
+            foreach($sql as $donnees){
+
+                $lists[] = new $this->_table($donnees);
+            }
+            return $lists;
+        }
+        return false;
     }
 
-    /*Ajout commentaire par un visiteur
-    public function addCommentaireVisiteur(){
-
-
-        $sql = $this->_bdd->prepare('INSERT INTO '.$this->_table.' (contenu_commentaire, datetime_commentaire, id_article) VALUES ("'.$this->getContenu_Commentaire.'", "'.$this->getDatetime_Commentaire.'", "'.$this->getId_Article.'")');
-        $sql->execute();
-
-        CURRENT_TIMESTAMP;
-
-    }*/
 
 }
 

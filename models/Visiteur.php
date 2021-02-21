@@ -5,6 +5,7 @@ class Visiteur extends Model {
 	protected $_id_visiteur;
 	protected $_pseudo_visiteur;
 	protected $_email_visiteur;
+	protected $_newsletter_visiteur;
 	protected $_table = 'visiteur';
 
     //GETTERS
@@ -21,6 +22,10 @@ class Visiteur extends Model {
         return $this->_email_visiteur;
     }
 
+    public function getNewsletter_Visiteur(){
+        return $this->_newsletter_visiteur;
+    }
+
     //SETTERS
 
     public function setId_Visiteur($id_visiteur){
@@ -35,5 +40,17 @@ class Visiteur extends Model {
 		$this->_email_visiteur = $email_visiteur;
     }
 
+    public function setNewsletter_Visiteur($newsletter_visiteur){
+		$this->_newsletter_visiteur = $newsletter_visiteur;
+    }
+
+    public function creerVisiteur(){
+        $sql = $this->_bdd->prepare(
+            'INSERT INTO '.$this->_table.' (pseudo_visiteur, email_visiteur) VALUE ("'.$this->getPseudo_Visiteur().'","'.$this->getEmail_Visiteur().'")'
+        );
+
+        $sql = $sql->execute();
+        return $sql;
+    }
 
 }

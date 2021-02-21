@@ -14,15 +14,16 @@
         <div class="col-8 profile">
             <div class="profile-images-card ">
                 <div class="profile-images">
-                    <img src="{$utilisateur.avatar_utilisateur}" id="upload-img" alt="" class="img-fluid">
+                    <img src="{$utilisateur->getAvatar_Utilisateur()}" id="upload-img" alt="" class="img-fluid">
                 </div>
                 <div class="custom-file">
                     <label for="fileupload"><i class="fas fa-cloud"></i></label>
                     <input type="file" id="fileupload">
                 </div>
                 <div class="profile-header-info">
-                    <h4 class="m-auto">{$utilisateur.pseudo_utilisateur}</h4>
-                    <i class="fas fa-envelope"></i><a class="text-dark" href="#">{$utilisateur.email_utilisateur}</a>
+                    <h4 class="m-auto">{$utilisateur->getPseudo_Visiteur()|upper}</h4>
+                    <i class="fas fa-envelope"></i><a class="text-dark" href="#">{$utilisateur->getEmail_Visiteur()}</a>
+                    <p class="m-auto"></p>
                 </div>
             </div>
 
@@ -41,16 +42,16 @@
 
                     <div class="form-row">
                         <label for="pseudo">Pseudo</label>
-                        <input type="text" class="form-control" name="pseudo_utilisateur" value="{$utilisateur.pseudo_utilisateur|capitalize}"> <br>
+                        <input type="text" class="form-control" name="pseudo_utilisateur" value="{$utilisateur->getPseudo_Visiteur()|capitalize}"> <br>
 
                         <label for="nom">Nom</label>
-                        <input type="text" class="form-control" name="nom_utilisateur" value="{$utilisateur.nom_utilisateur|capitalize}">
+                        <input type="text" class="form-control" name="nom_utilisateur" value="{if $utilisateur->getNom_Utilisateur()}{$utilisateur->getNom_Utilisateur()|capitalize}{/if}">
 
                         <label for="prenom">Prenom</label>
-                        <input type="text" class="form-control" name="prenom_utilisateur" value="{$utilisateur.prenom_utilisateur|capitalize}">
+                        <input type="text" class="form-control" name="prenom_utilisateur" value="{$utilisateur->getPrenom_Utilisateur()|capitalize}">
 
                         <label class="formu">Email</label>
-                        <input type="email" class="form-control" name="email_utilisateur" value="{$utilisateur.email_utilisateur}">
+                        <input type="email" class="form-control" name="email_utilisateur" value="{$utilisateur->getEmail_Visiteur()}">
 
                         <label class="formu">Mot de passe</label>
                         <input type="password" class="form-control" name="mdp_utilisateur" autocomplete="off">

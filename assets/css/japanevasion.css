@@ -454,6 +454,16 @@ body {
 
 /* COMMENTAIRE */
 
+.pseudo a {
+    color: black !important;
+    font-family: 'Mulish';
+    font-weight: 900;
+}
+
+.pseudo a:hover {
+    text-decoration: none;
+}
+
 .avatar_utilisateur {
     width: 50px;
     height: 50px;

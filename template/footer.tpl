@@ -230,16 +230,24 @@
         <script>
             $(document).ready(function() {
                 let hashText = window.location.hash.substr();
+
                 if (hashText){
-                    if ($(hashText).length){
-                        $(hashText).modal(
-                            'show'
-                        );
-                        $(hashText).on(
-                            'hide.bs.modal', function () {
-                                window.location.hash = '';
-                            }
-                        );
+                    let hashAttr = $(hashText)[0].attributes
+
+                    if ($(hashText).length && hashAttr.role !== undefined){
+
+                        if (hashAttr.role.value === 'dialog'){
+                            $(hashText).modal(
+                                'show'
+                            );
+                            $(hashText).on(
+                                'hide.bs.modal', function () {
+                                    window.location.hash = '';
+                                }
+                            );
+                        }
+
+
                     }
 
 

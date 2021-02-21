@@ -87,7 +87,7 @@ class Article extends Model {
         $this->_titre_article = $titre_article;
     }
 
-    public function setDate_Publication_Article(datetime $date_publication_article){
+    public function setDate_Publication_Article($date_publication_article){
         $this->_date_publication_article = $date_publication_article;
     }
 
@@ -99,7 +99,7 @@ class Article extends Model {
         $this->_temps_lecture_article = $temps_lecture_article;
     }
 
-    public function setStatut_Article(string $status_article){
+    public function setStatut_Article(string $statut_article){
         $this->_statut_article = $statut_article;
     }
 

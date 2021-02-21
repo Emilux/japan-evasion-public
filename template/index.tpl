@@ -52,23 +52,25 @@
         </div>
     </form>
     <div class="row">
-        <div class="card-deck">
-            {if isset($article)}
+        <div class="card-deck" id="article">
+            {if $article}
                 {foreach from=$article item=value}
-                    {if $value.statut_article !== 'PENDING'}
+                    {if $value->getStatut_Article() !== 'PENDING'}
             <div class="card shadow  bg-white rounded">
-                <img class="card-img-top" src="{$value.photo_article}" alt="Card image cap">
+                <img class="card-img-top" src="{$value->getPhoto_Article()}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"><span class="dot">• </span>{$value.statut_article}</h5>
-                    <h2>{$value.titre_article}</h2>
-                    <p class="card-text">{$value.contenu_article}</p>
+                    <h5 class="card-title"><span class="dot">• </span>{$value->getStatut_Article()}</h5>
+                    <h2>{$value->getTitre_Article()}</h2>
+                    <p class="card-text">{$value->getContenu_Article()}</p>
                     <div class="row justify-content-center">
-                        <a class="btn-lire" href="?page=articles&id={$value.id_article}">LIRE L'ARTICLE</a>
+                        <a class="btn-lire" href="?page=articles&id={$value->getId_Article()}">LIRE L'ARTICLE</a>
                     </div>
                 </div>
             </div>
                     {/if}
                 {/foreach}
+            {else}
+                <p>Pas d'articles pour le moment..</p>
             {/if}
 
         </div>

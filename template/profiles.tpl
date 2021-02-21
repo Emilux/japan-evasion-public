@@ -15,11 +15,11 @@
         <div class="profile-images-card ">
             <div class="profile-images mt-4">
                 <!--<img src="assets/media/profile-image/pngtree-cartoon-european-and-american-character-avatar-design-png-image_4366075.jpg" id="upload-img" alt="">-->
-                <img src="{$utilisateur.avatar_utilisateur}" alt="">
+                <img src="{$utilisateur->getAvatar_Utilisateur()}" alt="">
             </div>
             <div class="pseudo-user mt-4">
-                <h3 class="m-auto bio-title ">{$utilisateur.pseudo_utilisateur|upper}</h3>
-                <i class="fas fa-envelope"></i><a class="text-dark" href="#">{$utilisateur.email_utilisateur}</a>
+                <h3 class="m-auto bio-title ">{$utilisateur->getPseudo_Visiteur()|upper}</h3>
+                <i class="fas fa-envelope"></i><a class="text-dark" href="#">{$utilisateur->getEmail_Visiteur()}</a>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
             <div class="row">
 
                 <ul class="text-center pr-3 pl-3">
-                    <li class="number-profil">{$follow}</li>
+                    <li class="number-profil">{$followers}</li>
                     <li>
                         <h3 class="mt-3">FOLLOWERS</h3>
                     </li>
@@ -67,7 +67,7 @@
             <div class="profile-header-info ">
                 <h4 class="m-auto ">BIO</h4>
                 <div class="bio ">
-                    <p class="m-auto pt-2 " id="bio_user ">{$utilisateur.bio_utilisateur}</p>
+                    <p class="m-auto pt-2 " id="bio_user ">{$utilisateur->getBio_Utilisateur()}</p>
                 </div>
             </div>
         </div>
@@ -76,13 +76,12 @@
         <div class="col-lg-7 carnet-voyage ">
             <h3 class="m-auto ">CARNET DE VOYAGE</h3>
             {if $carnet}
-            <a href="{$carnet.contenu_carnet} " class="btn btn-dark my-3 ">Telechargez</a> {else}
+            <a href="{$carnet->getContenu_Carnet()} " class="btn btn-dark my-3 ">Telechargez</a> {else}
             <p>Pas encore de carnet de voyage!</p>
             {/if}
         </div>
     </div>
 </div>
-
 
 <!-- ACTIVITE -->
 <div class="container ">
@@ -93,6 +92,7 @@
         <!-- COMMENTAIRE -->
 
         <div class="col-12 ">
+        
             <div class="card ">
                 <div class="card-body">
                     <h3 class="card-title ">COMMENTAIRE</h3>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="card-body">
                     <h3 class="card-title ">COMMENTAIRE</h3>
-                    <p class="card-text ">T'es vraiment très fort (à Krunker 😉)<br/><i class="fas fa-comment "> Publié le </i></p>
+                    <p class="card-text "><br/><i class="fas fa-comment "> Publié le </i></p>
 
                     <a href="# " class="btn btn-dark ">Voir Commentaire</a>
                 </div>
@@ -164,7 +164,9 @@
 Affichera le bouton "Parametre" pour les utilisateurs présent sur leurs propre page de profil, le cachera pour les autres pages.
 -->
 
-{if $connecte && $smarty.session.utilisateur.id_utilisateur === $utilisateur.id_utilisateur}
+
+<!-- PARAMETRES -->
+{if $connecte && $smarty.session.utilisateur.id_visiteur === $utilisateur->getId_Visiteur()}
 <div class="container mb-5 ">
     <div class="row setting ">
         <h3 class="col-12 ">PARAMETRE</h3>
@@ -176,9 +178,7 @@ Affichera le bouton "Parametre" pour les utilisateurs présent sur leurs propre 
 {/if}
 
 
-
-<!-- FUNCTION JS UPLOAD IMGE-->
-
+<!-- FUNCTION UPLOAD IMAGE -->
 <script>
     $(function() {
         $('#fileupload').change(function(event) {
