@@ -18,6 +18,7 @@
                     <span class="pseudo">
                     <a class="{if $nom_role}{$nom_role->getNom_role()}{/if}" href="?page=profiles&utilisateur={$commentaire->getPseudo_Visiteur()}">
                     {$commentaire->getPseudo_Visiteur()|capitalize}</i>
+                    
                     </a></span>dit:<br>
                     <span class="date">{$commentaire->getDatetime_Commentaire()|date_format : "%e %B  %Y à %T"}</span>
 

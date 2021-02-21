@@ -121,7 +121,7 @@
                                         <img src="{$utilisateur_header->getAvatar_Utilisateur()}" width="32" alt="">
                                     </a>
                                     <div class="dropdown-menu deconnexion-user"  id="avatar_utilisateur_dropdown">
-                                        <span class="dropdown-pseudo">{$utilisateur_header->getPseudo_Visiteur()|upper}</span>
+                                        <span class="dropdown-pseudo" style="cursor: default;">{$utilisateur_header->getPseudo_Visiteur()|upper}</span>
                                         <div class="dropdown-divider"></div>
                                         <a class="nav-link dropdown-pseudo" href="?page=profiles&utilisateur={$utilisateur_header->getPseudo_Visiteur()}">MON PROFIL</a>
                                         <a class="nav-link dropdown-pseudo" href="?page=profiles-edit">PARAMETRES</a>
