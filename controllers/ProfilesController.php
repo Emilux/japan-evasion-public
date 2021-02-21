@@ -13,6 +13,7 @@ if(isset($_GET['utilisateur'])){
     $article = new Article();
     $followers = new Follow();
     $carnet = new Carnet();
+    $role = new Role();
 
     //récupérer le contenu de l'utilisateur visionné
     $utilisateur = $utilisateur->getItem('pseudo_visiteur',$_GET['utilisateur']);
@@ -32,6 +33,8 @@ if(isset($_GET['utilisateur'])){
 
         $ActiviteArticle = $article->getList(3, 'DESC', 'date_publication_article', '*', 'article.id_utilisateur = '.$utilisateur->getId_Utilisateur());
 
+        $nom_role = $role->getItem('id_role', $utilisateur->getId_role());
+
         //Envoie des informations récupéré pour des différentes entités à smarty
         $smarty->assign(array(
             'utilisateur' => $utilisateur,
@@ -41,6 +44,7 @@ if(isset($_GET['utilisateur'])){
             'followers' => $nbFollower,
             'commentaires' => $ActiviteCommentaire,
             'articles' => $ActiviteArticle,
+            'nom_role' => $nom_role,
             'connecte' => isset($_SESSION['utilisateur'])
 
         ));

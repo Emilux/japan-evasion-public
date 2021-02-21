@@ -14,11 +14,22 @@
     <div class="row profile">
         <div class="profile-images-card ">
             <div class="profile-images mt-4">
-                <!--<img src="assets/media/profile-image/pngtree-cartoon-european-and-american-character-avatar-design-png-image_4366075.jpg" id="upload-img" alt="">-->
                 <img src="{$utilisateur->getAvatar_Utilisateur()}" alt="">
             </div>
             <div class="pseudo-user mt-4">
-                <h3 class="m-auto bio-title ">{$utilisateur->getPseudo_Visiteur()|upper}</h3>
+                <h3 class="m-auto bio-title ">
+                
+                {$utilisateur->getPseudo_Visiteur()|capitalize}
+                {if $nom_role->getNom_role() === 'redacteur'}
+                <i class="fas fa-feather-alt" style="color: #248899 !important;"></i>
+                {/if}
+                {if $nom_role->getNom_role() === 'administrateur'}
+                <img src="./assets/media/avatar/shield.png" style="height : 25px; widht : 25px; margin-bottom : 10px;">
+                {/if}
+                {if $nom_role->getNom_role() === 'moderateur'}
+                <img src="./assets/media/avatar/shield2.png" style="height : 25px; widht : 25px; margin-bottom : 10px;">
+                {/if}
+                </h3>
                 <i class="fas fa-envelope"></i><a class="text-dark" href="#">{$utilisateur->getEmail_Visiteur()}</a>
             </div>
         </div>
@@ -127,16 +138,12 @@
                     <h3 class="card-title ">ARTICLE</h3>
                     <div class="photo-text no-gutter d-flex justify-content-center ">
 
-                        <div class="col-8 " id="photo-text-img2 ">
+                        <div class="col-7 " id="photo-text-img2 ">
                             <h2>
                                 {$article->getTitre_Article()}
                             </h2>
                             <div class="editer-par-profil ">
                                 <h5>Publié le {$article->getDate_Publication_Article()|date_format : "%e %B  %Y à %T"}</h5>
-
-                            </div>
-                            <div class="editer-par-profil ">
-                                <h3>par {$utilisateur->getPseudo_Visiteur()}</h3>
                             </div>
                             <div class="editer-par-profil ">
                                 <h4>{$article->getTemps_Lecture_Article()} min de lecture</h4>
@@ -145,9 +152,9 @@
                             {$article->getContenu_Article()|truncate:200}
                             </p>
                         </div>
-                        <div class="col-4 " id="photo-text-img ">
-                            <a href="./assets/media/image-article4/image-art3-2.png " target="_blank ">
-                                <img src="./assets/media/image-article4/image-art3-2.png " class="img-fluid " style="border:2px black solid" alt="Meow ">
+                        <div class="col-5 " id="photo-text-img ">
+                            <a href={$article->getTemps_Lecture_Article()} target="_blank ">
+                                <img src={$article->getPhoto_Article()} class="img-fluid " style="border:2px black solid" alt="Meow ">
                             </a>
                         </div>
 
