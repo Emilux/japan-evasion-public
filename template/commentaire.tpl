@@ -5,14 +5,14 @@
                 <h1 class="commentaire-compteur">
                     {$nombre_commentaire} Commentaires
                 </h1>
-                {foreach from=$commentaires item=commentaire key=i}
+                {if $commentaires} {foreach from=$commentaires item=commentaire key=i}
                 <div class="com" id="commentaire_{$commentaire->getId_Commentaire()}">
                     <img class="avatar_utilisateur" src="{if $commentaire->getId_Utilisateur() !== NULL} {$commentaire->getAvatar_Utilisateur()}
                     {else} https://eu.ui-avatars.com/api/?background=random&color=random&length=1&bold=true&name={$commentaire->getPseudo_Visiteur()}
                     {/if}" alt="avatar">
                     <span class="pseudo"><a class="" href="?page=profiles&utilisateur={$commentaire->getPseudo_Visiteur()}">
                         {$commentaire->getPseudo_Visiteur()|capitalize}
-                      </a></span>dit:
+                      </a></span>dit:<br>
                     <span class="date">{$commentaire->getDatetime_Commentaire()|date_format : "%e %B  %Y à %T"}</span>
 
                     {assign var=reponse_de value=$reponse->getItem('id_commentaire',$commentaire->getId_commentaire())}
@@ -38,6 +38,7 @@
 
                 <div class="line"></div>
                 {/foreach}
+                {/if}
 
             <h2>Laisser un commentaire</h2>
             <h5>Votre adresse de messagerie ne sera pas publiée. Les champs obligatoires sont indiqués avec *</h5>
