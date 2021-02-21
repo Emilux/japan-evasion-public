@@ -22,7 +22,7 @@ class Carnet extends Model {
 		$this->_id_carnet = $id_carnet;
     }
 
-    public function ssetContenu_Carnet($contenu_carnet){
+    public function setContenu_Carnet($contenu_carnet){
 		$this->_contenu_carnet = $contenu_carnet;
     }
 

@@ -347,6 +347,15 @@ body {
     color: #565859;
 }
 
+.editer-par a {
+    font-family: 'Playfair Display';
+    color: #909294 !important;
+}
+
+.editer-par a:hover {
+    text-decoration: none;
+}
+
 .partage i {
     margin-top: 20px;
     color: #1e1e1e;
@@ -480,6 +489,12 @@ body {
     position: absolute;
     right: 0px;
     font-size: 1.25rem;
+    color: #91060e;
+    margin-right: 15px !important;
+}
+
+.number_like {
+    font-family: 'Helvetica';
     color: #8c8c8c;
 }
 
@@ -528,6 +543,17 @@ body {
     margin: auto;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+.btn-signaler {
+    background-color: transparent;
+    color: #8c8c8c;
+    border-color: transparent;
+    font-size: 0.9rem;
+    margin: 0;
+    font-family: 'Fjalla One';
+    text-decoration: none;
+    margin-right: 25px !important;
 }
 
 .btn-rep {
@@ -1768,7 +1794,7 @@ a {
 
 .breadcrumb {
     background-color: transparent;
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 70px;
     margin-bottom: 70px;
 }

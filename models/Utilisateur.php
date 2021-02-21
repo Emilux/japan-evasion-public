@@ -189,12 +189,7 @@ class Utilisateur extends Visiteur {
 
 
 
-        var_dump(' UPDATE '.$this->_table.
-        ' INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_utilisateur'.' SET '.$valeurs.
-        ' WHERE visiteur.id_visiteur = '.$id
-
-
-        );
+        
         $sql->execute();
 
     }

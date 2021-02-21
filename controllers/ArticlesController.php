@@ -6,13 +6,11 @@ $smarty->assign('page', 'articles');
 
 if(isset($_GET['id'])){
 
-    //Appel à la classe Article
-    $article = new Article();
-    //Appel à la classe Utilisateur
-    $utilisateur = new Utilisateur();
-    //Appel à la classe Commentaire
-    $commentaire = new Commentaire();
 
+    //Appel des différentes classes
+    $article = new Article();
+    $utilisateur = new Utilisateur();
+    $commentaire = new Commentaire();
     $reponse = new Reponse_de();
 
     //récupérer le contenu de l'article visionné
@@ -36,7 +34,6 @@ if(isset($_GET['id'])){
                 'article' => $article,
                 'redacteur' => $redacteur,
                 'reponse' => $reponse,
-                'aime_commentaire' => 0,
                 'nombre_commentaire' => $nbCommentaire,
                 'commentaires' => $commentaires,
                 'connecte' => isset($_SESSION['utilisateur'])
