@@ -3,7 +3,7 @@
 class Follow extends Model {
 
 	protected $_id_follower;
-    protected $_id_followed;
+  protected $_id_followed;
 	protected $_table = 'follow';
 
     //GETTERS

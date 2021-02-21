@@ -26,7 +26,7 @@
             <div class="row">
 
                 <ul class="text-center pr-3 pl-3">
-                    <li class="number-profil">{}</li>
+                    <li class="number-profil">{$followers}</li>
                     <li>
                         <h3 class="mt-3">FOLLOWERS</h3>
                     </li>
@@ -72,8 +72,8 @@
 
         <div class="col-lg-7 carnet-voyage ">
             <h3 class="m-auto ">CARNET DE VOYAGE</h3>
-            {if isset($carnet)}
-            <a href="{$carnet.contenu_carnet} " class="btn btn-dark my-3 ">Telechargez</a> {else}
+            {if $carnet}
+            <a href="{$carnet->getContenu_Carnet()} " class="btn btn-dark my-3 ">Telechargez</a> {else}
             <p>Pas encore de carnet de voyage!</p>
             {/if}
         </div>
@@ -81,16 +81,18 @@
 </div>
 </div>
 
-<!--Article-->
+<!-- ARTICLE -->
+
 <div class="container ">
 
     <div class="row article ">
         <h3 class="col-12 my-3 ">Activité</h3>
         <div class="col-12 ">
+        
             <div class="card ">
                 <div class="card-body ">
                     <h3 class="card-title ">COMMENTAIRE</h3>
-                    <p class="card-text ">T'es vraiment très fort (à Krunker 😉)<br/><i class="fas fa-comment "> Publié le </i></p>
+                    <p class="card-text "><br/><i class="fas fa-comment "> Publié le </i></p>
 
                     <a href="# " class="btn btn-dark ">Voir Commentaire</a>
                 </div>
@@ -136,7 +138,7 @@
 </div>
 
 
-<!--Settings-->
+<!-- PARAMETRES -->
 {if $connecte && $smarty.session.utilisateur.id_visiteur === $utilisateur->getId_Visiteur()}
 <div class="container mb-5 ">
     <div class="row setting ">
@@ -148,7 +150,7 @@
 </div>
 {/if}
 
-<!--js function for image upload-->
+<!-- FUNCTION UPLOAD IMAGE -->
 <script>
     $(function() {
         $('#fileupload').change(function(event) {

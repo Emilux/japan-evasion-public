@@ -92,7 +92,7 @@ class Commentaire extends Utilisateur {
     }
 
     //Récupérer un élément
-    public function getItem($champ, $valeur,$selecteur = "*",$table = null){
+    public function getItem($champ, $valeur, $selecteur = "*",$table = null){
 
         $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' WHERE '.$champ.' = "'.$valeur.'"');
         $sql = $this->_bdd->query(
@@ -132,7 +132,7 @@ class Commentaire extends Utilisateur {
                         LEFT OUTER JOIN utilisateur ON visiteur.id_visiteur = utilisateur.id_visiteur
                         '.$where.'
                         ORDER BY '.$champs.' '.$order.' '.$limit);
-
+            
         $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
 
         if ($sql){
@@ -145,16 +145,6 @@ class Commentaire extends Utilisateur {
         return false;
     }
 
-    /*Ajout commentaire par un visiteur
-    public function addCommentaireVisiteur(){
-
-
-        $sql = $this->_bdd->prepare('INSERT INTO '.$this->_table.' (contenu_commentaire, datetime_commentaire, id_article) VALUES ("'.$this->getContenu_Commentaire.'", "'.$this->getDatetime_Commentaire.'", "'.$this->getId_Article.'")');
-        $sql->execute();
-
-        CURRENT_TIMESTAMP;
-
-    }*/
 
 }
 
