@@ -698,12 +698,25 @@ body {
     margin-bottom: 40px;
 }
 
+.pseudo-user i {
+    margin-top: 10px;
+    margin-right: 5px !important;
+}
+
+.pseudo-user a:hover {
+    text-decoration: none;
+}
+
 
 /* PROFILE IMAGE AREA */
 
 .pseudo-user h4 {
     font-weight: 900;
     font-size: 20px !important;
+}
+
+.pseudo-user h3 {
+    font-size: 25px !important;
 }
 
 .profile-images {
@@ -737,11 +750,6 @@ body {
 .number-profil li {
     font-weight: 800;
     font-size: 5px;
-}
-
-.background-carnet {
-    background-image: url("../media/image-profile/back.jpg");
-    background-size: contain;
 }
 
 .number-profil {
@@ -830,6 +838,10 @@ div.button {
 
 /* EDIT PROFILE */
 
+#background.profiles-edit {
+    background-image: url("../media/image-profile/back.jpg");
+}
+
 .profile-edit input,
 textarea,
 .carnet-voyage input {
@@ -851,6 +863,15 @@ textarea,
 .profile-header-info h4 {
     font-weight: 900;
     font-size: 22.4px;
+    margin-bottom: 20px !important;
+}
+
+.profile-header-info a:hover {
+    text-decoration: none;
+}
+
+.profile-header-info i {
+    margin-right: 10px;
 }
 
 .carnet-voyage p {
@@ -867,6 +888,15 @@ label {
 
 .profile-edit .btn {
     margin-top: 10px;
+}
+
+.form-edit {
+    font-family: 'Mulish';
+}
+
+.form-edit h3 {
+    font-weight: 900;
+    font-size: 20px;
 }
 
 

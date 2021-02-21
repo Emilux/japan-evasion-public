@@ -23,7 +23,8 @@ if(isset($_GET['id'])){
     $nombre_commentaire = $commentaire->Count('id_article', $_GET['id']);
     
     //récupérer les commentaires sous l'article
-    $commentaires = $commentaire->getCommentaire($_GET['id']);
+    $commentaires = $commentaire->getCommentaire('id_utilisateur');
+    var_dump($commentaires);
 
     //afficher l'article si il est publié et s'il est NEW l'affiché que au utilisateur connectés
     if(($article && $article['statut_article'] === 'PUBLISHED') || ($article['statut_article'] === 'NEW' && isset($_SESSION['utilisateur']))){

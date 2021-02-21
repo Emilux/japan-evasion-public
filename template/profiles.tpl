@@ -8,7 +8,8 @@
     }
 </style>
 
-<!--Profile image followers like and follow buttons-->
+<!-- PROFILE -->
+
 <div class="container mt-4">
     <div class="row profile">
         <div class="profile-images-card ">
@@ -18,10 +19,12 @@
             </div>
             <div class="pseudo-user mt-4">
                 <h3 class="m-auto bio-title ">{$utilisateur.pseudo_utilisateur|upper}</h3>
+                <i class="fas fa-envelope"></i><a class="text-dark" href="#">{$utilisateur.email_utilisateur}</a>
             </div>
         </div>
 
-        <!--Nombre followers , commentaire, article-->
+        <!-- FOLLOWERS, ARTICLES, LIKE -->
+
         <div class="profile-images-card buttons  py-3">
             <div class="row">
 
@@ -48,7 +51,8 @@
 
             </div>
 
-            <!--button like & follow-->
+            <!-- BUTTON FOLLOW -->
+
             <div class="button ml-0 mt-4 d-flex flex-row align-items-center py-3 ">
                 <button class="btn-dark btn-sm btn-outline-dark w-100 "><i class="fas fa-bell "></i>  SUIVRE</button>
             </div>
@@ -56,7 +60,7 @@
     </div>
 </div>
 
-<!--Edit profile -->
+<!-- BIO UTILISATEUR -->
 <div class="container ">
     <div class="row gutters ">
         <div class="col-lg-4 profile-edit ">
@@ -78,16 +82,31 @@
         </div>
     </div>
 </div>
-</div>
 
-<!--Article-->
+
+<!-- ACTIVITE -->
 <div class="container ">
 
     <div class="row article ">
         <h3 class="col-12 my-3 ">Activité</h3>
+
+        <!-- COMMENTAIRE -->
+
         <div class="col-12 ">
             <div class="card ">
-                <div class="card-body ">
+                <div class="card-body">
+                    <h3 class="card-title ">COMMENTAIRE</h3>
+                    <p class="card-text ">T'es vraiment très fort (à Krunker 😉)<br/><i class="fas fa-comment "> Publié le </i></p>
+
+                    <a href="# " class="btn btn-dark ">Voir Commentaire</a>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title ">COMMENTAIRE</h3>
+                    <p class="card-text ">T'es vraiment très fort (à Krunker 😉)<br/><i class="fas fa-comment "> Publié le </i></p>
+
+                    <a href="# " class="btn btn-dark ">Voir Commentaire</a>
+                </div>
+                <div class="card-body">
                     <h3 class="card-title ">COMMENTAIRE</h3>
                     <p class="card-text ">T'es vraiment très fort (à Krunker 😉)<br/><i class="fas fa-comment "> Publié le </i></p>
 
@@ -95,6 +114,10 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- ARTICLE -->
+
         <div class="col-12 my-3 ">
             <div class="card ">
                 <div class="card-body ">
@@ -133,9 +156,14 @@
         </div>
     </div>
 </div>
+</div>
 
+<!-- PARAMETRE -->
 
-<!--Settings-->
+<!--
+Affichera le bouton "Parametre" pour les utilisateurs présent sur leurs propre page de profil, le cachera pour les autres pages.
+-->
+
 {if $connecte && $smarty.session.utilisateur.id_utilisateur === $utilisateur.id_utilisateur}
 <div class="container mb-5 ">
     <div class="row setting ">
@@ -147,7 +175,10 @@
 </div>
 {/if}
 
-<!--js function for image upload-->
+
+
+<!-- FUNCTION JS UPLOAD IMGE-->
+
 <script>
     $(function() {
         $('#fileupload').change(function(event) {
@@ -156,4 +187,16 @@
             console.log(event);
         });
     })
+</script>
+
+
+<!-- SLIDER SLICK -->
+
+<script src="assets/js/slick.js"></script>
+<script>
+    $('.card').slick({
+
+        infinite: true,
+
+    });
 </script>
