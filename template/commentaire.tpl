@@ -8,7 +8,7 @@
                 {if $commentaires} {foreach from=$commentaires item=commentaire key=i}
                 <div class="com" id="commentaire_{$commentaire->getId_Commentaire()}">
                     <img class="avatar_utilisateur" src="{if $commentaire->getId_Utilisateur() !== NULL} {$commentaire->getAvatar_Utilisateur()}
-                    {else} https://eu.ui-avatars.com/api/?background=random&color=random&length=1&bold=true&name={$commentaire->getPseudo_Visiteur()}
+                    {else} https://eu.ui-avatars.com/api/?background=1e1e1e&color=ffffff&length=1&bold=true&size=128true&name={$commentaire->getPseudo_Visiteur()}
                     {/if}" alt="avatar">
                     <span class="pseudo"><a class="" href="?page=profiles&utilisateur={$commentaire->getPseudo_Visiteur()}">
                         {$commentaire->getPseudo_Visiteur()|capitalize}
@@ -25,16 +25,25 @@
                         <p class="reponse-mini">{$commentaire_reponse->getContenu_Commentaire()}</p>
                     </div>
                     {/if}
-                    <div class="compteur_like"><i class="far fa-thumbs-up"><span class="number_like">
-                    {$aime_commentaire}
-                    </span></i></div>
+
+                    <div class="row justify-content-end compteur_like">    
+                        <span class="number_like">
+                            {$aime_commentaire}
+                        </span>
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    
                     
                     <p class="contenu_commentaire">{$commentaire->getContenu_Commentaire()}</p>
                     
                 </div>
+
+                {if $connecte}
                 <div class="row justify-content-end">
+                    <a href="#"><span class="btn-signaler"><i class="fas fa-flag"></i>Signaler</span></a>
                     <a href="#"><span class="btn-rep"><i class="fas fa-reply"></i>Répondre</span></a>
                 </div>
+                {/if}
 
                 <div class="line"></div>
                 {/foreach}

@@ -59,10 +59,10 @@
                         <input type="password" class="form-control" name="mdp_utilisateur" autocomplete="off">
 
                         <label class="formu">Date de naissance</label>
-                        <input type="date" class="form-control" name="date_naissance_utilisateur" >
+                        <input type="date" class="form-control" name="date_naissance_utilisateur" value="{$utilisateur->getDate_Naissance_Utilisateur()}">
 
                         <label for="text">Votre description</label> <br>
-                        <textarea class="form-control" name="bio_utilisateur" cols="30" rows="5"></textarea> <br>
+                        <textarea class="form-control" name="bio_utilisateur" cols="30" rows="5">{$utilisateur->getBio_Utilisateur()}</textarea> <br>
                     </div>
 
                     <div class="row justify-content-center">

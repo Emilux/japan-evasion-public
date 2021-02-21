@@ -37,7 +37,7 @@
         <h5>Publié le {$article->getDate_Publication_Article()|date_format:"%A %e %B  %Y"|lower}</h5>
     </div>
     <div class="editer-par row justify-content-center">
-        <h3>par {$redacteur->getPseudo_Visiteur()|capitalize}</h3>
+        <h3>par <a href="?page=profiles&utilisateur={$redacteur->getPseudo_Visiteur()}">{$redacteur->getPseudo_Visiteur()|capitalize}</a></h3>
     </div>
     <div class="editer-par row justify-content-center">
         <h4>{$article->getTemps_Lecture_Article()} min de lecture</h4>
