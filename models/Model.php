@@ -90,9 +90,15 @@ class Model {
     }
 
     //Supprimer un élément
-    public function Delete(int $id){
+    public function Delete($id, $where = null){
 
-        $this->_bdd->exec('DELETE FROM '.$this->_table.' WHERE id_'.$this->_table.' = '.$id);
+        if($where === null){
+            $sql = $this->_bdd->prepare('DELETE FROM '.$this->_table.' WHERE id_'.$this->_table.' = '.$id);
+        } else {
+            $sql = $this->_bdd->prepare('DELETE FROM '.$this->_table.' WHERE '.$where); 
+        }
+        $sql->execute();
+        return $sql;
 
     }
 

@@ -77,7 +77,7 @@
 
             <h2>Laisser un commentaire</h2>
             <h5>Votre adresse de messagerie ne sera pas publiée. Les champs obligatoires sont indiqués avec *</h5>
-            <form method="post" class="needs-validation" novalidate>
+            <form method="post" class="needs-validation" novalidate id="repondre">
                 <div class="form-row">
 
                     <label class="formu">Message *</label>
@@ -144,6 +144,10 @@ $(function(){
                 $button.children('.fa-heart').css('color','#91060e');
             }
 
+            if(data['msg'] === 'exist'){
+                $button.children('.number_like').text(data['number_like']);
+                $button.children('.fa-heart').css('color','#8c8c8c');
+            }
 
         })
     })

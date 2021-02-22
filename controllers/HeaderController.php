@@ -50,8 +50,9 @@ if (isset($_COOKIE['JUID']) && !isset($_SESSION['utilisateur'])){
 if(isset($_SESSION['utilisateur'])){
     $utilisateur_session = new Utilisateur();
     $utilisateur_session = $utilisateur_session->getItem('id_utilisateur',$_SESSION['utilisateur']['id_utilisateur']);
-    if (!$utilisateur_session || $utilisateur_session->getBanni_Utilisateur() === 1)
+    if (!$utilisateur_session || $utilisateur_session->getBanni_Utilisateur() === '1')
         header('Location: ./?page=deconnexion');
+
 }
 
 
