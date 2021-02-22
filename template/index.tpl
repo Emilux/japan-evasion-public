@@ -38,7 +38,7 @@
 <div class="container" id="section1">
     <!-- RECHERCHE - FILTRAGE ARTICLE -->
 
-    <form class="row domain-search bg-pblue" id="recherche">
+    <form class="row domain-search bg-pblue mb-4" id="recherche">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -51,6 +51,8 @@
             </div>
         </div>
     </form>
+
+
     <div class="row">
         <div class="row" id="article">
             {if $article}
@@ -62,7 +64,7 @@
                         <img class="card-img-top" src="{$value->getPhoto_Article()}" alt="Card image cap">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title"><span class="dot">• </span>Écrit par {$value->getPseudo_Visiteur()}</h5>
+                        <h5 class="card-title"><span class="dot">• </span>Écrit par <a href="?page=profiles&utilisateur={$value->getPseudo_Visiteur()}">{$value->getPseudo_Visiteur()}</a></h5>
                         <h2>{$value->getTitre_Article()}</h2>
                         <p class="card-text">{$value->getContenu_Article()|truncate:100}</p>
                         <div class="row justify-content-center">

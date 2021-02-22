@@ -256,6 +256,14 @@ body {
     font-size: 0.9375rem;
 }
 
+.card-title a {
+    color: black !important;
+}
+
+.card-title a:hover {
+    text-decoration: none !important;
+}
+
 .card-text {
     margin-top: 10px;
 }
