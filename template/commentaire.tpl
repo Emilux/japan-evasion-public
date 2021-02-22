@@ -121,7 +121,7 @@ $(function(){
 
         $.post('./?ajax=aime_commentaire', function(data){
 
-            alert(data);
+            console.log(data);
         })
 
     })
