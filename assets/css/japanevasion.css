@@ -492,6 +492,7 @@ body {
     position: absolute;
     left: -50px;
     background-color: #424a52;
+    object-fit: cover;
 }
 
 .compteur_like i {

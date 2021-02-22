@@ -45,15 +45,16 @@
                     {/if}
 
                     {assign var=nb_aime_commentaire value=$aime_commentaire->count('id_commentaire',$commentaire->getId_Commentaire())}
+                    {if isset($smarty.session.utilisateur)}
                     {assign var=is_aime_commentaire value=$aime_commentaire->getItem(null, null, '*', 'id_commentaire = '|cat:$commentaire->getId_commentaire()|cat:' AND id_utilisateur = '|cat:$smarty.session.utilisateur.id_utilisateur)}
-
+                    {/if}
                     <div class="row justify-content-end compteur_like" data-like="{$commentaire->getId_Commentaire()}">    
                         <span class="number_like">
                             {if $nb_aime_commentaire}
                             {$nb_aime_commentaire}
                             {/if}
                         </span>
-                        <i class="fas fa-heart" style="{if !$is_aime_commentaire}color : #8c8c8c;{/if}"></i>
+                        <i class="fas fa-heart" style="{if !isset($is_aime_commentaire) || !$is_aime_commentaire}color : #8c8c8c;{/if}"></i>
                             
                             
                     </div>
@@ -111,14 +112,16 @@
 </div>
 
 
+
+
+{if $connecte}
 <!-- SCRIPT COMMENTAIRE LIKE -->
 
 <script>
 
-
-
 $(function(){
 
+    
     $('.compteur_like').on('click', function(e){
         e.preventDefault();
         $button = $(this);
@@ -149,6 +152,5 @@ $(function(){
 })
 
 
-
-
 </script>
+{/if}
