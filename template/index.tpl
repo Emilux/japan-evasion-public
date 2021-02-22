@@ -58,9 +58,11 @@
                     {if $value->getStatut_Article() !== 'PENDING'}
             <div class="p-3 col-4">
                 <div class="card h-100 shadow bg-white rounded">
-                    <img class="card-img-top" src="{$value->getPhoto_Article()}" alt="Card image cap">
+                    <div class="cardy-b">
+                        <img class="card-img-top" src="{$value->getPhoto_Article()}" alt="Card image cap">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title"><span class="dot">• </span>{$value->getStatut_Article()}</h5>
+                        <h5 class="card-title"><span class="dot">• </span>Écrit par {$value->getPseudo_Visiteur()}</h5>
                         <h2>{$value->getTitre_Article()}</h2>
                         <p class="card-text">{$value->getContenu_Article()|truncate:100}</p>
                         <div class="row justify-content-center">

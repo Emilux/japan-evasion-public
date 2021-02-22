@@ -17,7 +17,18 @@
                     {/if}" alt="avatar">
                     <span class="pseudo">
                     <a class="{if $nom_role}{$nom_role->getNom_role()}{/if}" href="?page=profiles&utilisateur={$commentaire->getPseudo_Visiteur()}">
-                    {$commentaire->getPseudo_Visiteur()|capitalize}</i>
+                    {$commentaire->getPseudo_Visiteur()|capitalize}
+                    {if $commentaire->getId_Utilisateur() !== NULL}
+                    {if $nom_role->getNom_role() === 'redacteur'}
+                    <i class="fas fa-feather-alt" style="color: #248899 !important;"></i>
+                    {/if}
+                    {if $nom_role->getNom_role() === 'administrateur'}
+                    <img src="./assets/media/avatar/shield.png" style="height : 25px; widht : 25px; margin-bottom : 10px;">
+                    {/if}
+                    {if $nom_role->getNom_role() === 'moderateur'}
+                    <img src="./assets/media/avatar/shield2.png" style="height : 25px; widht : 25px; margin-bottom : 10px;">
+                    {/if}
+                    {/if}
                     
                     </a></span>dit:<br>
                     <span class="date">{$commentaire->getDatetime_Commentaire()|date_format : "%e %B  %Y à %T"}</span>
@@ -34,7 +45,7 @@
                     {/if}
 
                     {assign var=nb_aime_commentaire value=$aime_commentaire->count('id_commentaire',$commentaire->getId_Commentaire())}
-                    <div class="row justify-content-end compteur_like">    
+                    <div class="row justify-content-end compteur_like" data-like="{$commentaire->getId_Commentaire()}">    
                         <span class="number_like">
                             {if $nb_aime_commentaire}
                              {$nb_aime_commentaire}
@@ -96,3 +107,29 @@
         </div>
     </div>
 </div>
+
+
+<!-- SCRIPT COMMENTAIRE LIKE -->
+
+<script>
+
+$(function(){
+
+    $('.compteur_like').on('click', function(e){
+        e.preventDefault();
+
+
+        $.post('./?ajax=aime_commentaire', function(data){
+
+            alert(data);
+        })
+
+    })
+
+
+})
+
+
+
+
+</script>

@@ -31,3 +31,6 @@ define('_TPL_', _PATH_ . 'template/');
 
 // Define du dossier des logs
 define('_LOGS_', _PATH_ . 'logs/');
+
+// Define du dossier des AJAX
+define('_AJX_', _PATH_ . 'ajax/');

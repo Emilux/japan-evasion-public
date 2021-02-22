@@ -191,7 +191,8 @@ class Utilisateur extends Visiteur {
         ' WHERE visiteur.id_visiteur = '.$id
 
         );
-        
+        var_dump($sql);
+
         $sql->execute();
 
     }

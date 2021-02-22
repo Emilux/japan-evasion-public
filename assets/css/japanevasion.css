@@ -264,6 +264,15 @@ body {
     border-radius: 0%;
 }
 
+.cardy-b {
+    height: 235px;
+}
+
+.cardy-b img {
+    height: 100%;
+    object-fit: cover;
+}
+
 .dot {
     color: #91060e;
 }
@@ -717,7 +726,7 @@ body {
 }
 
 .pseudo a.moderateur {
-    color: #03384c !important;
+    color: #03384C !important;
 }
 
 
@@ -1617,8 +1626,16 @@ a {
     cursor: default;
 }
 
+#avatar_utilisateur {
+    height: 50px;
+    width: 50px;
+}
+
 #avatar_utilisateur img {
     border: 1px black solid;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .last-article:hover {
