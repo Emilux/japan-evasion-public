@@ -121,24 +121,24 @@ $(function(){
 
     $('.compteur_like').on('click', function(e){
         e.preventDefault();
-
+        $button = $(this);
 
         $.post('./?ajax=aime_commentaire',
         
         {
-            id_commentaire:$(this).data('like'),
-            id_utilisateur:{$smarty.session.utilisateur.id_utilisateur},
+            id_commentaire:$(this).data('like')
         }
         
         ,function(data){
-            
+            console.log(data);
 
             data = JSON.parse(data);
 
             console.log(data);
 
             if(data['msg'] === 'success'){
-                $(this).children('.number_like').text(data['number_like']);
+                $button.children('.number_like').text(data['number_like']);
+                $button.children('.fa-heart').css('color','#91060e');
             }
 
 
