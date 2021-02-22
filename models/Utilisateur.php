@@ -106,7 +106,7 @@ class Utilisateur extends Visiteur {
 
 
     //Récupérer un élément
-    public function getItem($champ, $valeur,$selecteur = "*",$table=NULL){
+    public function getItem($champ, $valeur,$selecteur = "*",$where = null,$table=NULL){
 
         $sql = $this->_bdd->query(
             'SELECT '.$selecteur.' FROM '.$this->_table.' 

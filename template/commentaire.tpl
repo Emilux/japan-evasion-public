@@ -45,14 +45,16 @@
                     {/if}
 
                     {assign var=nb_aime_commentaire value=$aime_commentaire->count('id_commentaire',$commentaire->getId_Commentaire())}
+                    {assign var=is_aime_commentaire value=$aime_commentaire->getItem(null, null, '*', 'id_commentaire = '|cat:$commentaire->getId_commentaire()|cat:' AND id_utilisateur = '|cat:$smarty.session.utilisateur.id_utilisateur)}
+
                     <div class="row justify-content-end compteur_like" data-like="{$commentaire->getId_Commentaire()}">    
                         <span class="number_like">
                             {if $nb_aime_commentaire}
-                             {$nb_aime_commentaire}
-                             
-                        </span>
-                        <i class="fas fa-heart"></i>
+                            {$nb_aime_commentaire}
                             {/if}
+                        </span>
+                        <i class="fas fa-heart" style="{if !$is_aime_commentaire}color : #8c8c8c;{/if}"></i>
+                            
                             
                     </div>
                     
@@ -113,17 +115,34 @@
 
 <script>
 
+
+
 $(function(){
 
     $('.compteur_like').on('click', function(e){
         e.preventDefault();
 
 
-        $.post('./?ajax=aime_commentaire', function(data){
+        $.post('./?ajax=aime_commentaire',
+        
+        {
+            id_commentaire:$(this).data('like'),
+            id_utilisateur:{$smarty.session.utilisateur.id_utilisateur},
+        }
+        
+        ,function(data){
+            
+
+            data = JSON.parse(data);
 
             console.log(data);
-        })
 
+            if(data['msg'] === 'success'){
+                $(this).children('.number_like').text(data['number_like']);
+            }
+
+
+        })
     })
 
 

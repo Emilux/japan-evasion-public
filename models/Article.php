@@ -128,7 +128,7 @@ class Article extends Utilisateur {
     }
 
     //Récupérer un élément
-    public function getItem($champ, $valeur, $selecteur = "*",$table = null){
+    public function getItem($champ, $valeur, $selecteur = "*",$where = null,$table = null){
 
         $sql = $this->_bdd->query(
             'SELECT '.$selecteur.' FROM '.$this->_table.' 

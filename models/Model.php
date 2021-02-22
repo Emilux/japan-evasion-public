@@ -57,11 +57,19 @@ class Model {
     }
 
     //Récupérer un élément
-    public function getItem($champ, $valeur,$selecteur = "*",$table = null){
+    public function getItem($champ, $valeur,$selecteur = "*",$where = null,$table = null){
 
         if ($table === null){
 
-            $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' WHERE '.$champ.' = "'.$valeur.'"');
+            if($where === null){
+                $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' WHERE '.$champ.' = "'.$valeur.'"');
+
+                
+            } else{
+                $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' WHERE '.$where);
+         
+            }
+            
         } else {
             $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$table.' WHERE '.$champ.' = "'.$valeur.'"');
         }
@@ -96,7 +104,7 @@ class Model {
 
         foreach($objet as $key => $value){
             if($value){
-                $champs .= substr($key,1).' , ';
+                $champs .= $key.' , ';
                 $valeurs .= '"'.$value.'" , ';
             }
         }
@@ -105,7 +113,10 @@ class Model {
         $champs = substr($champs,0,-2);
 
         $sql = $this->_bdd->prepare('INSERT INTO '.$this->_table.'('.$champs.') VALUES ('.$valeurs.')');
+        
         $sql->execute();
+
+        
 
     }
 
