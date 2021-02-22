@@ -159,7 +159,7 @@
                         </div>
 
                     </div>
-                    <a href="# " class="btn btn-dark ">Voir Article</a>
+                    <a href="?page=articles&id={$article->getId_Article()}" class="btn btn-dark ">Voir Article</a>
                 </div>
 
                 {/foreach}

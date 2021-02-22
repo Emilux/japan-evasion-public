@@ -52,6 +52,18 @@
     </div>
 
 
+        <!-- INTRO -->
+
+        <div class="intro row justify-content-center">
+            <div class="col-8">
+                <p>{$article->getContenu_Article()}</p>
+            </div>
+        </div>
+
+
+
 {include file='template/commentaire.tpl'}
+
+
 
 </div>
