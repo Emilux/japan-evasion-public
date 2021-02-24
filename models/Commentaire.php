@@ -44,7 +44,7 @@ class Commentaire extends Utilisateur {
         $this->_id_article = $id_article;
     }
     
-
+    //Ajout de commentaire
     public function addCommentaire($estVisiteur){
         $visiteur = new Visiteur();
 
@@ -67,6 +67,9 @@ class Commentaire extends Utilisateur {
                 $sql = $this->_bdd->prepare(
                     'insert into `commentaire` (contenu_commentaire,datetime_commentaire,id_article,id_visiteur) VALUES ("'.$this->getContenu_Commentaire().'",current_timestamp(),"'.$this->getId_Article().'","'.$this->getId_Visiteur().'")'
                 );
+
+                var_dump($sql);
+
                 $sql = $sql->execute();
 
                 //Annuler toute la requete si l'utilisateur n'est pas crée
@@ -90,6 +93,8 @@ class Commentaire extends Utilisateur {
         }
 
     }
+
+
 
     //Récupérer un élément
     public function getItem($champ, $valeur, $selecteur = "*", $where = null,$table = null){
@@ -122,6 +127,7 @@ class Commentaire extends Utilisateur {
      *
      *
      */
+
     //Permet de récupérer un commentaire ainsi que les infos lié au profil
     public function getList(int $limit=null, $order = 'DESC', $champs = 'id',$selecteur = '*', $where=null){
         if ($where !== null) $where = 'WHERE '.$where;
@@ -152,6 +158,8 @@ class Commentaire extends Utilisateur {
         }
         return false;
     }
+
+    
 
 
 }
