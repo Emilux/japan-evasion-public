@@ -1,3 +1,4 @@
+//NEWSLETTER
 console.log('test');
 $('#form-subscribe').on('submit', function(e) {
     e.preventDefault();
@@ -19,7 +20,7 @@ $('#form-subscribe').on('submit', function(e) {
             $('#msg').html("<div class='alert alert-danger'>" + result.message + "</div>");
         }
     }).fail(function(xhr, textStatus, errorThrown) {
-        $('#msg').html("<div class='alert alert-danger'>An unexpected error occured</div>");
+        $('#msg').html("<div class='alert alert-danger'>Une erreur est survenue, veuillez réessayer !</div>");
     });
 });
 

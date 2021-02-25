@@ -41,6 +41,8 @@ class Model {
 
         $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' '.$where.' ORDER BY '.$champs.' '.$order.' '.$limit);
 
+        var_dump('SELECT '.$selecteur.' FROM '.$this->_table.' '.$where.' ORDER BY '.$champs.' '.$order.' '.$limit);
+
         if ($sql)
             $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
         else
@@ -55,6 +57,8 @@ class Model {
         }
         return false;
     }
+
+
 
     //Récupérer un élément
     public function getItem($champ, $valeur,$selecteur = "*",$where = null,$table = null){
@@ -164,7 +168,6 @@ class Model {
 
         return $sql;
     }
-
 
 
 
