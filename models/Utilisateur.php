@@ -17,42 +17,72 @@ class Utilisateur extends Visiteur {
 
     //GETTERS
 
+    /**
+     * @return int
+     */
     public function getId_Utilisateur(){
         return $this->_id_utilisateur;
     }
 
+    /**
+     * @return string
+     */
     public function getAvatar_Utilisateur(){
         return $this->_avatar_utilisateur;
     }
 
+    /**
+     * @return string
+     */
     public function getPrenom_Utilisateur(){
         return $this->_prenom_utilisateur;
     }
 
+    /**
+     * @return string
+     */
     public function getNom_Utilisateur(){
         return $this->_nom_utilisateur;
     }
 
+    /**
+     * @return mixed
+     */
     public function getDate_Naissance_Utilisateur(){
         return $this->_date_naissance_utilisateur;
     }
 
+    /**
+     * @return string
+     */
     public function getBio_Utilisateur(){
         return $this->_bio_utilisateur;
     }
 
+    /**
+     * @return string
+     */
     public function getMdp_Utilisateur(){
         return $this->_mdp_utilisateur;
     }
 
+    /**
+     * @return boolean
+     */
     public function getBanni_Utilisateur(){
         return $this->_banni_utilisateur;
     }
 
+    /**
+     * @return int
+     */
     public function getId_Role(){
         return $this->_id_role;
     }
 
+    /**
+     * @return mixed
+     */
     public function getId_Date_Creation_Utilisateur(){
         return $this->_date_creation_utilisateur;
     }
@@ -61,51 +91,89 @@ class Utilisateur extends Visiteur {
 
     //SETTERS
 
+    /**
+     * @param $id_utilisateur
+     */
     public function setId_Utilisateur($id_utilisateur){
 		$this->_id_utilisateur = $id_utilisateur;
     }
 
+    /**
+     * @param $avatar_utilisateur
+     */
     public function setAvatar_Utilisateur($avatar_utilisateur){
 		$this->_avatar_utilisateur = $avatar_utilisateur;
     }
 
+    /**
+     * @param $prenom_utilisateur
+     */
     public function setPrenom_Utilisateur($prenom_utilisateur){
 		$this->_prenom_utilisateur = $prenom_utilisateur;
     }
 
+    /**
+     * @param $nom_utilisateur
+     */
     public function setNom_Utilisateur($nom_utilisateur){
 		$this->_nom_utilisateur = $nom_utilisateur;
     }
 
+    /**
+     * @param $date_naissance_utilisateur
+     */
     public function setDate_Naissance_Utilisateur($date_naissance_utilisateur){
         $this->_date_naissance_utilisateur = $date_naissance_utilisateur;
     }
-    
+
+    /**
+     * @param $bio_utilisateur
+     */
     public function setBio_Utilisateur($bio_utilisateur){
         $this->_bio_utilisateur = $bio_utilisateur;
     }
 
+    /**
+     * @param $mdp_utilisateur
+     */
     public function setMdp_Utilisateur($mdp_utilisateur){
         $this->_mdp_utilisateur = $mdp_utilisateur;
     }
 
+    /**
+     * @param $banni_utilisateur
+     */
     public function setBanni_Utilisateur($banni_utilisateur){
         $this->_banni_utilisateur = $banni_utilisateur;
     }
 
+    /**
+     * @param $id_role
+     */
     public function setId_Role($id_role){
         $this->_id_role = $id_role;
     }
 
+    /**
+     * @param $date_creation_utilisateur
+     */
     public function setId_Date_Creation_Utilisateur($date_creation_utilisateur){
         $this->_date_creation_utilisateur = $date_creation_utilisateur;
     }
 
 
-    //METHODE
-
-
-    //Récupérer un élément
+    /**
+     * Cette fonction récupère un utilisateur et le visiteur auquel il est attaché
+     * Si un utilisateur est récupéré il retourne l'objet de celui ci sinon false
+     *
+     * @param string $champ
+     * @param $valeur
+     * @param string $selecteur
+     * @param string|null $where
+     * @param string|null $table
+     *
+     * @return  object|boolean  return un objet si utilisateur selectionné sinon false
+     */
     public function getItem($champ, $valeur,$selecteur = "*",$where = null,$table=NULL){
 
         $sql = $this->_bdd->query(
@@ -129,7 +197,13 @@ class Utilisateur extends Visiteur {
     }
 
 
-    //Créer un compte
+    /**
+     * Cette fonction crée un utilisateur et le visiteur auquel il sera rattaché dans la bdd
+     * Si l'utilisateur est crée return true sinon retourne false
+     *
+     *
+     * @return  {boolean}     return true si utilisateur crée, sinon false
+     */
     public function creerCompte(){
 
         $visiteur = new Visiteur();
@@ -170,8 +244,18 @@ class Utilisateur extends Visiteur {
 
         return false;
     }
-   
-    //Modifier le profil de l'utilisateur
+
+
+    /**
+     * Cette fonction permet de modifier les informations d'un utilisateur et du visiteur
+     * auquel il est rattaché dans la bdd
+     * Si l'utilisateur est modifier return true sinon retourne false
+     *
+     * @param array $data
+     * @param $id
+     *
+     * @return  {boolean}     return true si utilisateur mise a jour, sinon false
+     */
     public function Update(array $data, $id){
 
         $valeurs = '';
@@ -187,12 +271,13 @@ class Utilisateur extends Visiteur {
         $sql = $this->_bdd->prepare(
 
         ' UPDATE '.$this->_table.
-        ' INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_utilisateur'.' SET '.$valeurs.
+        ' INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur'.' SET '.$valeurs.
         ' WHERE visiteur.id_visiteur = '.$id
 
         );
 
-        $sql->execute();
+        $sql = $sql->execute();
+        return $sql;
 
     }
 }

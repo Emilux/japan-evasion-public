@@ -68,8 +68,6 @@ class Commentaire extends Utilisateur {
                     'insert into `commentaire` (contenu_commentaire,datetime_commentaire,id_article,id_visiteur) VALUES ("'.$this->getContenu_Commentaire().'",current_timestamp(),"'.$this->getId_Article().'","'.$this->getId_Visiteur().'")'
                 );
 
-                var_dump($sql);
-
                 $sql = $sql->execute();
 
                 //Annuler toute la requete si l'utilisateur n'est pas crée
@@ -80,6 +78,7 @@ class Commentaire extends Utilisateur {
                 return $sql;
             }
             else
+                echo 'no';
                 $this->_bdd->rollBack();
 
             return false;
@@ -88,7 +87,9 @@ class Commentaire extends Utilisateur {
             $sql = $this->_bdd->prepare(
                 'insert into `commentaire` (contenu_commentaire,datetime_commentaire,id_article,id_visiteur) VALUES ("'.$this->getContenu_Commentaire().'",current_timestamp(),"'.$this->getId_Article().'","'.$this->getId_Visiteur().'")'
             );
+            var_dump($sql);
             $sql = $sql->execute();
+
             return $sql;
         }
 

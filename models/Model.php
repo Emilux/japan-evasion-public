@@ -4,6 +4,12 @@ class Model {
 
     protected $_bdd;
 
+    /**
+     * Model constructor.
+     * @param array $donnees
+     * @param pdo $bdd
+     *
+     */
     public function __construct($donnees = null,$bdd = null){
         if ($bdd === null){
             global $dbh;
@@ -18,6 +24,12 @@ class Model {
 
     }
 
+    /** Hydrate les variables de chaque object dans laquel cette fonction est appelé
+     *
+     * @param array $donnees
+     *
+     * @return void
+     */
     public function hydrate(array $donnees){
 
         foreach ($donnees as $attribut => $valeur) {
@@ -32,8 +44,19 @@ class Model {
 
     }
 
-    //Récupérer une liste d'élément
-    public function getList(int $limit=null, $order = 'DESC', $champs = 'id',$selecteur = '*', $where=null){
+    /** Cherche la liste des données d'une table donnée dans la base de donnée
+     * et return an array of object ou false
+     *
+     *
+     * @param int|null $limit
+     * @param string $order
+     * @param string $champs
+     * @param string $selecteur
+     * @param string|null $where
+     *
+     * @return array|false
+     */
+    public function getList(int $limit=null, $order = 'DESC', $champs = 'id',$selecteur = '*',string $where=null){
         if ($where !== null) $where = 'WHERE '.$where;
         if ($limit !== null) $limit = 'LIMIT '.$limit;
         if ($champs === 'id') $champs = $champs.'_'.$this->_table;
@@ -58,9 +81,17 @@ class Model {
         return false;
     }
 
-
-
-    //Récupérer un élément
+    /** Cherche une seule ligne  d'une dans dans la base de donnée
+     * et return un object de la table select ou false
+     *
+     * @param string $champ
+     * @param string $valeur
+     * @param string $selecteur
+     * @param string|null $where
+     * @param string|null $table
+     *
+     * @return false|mixed|null
+     */
     public function getItem($champ, $valeur,$selecteur = "*",$where = null,$table = null){
 
         if ($table === null){
@@ -93,8 +124,15 @@ class Model {
 
     }
 
-    //Supprimer un élément
-    public function Delete($id, $where = null){
+    /** Supprime une ligne dans une table de la base de donnée
+     * en utilisant les paramètres entrés dans le fonction
+     *
+     * @param int $id
+     * @param string|null $where
+     *
+     * @return false|PDOStatement
+     */
+    public function Delete($id,$where = null){
 
 
         if($where === null){
@@ -102,8 +140,9 @@ class Model {
         } else {
             $sql = $this->_bdd->prepare('DELETE FROM '.$this->_table.' WHERE '.$where); 
         }
+        
+        $sql = $sql->execute();
 
-        $sql->execute();
         return $sql;
         
     }
