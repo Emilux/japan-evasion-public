@@ -51,9 +51,10 @@ class Visiteur extends Model {
      * @return  {boolean}            return true si visiteur crée, false sinon
      */
     public function creerVisiteur(){
+
         if(empty($this->getNewsletter_Visiteur()))
             $this->setNewsletter_Visiteur(0);
-        
+
         $sql = $this->_bdd->prepare(
             'INSERT INTO '.$this->_table.' (pseudo_visiteur, email_visiteur,newsletter_visiteur) VALUE ("'.$this->getPseudo_Visiteur().'","'.$this->getEmail_Visiteur().'","'.$this->getNewsletter_Visiteur().'")'
         );

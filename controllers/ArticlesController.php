@@ -20,16 +20,26 @@ if(isset($_GET['id'])){
     
     //afficher l'article si il est publié et s'il est NEW l'affiché que au utilisateur connectés
     if(($article)){
+
         if($article->getStatut_Article() === 'PUBLISHED' || ($article->getStatut_Article() === 'NEW' && isset($_SESSION['utilisateur']))){
+
+            
+            //tester si on recupère une variable id en get
+            if(isset($_GET['id_commentaire'])){
+
+                $commentaire_id_utilisateur = $commentaire->getItem('id_commentaire',$_GET['id_commentaire'],'id_utilisateur');
+
+                if($commentaire_id_utilisateur && $commentaire_id_utilisateur->getId_Utilisateur() === $_SESSION['utilisateur']['id_utilisateur']){
+
+                    $commentaire->Delete($_GET['id_commentaire']);
+                }
+            }
 
             //récupérer les informations du rédacteur de l'article
             $redacteur = $utilisateur->getItem('id_utilisateur', $article->getId_Utilisateur());
 
             //récupérer le nombre de commentaire de l'article
             $nbCommentaire = $commentaire->count('id_article', $article->getId_Article());
-
-            //Récuperer le nombre de like par commentaire
-            
 
             //récupérer les commentaires sous l'article
             $commentaires = $commentaire->getList(5,'DESC','datetime_commentaire','*','id_article = '.$article->getId_Article());
@@ -69,6 +79,33 @@ if(isset($_GET['id'])){
                 }
 
             }
+
+            //AJOUT REPONSE COMMENTAIRE
+            if(isset($_POST['submit_reponse'])){
+                $commentaire->setId_Article($article->getId_Article());
+
+                if (isset($_SESSION['utilisateur'])){
+                    $commentaire->setPseudo_Visiteur($_SESSION['utilisateur']['pseudo_visiteur']);
+                    $commentaire->setEmail_Visiteur($_SESSION['utilisateur']['email_visiteur']);
+                    $commentaire->setId_Visiteur($_SESSION['utilisateur']['id_visiteur']);
+                    $estVisiteur = false;
+                } else {
+                    $commentaire->setPseudo_Visiteur($_POST['pseudo_visiteur']);
+                    $commentaire->setEmail_Visiteur($_POST['email_visiteur']);
+                    $estVisiteur = true;
+                }
+
+                $commentaire->setContenu_Commentaire($_POST['contenu_commentaire']);
+                if($commentaire->addReponse($estVisiteur)){
+                    header('Location: ?page=articles&id='.$_GET['id'].'#espace_commentaire');
+                }
+
+            }
+
+
+
+
+
         } else {
             header('Location: ./#exampleModal');
             exit();

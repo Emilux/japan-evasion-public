@@ -64,12 +64,48 @@
                     
                 </div>
 
-                {if $connecte}
+                
                 <div class="row justify-content-end">
+                {if $connecte}
                     <a href="#"><span class="btn-signaler"><i class="fas fa-flag"></i>Signaler</span></a>
-                    <a href="#"><span class="btn-rep"><i class="fas fa-reply"></i>Répondre</span></a>
-                </div>
+                    <!-- SUPPRESSION DU COMMENTAIRE -->
+                    {if $commentaire->getId_Utilisateur() === $smarty.session.utilisateur.id_utilisateur}
+                    <a href="?page=articles&id={$article->getId_Article()}&id_commentaire={$commentaire->getId_Commentaire()}"><span class="btn-suppr"><i class="fas fa-trash"></i>Supprimer</span></a>
+                    {/if}
                 {/if}
+
+                    <!-- REPONDRE A UN COMMENTAIRE -->
+                    <a href="#" data-cible="{$commentaire->getId_Commentaire()}" class="reponse-commentaire"><span class="btn-rep"><i class="fas fa-reply"></i>Répondre</span></a>
+                </div>
+
+                
+                <form style="display: none" method="post" id="form-reponse" class="needs-validation" novalidate id="repondre" data-commentaire="{$commentaire->getId_Commentaire()}">
+
+                        <div class="form-row">
+                        <label class="formu">Message *</label>
+                        <textarea class="form-control" id="textArea" maxlength="1000" minlength="10" rows="8" name="contenu_commentaire" required></textarea>
+                        
+                        <input type="hidden" name="id_commentaire" value="{$commentaire->getId_Commentaire()}">
+                        
+                        {if !$connecte}
+                        <label class="formu">Pseudo *</label>
+                        <input type="text" class="form-control" name="pseudo_visiteur" id="nom-form" required>
+                        <div class="invalid-feedback">
+                            Entrer un pseudo
+                        </div>
+
+                        <label class="formu">Email *</label>
+                        <input type="email" class="form-control" name="email_visiteur" id="mail-form" required>
+                        <div class="invalid-feedback">
+                            Entrer un e-mail valide
+                        </div>
+
+                        {/if}
+                            <button class="btn btn-dark" type="submit" name="submit_reponse">REPONDRE</button>
+                        </div>
+
+                </form>
+                
 
                 <div class="line"></div>
                 {/foreach}
@@ -77,6 +113,7 @@
 
             <h2>Laisser un commentaire</h2>
             <h5>Votre adresse de messagerie ne sera pas publiée. Les champs obligatoires sont indiqués avec *</h5>
+
             <form method="post" class="needs-validation" novalidate id="repondre">
                 <div class="form-row">
 
@@ -107,9 +144,11 @@
                     <button class="btn btn-dark" type="submit" name="submit_add">ENVOYER</button>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
+
 
 
 
@@ -121,7 +160,14 @@
 
 $(function(){
 
+
+        
     
+
+
+
+
+    //COMPTEUR LIKE
     $('.compteur_like').on('click', function(e){
         e.preventDefault();
         $button = $(this);
@@ -154,6 +200,8 @@ $(function(){
 
 
 })
+
+
 
 
 </script>
