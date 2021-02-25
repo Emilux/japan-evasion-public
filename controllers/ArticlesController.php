@@ -52,7 +52,7 @@ if(isset($_GET['id'])){
             if(isset($_POST['submit_add'])){
                 $commentaire->setId_Article($article->getId_Article());
 
-                if ($_SESSION['utilisateur']){
+                if (isset($_SESSION['utilisateur'])){
                     $commentaire->setPseudo_Visiteur($_SESSION['utilisateur']['pseudo_visiteur']);
                     $commentaire->setEmail_Visiteur($_SESSION['utilisateur']['email_visiteur']);
                     $commentaire->setId_Visiteur($_SESSION['utilisateur']['id_visiteur']);

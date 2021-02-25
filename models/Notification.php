@@ -10,33 +10,54 @@ class Notification extends Model {
 
     //GETTERS
 
+    /**
+     * @return int
+     */
     public function getId_Notification(){
         return $this->_id_notification;
     }
 
+    /**
+     * @return string
+     */
     public function getContenu_Notification(){
         return $this->_contenu_notification;
     }
 
-    public function get_Notification(){
-        return $this->_contenu_notification;
+    /**
+     * @return boolean
+     */
+    public function get_Statut_Notification(){
+        return $this->_statut_notification;
     }
 
+    /**
+     * @return int
+     */
     public function getId_Utilisateur(){
         return $this->_id_utilisateur;
     }
 
     //SETTERS
 
+    /**
+     * @param int $id_notification
+     */
     public function setId_Notification(int $id_notification){
 		$this->_id_notification = $id_notification;
     }
 
+    /**
+     * @param string $contenu_notification
+     */
     public function setContenu_Notification(string $contenu_notification){
 		$this->_contenu_notification = $contenu_notification;
     }
 
-    public function setStatut_Notification(boolval $statut_notification){
+    /**
+     * @param boolean $statut_notification
+     */
+    public function setStatut_Notification(bool $statut_notification){
 		$this->_statut_notification = $statut_notification;
     }
 

@@ -10,20 +10,32 @@ class Reponse_de extends Model
 
     //GETTERS
 
+    /**
+     * @return int
+     */
     public function getId_Commentaire(){
         return $this->_id_commentaire;
     }
 
+    /**
+     * @return int
+     */
     public function getId_Reponse(){
         return $this->_id_reponse;
     }
 
     //SETTERS
 
+    /**
+     * @param int $id_commentaire
+     */
     public function setId_Commentaire(int $id_commentaire){
         $this->_id_commentaire = $id_commentaire;
     }
 
+    /**
+     * @param int $id_reponse
+     */
     public function setId_Reponse(int $id_reponse){
         $this->_id_reponse = $id_reponse;
     }

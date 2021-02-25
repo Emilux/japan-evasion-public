@@ -92,8 +92,8 @@ if (isset($_POST['creer_compte'])){
                                 'banni_utilisateur' => 0,
                                 'role' => $role->getNom_Role(),
                             ];
-                            header('Location: ./?page=profiles&utilisateur='.$utilisateur->getPseudo_Visiteur());
-                            exit();
+                            /*header('Location: ./?page=profiles&utilisateur='.$utilisateur->getPseudo_Visiteur());
+                            exit();*/
                         } else {
                             echo 'erreur lors de la création de votre compte visiteur';
                         }
