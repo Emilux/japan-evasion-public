@@ -64,6 +64,8 @@ class Model {
 
         $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' '.$where.' ORDER BY '.$champs.' '.$order.' '.$limit);
 
+        var_dump('SELECT '.$selecteur.' FROM '.$this->_table.' '.$where.' ORDER BY '.$champs.' '.$order.' '.$limit);
+
         if ($sql)
             $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
         else
@@ -222,7 +224,6 @@ class Model {
 
         return $sql;
     }
-
 
 
 

@@ -172,6 +172,12 @@ class Article extends Utilisateur {
                         '.$where.'
                         ORDER BY '.$champs.' '.$order.' '.$limit);
 
+        var_dump('SELECT '.$selecteur.' FROM '.$this->_table.' 
+        INNER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
+        INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur
+        '.$where.'
+        ORDER BY '.$champs.' '.$order.' '.$limit);
+
         if ($sql)
             $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
         else

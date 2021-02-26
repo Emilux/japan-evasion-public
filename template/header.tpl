@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="nofollow, noindex">
     <meta name="description" content="Préparez votre prochain voyage avec Japan Evasion, votre blog de road-trip à destination du Japon.
-    Suivez les voyages de Emilien, Jordan et Sadaf à travers leurs expériences et découvrez les destinations les plus
+    Suivez les voyages de Sadaf, Emilien et Jordan à travers leurs expériences et découvrez les destinations les plus
     enchanteresses et insolites que la contrée nipponne a à vous offrir." />
 
     <title>Japan EVASION - Blog Voyage autour du Japon</title>

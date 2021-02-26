@@ -38,11 +38,11 @@
 <div class="container" id="section1">
     <!-- RECHERCHE - FILTRAGE ARTICLE -->
 
-    <form class="row domain-search bg-pblue mb-4" id="recherche">
+    <form method="get" class="row domain-search bg-pblue mb-4" id="recherche">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="input-group"> <input type="search" class="form-control" placeholder="Rechercher un article...">
+                    <div class="input-group"> <input type="search" name="recherche" class="form-control" placeholder="Rechercher un article...">
                         <span class="input-group-addon">
                             <input type="submit" value="Rechercher" class="btn btn-dark">
                         </span>
