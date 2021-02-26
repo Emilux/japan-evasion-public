@@ -43,8 +43,11 @@ class Commentaire extends Utilisateur {
     public function setId_Article(int $id_article){
         $this->_id_article = $id_article;
     }
-    
-    //Ajout de commentaire
+
+    /**
+     * @param $estVisiteur
+     * @return bool
+     */
     public function addCommentaire($estVisiteur){
         $visiteur = new Visiteur();
 

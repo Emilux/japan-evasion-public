@@ -20,7 +20,7 @@ if (!$ajax){
         require(_CTRL_.'IndexController.php');
 
     // Charge Controller de la création ou connexion à son compte sur
-// Toutes les pages du site
+    // Toutes les pages du site
     require (_CTRL_.'HeaderController.php');
     require (_CTRL_.'CompteController.php');
     $smarty->display(_TPL_.'template.tpl');

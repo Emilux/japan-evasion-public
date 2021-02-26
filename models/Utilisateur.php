@@ -46,7 +46,7 @@ class Utilisateur extends Visiteur {
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getDate_Naissance_Utilisateur(){
         return $this->_date_naissance_utilisateur;

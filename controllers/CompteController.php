@@ -1,46 +1,4 @@
 <?php
-//test si le formulaire de création de compte a été envoyé
-
-/*if (isset($_POST['creer_compte'])){
-    //check if email is empty
-    if (isset($_POST['email_utilisateur']) && !empty($_POST['email_utilisateur'])) {
-        $email=mysqli_real_escape_string($dbh,trim($_POST['email_utilisateur']));
-    }else{
-        $empty_email="Email cannot be empty.";
-        echo $empty_email.'<br>';
-    }
-    //check if pseudo is empty
-    if (isset($_POST['pseudo_utilisateur']) && !empty($_POST['pseudo_utilisateur'])) {
-        $username=mysqli_real_escape_string($dbh,trim($_POST['pseudo_utilisateur']));
-    }else{
-        $empty_username="Username Cannot be empty.";
-        echo $empty_username.'<br>';
-    }
-    //check if password is empty or confirm password is empty
-    if (isset($_POST['mdp_utilisateur']) && !empty($_POST['mdp_utilisateur'])) {
-        $psw=mysqli_real_escape_string($dbh,trim($_POST['mdp_utilisateur']));
-    }else{
-        $empty_password="Password cannot be empty";
-        echo $empty_password.'<br>';
-    }
-    //or confirm password is empty
-    if (isset($_POST['mdp_utilisateur_confirmation']) && !empty($_POST['mdp_utilisateur_confirmation'])) {
-        $repsw=mysqli_real_escape_string($dbh,trim($_POST['mdp_utilisateur_confirmation']));
-    }else{
-        $empty_repassword="Retype password cannot be empty";
-        echo $empty_repassword.'<br>';
-    }
-
-    //check if password dosn't match
-    if ($_POST["mdp_utilisateur"] === $_POST["mdp_utilisateur_confirmation"]){
-        echo 'success';
-    }else{
-        echo'failed';
-    }
-
-
-}*/
-  
 
 if (isset($_POST['creer_compte'])){
     if (isset($_POST['email_utilisateur']) || isset($_POST['pseudo_utilisateur']) ||

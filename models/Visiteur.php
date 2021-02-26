@@ -10,36 +10,60 @@ class Visiteur extends Model {
 
     //GETTERS
 
+    /**
+     * @return int
+     */
     public function getId_Visiteur(){
         return $this->_id_visiteur;
     }
 
+    /**
+     * @return string
+     */
     public function getPseudo_Visiteur(){
         return $this->_pseudo_visiteur;
     }
 
+    /**
+     * @return string
+     */
     public function getEmail_Visiteur(){
         return $this->_email_visiteur;
     }
 
+    /**
+     * @return boolean
+     */
     public function getNewsletter_Visiteur(){
         return $this->_newsletter_visiteur;
     }
 
     //SETTERS
 
+    /**
+     * @param int $id_visiteur
+     */
     public function setId_Visiteur($id_visiteur){
 		$this->_id_visiteur = $id_visiteur;
     }
 
+    /**
+     * @param string $pseudo_visiteur
+     */
     public function setPseudo_Visiteur($pseudo_visiteur){
 		$this->_pseudo_visiteur = $pseudo_visiteur;
     }
 
+    /**
+     * @param string $email_visiteur
+     */
     public function setEmail_Visiteur($email_visiteur){
 		$this->_email_visiteur = $email_visiteur;
     }
 
+    /**
+     * @param boolean $newsletter_visiteur
+     */
     public function setNewsletter_Visiteur($newsletter_visiteur){
 		$this->_newsletter_visiteur = $newsletter_visiteur;
     }

@@ -138,14 +138,19 @@ class Model {
         } else {
             $sql = $this->_bdd->prepare('DELETE FROM '.$this->_table.' WHERE '.$where); 
         }
-        
+
         $sql = $sql->execute();
 
         return $sql;
         
     }
 
-    //Ajouter un élément
+    /** Ajouter une ligne a la base de donnée
+     *
+     *
+     * @param $objet
+     * @return false|PDOStatement
+     */
     public function Add($objet){
 
         $champs = '';
@@ -168,7 +173,11 @@ class Model {
 
     }
 
-    //Modifier un élément
+    /** Mise a jour d'une ligne dans la base de donnée
+     *
+     * @param array $data
+     * @param int $id
+     */
     public function Update(array $data, $id){
 
         $valeurs = '';
@@ -182,11 +191,19 @@ class Model {
         $valeurs = substr($valeurs,0,-2);
 
         $sql = $this->_bdd->prepare('UPDATE '.$this->_table.' SET '.$valeurs.' WHERE id_'.$this->_table.' = '.$id);
-        $sql->execute();
+        $sql = $sql->execute();
+        return $sql;
 
     }
 
-    //Récupérer un nombre de commentaire selon l'article
+    /** Compte les lignes d'une table de la base de donnée
+     *
+     *
+     * @param string|null $champs
+     * @param string|null $valeur
+     *
+     * @return false|int
+     */
     public function Count($champs = NULL, $valeur = NULL)
     {
         if($champs === NULL && $valeurs === NULL){
