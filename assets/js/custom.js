@@ -10,7 +10,7 @@ $('#form-subscribe').on('submit', function(e) {
         dataType: "JSON",
         data: formdata,
         beforeSend: function() {
-            $('#msg').html("<div class='alert alert-info'>Please wait...</div>");
+            $('#msg').html("<div class='alert alert-info'>Attendez...</div>");
         }
     }).done(function(result) {
         if (result.success) {
