@@ -2,8 +2,8 @@
 /**
  * @file        Aime_Commentaire.php
  * @brief       Contient la déclaration de la classe Aime_Commentaire
- * @details     Elle permet de récupérer les données de la table \em \b aime_commentaire
- * @author      Sadaf MIRZAD, Jordan HERTH, Emilien FUCHS
+ * @details     Elle permet de récupérer et stocker les données de la table \em \b aime_commentaire.
+ * @authors      Sadaf MIRZAD, Jordan HERTH, Emilien FUCHS
  * @version     1.0
  * @date        2021
  */

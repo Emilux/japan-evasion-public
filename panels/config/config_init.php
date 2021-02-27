@@ -10,12 +10,12 @@ header('Content-Type: text/html; charset=utf-8');
 setlocale (LC_TIME, 'fr_FR.utf8');
 
 require('defines.inc.php');
-require('libs/Smarty.class.php');
-require ('config_bdd.php');
+require('../libs/Smarty.class.php');
+require ('../config/config_bdd.php');
 
 
 function chargerClass($classe){
-    require('models/'.$classe.'.php');
+    require('../models/'.$classe.'.php');
 }
 
 spl_autoload_register('chargerClass');

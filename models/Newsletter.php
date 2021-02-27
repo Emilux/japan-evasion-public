@@ -1,8 +1,13 @@
 <?php
 
-
-//a vérifier
-
+/**
+ * @file        Newsletter.php
+ * @brief       Contient la déclaration de la classe Newsletter
+ * @details     Elle permet de récupérer et stocker les données de la table \em \b Newsletter.
+ * @authors     Sadaf MIRZAD, Jordan HERTH, Emilien FUCHS
+ * @version     1.0
+ * @date        2021
+ */
 class Newsletter extends Model {
     protected $id_newsletter;
     protected $name_newsletter;

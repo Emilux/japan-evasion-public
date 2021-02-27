@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * @file        Commentaire.php
+ * @brief       Contient la déclaration de la classe Commentaire
+ * @details     Elle permet de récupérer et stocker les données de la table \em \b Commentaire.
+ *              Mais aussi d'ajouter des commentaires ou réponses
+ * @authors     Sadaf MIRZAD, Jordan HERTH, Emilien FUCHS
+ * @version     1.0
+ * @date        2021
+ */
 class Commentaire extends Utilisateur {
 
     protected $_id_commentaire;

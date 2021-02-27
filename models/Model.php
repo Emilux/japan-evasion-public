@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * @file        Model.php
+ * @brief       Contient la déclaration de la classe Model
+ * @details     Contient le CRUD et toutes les functions qui seront les plus utilisées.
+ * @authors     Sadaf MIRZAD, Jordan HERTH, Emilien FUCHS
+ * @version     1.0
+ * @date        2021
+ */
 class Model {
 
     protected $_bdd;

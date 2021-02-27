@@ -1,6 +1,12 @@
 <?php
-
-
+/**
+ * @file        Role.php
+ * @brief       Contient la déclaration de la classe Role
+ * @details     Elle permet de récupérer et stocker les données de la table \em \b Role.
+ * @authors     Sadaf MIRZAD, Jordan HERTH, Emilien FUCHS
+ * @version     1.0
+ * @date        2021
+ */
 class Role extends Model
 {
     protected $_id_role;

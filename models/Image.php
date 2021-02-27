@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * @file        Image.php
+ * @brief       Contient la déclaration de la classe Image
+ * @details     Permet de gérer tout ce qui a en rapport avec l'ajout d'image sur le serveur.
+ * @authors     Sadaf MIRZAD, Jordan HERTH, Emilien FUCHS
+ * @version     1.0
+ * @date        2021
+ */
 class Image {
 
     /** Redimensionne une image

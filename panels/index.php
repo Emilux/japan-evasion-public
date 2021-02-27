@@ -1,8 +1,7 @@
 <?php
 
 //charge le fichier de configuration.
-require('./config/config_init.php');
-
+require('config/config_init.php');
 $ajax = FALSE;
 
 /* ROUTER */
@@ -17,14 +16,11 @@ if (isset($_GET['ajax']) && file_exists(_AJX_.str_replace('.', '', ucfirst($_GET
 // Affichage des templates
 if (!$ajax){
     // Routing pour les pages du site
-    if (isset($_GET['page']) && file_exists(_CTRL_.str_replace('.', '', ucfirst($_GET['page'])).'Controller.php')){
-        require(_CTRL_.ucfirst($_GET['page']).'Controller.php');
-    } else if (isset($_GET['panel']) && file_exists(_PNL_.str_replace('.', '', ucfirst($_GET['panel'])).'Controller.php')){
-        require(_PNL_.ucfirst($_GET['panel']).'Controller.php');
-    }
-    else
+    if (isset($_GET['page']) && file_exists(_PNL_.str_replace('.', '', ucfirst($_GET['page'])).'Controller.php')){
+        require(_PNL_.ucfirst($_GET['page']).'Controller.php');
+    } else
         // Appel toujours le IndexController par défaut (plus tard appel à page 404).
-        require(_CTRL_.'IndexController.php');
+        require(_PNL_.'IndexController.php');
 
     // Chargement des controllers présents sur tout le site.
     require (_CTRL_.'HeaderController.php');
@@ -33,5 +29,3 @@ if (!$ajax){
     //Affiche la template de base du site
     $smarty->display(_TPL_.'template.tpl');
 }
-
-

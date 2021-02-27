@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * @file        Visiteur.php
+ * @brief       Contient la déclaration de la classe Visiteur
+ * @details     Elle permet de récupérer et stocker les données de la table \em \b Visiteur.
+ *              Mais aussi de créer de nouveaux Visiteurs.
+ * @authors     Sadaf MIRZAD, Jordan HERTH, Emilien FUCHS
+ * @version     1.0
+ * @date        2021
+ */
 class Visiteur extends Model {
 
 	protected $_id_visiteur;

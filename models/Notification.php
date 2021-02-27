@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * @file        Notification.php
+ * @brief       Contient la déclaration de la classe Notification
+ * @details     Elle permet de récupérer et stocker les données de la table \em \b Notification.
+ * @authors     Sadaf MIRZAD, Jordan HERTH, Emilien FUCHS
+ * @version     1.0
+ * @date        2021
+ */
 class Notification extends Model {
 
     private $_id_notification;
