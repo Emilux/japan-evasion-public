@@ -14,6 +14,7 @@ require('libs/Smarty.class.php');
 require ('config_bdd.php');
 require ('models/Model.php');
 
+
 function chargerClass($classe){
     require('models/'.$classe.'.php');
 }
@@ -31,5 +32,8 @@ try {
 
 // Initialisation Smarty
 $smarty = new Smarty();
+
+// Appel les utils
+$Utils = new utils();
 
 

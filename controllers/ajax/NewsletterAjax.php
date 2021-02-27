@@ -1,6 +1,6 @@
 <?php
 
-$newsletter = new Newsletter();  
+$newsletter = new Newsletter();
 
 
 $name_newsletter = $_POST['name'];
@@ -16,5 +16,3 @@ $newsletter->setEmail($email_newsletter);
 
 $result = $newsletter->AddNewsletter();
 echo json_encode($result);
-
-

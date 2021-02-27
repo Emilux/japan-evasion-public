@@ -58,47 +58,103 @@ if(isset($_GET['id'])){
 
             $smarty->assign('background', $article->getPhoto_Article());
 
-
-            if(isset($_POST['submit_add'])){
+            //Ajout d'un commentaire ou une reponse
+            if(isset($_POST['submit_add']) || isset($_POST['submit_reponse'])){
+                $erreurs = [];
                 $commentaire->setId_Article($article->getId_Article());
 
-                if (isset($_SESSION['utilisateur'])){
-                    $commentaire->setPseudo_Visiteur($_SESSION['utilisateur']['pseudo_visiteur']);
-                    $commentaire->setEmail_Visiteur($_SESSION['utilisateur']['email_visiteur']);
-                    $commentaire->setId_Visiteur($_SESSION['utilisateur']['id_visiteur']);
-                    $estVisiteur = false;
+                //Vérfie que le contenu du commentaire est bien rempli
+                if (isset($_POST['contenu_commentaire'])){
+                    //Nettoyer les entrées dans les commentaires.
+                    $contenu_commentaire = $Utils->valid_donnees($_POST['contenu_commentaire']);
+                    //Vérifie que le commentaire est bien conforme
+                    if (empty($contenu_commentaire) || strlen($contenu_commentaire) < 5 || strlen($contenu_commentaire) > 555){
+                        $erreurs[] = "Veuillez entrer un commentaire qui fait moins de 555 et plus de 5 caractères .";
+                    }
                 } else {
-                    $commentaire->setPseudo_Visiteur($_POST['pseudo_visiteur']);
-                    $commentaire->setEmail_Visiteur($_POST['email_visiteur']);
-                    $estVisiteur = true;
+                    $erreurs[] = "Veuillez remplir le commentaire.";
                 }
 
-                $commentaire->setContenu_Commentaire($_POST['contenu_commentaire']);
-                if($commentaire->addCommentaire($estVisiteur)){
-                    header('Location: ?page=articles&id='.$_GET['id'].'#espace_commentaire');
+                if (isset($_POST['submit_reponse']) && isset($_POST['id_commentaire'])){
+                    $id_commentaire = $Utils->valid_donnees($_POST['id_commentaire']);
+                    if (empty($id_commentaire)){
+                        $erreurs[] = "Veuillez sélectionner une réponse.";
+                    }
                 }
 
-            }
 
-            //AJOUT REPONSE COMMENTAIRE
-            if(isset($_POST['submit_reponse'])){
-                $commentaire->setId_Article($article->getId_Article());
 
+
+                //Vérifie si c'est un utilisateur ou un visiteur qui commente
                 if (isset($_SESSION['utilisateur'])){
-                    $commentaire->setPseudo_Visiteur($_SESSION['utilisateur']['pseudo_visiteur']);
-                    $commentaire->setEmail_Visiteur($_SESSION['utilisateur']['email_visiteur']);
-                    $commentaire->setId_Visiteur($_SESSION['utilisateur']['id_visiteur']);
-                    $estVisiteur = false;
+
+                    //Si aucune erreur Assigne les informations de l'utilisateur.
+                    if (empty($erreurs)){
+                        $commentaire->setPseudo_Visiteur($_SESSION['utilisateur']['pseudo_visiteur']);
+                        $commentaire->setEmail_Visiteur($_SESSION['utilisateur']['email_visiteur']);
+                        $commentaire->setId_Visiteur($_SESSION['utilisateur']['id_visiteur']);
+                        $estVisiteur = false;
+                    }
                 } else {
-                    $commentaire->setPseudo_Visiteur($_POST['pseudo_visiteur']);
-                    $commentaire->setEmail_Visiteur($_POST['email_visiteur']);
-                    $estVisiteur = true;
+
+                    //Vérfie que le pseudo et l'email sont bien rempli
+                    if (isset($_POST['pseudo_visiteur']) && isset($_POST['email_visiteur'])){
+                        $pseudo_visiteur = $Utils->valid_donnees($_POST['pseudo_visiteur']);
+                        $email_visiteur = $Utils->valid_donnees($_POST['email_visiteur']);
+
+                        //Si c'est un visiteur vérifié que le pseudo et l'email entrés sont bien conformes
+                        if (!empty($pseudo_visiteur) && strlen($pseudo_visiteur) <= 20 && strlen($pseudo_visiteur) >= 3){
+
+                            if (!preg_match("/^[A-Za-z0-9-_]*$/",$pseudo_visiteur))
+                                $erreurs[] = "Seule les lettres, chiffres et underscore (_) ";
+
+                        } else
+                            $erreurs[] = "Veuillez entrer un pseudo qui fait moins de 20 et plus de 3 caractères.";
+
+
+                        if (!empty($email_visiteur) && strlen($pseudo_visiteur) <= 50){
+                            if (filter_var($email_visiteur, FILTER_VALIDATE_EMAIL))
+                                $erreurs[] = "L'adresse e-mail n'est pas valide.";
+                        } else
+                            $erreurs[] = "Veuillez entrer une email qui fait moins de 50 caractères.";
+
+                        //Si aucune erreur Assigne les valeurs données par le visiteur.
+                        if (empty($erreurs)){
+                            $commentaire->setPseudo_Visiteur($_POST['pseudo_visiteur']);
+                            $commentaire->setEmail_Visiteur($_POST['email_visiteur']);
+                            $estVisiteur = true;
+                        }
+                    } else {
+                        $erreurs[] = "Veuillez entrer un pseudo et une email.";
+                    }
+
+
                 }
 
-                $commentaire->setContenu_Commentaire($_POST['contenu_commentaire']);
-                if($commentaire->addReponse($estVisiteur)){
-                    header('Location: ?page=articles&id='.$_GET['id'].'#espace_commentaire');
+                if (empty($erreurs)){
+                    $commentaire->setContenu_Commentaire($contenu_commentaire);
+
+                    //Si c'est un commentaire
+                    if (isset($_POST['submit_add'])){
+                        if($commentaire->addCommentaire($estVisiteur,false)){
+                            header('Location: ?page=articles&id='.$_GET['id'].'#espace_commentaire');
+                        }
+                    }
+                    //Si c'est une réponse
+                    else if (isset($_POST['submit_reponse'])){
+                        if($commentaire->addCommentaire($estVisiteur, true,$id_commentaire)){
+                            header('Location: ?page=articles&id='.$_GET['id'].'#espace_commentaire');
+                        }
+                    }
+
+
+
+
+                } else {
+                    //renvoi les erreurs à la template commentaire.
+                    $smarty->assign('erreurs', $erreurs);
                 }
+
 
             }
 

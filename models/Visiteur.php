@@ -84,7 +84,6 @@ class Visiteur extends Model {
         );
 
         $sql = $sql->execute();
-        var_dump($sql);
         return $sql;
     }
 

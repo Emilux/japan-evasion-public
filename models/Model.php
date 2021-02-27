@@ -64,8 +64,6 @@ class Model {
 
         $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' '.$where.' ORDER BY '.$champs.' '.$order.' '.$limit);
 
-        var_dump('SELECT '.$selecteur.' FROM '.$this->_table.' '.$where.' ORDER BY '.$champs.' '.$order.' '.$limit);
-
         if ($sql)
             $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
         else
@@ -169,8 +167,8 @@ class Model {
         $champs = substr($champs,0,-2);
 
         $sql = $this->_bdd->prepare('INSERT INTO '.$this->_table.'('.$champs.') VALUES ('.$valeurs.')');
-        
-        $sql->execute();
+
+        $sql = $sql->execute();
         return $sql;
 
     }
@@ -214,7 +212,7 @@ class Model {
         }
         else{
 
-            $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table.' WHERE '.$champs.' ='.$valeur);
+            $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table.' WHERE '.$champs.' = "'.$valeur.'"');
 
         }
 

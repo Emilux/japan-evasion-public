@@ -67,8 +67,7 @@ if(isset($_SESSION['utilisateur'])){
 
                         $data['mdp_utilisateur'] = password_hash($_POST['new_mdp_utilisateur'], PASSWORD_DEFAULT);
                         $utilisateur->update($data, $utilisateur->getId_Utilisateur());
-                        
-                        var_dump($data);
+
 
                     } else {
                         echo ('movéz confirmazion modepas');

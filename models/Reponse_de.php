@@ -40,5 +40,14 @@ class Reponse_de extends Model
         $this->_id_reponse = $id_reponse;
     }
 
+    public function AddReponse(){
+        //Création utilisateur
+        $sql = $this->_bdd->prepare(
+            'insert into '.$this->_table.' (id_reponse,id_commentaire) VALUES ("'.$this->getId_Reponse().'", "'.$this->getId_Commentaire().'")'
+        );
+        var_dump($sql);
+        $sql = $sql->execute();
+        return $sql;
+    }
 
 }

@@ -4,36 +4,55 @@
 //a vérifier
 
 class Newsletter extends Model {
-    protected $id_newsletter; 
-    protected $name_newsletter; 
+    protected $id_newsletter;
+    protected $name_newsletter;
     protected $email_newsletter;
- 
 
 
+    /**
+     * @return string
+     */
     public function getName_Newsletter(){
         return $this->_name_newsletter;
     }
+
+    /**
+     * @return string
+     */
     public function getEmail_Newsletter(){
         return $this->_email_newsletter;
     }
+
+    /**
+     * @return int
+     */
     public function getId_Newsletter(){
         return $this->_id_newsletter;
     }
 
+    /**
+     * @param string $name_newsletter
+     */
     public function setName($name_newsletter) {
         $this->_name_newsletter = $name_newsletter;
     }
 
+    /**
+     * @param string $email_newsletter
+     */
     public function setEmail($email_newsletter) {
         $this->_email_newsletter = $email_newsletter;
     }
 
+    /**
+     * @param int $id_newsletter
+     */
     public function setId($id_newsletter) {
         $this->_id_newsletter = $id_newsletter;
     }
 
-    /** Ajout les informations du visiteur à la newsletter
-     *  Return array contenant le message de success ou non de la requête
+    /** Ajoute les informations du visiteur à la table newsletter
+     *  Return array contenant le message de succès ou non de la requête
      *
      * @return array
      */
@@ -52,6 +71,6 @@ class Newsletter extends Model {
         }
         return $data;
     }
-     
+
 
 }

@@ -111,10 +111,15 @@
                 {/foreach}
                 {/if}
 
+
             <h2>Laisser un commentaire</h2>
             <h5>Votre adresse de messagerie ne sera pas publiée. Les champs obligatoires sont indiqués avec *</h5>
-
-            <form method="post" class="needs-validation" novalidate id="repondre">
+            {if isset($erreurs)}
+                {foreach from=$erreurs item=erreur}
+                    <p>{$erreur}</p>
+                {/foreach}
+            {/if}
+            <form method="post" action="#repondre" class="needs-validation" novalidate id="repondre">
                 <div class="form-row">
 
                     <label class="formu">Message *</label>
