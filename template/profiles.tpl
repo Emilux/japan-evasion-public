@@ -154,7 +154,7 @@
                         </div>
                         <div class="col-5 " id="photo-text-img ">
                             <a href={$article->getTemps_Lecture_Article()} target="_blank ">
-                                <img src={$article->getPhoto_Article()} class="img-fluid " style="border:2px black solid" alt="Meow ">
+                                <img src={$article->getPhoto_Article()} class="img-fluid " style="border:2px black solid; height: 231px; object-fit: cover; width: 350px;" >
                             </a>
                         </div>
 

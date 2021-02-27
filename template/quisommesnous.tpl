@@ -34,7 +34,7 @@
         <div class="row justify-content-center">
             <div class="col-9">
                 <h1>
-                    Un couple, <br>des voyages
+                    Un groupe d'amis, <br>des voyages
                 </h1>
                 <p>
                     Nous nous sommes lancés dans l’aventure de Japan-Evasion en 2020, avec la promesse d’une vie plus folle et remplie d’aventures.
