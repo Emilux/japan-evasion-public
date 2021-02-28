@@ -213,7 +213,7 @@ class Model {
      */
     public function Count($champs = NULL, $valeur = NULL)
     {
-        if($champs === NULL && $valeurs === NULL){
+        if($champs === NULL && $valeur === NULL){
 
             $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table);
         }
