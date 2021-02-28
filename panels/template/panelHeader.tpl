@@ -103,8 +103,8 @@
                 </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                Start Bootstrap
+                <div class="small">Connecté en tant que:</div>
+                {$smarty.session.utilisateur.pseudo_visiteur}
             </div>
         </nav>
     </div>

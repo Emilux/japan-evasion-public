@@ -8,7 +8,7 @@ view
 templates_c
 
 ### CSS ###
-*.css
+!panels/assets/css/*.css
 *.css.map
 !slick.css
 !slick-theme.css
