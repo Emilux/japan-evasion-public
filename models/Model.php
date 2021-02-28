@@ -211,16 +211,19 @@ class Model {
      *
      * @return false|int
      */
-    public function Count($champs = NULL, $valeur = NULL)
+    public function Count($champs = NULL, $valeur = NULL, $where=null)
     {
+        if ($where !== null) $where = 'WHERE '.$where;
+
         if($champs === NULL && $valeur === NULL){
 
             $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table);
         }
-        else{
+        else if ($where === null){
 
             $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table.' WHERE '.$champs.' = "'.$valeur.'"');
-
+        } else {
+            $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table.' '.$where);
         }
 
         if ($sql){

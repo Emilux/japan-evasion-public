@@ -22,7 +22,7 @@ if (isset($_SESSION['utilisateur'])) {
     $nbArticlePending = $article->Count('statut_article','PENDING');
 
     //récupérer le contenu de l'utilisateur visionné
-    $utilisateurs = 
+    $utilisateurs = $utilisateur->getList();
 
     //récupérer le contenu de l'utilisateur visionné
     $utilisateur = $utilisateur->getItem('id_utilisateur',$_SESSION['utilisateur']['id_utilisateur']); 
@@ -31,6 +31,7 @@ if (isset($_SESSION['utilisateur'])) {
 
     $smarty->assign(array(
         'utilisateur' => $utilisateur,
+        'utilisateurs' => $utilisateurs,
         'nbUtilisateur' => $nbUtilisateur,
         'nbCommentaire' => $nbCommentaire,
         'nbArticle' => $nbArticle,

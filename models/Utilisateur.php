@@ -169,6 +169,41 @@ class Utilisateur extends Visiteur {
         $this->_date_creation_utilisateur = $date_creation_utilisateur;
     }
 
+    /** Cherche la liste des utilisateurs dans la base de donnée
+     * et return an array of object ou false
+     *
+     *
+     * @param int|null $limit
+     * @param string $order
+     * @param string $champs
+     * @param string $selecteur
+     * @param string|null $where
+     *
+     * @return array|false
+     */
+    public function getList(int $limit=null, $order = 'DESC', $champs = 'id',$selecteur = '*',string $where=null){
+        if ($where !== null) $where = 'WHERE '.$where;
+        if ($limit !== null) $limit = 'LIMIT '.$limit;
+        if ($champs === 'id') $champs = $champs.'_'.$this->_table;
+        $lists = [];
+
+        $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur '.$where.' ORDER BY '.$champs.' '.$order.' '.$limit);
+
+        if ($sql)
+            $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
+        else
+            return false;
+
+        if ($sql){
+            foreach($sql as $donnees){
+
+                $lists[] = new $this->_table($donnees);
+            }
+            return $lists;
+        }
+        return false;
+    }
+
 
     /**
      * Cette fonction récupère un utilisateur et le visiteur auquel il est attaché

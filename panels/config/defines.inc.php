@@ -12,6 +12,8 @@ if (isset($_SERVER['HTTP_HOST'])){
     exit();
 }
 
+// Define du dossier Global des assets
+define('_AST_', _PATH_ . 'assets/');
 
 // Define du dossier Coeur
 define('_MDL_', _PATH_ . 'models/');
@@ -29,7 +31,7 @@ define('_TPL_', _PATH_ . 'template/');
 define('_LOGS_', _PATH_ . 'logs/');
 
 // Define du dossier des AJAX
-define('_AJX_', _PATH_ . _CTRL_ . 'ajax/');
+define('_AJX_', 'ajax/');
 
 // Define du dossier des PANELS
 define('_PNL_', _CTRL_.'panel/Panel');

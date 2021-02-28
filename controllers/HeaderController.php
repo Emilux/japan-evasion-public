@@ -40,7 +40,6 @@ if (isset($_COOKIE['JUID']) && !isset($_SESSION['utilisateur'])){
         //Renouveller le cookie pour une semaine
         setcookie('JUID', $utilisateur_cookie->getId_Utilisateur().'::'.password_hash($info, PASSWORD_DEFAULT), time() + 60*60*24*7, null, null, false, true);
     } else {
-
         //Detruire le cookie
         setcookie('JUID', '', time() - 3600, null, null, false, true);
     }
