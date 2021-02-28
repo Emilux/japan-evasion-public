@@ -212,9 +212,14 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                                 <div class="dropdown-header">Action :</div>
+                                                    {if $estRole->getNom_Role() !== "membre"}
+                                                        <a class="dropdown-item" href="#">Rétrograder</a>
+                                                    {/if}
+
+                                                    {if $estRole->getNom_Role() !== "administrateur"}
+                                                        <a class="dropdown-item" href="#">Promouvoir</a>
+                                                    {/if}
                                                     <a class="dropdown-item" href="#">Bannir</a>
-                                                    <a class="dropdown-item" href="#">Rétrograder</a>
-                                                    <a class="dropdown-item" href="#">Promouvoir</a>
                                                     <a class="dropdown-item text-danger" href="#">Supprimer</a>
                                                 </div>
                                             </div>

@@ -41,7 +41,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../">
                 
                 <img class="img" src="../assets/media/image-index/japan-evasion-logo.png" width="200" alt="logo">
                 
@@ -245,6 +245,10 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="../">
+                                    <i class="fas fa-door-open fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Retour vers l'accueil
+                                </a>
                                 <a class="dropdown-item" href="../?page=profiles&utilisateur={$utilisateur_header->getPseudo_Visiteur()}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Mon profil

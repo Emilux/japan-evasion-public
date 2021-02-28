@@ -3,6 +3,9 @@
 //charge le fichier de configuration.
 require('./config/config_init.php');
 
+//Verification des informations de connexion
+require (_CTRL_.'VerifController.php');
+
 $ajax = FALSE;
 
 /* ROUTER */

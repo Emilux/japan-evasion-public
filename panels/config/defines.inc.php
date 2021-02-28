@@ -25,7 +25,7 @@ define('_CTRL_', _PATH_. 'controllers/');
 define('_CONFIG_', _PATH_ . 'config/');
 
 // Define du dossier des templates
-define('_TPL_', _PATH_ . 'template/');
+define('_TPL_', 'template/');
 
 // Define du dossier des logs
 define('_LOGS_', _PATH_ . 'logs/');

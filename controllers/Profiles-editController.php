@@ -48,14 +48,6 @@ if(isset($_SESSION['utilisateur'])){
             //UPDATE DE L'UTILISATEUR (ajouter update inner visiteur)
             $utilisateur->Update($data, $_SESSION['utilisateur']['id_visiteur']);
 
-            //CHANGER LE PSEUDO DE L'UTILISATEUR ET SON EMAIL DANS LA SESSION SI ILS SONT CHANGES
-            if(isset($_POST['pseudo_visiteur'])){
-                $_SESSION['utilisateur']['pseudo_visiteur'] = $_POST['pseudo_visiteur'];
-            }
-            if(isset($_POST['email_visiteur'])){
-                $_SESSION['utilisateur']['email_visiteur'] = $_POST['email_visiteur'];
-            }
-            
         }
 
             //CHANGER MOT DE PASSE
