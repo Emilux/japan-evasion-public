@@ -4,7 +4,7 @@ $smarty->assign('page', 'panelIndex');
 $utilisateur = new Utilisateur();
 $commentaire = new Commentaire();
 $article = new Article();
-
+$role = new Role();
 
 
 if (isset($_SESSION['utilisateur'])) {
@@ -24,6 +24,10 @@ if (isset($_SESSION['utilisateur'])) {
     //récupérer le contenu de l'utilisateur visionné
     $utilisateurs = $utilisateur->getList();
 
+
+
+
+
     //récupérer le contenu de l'utilisateur visionné
     $utilisateur = $utilisateur->getItem('id_utilisateur',$_SESSION['utilisateur']['id_utilisateur']); 
 
@@ -36,6 +40,7 @@ if (isset($_SESSION['utilisateur'])) {
         'nbCommentaire' => $nbCommentaire,
         'nbArticle' => $nbArticle,
         'nbArticlePending' => $nbArticlePending,
+        'role' => $role,
         ));
 
 }

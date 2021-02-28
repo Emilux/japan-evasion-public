@@ -91,7 +91,7 @@ class Utilisateur extends Visiteur {
     /**
      * @return mixed
      */
-    public function getId_Date_Creation_Utilisateur(){
+    public function getDate_Creation_Utilisateur(){
         return $this->_date_creation_utilisateur;
     }
 
@@ -165,7 +165,7 @@ class Utilisateur extends Visiteur {
     /**
      * @param $date_creation_utilisateur
      */
-    public function setId_Date_Creation_Utilisateur($date_creation_utilisateur){
+    public function setDate_Creation_Utilisateur($date_creation_utilisateur){
         $this->_date_creation_utilisateur = $date_creation_utilisateur;
     }
 

@@ -215,16 +215,35 @@
                                     </tfoot>
                                     <tbody>
                                     {foreach from=$utilisateurs item=utilisateurInfo}
+                                    {assign var=estRole value=$role->getItem('id_role',$utilisateurInfo->getId_Role())}
                                         <tr>
                                             <td>{$utilisateurInfo->getNom_Utilisateur()} {$utilisateurInfo->getPrenom_Utilisateur()}</td>
                                             <td>{$utilisateurInfo->getPseudo_Visiteur()}</td>
                                             <td>{$utilisateurInfo->getEmail_Visiteur()}</td>
-                                            <td>Age</td>
-                                            <td>Date création compte</td>
-                                            <td>Rôle</td>
-                                            <td>Newsletter</td>
-                                            <td>Banni</td>
-                                            <td>Action</td>
+                                            <td>{if $utilisateurInfo->getDate_Naissance_Utilisateur() !== null}{floor((time() - strtotime($utilisateurInfo->getDate_Naissance_Utilisateur())) / 31556926)}{/if}</td>
+                                            <td>{$utilisateurInfo->getDate_Creation_Utilisateur()|date_format:"%d/%m/%Y à %R"}</td>
+                                            <td>{$estRole->getNom_Role()|capitalize}</td>
+                                            <td>{if $utilisateurInfo->getNewsletter_Visiteur() === 0}Inscrit{else}Non inscrit{/if}</td>
+                                            <td>{if $utilisateurInfo->getBanni_Utilisateur() === 0}Banni{else}Non banni{/if}</td>
+                                            <td>
+                                            <div class="dropdown no-arrow">
+                                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                   <span class="btn btn-dark">Action <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> </span>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                                <div class="dropdown-header">Action :</div>
+                                                    <a class="dropdown-item" href="#">Bannir</a>
+                                                    <a class="dropdown-item" href="#">Rétrograder</a>
+                                                    <a class="dropdown-item" href="#">Promouvoir</a>
+                                                    <a class="dropdown-item text-danger" href="#">Supprimer</a>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            
+                                            
+                                            </td>
                                         </tr>
                                     {/foreach}
                                     </tbody>

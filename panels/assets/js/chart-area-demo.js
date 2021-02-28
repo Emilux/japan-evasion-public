@@ -1,6 +1,6 @@
 //AJAX LOAD
-function loadData(callBackLoadData,area){
-    $.ajax("./?ajax=nbCompte", {
+function loadData(callBackLoadData, area) {
+    $.ajax("./?ajax=audience", {
         method: "POST",
         dataType: "JSON",
         beforeSend: function() {
@@ -18,7 +18,7 @@ function loadData(callBackLoadData,area){
     });
 }
 
-function callBackLoadData(result){
+function callBackLoadData(result) {
     console.log(result);
     var ctx = document.getElementById("myAreaChart");
     var myLineChart = new Chart(ctx, {
@@ -100,7 +100,7 @@ function callBackLoadData(result){
     });
 }
 
-loadData(callBackLoadData,'#compteGraphique');
+loadData(callBackLoadData, '#compteGraphique');
 
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';

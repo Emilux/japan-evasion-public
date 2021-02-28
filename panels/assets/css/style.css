@@ -1,0 +1,16 @@
+body {
+    font-family: 'Mulish' !important;
+}
+
+#accordionSidebar {
+    background-image: none;
+    background-color: #1E1E1E !important;
+}
+
+.img-profile {
+    object-fit: cover !important;
+}
+
+.card-header h6 {
+    color: #1E1E1E !important;
+}
