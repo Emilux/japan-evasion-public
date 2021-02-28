@@ -3,7 +3,7 @@ $utilisateur = new Utilisateur();
 $data['success'] = true;
 $data['count'] = [];
 
-for($i = 0; $i < 12; $i++){
+for($i = 1; $i < 12; $i++){
     $utilisateurCount = $utilisateur->Count('', '', 'YEAR(CURRENT_DATE) = '.date("Y").' AND MONTH(CURRENT_DATE) = '.$i);
 
     if ($utilisateurCount === FALSE){

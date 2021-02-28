@@ -24,11 +24,11 @@ function callBackLoadData(result) {
     var myPieChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ["Direct", "Referral", "Social"],
+            labels: ["Visiteurs", "Membres", "Rédacteurs", "Modérateurs", "Administrateurs"],
             datasets: [{
                 data: result['count'],
-                backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-                hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                backgroundColor: ['#787878', '#1e1e1e', '#248899', '#03384C', '#7A0A11'],
+                hoverBackgroundColor: ['#4b4b4b', '#1b1b1b', '#207a8a', '#1c4757', '#62080e'],
                 hoverBorderColor: "rgba(234, 236, 244, 1)",
             }],
         },
@@ -53,7 +53,7 @@ function callBackLoadData(result) {
 
 }
 
-loadData(callBackLoadData, '#compteGraphique');
+loadData(callBackLoadData, '#proportionGraphique');
 
 
 // Set new default font family and font color to mimic Bootstrap's default styling

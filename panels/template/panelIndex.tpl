@@ -2,12 +2,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Tableau de bord</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
+                    
 
                     <!-- Content Row -->
                     <div class="row">
@@ -18,7 +13,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                                                 NOMBRE D'UTILISATEURS</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{$nbUtilisateur}</div>
                                         </div>
@@ -36,8 +31,8 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                NOMBRE DE COMMENTAIRE</div>
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                                NOMBRE DE COMMENTAIRES</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{$nbCommentaire}</div>
                                         </div>
                                         <div class="col-auto">
@@ -54,13 +49,13 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">NOMBRE D'ARTICLE
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                            NOMBRE D'ARTICLES
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{$nbArticle}</div>
                                                 </div>
-                                                
                                             </div>
                                         </div>
                                         
@@ -78,7 +73,8 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">ARTICLE EN ATTENTE
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                            ARTICLE EN ATTENTE
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -112,21 +108,8 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Audience</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="m-0 font-weight-bold text-primary">Audience {$smarty.now|date_format:"%Y "}</h6>
+                                    
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -144,35 +127,28 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Proportions rôles</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
+                                    <div class="chart-pie pt-4 pb-2" id="proportionGraphique">
                                         <canvas id="myPieChart"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Visiteurs
+                                            <i class="fas fa-circle " style="color : #787878;"></i> Visiteurs
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Utilisateurs
+                                            <i class="fas fa-circle " style="color : #1e1e1e;"></i> Membres
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Redacteurs
+                                            <i class="fas fa-circle " style="color : #248899;"></i> Rédacteurs
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color : #03384C;"></i> Modérateurs
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color : #7A0A11;"></i> Administrateurs
                                         </span>
                                     </div>
                                 </div>
@@ -189,6 +165,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Avatar</th>
                                             <th>Nom / Prénom</th>
                                             <th>Pseudo</th>
                                             <th>Email</th>
@@ -202,6 +179,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>Avatar</th>
                                             <th>Nom / Prénom</th>
                                             <th>Pseudo</th>
                                             <th>Email</th>
@@ -217,9 +195,10 @@
                                     {foreach from=$utilisateurs item=utilisateurInfo}
                                     {assign var=estRole value=$role->getItem('id_role',$utilisateurInfo->getId_Role())}
                                         <tr>
+                                            <td><div style="width : 64px; height : 64px;"><img style="width : 100%; height : 64px; object-fit : cover;" src="{if strpos($utilisateurInfo->getAvatar_Utilisateur(),'assets')}.{/if}{$utilisateurInfo->getAvatar_Utilisateur()}"/></div></td>
                                             <td>{$utilisateurInfo->getNom_Utilisateur()} {$utilisateurInfo->getPrenom_Utilisateur()}</td>
                                             <td>{$utilisateurInfo->getPseudo_Visiteur()}</td>
-                                            <td>{$utilisateurInfo->getEmail_Visiteur()}</td>
+                                            <td>{$utilisateurInfo->getEmail_Visiteur()|lower}</td>
                                             <td>{if $utilisateurInfo->getDate_Naissance_Utilisateur() !== null}{floor((time() - strtotime($utilisateurInfo->getDate_Naissance_Utilisateur())) / 31556926)}{/if}</td>
                                             <td>{$utilisateurInfo->getDate_Creation_Utilisateur()|date_format:"%d/%m/%Y à %R"}</td>
                                             <td>{$estRole->getNom_Role()|capitalize}</td>

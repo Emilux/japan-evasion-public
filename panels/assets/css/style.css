@@ -14,3 +14,24 @@ body {
 .card-header h6 {
     color: #1E1E1E !important;
 }
+
+.card {
+    border-left: 3.5px solid #353535 !important;
+}
+
+.bg-info {
+    background-color: #353535 !important;
+}
+
+.h5 {
+    color: #7A0A11 !important;
+}
+
+.sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,
+.sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
+    background-color: #151515 !important;
+}
+
+.topbar {
+    background-color: #1E1E1E !important;
+}
