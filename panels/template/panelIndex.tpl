@@ -156,9 +156,11 @@
                         </div>
                     </div>
 
+
   <div class="card shadow mb-4">
+
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Base de données utilisateur</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Liste utilisateurs</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -208,7 +210,7 @@
                                             <div class="dropdown no-arrow">
                                                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                   <span class="btn btn-dark">Action <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> </span>
+                                                   <span class="btn-japan-dark btn btn-dark">Action <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> </span>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                                 <div class="dropdown-header">Action :</div>
@@ -228,6 +230,10 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            
+
+
                         </div>
                     </div>
 
