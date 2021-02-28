@@ -97,7 +97,6 @@ class Commentaire extends Utilisateur {
 
             //Créer visiteur
             if ($visiteur->creerVisiteur()) {
-                echo 'user crée';
 
                 //Récuperer id_visiteur du visiteur créer
                 $visiteur = $visiteur->getItem('pseudo_visiteur', $this->getPseudo_Visiteur(), 'id_visiteur');
