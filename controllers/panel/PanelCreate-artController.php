@@ -11,13 +11,13 @@ if (isset ($_POST['submit_article'])) {
     $contenu_article = $Utils->valid_donnees($_POST['contenu_article']);
     
 
-
+    var_dump($_FILES);
 
     if($_FILES['photo_article']['error'] == 0){
         $resultat = move_uploaded_file($_FILES['photo_article']['tmp_name'], '../assets/media/article/'.$_FILES['photo_article']['name']);
         
         
-        $article->setPhoto_Article('./assets/media/article/'.$_FILES['photo_article']['name']);
+        $article->setPhoto_Article('assets/media/article/'.$_FILES['photo_article']['name']);
 
         if(!$resultat){
             $smarty->assign('error', 'Une erreur est survenue lors du déplacement du fichier');
