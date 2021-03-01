@@ -47,5 +47,20 @@ class Follow extends Model {
 		$this->_id_followed = $id_followed;
     }
 
+    public function doFollow(){
+      
+      $query = 'INSERT INTO follow ( id_follower, id_followed ) VALUES ("'.$this->getId_Follower().'" , "'.$this->getId_Followed().'" )';
+      $stmt = $this->_bdd->prepare($query);
+      $success = $stmt->execute();
+      if($success){
+        $data['success'] = TRUE;
+        $data['message'] = 'weldone';
+      } else {
+        $data['success'] = FALSE;
+        $data['message'] = 'not weldone';
+      }
+      return $data;
+    }
+
 
 }

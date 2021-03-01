@@ -37,37 +37,40 @@
         <!-- FOLLOWERS, ARTICLES, LIKE -->
 
         <div class="profile-images-card buttons  py-3">
-            <div class="row">
+            <form method="get" id="form-follow" action="./?ajax=follow">
+                <div class="row">
 
-                <ul class="text-center pr-3 pl-3">
-                    <li class="number-profil">{$followers}</li>
-                    <li>
-                        <h3 class="mt-3">FOLLOWERS</h3>
-                    </li>
-                </ul>
+                    <ul class="text-center pr-3 pl-3">
+                        <li class="number-profil">{$followers}</li>
+                        <li>
+                            <h3 class="mt-3">FOLLOWERS</h3>
+                        </li>
+                    </ul>
 
-                <ul class="text-center pr-3 pl-3">
-                    <li class="number-profil">{$commente}</li>
-                    <li>
-                        <h3 class="mt-3">COMMENTAIRE</h3>
-                    </li>
-                </ul>
+                    <ul class="text-center pr-3 pl-3">
+                        <li class="number-profil">{$commente}</li>
+                        <li>
+                            <h3 class="mt-3">COMMENTAIRE</h3>
+                        </li>
+                    </ul>
 
-                <ul class="text-center pr-3 pl-3">
-                    <li class="number-profil">{$nbArticle}</li>
-                    <li>
-                        <h3 class="mt-3">ARTICLE</h3>
-                    </li>
-                </ul>
+                    <ul class="text-center pr-3 pl-3">
+                        <li class="number-profil">{$nbArticle}</li>
+                        <li>
+                            <h3 class="mt-3">ARTICLE</h3>
+                        </li>
+                    </ul>
 
-            </div>
+                </div>
 
-            <!-- BUTTON FOLLOW -->
-            {if $connecte}
-            <div class="button ml-0 mt-4 d-flex flex-row align-items-center py-3 ">
-                <button class="btn-dark btn-sm btn-outline-dark w-100 "><i class="fas fa-bell "></i>  SUIVRE</button>
-            </div>
-            {/if}
+                <!-- BUTTON FOLLOW -->
+                {if $connecte && $smarty.session.utilisateur.pseudo_visiteur !== $utilisateur->getPseudo_Visiteur()}
+                <div class="button ml-0 mt-4 d-flex flex-row align-items-center py-3 ">
+                    <input type="hidden" name="id_followed" value="{$utilisateur->getId_Utilisateur()}" >
+                    <button class="btn-dark btn-sm btn-outline-dark following w-100" id="followbtn" name="followbtn"><i class="fas fa-bell "></i>  SUIVRE</button>
+                </div>
+                {/if}
+            </form>    
         </div>
     </div>
 </div>

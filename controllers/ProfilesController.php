@@ -25,6 +25,8 @@ if(isset($_GET['utilisateur'])){
 
         $nbFollower = $followers->count('id_followed', $utilisateur->getId_Utilisateur());
 
+        $isFollower = $followers->Count('','');
+
         $nbCommentaire = $commentaire->count('id_visiteur', $utilisateur->getId_Visiteur());
 
         $nbArticle = $article->count('id_utilisateur', $utilisateur->getId_Utilisateur());
@@ -42,6 +44,7 @@ if(isset($_GET['utilisateur'])){
             'nbArticle' =>$nbArticle,
             'carnet' => $carnet,
             'followers' => $nbFollower,
+            'isFollower' => $isFollow,
             'commentaires' => $ActiviteCommentaire,
             'articles' => $ActiviteArticle,
             'nom_role' => $nom_role,
@@ -53,9 +56,12 @@ if(isset($_GET['utilisateur'])){
         header('Location: ./#exampleModal');
         exit();
     }
+
+
     
 } else {
     header('Location: ./');
     exit();
 }
+
 

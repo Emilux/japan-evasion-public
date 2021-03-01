@@ -62,20 +62,37 @@ class Newsletter extends Model {
      * @return array
      */
     public function AddNewsletter()
-    {
-        $query = 'INSERT INTO `newsletter`(`email_newsletter` , `name_newsletter`  ) VALUES("'.$this->getEmail_Newsletter().'", "'.$this->getName_Newsletter().'"  )';
-        $stmt = $this->_bdd->prepare($query);
-        //$stmt->bind_param("ss",$this->_email_newsletter, $this->_name_newsletter );
-        $success = $stmt->execute();
-        if($success) {
-            $data['success'] = TRUE;
-            $data['message'] = "Hi ".$this->_name_newsletter."!<br />Thank you for submitting your information.";
-        } else if ($stmt->errno) {
-            $data['success'] = FALSE;
-            $data['message'] = $stmt->error;
+    {   
+    if ($this->_name_newsletter !=="" && $this->_email_newsletter !== "") { 
+
+         $query = ('SELECT * FROM newsletter WHERE email_newsletter = "'.$this->getEmail_Newsletter().'"');
+         $stmt = $this->_bdd->prepare($query);
+         if($stmt->execute()){
+             if($stmt->rowCount() > 0){
+                $data['message'] = 'email exist';
+                
+            
+            }else{ 
+               
+                $query = 'INSERT INTO `newsletter`(`email_newsletter` , `name_newsletter`  ) VALUES("'.$this->getEmail_Newsletter().'", "'.$this->getName_Newsletter().'"  )';
+                $stmt = $this->_bdd->prepare($query);   
+                $success = $stmt->execute();
+                    if($success) {
+                        $data['success'] = TRUE;
+                        $data['message'] = "Hi ".$this->_name_newsletter."!<br />Thank you for submitting your information.";
+                    } else if ($stmt->errno) {
+                        $data['success'] = FALSE;
+                        $data['message'] = $stmt->error;
+                    }
+                
+                }
+            }
+        }else{
+            $data['message'] = 'Please fill all the  fields';
+ 
         }
         return $data;
-    }
+    }  
 
 
 }

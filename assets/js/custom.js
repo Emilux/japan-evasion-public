@@ -32,3 +32,26 @@ $('.reponse-commentaire').on('click', function(e) {
     e.preventDefault();
     $(`*[data-commentaire="${$(this).data('cible')}"]`).toggle()
 })
+
+
+//FOLLOWING BUTTON
+$('#followbtn').on('click', function(e){
+    e.preventDefault();
+    var formdata = $('#form-follow').serialize();
+    console.log(formdata)
+
+    $.ajax("./?ajax=follow", {
+        method: "GET",
+        dataType: "JSON",
+        data: formdata,
+    }).done(function(follower) {
+        if (follower.success) {
+            console.log(follower);
+            $('button.following').text('UNSUIVRE');
+        } else {
+            console.log(follower);
+        }
+    }).fail(function(xhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+    });
+});

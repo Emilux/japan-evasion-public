@@ -42,8 +42,7 @@ if(isset($_GET['id'])){
             $nbCommentaire = $commentaire->count('id_article', $article->getId_Article());
 
             //récupérer les commentaires sous l'article
-            $commentaires = $commentaire->getList(5,'DESC','datetime_commentaire','*','id_article = '.$article->getId_Article());
-
+            $commentaires = $commentaire->getList(5,'DESC','datetime_commentaire','*','id_article = '.$article->getId_Article()); 
             //Envoie des informations récupéré pour des différentes entités à smarty
             $smarty->assign(array(
                 'article' => $article,
