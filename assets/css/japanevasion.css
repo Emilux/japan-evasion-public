@@ -703,6 +703,14 @@ body {
     border: 1px solid black;
 }
 
+.popup .form-control.wrong{
+    border: 1px solid red;
+}
+
+.popup .form-check-input.wrong{
+    outline: 2px red solid;
+}
+
 .popup .modal-content {
     background-color: rgba(255, 255, 255, 0.9);
 }

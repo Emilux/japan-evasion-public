@@ -11,7 +11,7 @@
                         <!-- FORMULAIRE DE CONNEXION -->
                         <div class="col p-5 log">
                             <h2>S'IDENTIFIER</h2>
-                            <form action="" method="post">
+                            <form method="post" id="connexion_form">
                                 <div class="form-group">
                                      <label for="email_utilisateur">E-mail</label>
                                     <input class="form-control" id="email_utilisateur" type="text" name="email_utilisateur" placeholder="Votre e-mail ici..">
@@ -28,7 +28,10 @@
                                     </div>
                                 </div>
 
-                                <input class="btn btn-dark" type="submit" name="connexion" value="CONNEXION">
+                                <input type="hidden" name="connexion">
+                                <input id="connexion_form_submit" class="btn btn-dark" type="submit" name="connexion_form_submit" value="CONNEXION">
+                                <div id="conError">
+                                </div>
                             </form>
                         </div>
 
@@ -69,9 +72,11 @@
                                         <label class="form-check-label pt-0" for="cgu">J'ai lu et accepte les conditions générales d'utilisation</label>
                                     </div>
                                 </div>
-
+                                <input type="hidden" name="creer_compte">
                                 <input id="submit_creer_compte" class="btn btn-dark" type="submit" name="creer_compte" value="CRÉER UN COMPTE">
                             </form>
+                            <div id="regError">
+                            </div>
                             <p>{if isset($smarty.get.creer_compte)}
                                     {$smarty.get.creer_compte}
                             {/if}</p>

@@ -33,6 +33,7 @@ if (!$ajax){
     require (_CTRL_.'HeaderController.php');
     require (_CTRL_.'CompteController.php');
 
+    if ($smarty->getTemplateVars('page') !== null)
     //Affiche la template de base du site
     $smarty->display(_TPL_.'template.tpl');
 }
