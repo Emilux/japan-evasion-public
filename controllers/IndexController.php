@@ -12,7 +12,7 @@ if (isset($_GET['recherche'])){
     
 }
 else {
-    $article = $article->getList('5');
+    $article = $article->getList('5', 'DESC','date_publication_article', '*', 'statut_article != "PENDING"');
 }
 
 
