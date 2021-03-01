@@ -41,7 +41,7 @@
                 <div class="row">
 
                     <ul class="text-center pr-3 pl-3">
-                        <li class="number-profil">{$followers}</li>
+                        <li id="nbFollower" class="number-profil">{$followers}</li>
                         <li>
                             <h3 class="mt-3">FOLLOWERS</h3>
                         </li>
@@ -67,7 +67,12 @@
                 {if $connecte && $smarty.session.utilisateur.pseudo_visiteur !== $utilisateur->getPseudo_Visiteur()}
                 <div class="button ml-0 mt-4 d-flex flex-row align-items-center py-3 ">
                     <input type="hidden" name="id_followed" value="{$utilisateur->getId_Utilisateur()}" >
-                    <button class="btn-dark btn-sm btn-outline-dark following w-100" id="followbtn" name="followbtn"><i class="fas fa-bell "></i>  SUIVRE</button>
+                    {if $isFollower > 0}
+                    <button class="btn-dark btn-sm btn-outline-dark following w-100" id="followbtn" name="followbtn"><i class="fas fa-bell "></i><span id="followButtonText"> NE PLUS SUIVRE</span></button>
+                    {else}
+                    <button class="btn-dark btn-sm btn-outline-dark following w-100" id="followbtn" name="followbtn"><i class="fas fa-bell "></i> <span id="followButtonText"> SUIVRE </span></button>
+                    {/if}
+                    
                 </div>
                 {/if}
             </form>    

@@ -46,8 +46,9 @@ $('#followbtn').on('click', function(e){
         data: formdata,
     }).done(function(follower) {
         if (follower.success) {
-            console.log(follower);
-            $('button.following').text('UNSUIVRE');
+            console.log(follower.count);
+            $('#nbFollower').text(follower.count);
+            $('#followButtonText').text(follower.message);
         } else {
             console.log(follower);
         }

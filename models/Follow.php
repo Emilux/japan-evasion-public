@@ -48,13 +48,15 @@ class Follow extends Model {
     }
 
     public function doFollow(){
-      
+    
       $query = 'INSERT INTO follow ( id_follower, id_followed ) VALUES ("'.$this->getId_Follower().'" , "'.$this->getId_Followed().'" )';
       $stmt = $this->_bdd->prepare($query);
       $success = $stmt->execute();
       if($success){
+        $nbFollower = $this->Count('','','id_followed = '.$this->getId_Followed());
         $data['success'] = TRUE;
-        $data['message'] = 'weldone';
+        $data['message'] = 'NE PLUS SUIVRE';
+        $data['count'] = $nbFollower;
       } else {
         $data['success'] = FALSE;
         $data['message'] = 'not weldone';

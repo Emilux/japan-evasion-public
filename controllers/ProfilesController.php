@@ -25,8 +25,8 @@ if(isset($_GET['utilisateur'])){
 
         $nbFollower = $followers->count('id_followed', $utilisateur->getId_Utilisateur());
 
-        $isFollower = $followers->Count('','');
-
+        $isFollower = $followers->count('','','id_follower = '.$_SESSION['utilisateur']['id_utilisateur'].' AND '.' id_followed = '.$utilisateur->getId_Utilisateur());
+ 
         $nbCommentaire = $commentaire->count('id_visiteur', $utilisateur->getId_Visiteur());
 
         $nbArticle = $article->count('id_utilisateur', $utilisateur->getId_Utilisateur());
@@ -44,7 +44,7 @@ if(isset($_GET['utilisateur'])){
             'nbArticle' =>$nbArticle,
             'carnet' => $carnet,
             'followers' => $nbFollower,
-            'isFollower' => $isFollow,
+            'isFollower' => $isFollower,
             'commentaires' => $ActiviteCommentaire,
             'articles' => $ActiviteArticle,
             'nom_role' => $nom_role,
