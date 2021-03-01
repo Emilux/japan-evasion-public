@@ -115,7 +115,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="text-white py-2 collapse-inner rounded">
-                        <a class="collapse-item text-white" href="?page=list-user"><i class="fas fa-list fa-fw mr-1"></i> Liste utilisateurs</a>
+                        <a class="collapse-item text-white" href="?page=utilisateur"><i class="fas fa-list fa-fw mr-1"></i> Liste utilisateurs</a>
                         <a class="collapse-item text-white" href="?page=create-user"><i class="fas fa-user-plus fa-fw mr-1"></i> Créer un utilisateur</a>
                     </div>
                 </div>

@@ -1611,7 +1611,21 @@ a {
 .nav-link:hover {
     color: #91060e !important;
 }
-
+/* ALERT NOTIFICATION ET DROWPDOWN */
+.fa-bell {
+    font-size: 20px !important;
+}
+.badge-counter {
+    font-weight: 100 !important;
+    bottom: 42px !important;
+}
+.badge-counter {
+    position:absolute;
+    transform:scale(.7);
+    bottom: 20px !important;
+    left: 16px;
+    
+}
 
 /* DROPDOWN NAV */
 
@@ -1639,6 +1653,7 @@ a {
     font-size: small;
     text-align: left;
 }
+
 
 .dropdown-item:hover {
     color: black !important;
