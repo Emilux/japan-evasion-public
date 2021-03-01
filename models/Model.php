@@ -175,6 +175,8 @@ class Model {
 
         $sql = $this->_bdd->prepare('INSERT INTO '.$this->_table.'('.$champs.') VALUES ('.$valeurs.')');
 
+        var_dump($sql);
+
         $sql = $sql->execute();
         return $sql;
 

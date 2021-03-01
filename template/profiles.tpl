@@ -68,9 +68,9 @@
                 <div class="button ml-0 mt-4 d-flex flex-row align-items-center py-3 ">
                     <input type="hidden" name="id_followed" value="{$utilisateur->getId_Utilisateur()}" >
                     {if $isFollower > 0}
-                    <button class="btn-dark btn-sm btn-outline-dark following w-100" id="followbtn" name="followbtn"><i class="fas fa-bell "></i><span id="followButtonText"> NE PLUS SUIVRE</span></button>
+                    <button class="btn-dark btn-sm btn-outline-dark following w-100" id="followbtn" name="followbtn"><span id="followButtonText"> NE PLUS SUIVRE</span></button>
                     {else}
-                    <button class="btn-dark btn-sm btn-outline-dark following w-100" id="followbtn" name="followbtn"><i class="fas fa-bell "></i> <span id="followButtonText"> SUIVRE </span></button>
+                    <button class="btn-dark btn-sm btn-outline-dark following w-100" id="followbtn" name="followbtn"><span id="followButtonText"> SUIVRE </span></button>
                     {/if}
                     
                 </div>

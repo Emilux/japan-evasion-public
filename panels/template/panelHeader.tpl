@@ -22,8 +22,11 @@
     
     
     <!-- Custom styles for this template-->
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+
 
 
     <!-- Custom styles for this page -->
@@ -74,10 +77,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
-                        <a class="collapse-item text-white" href="?page=list-art"><i class="fas fa-list fa-fw mr-1"></i> Liste articles</a>
-                        <a class="collapse-item text-white" href="?page=pending-art"><i class="fas fa-hourglass-start fa-fw mr-1"></i> Articles en attente</a>
+                        <a class="collapse-item text-white" href="?page=article"><i class="fas fa-list fa-fw mr-1"></i> Liste articles</a>
                         <a class="collapse-item text-white" href="?page=create-art"><i class="fas fa-plus fa-fw mr-1"></i> Créer article</a>
-                        <a class="collapse-item text-white" href="?page=list-signals-art"><i class="fas fa-exclamation fa-fw mr-1"></i> Liste signalement</a>
                     </div>
                 </div>
             </li>
@@ -92,8 +93,7 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
-                        <a class="collapse-item text-white" href="?page=list-com"><i class="fas fa-list fa-fw mr-1"></i> Liste commentaire</a>
-                        <a class="collapse-item text-white" href="?page=list-signals-com"><i class="fas fa-exclamation fa-fw mr-1"></i> Liste signalement</a>
+                        <a class="collapse-item text-white" href="?page=commentaire"><i class="fas fa-list fa-fw mr-1"></i> Liste commentaire</a>
                     </div>
                 </div>
             </li>
@@ -238,9 +238,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{$utilisateur->getPseudo_Visiteur()}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{$utilisateur_header->getPseudo_Visiteur()}</span>
                                 <img class="img-profile rounded-circle"
-                                     src="{if strpos($utilisateur->getAvatar_Utilisateur(),'assets')}.{/if}{$utilisateur->getAvatar_Utilisateur()}">
+                                     src="{if strpos($utilisateur_header->getAvatar_Utilisateur(),'assets')}.{/if}{$utilisateur_header->getAvatar_Utilisateur()}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

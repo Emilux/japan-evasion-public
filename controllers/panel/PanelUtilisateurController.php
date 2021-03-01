@@ -1,10 +1,11 @@
 <?php
-$smarty->assign('page', 'panelIndex');
+$smarty->assign('page', 'panelUtilisateur');
 
 $utilisateur = new Utilisateur();
 $commentaire = new Commentaire();
 $article = new Article();
 $role = new Role();
+$signalement_article = new Signale_Article();
 
 
 if (isset($_SESSION['utilisateur'])) {
@@ -43,6 +44,7 @@ if (isset($_SESSION['utilisateur'])) {
         'articles' => $articles,
         'role' => $role,
         'titreArticle' => $article,
+        'signalement_articles' => $signalement_article,
         ));
 
 }

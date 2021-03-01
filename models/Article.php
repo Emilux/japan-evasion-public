@@ -214,6 +214,25 @@ class Article extends Utilisateur {
     }
 
 
+    public function creerArticle(){
+
+
+    
+        $sql = $this->_bdd->prepare(
+            'INSERT INTO '.$this->_table.' (titre_article, photo_article, temps_lecture_article, contenu_article, statut_article, id_utilisateur) 
+            VALUE ("'.$this->getTitre_Article().'","'.$this->getPhoto_Article().'","'.$this->getTemps_Lecture_Article().'","'.$this->getContenu_Article().'","PENDING","'.$this->getId_Utilisateur().'")'
+
+        );
+
+        var_dump($sql);
+
+        $sql = $sql->execute();
+        return $sql;
+
+
+    }
+
+
 
 
 
