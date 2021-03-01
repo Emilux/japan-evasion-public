@@ -74,3 +74,9 @@ body {
     color: white !important;
     font-size: 100%;
 }
+
+.btn-modif,
+.btn-suppr,
+.btn-valid {
+    border-radius: 0%;
+}

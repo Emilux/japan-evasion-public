@@ -157,7 +157,9 @@
                     </div>
 
 
-  <div class="card shadow mb-4">
+                <!-- LISTE UTILISATEURS -->
+
+            <div class="card shadow mb-4">
 
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Liste utilisateurs</h6>
@@ -227,22 +229,133 @@
                                             </div>
                                             
                                             
-                                            
-                                            
                                             </td>
                                         </tr>
                                     {/foreach}
                                     </tbody>
                                 </table>
                             </div>
-
-                            
-
-
                         </div>
                     </div>
 
-                <!-- /.container-fluid -->
+                <!-- LISTE COMMENTAIRES -->
 
+            <div class="card shadow mb-4">
+
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Liste commentaires</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Pseudo</th>
+                                            <th>Email</th>
+                                            <th>Commentaire</th>
+                                            <th>Date</th>
+                                            <th>Article</th>
+                                            <th>Rôle</th>
+                                            <th>Banni</th>
+                                            <th style="text-align :center;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Pseudo</th>
+                                            <th>Email</th>
+                                            <th>Commentaire</th>
+                                            <th>Date</th>
+                                            <th>Article</th>                                           
+                                            <th>Rôle</th>
+                                            <th>Banni</th>
+                                            <th style="text-align :center;">Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    {foreach from=$commentaires item=commentaire}
+                                    {assign var=estRole value=$role->getItem('id_role',$utilisateurInfo->getId_Role())}
+                                        <tr>
+                                            <td>{$commentaire->getPseudo_Visiteur()}</td>
+                                            <td>{$utilisateurInfo->getEmail_Visiteur()|lower}</td>
+                                            <td>{$commentaire->getContenu_Commentaire()}</td>
+                                            <td>{$commentaire->getDatetime_Commentaire()|date_format:"%d/%m/%Y à %R"}</td>   
+                                            <td>Bipbipboop</td>
+                                            <td>{$estRole->getNom_Role()|capitalize}</td>
+                                            <td>{if $utilisateurInfo->getBanni_Utilisateur() === 0}Banni{else}Non banni{/if}</td>
+                                            <td style="text-align :center;">
+                                                   <span class="btn-modif btn btn-primary"><i class="fas fa-pen"></i></span>
+                                                   <span class="btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
+                                            </div>
+                                            </td>
+                                        </tr>
+                                    {/foreach}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <!-- LISTE ARTICLES -->
+
+                <div class="card shadow mb-4">
+
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Liste articles</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Rédacteur</th>
+                                            <th>Article</th>
+                                            <th>Date</th>
+                                            <th>Statut</th>
+                                            <th style="text-align :center;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Rédacteur</th>
+                                            <th>Article</th>
+                                            <th>Date</th>
+                                            <th>Statut</th>
+                                            <th style="text-align :center;">Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    {foreach from=$articles item=article}
+                                    {assign var=estRole value=$role->getItem('id_role',$utilisateurInfo->getId_Role())}
+                                        <tr>
+                                            <td>{$article->getPseudo_Visiteur()}</td>
+                                            <td>{$article->getTitre_Article()}</td>
+                                            <td>{$article->getDate_Publication_Article()|date_format:"%d/%m/%Y à %R"}</td>   
+                                            <td>{if $article->getStatut_Article() === 'PENDING'}
+                                            <span style="color : red;"><i class="fas fa-exclamation"></i> PENDING</span>
+                                            {else}<span>PUBLISHED</span>{/if}</td>
+                                            <td style="text-align :center;">
+                                                   <span class="btn-modif btn btn-primary"><i class="fas fa-pen"></i></span>
+                                                   <span class="btn-suppr btn btn-success"><i class="fas fa-check"></i></span>
+                                                   <span class="btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
+                                            </div>
+                                            </td>
+                                        </tr>
+                                    {/foreach}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>          
+
+                
+                 
             </div>
+
+
+
+ 
+            
             <!-- End of Main Content -->
