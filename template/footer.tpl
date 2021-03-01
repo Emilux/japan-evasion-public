@@ -24,7 +24,7 @@
                                 <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="reste_connecte" name="reste_connecte">
-                                        <label class="form-check-label" for="reste_connecte">Rester connecté</label>
+                                        <label class="form-check-label pt-0" for="reste_connecte">Rester connecté</label>
                                     </div>
                                 </div>
 
@@ -59,14 +59,14 @@
                                 <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="newsletter_utilisateurReg" name="newsletter_utilisateur">
-                                        <label class="form-check-label" for="newsletter_utilisateurReg">Je souhaite m'inscrire à la newsletter quotidienne</label>
+                                        <label class="form-check-label pt-0" for="newsletter_utilisateurReg">Je souhaite m'inscrire à la newsletter quotidienne</label>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="cgu" name="cgu">
-                                        <label class="form-check-label" for="cgu">J'ai lu et accepte les conditions générales d'utilisation</label>
+                                        <label class="form-check-label pt-0" for="cgu">J'ai lu et accepte les conditions générales d'utilisation</label>
                                     </div>
                                 </div>
 

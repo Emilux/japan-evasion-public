@@ -1,0 +1,76 @@
+body {
+    font-family: 'Mulish' !important;
+}
+
+#accordionSidebar {
+    background-image: none;
+    background-color: #1E1E1E !important;
+}
+
+.img-profile {
+    object-fit: cover !important;
+}
+
+.card-header h6 {
+    color: #1E1E1E !important;
+}
+
+.card {
+    border-left: 3.5px solid #353535 !important;
+}
+
+.bg-info {
+    background-color: #353535 !important;
+}
+
+.h5 {
+    color: #7A0A11 !important;
+}
+
+.sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,
+.sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
+    background-color: #151515 !important;
+}
+
+.topbar {
+    background-color: #1E1E1E !important;
+    height: 4.5rem;
+}
+
+.page-item.active .page-link {
+    background-color: #151515 !important;
+    border-color: #151515 !important;
+}
+
+.btn-japan-dark {
+    background-color: #151515 !important;
+    border-radius: 0%;
+}
+
+.btn-japan-dark:hover {
+    background-color: #7A0A11 !important;
+}
+
+.custom-select {
+    border-radius: 0%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form-control-sm {
+    border-radius: 0%;
+}
+
+.page-item.disabled .page-link {
+    border-radius: 0%;
+}
+
+.topbar .nav-item .nav-link .img-profile {
+    height: 40px;
+    width: 40px;
+}
+
+.text-gray-600 {
+    color: white !important;
+    font-size: 100%;
+}

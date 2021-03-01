@@ -1,6 +1,11 @@
 <?php
 //charge le fichier de configuration.
 require('config/config_init.php');
+
+//Verification des informations de connexion
+require (_CTRL_.'VerifController.php');
+
+
 //Bloquer l'acces au personne non connecté et étant juste membre
 if (isset($_SESSION['utilisateur'])){
     if ($_SESSION['utilisateur']['role'] !== "membre"){

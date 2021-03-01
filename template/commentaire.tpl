@@ -69,7 +69,7 @@
                 {if $connecte}
                     <a href="#"><span class="btn-signaler"><i class="fas fa-flag"></i>Signaler</span></a>
                     <!-- SUPPRESSION DU COMMENTAIRE -->
-                    {if $commentaire->getId_Utilisateur() === $smarty.session.utilisateur.id_utilisateur}
+                    {if $commentaire->getId_Utilisateur() === $sessionUtilisateur.id_utilisateur || ($sessionUtilisateur.role === "administrateur" || $sessionUtilisateur.role === "moderateur")}
                     <a href="?page=articles&id={$article->getId_Article()}&id_commentaire={$commentaire->getId_Commentaire()}"><span class="btn-suppr"><i class="fas fa-trash"></i>Supprimer</span></a>
                     {/if}
                 {/if}

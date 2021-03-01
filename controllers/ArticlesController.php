@@ -29,9 +29,11 @@ if(isset($_GET['id'])){
 
                 $commentaire_id_utilisateur = $commentaire->getItem('id_commentaire',$_GET['id_commentaire'],'id_utilisateur');
 
-                if($commentaire_id_utilisateur && $commentaire_id_utilisateur->getId_Utilisateur() === $_SESSION['utilisateur']['id_utilisateur']){
+                if(($commentaire_id_utilisateur && $commentaire_id_utilisateur->getId_Utilisateur() === $_SESSION['utilisateur']['id_utilisateur']) || ($_SESSION['utilisateur']['role'] === "administrateur" || $_SESSION['utilisateur']['role'] === "moderateur")){
 
                     $commentaire->Delete($_GET['id_commentaire']);
+                    header('Location: ?page=articles&id='.$_GET['id'].'#espace_commentaire');
+
                 }
             }
 
@@ -105,14 +107,14 @@ if(isset($_GET['id'])){
                         if (!empty($pseudo_visiteur) && strlen($pseudo_visiteur) <= 20 && strlen($pseudo_visiteur) >= 3){
 
                             if (!preg_match("/^[A-Za-z0-9-_]*$/",$pseudo_visiteur))
-                                $erreurs[] = "Seule les lettres, chiffres et underscore (_) ";
+                                $erreurs[] = "Seule les lettres, chiffres et underscore (_) sont acceptés";
 
                         } else
                             $erreurs[] = "Veuillez entrer un pseudo qui fait moins de 20 et plus de 3 caractères.";
 
 
                         if (!empty($email_visiteur) && strlen($pseudo_visiteur) <= 50){
-                            if (filter_var($email_visiteur, FILTER_VALIDATE_EMAIL))
+                            if (!filter_var($email_visiteur, FILTER_VALIDATE_EMAIL))
                                 $erreurs[] = "L'adresse e-mail n'est pas valide.";
                         } else
                             $erreurs[] = "Veuillez entrer une email qui fait moins de 50 caractères.";

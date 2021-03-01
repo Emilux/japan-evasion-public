@@ -125,6 +125,10 @@
                                         <div class="dropdown-divider"></div>
                                         <a class="nav-link dropdown-pseudo" href="?page=profiles&utilisateur={$utilisateur_header->getPseudo_Visiteur()}">MON PROFIL</a>
                                         <a class="nav-link dropdown-pseudo" href="?page=profiles-edit">PARAMETRES</a>
+                                        {if $sessionUtilisateur.role !== "membre"}
+                                            <a class="nav-link dropdown-pseudo" href="./panels">PANEL {$sessionUtilisateur.role|upper}</a>
+                                        {/if}
+
                                         <div class="dropdown-divider"></div>
                                         <a class="nav-link dropdown-pseudo" href="?page=deconnexion"></i>DECONNEXION</a>
                                     </div>
