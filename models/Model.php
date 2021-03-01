@@ -224,6 +224,7 @@ class Model {
             $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table.' WHERE '.$champs.' = "'.$valeur.'"');
         } else {
             $sql = $this->_bdd->query('SELECT COUNT(*) FROM '.$this->_table.' '.$where);
+    
         }
 
         if ($sql){

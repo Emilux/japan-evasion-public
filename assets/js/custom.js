@@ -110,3 +110,26 @@ $('#submit_creer_compte').on('click', function(e) {
         $('#regError').html("<div class='alert alert-danger'>Une erreur est survenue, veuillez réessayer !</div>");
     });
 });
+
+//FOLLOWING BUTTON
+$('#followbtn').on('click', function(e){
+    e.preventDefault();
+    var formdata = $('#form-follow').serialize();
+    console.log(formdata)
+
+    $.ajax("./?ajax=follow", {
+        method: "GET",
+        dataType: "JSON",
+        data: formdata,
+    }).done(function(follower) {
+        if (follower.success) {
+            console.log(follower.count);
+            $('#nbFollower').text(follower.count);
+            $('#followButtonText').text(follower.message);
+        } else {
+            console.log(follower);
+        }
+    }).fail(function(xhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+    });
+});
