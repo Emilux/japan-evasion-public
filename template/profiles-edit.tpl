@@ -41,7 +41,7 @@
 
                     <div class="form-row">
                         <label for="fileupload">Avatar</label>
-                        <input type="file" id="fileupload" name="avatar_utilisateur">
+                        <input type="file" id="fileupload" class="form-control" name="avatar_utilisateur">
 
                         <label for="pseudo">Pseudo</label>
                         <input type="text" class="form-control" name="pseudo_visiteur" value="{$utilisateur->getPseudo_Visiteur()|capitalize}"> <br>

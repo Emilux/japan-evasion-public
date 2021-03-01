@@ -323,6 +323,62 @@ class Utilisateur extends Visiteur {
         return $sql;
 
     }
+
+
+
+    /**
+     * Cette fonction crée un utilisateur et le visiteur auquel il sera rattaché dans la bdd
+     * Si l'utilisateur est crée return true sinon retourne false
+     *
+     *
+     * @return  {boolean}     return true si utilisateur crée, sinon false
+     */
+    public function creerUtilisateur(){
+
+        $visiteur = new Visiteur();
+        $role = new Role();
+        $role = $role->getItem('nom_role',$this->getId_Role());
+        $this->setId_Role($role->getId_role());
+
+        $visiteur->setPseudo_Visiteur($this->getPseudo_Visiteur());
+        $visiteur->setEmail_Visiteur($this->getEmail_Visiteur());
+        $visiteur->setNewsletter_Visiteur($this->getNewsletter_Visiteur());
+
+        /* LANCER TRANSACTION MYSQL */
+        $this->_bdd->beginTransaction();
+
+        //Créer visiteur
+        if ($visiteur->creerVisiteur()) {
+
+                
+
+
+            //Récuperer id_visiteur du visiteur créer
+            $visiteur = $visiteur->getItem('pseudo_visiteur', $this->getPseudo_Visiteur(), 'id_visiteur');
+            $this->setId_Visiteur($visiteur->getId_visiteur());
+
+            //Création utilisateur
+            $sql = $this->_bdd->prepare(
+                'INSERT INTO ' . $this->_table . ' (avatar_utilisateur,mdp_utilisateur, id_role, id_visiteur, prenom_utilisateur, nom_utilisateur, date_naissance_utilisateur) 
+                VALUE ("'.$this->getAvatar_Utilisateur().'","' . $this->getMdp_Utilisateur() . '","' . $this->getId_Role() . '","' . $this->getId_Visiteur() . '"
+                ,"' . $this->getPrenom_Utilisateur() . '","' . $this->getNom_Utilisateur() . '","' . $this->getDate_Naissance_Utilisateur() . '")'
+            );
+            $sql = $sql->execute();
+
+            //Annuler toute la requete si l'utilisateur n'est pas crée
+            if (!$sql)
+                $this->_bdd->rollBack();
+            else
+                $this->_bdd->commit();
+            return $sql;
+        }
+        else
+            $this->_bdd->rollBack();
+
+        return false;
+    }
+
+
 }
 
 
