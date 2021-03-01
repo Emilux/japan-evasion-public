@@ -174,9 +174,6 @@ class Model {
         $champs = substr($champs,0,-2);
 
         $sql = $this->_bdd->prepare('INSERT INTO '.$this->_table.'('.$champs.') VALUES ('.$valeurs.')');
-
-        var_dump($sql);
-
         $sql = $sql->execute();
         return $sql;
 

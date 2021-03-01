@@ -198,7 +198,7 @@
                                     <tbody>
                                     {foreach from=$utilisateurs item=utilisateurInfo}
                                     {assign var=estRole value=$role->getItem('id_role',$utilisateurInfo->getId_Role())}
-                                        <tr>
+                                        <tr data-row-user="{$utilisateurInfo->getId_Utilisateur()}">
                                             <td><div style="width : 64px; height : 64px;"><img style="width : 100%; height : 64px; object-fit : cover;" src="{if strpos($utilisateurInfo->getAvatar_Utilisateur(),'assets')}.{/if}{$utilisateurInfo->getAvatar_Utilisateur()}"/></div></td>
                                             <td>{$utilisateurInfo->getNom_Utilisateur()} {$utilisateurInfo->getPrenom_Utilisateur()}</td>
                                             <td>{$utilisateurInfo->getPseudo_Visiteur()} <sup><a href="../?page=profiles&utilisateur={$utilisateurInfo->getPseudo_Visiteur()}"><i class="fas fa-sign-out-alt"></i></a></sup></td>
@@ -207,24 +207,24 @@
                                             <td>{$utilisateurInfo->getDate_Creation_Utilisateur()|date_format:"%d/%m/%Y à %R"}</td>
                                             <td>{$estRole->getNom_Role()|capitalize}</td>
                                             <td>{if $utilisateurInfo->getNewsletter_Visiteur() === 0}Inscrit{else}Non inscrit{/if}</td>
-                                            <td>{if $utilisateurInfo->getBanni_Utilisateur() === 0}Banni{else}Non banni{/if}</td>
+                                            <td class="banni">{if $utilisateurInfo->getBanni_Utilisateur()}Banni{else}Non banni{/if}</td>
                                             <td>
                                             <div class="dropdown no-arrow">
                                                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                   <span class="btn-japan-dark btn btn-dark">Action <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> </span>
+                                                   <span class="btn-action btn-japan-dark btn btn-dark">Action <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> </span>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                                 <div class="dropdown-header">Action :</div>
                                                     {if $estRole->getNom_Role() !== "membre"}
-                                                        <a class="dropdown-item" href="#">Rétrograder</a>
+                                                        <a class="dropdown-item retrograder" href="#">Rétrograder</a>
                                                     {/if}
 
                                                     {if $estRole->getNom_Role() !== "administrateur"}
-                                                        <a class="dropdown-item" href="#">Promouvoir</a>
+                                                        <a class="dropdown-item promouvoir" href="#">Promouvoir</a>
                                                     {/if}
-                                                    <a class="dropdown-item" href="#">Bannir</a>
-                                                    <a class="dropdown-item text-danger" href="#">Supprimer</a>
+                                                    <a data-utilisateur="{$utilisateurInfo->getId_Utilisateur()}" class="dropdown-item bannir" href="#">{if $utilisateurInfo->getBanni_Utilisateur()}Débannir{else}Bannir{/if}</a>
+                                                    <a class="dropdown-item text-danger delete_user" href="#">Supprimer</a>
                                                 </div>
                                             </div>
                                             

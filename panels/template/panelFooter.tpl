@@ -48,6 +48,9 @@
     <!-- Page level custom scripts -->
     <script src="assets/js/datatables-demo.js"></script>
 
+    <!-- Page ajax custom scripts -->
+    <script src="assets/js/ajax.js"></script>
+
 
 
 

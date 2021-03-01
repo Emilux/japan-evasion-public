@@ -9,11 +9,11 @@
  */
 class Notification extends Model {
 
-    private $_id_notification;
-    private $_contenu_notification;
-    private $_statut_notification;
-    private $_id_utilisateur;
-    private $_table = 'notification';
+    protected $_id_notification;
+    protected $_contenu_notification;
+    protected $_statut_notification;
+    protected $_id_utilisateur;
+    protected $_table = 'notification';
 
     //GETTERS
 
@@ -34,7 +34,7 @@ class Notification extends Model {
     /**
      * @return boolean
      */
-    public function get_Statut_Notification(){
+    public function getStatut_Notification(){
         return $this->_statut_notification;
     }
 
@@ -66,6 +66,13 @@ class Notification extends Model {
      */
     public function setStatut_Notification(bool $statut_notification){
 		$this->_statut_notification = $statut_notification;
+    }
+
+    /**
+     * @param boolean $id_utilisateur
+     */
+    public function setId_Utilisateur(bool $id_utilisateur){
+        $this->_id_utilisateur = $id_utilisateur;
     }
 
 

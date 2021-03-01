@@ -304,7 +304,7 @@ class Utilisateur extends Visiteur {
         $valeurs = '';
 
         foreach($data as $key => $value){
-            if($value){
+            if($value !== ""){
                 $valeurs .= $key.' = "'.$value.'" , ';
             }
         }
@@ -315,10 +315,9 @@ class Utilisateur extends Visiteur {
 
         ' UPDATE '.$this->_table.
         ' INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur'.' SET '.$valeurs.
-        ' WHERE visiteur.id_visiteur = '.$id
+        ' WHERE utilisateur.id_utilisateur = '.$id
 
         );
-
         $sql = $sql->execute();
         return $sql;
 

@@ -46,7 +46,7 @@ if(isset($_SESSION['utilisateur'])){
             }
 
             //UPDATE DE L'UTILISATEUR (ajouter update inner visiteur)
-            $utilisateur->Update($data, $_SESSION['utilisateur']['id_visiteur']);
+            $utilisateur->Update($data, $_SESSION['utilisateur']['id_utilisateur']);
 
         }
 
