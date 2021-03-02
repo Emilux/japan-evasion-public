@@ -47,6 +47,11 @@ class Follow extends Model {
 		$this->_id_followed = $id_followed;
     }
 
+
+    /** Redimensionne une image
+    *
+    * 
+    */
     public function doFollow(){
     
       $query = 'INSERT INTO follow ( id_follower, id_followed ) VALUES ("'.$this->getId_Follower().'" , "'.$this->getId_Followed().'" )';

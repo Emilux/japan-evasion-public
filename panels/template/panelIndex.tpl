@@ -295,7 +295,6 @@
                                             <td>{$estRole->getNom_Role()|capitalize}</td>
                                             <td>{if $utilisateurInfo->getBanni_Utilisateur() === 0}Banni{else}Non banni{/if}</td>
                                             <td style="text-align :center;">
-                                                   <span class="btn-modif btn btn-primary"><i class="fas fa-pen"></i></span>
                                                    <span class="btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
                                             </div>
                                             </td>

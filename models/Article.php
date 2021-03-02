@@ -214,6 +214,13 @@ class Article extends Utilisateur {
     }
 
 
+    /** Récupère la liste des articles ainsi que leurs rédacteur
+     *
+     *
+     * @return boolean
+     * 
+     * 
+     */
     public function creerArticle(){
 
 

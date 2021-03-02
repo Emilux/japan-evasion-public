@@ -10,7 +10,7 @@
 class Signale_Article extends Model {
 
 	protected $_id_utilisateur;
-    protected $_id_article;
+  protected $_id_article;
 	protected $_table = 'signale_article';
 
     //GETTERS

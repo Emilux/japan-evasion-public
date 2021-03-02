@@ -47,6 +47,11 @@ class Reponse_de extends Model
         $this->_id_reponse = $id_reponse;
     }
 
+
+    /** Fonction qui permet de répondre à un commentaire depuis la section commentaire
+    *
+    * 
+    */
     public function AddReponse(){
         //Création utilisateur
         $sql = $this->_bdd->prepare(

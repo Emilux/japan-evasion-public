@@ -76,18 +76,4 @@ class Notification extends Model {
     }
 
 
-    //METHODE
-
-    public function ajoutNotif(){
-
-    }
-
-    public function supprNotif(){
-
-    }
-
-    public function ouvrirNotif(){
-
-    }
-
 }

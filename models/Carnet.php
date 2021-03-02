@@ -10,7 +10,7 @@
 class Carnet extends Model {
 
 	protected $_id_carnet;
-    protected $_contenu_carnet;
+  protected $_contenu_carnet;
 	protected $_table = 'carnet_de_voyage';
 
     //GETTERS
