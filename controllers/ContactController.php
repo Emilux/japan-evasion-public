@@ -11,7 +11,7 @@ if(isset($_POST['send_message'])){
     
     $mailTo = 'mujeeb.mir8@gmail.com';
     $headers = 'From:'.$mailFrom;
-    $txt = 'You have received an email from : '.$name .' \n'.'__'. $message;
+    $txt = "You have received an email from : ".$name ." \n". $message;
   
     $error;
 
