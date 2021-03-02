@@ -189,6 +189,7 @@ class Utilisateur extends Visiteur {
 
         $sql = $this->_bdd->query('SELECT '.$selecteur.' FROM '.$this->_table.' INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur '.$where.' ORDER BY '.$champs.' '.$order.' '.$limit);
 
+
         if ($sql)
             $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
         else
