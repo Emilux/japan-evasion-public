@@ -84,7 +84,31 @@
                     </div>
                 </div>
                 <div class="modal-footer border-top-0 bg-white rounded-0">
-                    <a class="mx-auto"href="#">Tu n'arrives pas à te connecter ? Mot de passe oublié ?</a>
+                    <a class="mx-auto"href="#myModal2"  data-toggle="modal">Tu n'arrives pas à te connecter ? Mot de passe oublié ?</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="myModal2" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content" id="second-modal">
+                    <div class="modal-header">
+                    <h4 class="modal-title">REINITIALISATION DU MOT DE PASSE</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+
+                    <div class="modal-body">
+                    Veuillez renseigner l'adresse mail liée à votre compte pour recevoir un nouveau mot de passe.
+                    </div>
+                    <form method="post">
+                        <div class="form-group px-5">
+                            <label for="email_reini">Email</label>
+                            <input class="form-control" id="email_reini" type="email" name="email_utilisateur" placeholder="Votre email...">
+                        </div>
+                        <div class="modal-footer">
+                            <input id="submit_reinitialisation" class="btn btn-dark" type="submit" name="submit_reinitialisation" value="VALIDER">
+                            <a href="#" data-dismiss="modal" class="btn">FERMER</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

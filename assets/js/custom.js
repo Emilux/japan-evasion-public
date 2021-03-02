@@ -45,12 +45,12 @@ $('#connexion_form_submit').on('click', function(e) {
         }
     }).done(function(result) {
         if (result.success) {
-            window.location.href="./?page=profiles&utilisateur="+result.message;
+            window.location.href = "./?page=profiles&utilisateur=" + result.message;
         } else {
             $('#conError').html("<div class='alert alert-danger'>" + result.message + "</div>");
         }
     }).fail(function(xhr, textStatus, errorThrown) {
-        $('#conError').html("<div class='alert alert-danger'>"+errorThrown+"</div>");
+        $('#conError').html("<div class='alert alert-danger'>" + errorThrown + "</div>");
     });
 });
 
@@ -68,37 +68,37 @@ $('#submit_creer_compte').on('click', function(e) {
         }
     }).done(function(result) {
         if (result.success) {
-             window.location.href="./?page=profiles&utilisateur="+result.message;
+            window.location.href = "./?page=profiles&utilisateur=" + result.message;
         } else {
             console.log(result)
 
             //Change couleur des inputs si une d'elle est vide.
-            if (result.emptyPseudo){
+            if (result.emptyPseudo) {
                 $('#pseudo_utilisateurReg').addClass('wrong')
             } else {
                 $('#pseudo_utilisateurReg').removeClass('wrong')
             }
 
-            if (result.emptyMail){
+            if (result.emptyMail) {
                 $('#email_utilisateurReg').addClass('wrong')
             } else {
                 $('#email_utilisateurReg').removeClass('wrong')
             }
 
 
-            if (result.emptyMdp){
+            if (result.emptyMdp) {
                 $('#mdp_utilisateurReg').addClass('wrong')
             } else {
                 $('#mdp_utilisateurReg').removeClass('wrong')
             }
 
-            if (result.emptyMdp_conf){
+            if (result.emptyMdp_conf) {
                 $('#mdp_utilisateur_confirmationReg').addClass('wrong')
             } else {
                 $('#mdp_utilisateur_confirmationReg').removeClass('wrong')
             }
 
-            if (result.emptyCheckCgu){
+            if (result.emptyCheckCgu) {
                 $('#cgu').addClass('wrong')
             } else {
                 $('#cgu').removeClass('wrong')
@@ -112,7 +112,7 @@ $('#submit_creer_compte').on('click', function(e) {
 });
 
 //FOLLOWING BUTTON
-$('#followbtn').on('click', function(e){
+$('#followbtn').on('click', function(e) {
     e.preventDefault();
     var formdata = $('#form-follow').serialize();
     console.log(formdata)
@@ -135,7 +135,7 @@ $('#followbtn').on('click', function(e){
 });
 
 //NOTIFICATION BUTTON
-$('#alertsDropdown').on('click', function(e){
+$('#alertsDropdown').on('click', function(e) {
     e.preventDefault();
     var formdata = $('#form-follow').serialize();
     console.log(formdata)
@@ -153,4 +153,20 @@ $('#alertsDropdown').on('click', function(e){
     }).fail(function(xhr, textStatus, errorThrown) {
         console.log(errorThrown);
     });
+});
+
+
+//MODAL MOT DE PASS OUBLIE 
+
+$(document).ready(function() {
+
+    $(document).on('show.bs.modal', '.modal', function(event) {
+        var zIndex = 1040 + (10 * $('.modal:visible').length);
+        $(this).css('z-index', zIndex);
+        setTimeout(function() {
+            $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+        }, 0);
+    });
+
+
 });
