@@ -62,6 +62,6 @@ if(isset($_SESSION['utilisateur'])){
     $_SESSION['utilisateur']['role'] = $role_session;
 
     if (!$utilisateur_session || $utilisateur_session->getBanni_Utilisateur() === '1')
-        header('Location: ./?page=deconnexion');
+        header('Location: '._PATH_.'?page=deconnexion');
 
 }

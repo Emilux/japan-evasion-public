@@ -82,7 +82,7 @@
                     </div>
                 </div>
             </li>
-
+            {if $role_session === "administrateur" || $role_session === "moderateur"}
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -97,7 +97,6 @@
                     </div>
                 </div>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -116,10 +115,13 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="text-white py-2 collapse-inner rounded">
                         <a class="collapse-item text-white" href="?page=utilisateur"><i class="fas fa-list fa-fw mr-1"></i> Liste utilisateurs</a>
+                        {if $role_session === "administrateur"}
                         <a class="collapse-item text-white" href="?page=create-user"><i class="fas fa-user-plus fa-fw mr-1"></i> Créer un utilisateur</a>
+                        {/if}
                     </div>
                 </div>
             </li>
+            {/if}
 
             
 

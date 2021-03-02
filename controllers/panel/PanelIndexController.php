@@ -14,9 +14,24 @@ if (isset($_SESSION['utilisateur'])) {
 
     //Compteur 
     $nbUtilisateur = $utilisateur->Count();
-    $nbCommentaire = $commentaire->Count();
-    $nbArticle = $article->Count();
-    $nbArticlePending = $article->Count('statut_article','PENDING');
+    if ($_SESSION['utilisateur']['role'] !== "redacteur") {
+        $nbCommentaire = $commentaire->Count();
+        $nbArticle = $article->Count();
+        $nbArticlePending = $article->Count('statut_article', 'PENDING');
+    } else {
+        $nbCommentaire = $commentaire->Count('commentaire.id_utilisateur',$_SESSION['utilisateur']['id_utilisateur']);
+        if (!$nbCommentaire){
+            $nbCommentaire = 0;
+        }
+        $nbArticle = $article->Count('article.id_utilisateur', $_SESSION['utilisateur']['id_utilisateur']);
+        if (!$nbArticle){
+            $nbArticle = 0;
+        }
+        $nbArticlePending = $article->Count('', '','article.id_utilisateur = '.$_SESSION['utilisateur']['id_utilisateur'].' AND statut_article = "PENDING"');
+        if (!$nbArticlePending){
+            $nbArticlePending = 0;
+        }
+    }
 
     //récupérer le contenu de l'utilisateur
     $utilisateurs = $utilisateur->getList();
@@ -24,8 +39,13 @@ if (isset($_SESSION['utilisateur'])) {
     //récupérer le contenu d'un commentaire 
     $commentaires = $commentaire->getList();
     
-    //récupérer le contenu d'un commentaire 
-    $articles = $article->getList();
+    //récupérer le contenu d'un commentaire
+    if ($_SESSION['utilisateur']['role'] !== "redacteur"){
+        $articles = $article->getList();
+    } else {
+        $articles = $article->getList(null,'DESC','date_publication_article','*','utilisateur.id_utilisateur = '.$_SESSION['utilisateur']['id_utilisateur']);
+    }
+
 
 
     //récupérer le contenu de l'utilisateur visionné

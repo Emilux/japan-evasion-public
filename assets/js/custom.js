@@ -133,3 +133,24 @@ $('#followbtn').on('click', function(e){
         console.log(errorThrown);
     });
 });
+
+//NOTIFICATION BUTTON
+$('#alertsDropdown').on('click', function(e){
+    e.preventDefault();
+    var formdata = $('#form-follow').serialize();
+    console.log(formdata)
+
+    $.ajax("./?ajax=notification", {
+        method: "POST",
+        dataType: "JSON",
+        data: formdata,
+    }).done(function(result) {
+        if (result.success) {
+            $('#nb-notif').hide();
+        } else {
+            console.log(result);
+        }
+    }).fail(function(xhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+    });
+});

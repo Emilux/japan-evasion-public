@@ -34,7 +34,9 @@ if (isset($_SESSION['utilisateur'])){
             require (_CTRL_.'CompteController.php');
 
             //Affiche la template de base du site
+            $smarty->assign('role_session',$_SESSION['utilisateur']['role']);
             $smarty->display(_TPL_.'template.tpl');
+
         }
     } else {
         header('Location: ../#exampleModal');

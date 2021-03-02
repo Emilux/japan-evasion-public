@@ -2,11 +2,11 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    
+
 
                     <!-- Content Row -->
                     <div class="row">
-
+                        {if $role_session === "moderateur" || $role_session === "administrateur"}
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -24,24 +24,8 @@
                                 </div>
                             </div>
                         </div>
+                        {/if}
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-                                                NOMBRE DE COMMENTAIRES</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{$nbCommentaire}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -58,7 +42,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-auto">
                                             <i class="fas fa-newspaper fa-2x text-gray-300"></i>
                                         </div>
@@ -96,69 +80,89 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                                NOMBRE DE COMMENTAIRES</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{$nbCommentaire}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Content Row -->
 
-                    <div class="row">
+                    {if $role_session === "administrateur"}
+                        <div class="row">
 
-                        <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Audience {$smarty.now|date_format:"%Y "}</h6>
-                                    
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area" id="compteGraphique">
-                                        <canvas id="myAreaChart"></canvas>
+                            <!-- Area Chart -->
+                            <div class="col-xl-8 col-lg-7">
+                                <div class="card shadow mb-4">
+                                    <!-- Card Header - Dropdown -->
+                                    <div
+                                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                        <h6 class="m-0 font-weight-bold text-primary">Audience {$smarty.now|date_format:"%Y "}</h6>
+
+                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <div class="chart-area" id="compteGraphique">
+                                            <canvas id="myAreaChart"></canvas>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Proportions rôles</h6>
-                                    
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2" id="proportionGraphique">
-                                        <canvas id="myPieChart"></canvas>
+                            <!-- Pie Chart -->
+                            <div class="col-xl-4 col-lg-5">
+                                <div class="card shadow mb-4">
+                                    <!-- Card Header - Dropdown -->
+                                    <div
+                                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                        <h6 class="m-0 font-weight-bold text-primary">Proportions rôles</h6>
+
                                     </div>
-                                    <div class="mt-4 text-center small">
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <div class="chart-pie pt-4 pb-2" id="proportionGraphique">
+                                            <canvas id="myPieChart"></canvas>
+                                        </div>
+                                        <div class="mt-4 text-center small">
                                         <span class="mr-2">
                                             <i class="fas fa-circle " style="color : #787878;"></i> Visiteurs
                                         </span>
-                                        <span class="mr-2">
+                                            <span class="mr-2">
                                             <i class="fas fa-circle " style="color : #1e1e1e;"></i> Membres
                                         </span>
-                                        <span class="mr-2">
+                                            <span class="mr-2">
                                             <i class="fas fa-circle " style="color : #248899;"></i> Rédacteurs
                                         </span>
-                                        <span class="mr-2">
+                                            <span class="mr-2">
                                             <i class="fas fa-circle" style="color : #03384C;"></i> Modérateurs
                                         </span>
-                                        <span class="mr-2">
+                                            <span class="mr-2">
                                             <i class="fas fa-circle" style="color : #7A0A11;"></i> Administrateurs
                                         </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {/if}
+
 
 
                 <!-- LISTE UTILISATEURS -->
-
+                    {if $role_session === "moderateur" || $role_session === "administrateur"}
             <div class="card shadow mb-4">
 
                         <div class="card-header py-3">
@@ -205,7 +209,7 @@
                                             <td>{$utilisateurInfo->getEmail_Visiteur()|lower}</td>
                                             <td>{if $utilisateurInfo->getDate_Naissance_Utilisateur() !== null}{floor((time() - strtotime($utilisateurInfo->getDate_Naissance_Utilisateur())) / 31556926)}{/if}</td>
                                             <td>{$utilisateurInfo->getDate_Creation_Utilisateur()|date_format:"%d/%m/%Y à %R"}</td>
-                                            <td>{$estRole->getNom_Role()|capitalize}</td>
+                                            <td class="role-user">{$estRole->getNom_Role()|capitalize}</td>
                                             <td>{if $utilisateurInfo->getNewsletter_Visiteur() === 0}Inscrit{else}Non inscrit{/if}</td>
                                             <td class="banni">{if $utilisateurInfo->getBanni_Utilisateur()}Banni{else}Non banni{/if}</td>
                                             <td>
@@ -216,19 +220,25 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                                 <div class="dropdown-header">Action :</div>
-                                                    {if $estRole->getNom_Role() !== "membre"}
-                                                        <a class="dropdown-item retrograder" href="#">Rétrograder</a>
+
+                                                    {if $estRole->getNom_Role() !== "membre" }
+                                                        {if (($role_session === "moderateur" && ($estRole->getNom_Role() === "redacteur" || $estRole->getNom_Role() === "membre")) || $role_session === "administrateur")}
+                                                            <a data-utilisateur="{$utilisateurInfo->getId_Utilisateur()}" class="dropdown-item retrograder" href="#">Rétrograder</a>
+                                                        {/if}
                                                     {/if}
 
-                                                    {if $estRole->getNom_Role() !== "administrateur"}
-                                                        <a class="dropdown-item promouvoir" href="#">Promouvoir</a>
+                                                    {if $estRole->getNom_Role() !== "administrateur" }
+                                                        {if (($role_session === "moderateur" && $estRole->getNom_Role() === "membre") || $role_session === "administrateur")}
+                                                            <a data-utilisateur="{$utilisateurInfo->getId_Utilisateur()}" class="dropdown-item promouvoir" href="#">Promouvoir</a>
+                                                        {/if}
                                                     {/if}
+
                                                     <a data-utilisateur="{$utilisateurInfo->getId_Utilisateur()}" class="dropdown-item bannir" href="#">{if $utilisateurInfo->getBanni_Utilisateur()}Débannir{else}Bannir{/if}</a>
-                                                    <a class="dropdown-item text-danger delete_user" href="#">Supprimer</a>
+                                                    {if $role_session === "administrateur"}<a data-utilisateur="{$utilisateurInfo->getId_Utilisateur()}" class="dropdown-item text-danger delete_user" href="#">Supprimer</a>{/if}
                                                 </div>
                                             </div>
-                                            
-                                            
+
+
                                             </td>
                                         </tr>
                                     {/foreach}
@@ -237,9 +247,9 @@
                             </div>
                         </div>
                     </div>
-
+                {/if}
                 <!-- LISTE COMMENTAIRES -->
-
+                    {if $role_session === "moderateur" || $role_session === "administrateur"}
             <div class="card shadow mb-4">
 
                         <div class="card-header py-3">
@@ -266,7 +276,7 @@
                                             <th>Email</th>
                                             <th>Commentaire</th>
                                             <th>Date</th>
-                                            <th>Article</th>                                           
+                                            <th>Article</th>
                                             <th>Rôle</th>
                                             <th>Banni</th>
                                             <th style="text-align :center;">Action</th>
@@ -280,7 +290,7 @@
                                             <td>{$commentaire->getPseudo_Visiteur()}</td>
                                             <td>{$utilisateurInfo->getEmail_Visiteur()|lower}</td>
                                             <td>{$commentaire->getContenu_Commentaire()} <sup><a href="../?page=articles&id={$commentaire->getId_Article()}#commentaire_{$commentaire->getId_Commentaire()}"><i class="fas fa-sign-out-alt"></i></a></sup></td>
-                                            <td>{$commentaire->getDatetime_Commentaire()|date_format:"%d/%m/%Y à %R"}</td>   
+                                            <td>{$commentaire->getDatetime_Commentaire()|date_format:"%d/%m/%Y à %R"}</td>
                                             <td>{$articleTitre->getTitre_Article()|truncate:20}</td>
                                             <td>{$estRole->getNom_Role()|capitalize}</td>
                                             <td>{if $utilisateurInfo->getBanni_Utilisateur() === 0}Banni{else}Non banni{/if}</td>
@@ -295,16 +305,16 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
-
+                </div>
+                {/if}
 
                 <!-- LISTE ARTICLES -->
 
                 <div class="card shadow mb-4">
 
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Liste articles</h6>
-                        </div>
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Liste articles</h6>
+                    </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable-articles" width="100%" cellspacing="0">
@@ -328,17 +338,16 @@
                                     </tfoot>
                                     <tbody>
                                     {foreach from=$articles item=article}
-                                    {assign var=estRole value=$role->getItem('id_role',$utilisateurInfo->getId_Role())}
                                         <tr>
                                             <td>{$article->getPseudo_Visiteur()}</td>
                                             <td>{$article->getTitre_Article()} <sup><a href="../?page=articles&id={$article->getId_Article()}"><i class="fas fa-sign-out-alt"></i></a></sup></td>
-                                            <td>{$article->getDate_Publication_Article()|date_format:"%d/%m/%Y à %R"}</td>   
+                                            <td>{$article->getDate_Publication_Article()|date_format:"%d/%m/%Y à %R"}</td>
                                             <td>{if $article->getStatut_Article() === 'PENDING'}
                                             <span class="text-warning"><i class="fas fa-exclamation-triangle"></i> PENDING</span>
                                             {else}<span>PUBLISHED</span>{/if}</td>
                                             <td style="text-align :center;">
                                                    <span class="btn-modif btn btn-primary"><i class="fas fa-pen"></i></span>
-                                                   {if $article->getStatut_Article() === 'PENDING'}<span class="btn-suppr btn btn-success"><i class="fas fa-check"></i></span>{/if}
+                                                   {if $article->getStatut_Article() === 'PENDING' && ($role_session === "moderateur" || $role_session === "administrateur")}<span class="btn-suppr btn btn-success"><i class="fas fa-check"></i></span>{/if}
                                                    <span class="btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
                                             </div>
                                             </td>
@@ -349,14 +358,14 @@
                             </div>
                         </div>
                     </div>
-                </div>          
+                </div>
 
-                
-                 
+
+
             </div>
 
 
 
- 
-            
+
+
             <!-- End of Main Content -->
