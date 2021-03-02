@@ -153,6 +153,42 @@ if ($_SESSION['utilisateur']['role'] === "administrateur" || $_SESSION['utilisat
 
         echo json_encode($data);
     }
+
+    if (isset($_POST['validArticle'])){
+        $dataSend=[];
+
+        $article = new Article();
+
+        $id_article = $Utils->valid_donnees($_POST['id_article']);
+        $articleData = $article->getItem('id_article',$id_article);
+        if ($articleData && $articleData->getStatut_Article() === "PENDING"){
+            $dataSend['statut_article'] = 'NEW';
+            $msg = 'new';
+        } else {
+            $dataSend['statut_article'] = 'PENDING';
+            $msg = 'pending';
+        }
+
+        if (!empty($dataSend)) {
+            $estValid = $article->Update($dataSend, $id_article);
+        } else {
+            $estValid = false;
+            $data['success'] = FALSE;
+            $data['message'] = 'failed';
+        }
+
+        if ($estValid){
+            $data['success'] = TRUE;
+            $data['message'] = $msg;
+            $data['id'] = $id_article;
+        } else {
+            $data['success'] = FALSE;
+            $data['message'] = 'erreur';
+        }
+
+        echo json_encode($data);
+    }
+
 }
 
 //Seul un administrateur peut supprimer un utilisateur

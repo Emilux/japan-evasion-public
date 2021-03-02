@@ -33,7 +33,7 @@ if(isset($_GET['utilisateur'])){
 
         $ActiviteCommentaire = $commentaire->getList(3, 'DESC', 'datetime_commentaire', '*', 'commentaire.id_visiteur = '.$utilisateur->getId_Visiteur());
 
-        $ActiviteArticle = $article->getList(3, 'DESC', 'date_publication_article', '*', 'article.id_utilisateur = '.$utilisateur->getId_Utilisateur());
+        $ActiviteArticle = $article->getList(3, 'DESC', 'date_publication_article', '*', 'article.id_utilisateur = '.$utilisateur->getId_Utilisateur(). ' AND statut_article != "PENDING"');
 
         $nom_role = $role->getItem('id_role', $utilisateur->getId_role());
 

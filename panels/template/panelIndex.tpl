@@ -342,11 +342,11 @@
                                             <td>{$article->getTitre_Article()} <sup><a href="../?page=articles&id={$article->getId_Article()}"><i class="fas fa-sign-out-alt"></i></a></sup></td>
                                             <td>{$article->getDate_Publication_Article()|date_format:"%d/%m/%Y à %R"}</td>
                                             <td>{if $article->getStatut_Article() === 'PENDING'}
-                                            <span class="text-warning"><i class="fas fa-exclamation-triangle"></i> PENDING</span>
-                                            {else}<span>PUBLISHED</span>{/if}</td>
+                                            <span data-article="{$article->getId_Article()}" class="text-warning"><i class="fas fa-exclamation-triangle"></i> PENDING</span>
+                                            {else}<span data-article="{$article->getId_Article()}">{$article->getStatut_Article()|upper}</span>{/if}</td>
                                             <td style="text-align :center;">
                                                    <span class="btn-modif btn btn-primary"><i class="fas fa-pen"></i></span>
-                                                   {if $article->getStatut_Article() === 'PENDING' && ($role_session === "moderateur" || $role_session === "administrateur")}<span class="btn-suppr btn btn-success"><i class="fas fa-check"></i></span>{/if}
+                                                   {if $article->getStatut_Article() === 'PENDING' && ($role_session === "moderateur" || $role_session === "administrateur")}<span data-article="{$article->getId_Article()}" class="validArticle btn-suppr btn btn-success"><i class="fas fa-check"></i></span>{/if}
                                                    <span class="btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
                                             </div>
                                             </td>

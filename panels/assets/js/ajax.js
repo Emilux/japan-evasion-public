@@ -198,4 +198,37 @@ $(function (){
             console.log(textStatus);
         });
     })
+
+
+    /* PARTIE GESTION ARTICLE */
+    //Bouton valider article
+    $('.validArticle').on('click', function (e){
+        e.preventDefault();
+        let thisButton = $(this);
+        $.ajax("./?ajax=action", {
+            method: "POST",
+            dataType: "JSON",
+            data:{
+                validArticle:true,
+                id_article:thisButton.data('article')
+            },
+            beforeSend: function(e) {
+                $(thisButton).text('...');
+            }
+        }).done(function(result) {
+            console.log(result);
+            $(thisButton).html(`<i class="fas fa-check"></i>`);
+            if (result.success) {
+                thisButton.html(`<i class="fas fa-times"></i>`);
+            } else {
+                console.log(result);
+            }
+        }).fail(function(xhr, textStatus, errorThrown) {
+            console.log(result);
+            $(thisButton).html(`<i class="fas fa-check"></i>`);
+            console.log(errorThrown);
+            console.log(xhr);
+            console.log(textStatus);
+        });
+    })
 })

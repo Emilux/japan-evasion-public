@@ -318,6 +318,7 @@ class Utilisateur extends Visiteur {
         ' WHERE utilisateur.id_utilisateur = '.$id
 
         );
+        var_dump($sql);
         $sql = $sql->execute();
         return $sql;
 
@@ -326,7 +327,8 @@ class Utilisateur extends Visiteur {
 
 
     /**
-     * Cette fonction crée un utilisateur et le visiteur auquel il sera rattaché dans la bdd
+     * Cette fonction crée un utilisateur avec toute ses information (prenom, pseudo ect...)
+     * et le visiteur auquel il sera rattaché dans la bdd
      * Si l'utilisateur est crée return true sinon retourne false
      *
      *

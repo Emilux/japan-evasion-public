@@ -239,6 +239,39 @@ class Article extends Utilisateur {
 
     }
 
+    /**
+     * Cette fonction permet de modifier les informations d'un article
+     * Si l'article est modifier return true sinon retourne false
+     *
+     * @param array $data
+     * @param $id
+     *
+     * @return  {boolean}     return true si article mise a jour, sinon false
+     */
+    public function Update(array $data, $id){
+
+        $valeurs = '';
+
+        foreach($data as $key => $value){
+            if($value !== ""){
+                $valeurs .= $key.' = "'.$value.'" , ';
+            }
+        }
+
+        $valeurs = substr($valeurs,0,-2);
+
+        $sql = $this->_bdd->prepare(
+
+            ' UPDATE '.$this->_table.' SET '.$valeurs.
+            ' WHERE '.$this->_table.'.id_article = '.$id
+
+        );
+        var_dump($sql);
+        $sql = $sql->execute();
+        return $sql;
+
+    }
+
 
 
 
