@@ -167,7 +167,6 @@
                                             </div>
                                         </a>
                                         {/if}
-                                        <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                                     </div>
                                 </li>
                                 <!-- END OF ALERT NOTIF -->
