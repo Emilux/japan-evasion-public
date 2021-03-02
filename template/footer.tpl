@@ -114,29 +114,30 @@
         </div>
 
         <!-- NEWSLETTER -->
-
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="email">
-                    <h1>Abonnez-vous à ce blog par e-mail</h1>
-                    <h5>Recevez une notification par email à chaque publication d'un nouvel article</h5>
-                    <div id="msg"></div>
-                    <form method="post" id="form-subscribe" action="./?ajax=newsletter">
-                        <div class="row justify-content-center" id="email-form">
-                            <div class="col-9 py-2">
-                                <input type="text" class="form-control form-input" id="email" name="name" placeholder="Prenom...">
-                            </div>
-                            <div class="col-9 py-2">
-                                <input type="email" class="form-control form-input" id="email" name="email" placeholder="Adresse e-mail...">
-                            </div>
-                            <div class="col-9 py-2" id="abonne">
-                                <button type="submit" name="submitnewsletter" class="btn btn-danger" id="btn-subscriber">Je m'abonne !</button>
-                            </div>
-                        </form>
+        {if !$connecte_header}
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="email">
+                        <h1>Abonnez-vous à ce blog par e-mail</h1>
+                        <h5>Recevez une notification par email à chaque publication d'un nouvel article</h5>
+                        <div id="msg"></div>
+                        <form method="post" id="form-subscribe" action="./?ajax=newsletter">
+                            <div class="row justify-content-center" id="email-form">
+                                <div class="col-9 py-2">
+                                    <input type="text" class="form-control form-input" id="email" name="name" placeholder="Prenom...">
+                                </div>
+                                <div class="col-9 py-2">
+                                    <input type="email" class="form-control form-input" id="email" name="email" placeholder="Adresse e-mail...">
+                                </div>
+                                <div class="col-9 py-2" id="abonne">
+                                    <button type="submit" name="submitnewsletter" class="btn btn-danger" id="btn-subscriber">Je m'abonne !</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {/if}
 
         <!-- SLIDER ARTICLE -->
 
