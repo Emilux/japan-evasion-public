@@ -231,7 +231,7 @@ $('#recherche-text').on('change paste keyup', function(e) {
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"><span class="dot">• </span>Écrit par <a
-                                    href="?page=profiles&utilisateur={$value->getPseudo_Visiteur()}">${article.pseudo}</a>
+                                    href="?page=profiles&utilisateur=${article.pseudo}">${article.pseudo}</a>
                                 </h5>
                                 <h2>${article.titre}</h2>
                                 <p class="card-text">${truncateString(article.contenu, 100)}</p>

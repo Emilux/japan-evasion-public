@@ -121,8 +121,8 @@ if(isset($_GET['id'])){
 
                         //Si aucune erreur Assigne les valeurs données par le visiteur.
                         if (empty($erreurs)){
-                            $commentaire->setPseudo_Visiteur($_POST['pseudo_visiteur']);
-                            $commentaire->setEmail_Visiteur($_POST['email_visiteur']);
+                            $commentaire->setPseudo_Visiteur($pseudo_visiteur);
+                            $commentaire->setEmail_Visiteur($email_visiteur);
                             $estVisiteur = true;
                         }
                     } else {

@@ -69,6 +69,7 @@ class Newsletter extends Model {
          $stmt = $this->_bdd->prepare($query);
          if($stmt->execute()){
              if($stmt->rowCount() > 0){
+                 $data['success'] = FALSE;
                 $data['message'] = 'email exist';
                 
             
