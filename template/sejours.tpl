@@ -49,7 +49,7 @@
                         <h5>15 jours / 13 nuits<br> 21 jours / 19 nuits</h5>
                         <p class="card-text">Découvrez ce qu'il faut voir au Japon lors d'un excellent condensé pour son premier voyage. D'est en ouest, vous partez à la poursuite de ses aspects modernes jusqu'aux plus traditionnels.</p>
                         <div class="row justify-content-center">
-                            <a class="devis" href="#">DEMANDER UN DEVIS</a>
+                            <a class="devis" href="?page=contact">DEMANDER UN DEVIS</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         <h5>14 jours / 12 nuits <br> 21 jours / 19 nuits</h5>
                         <p class="card-text align-self-center">Découvrez l'archipel de manière romantique pour célébrer à deux votre mariage ! Destination propre et sûre, le Japon attire de nombreux couples souhaitant profiter d'une escapade inoubliable.</p>
                         <div class="row justify-content-center">
-                            <a class="devis" href="#">DEMANDER UN DEVIS</a>
+                            <a class="devis" href="?page=contact">DEMANDER UN DEVIS</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                             nipponne.
                         </p>
                         <div class="row justify-content-center">
-                            <a class="devis" href="#">DEMANDER UN DEVIS</a>
+                            <a class="devis" href="?page=contact">DEMANDER UN DEVIS</a>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                         <h5>31 jours / 29 nuits<br> 21 jours / 19 nuits</h5>
                         <p class="card-text">Parcourez l'archipel nippon en découvrant le maximum de ses régions, du septentrional au méridional. Commencez le séjour dans la neige et terminez à la plage, avec toutes les richesses variées que le Japon est prêt à vous offrir.</p>
                         <div class="row justify-content-center">
-                            <a class="devis" href="#">DEMANDER UN DEVIS</a>
+                            <a class="devis" href="?page=contact">DEMANDER UN DEVIS</a>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                         <h5>8 jours / 6 nuits<br> 15 jours / 13 nuits</h5>
                         <p class="card-text align-self-center">Découvrez le grand Tokyo, mégapole la plus vaste au monde avec 39 millions d'habitants ! Plongez dans la ville électrique, sa culture populaire (manga, jeux vidéo...) et ses quartiers incroyables.</p>
                         <div class="row justify-content-center">
-                            <a class="devis" href="#">DEMANDER UN DEVIS</a>
+                            <a class="devis" href="?page=contact">DEMANDER UN DEVIS</a>
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                         <h5>8 jours / 6 nuits<br> 14 jours / 12 nuits</h5>
                         <p class="card-text">Arpentez l'ouest de l'archipel et ses merveilles traditionnelles, à la poursuite des temples séculaires et des plus beaux jardins japonais, jusqu'à la mer intérieure et le Japon de l'envers.</p>
                         <div class="row justify-content-center">
-                            <a class="devis" href="#">DEMANDER UN DEVIS</a>
+                            <a class="devis" href="?page=contact">DEMANDER UN DEVIS</a>
                         </div>
                     </div>
                 </div>

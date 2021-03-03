@@ -57,7 +57,7 @@
                                                         <span data-article="{$article->getId_Article()}" class="validArticle btn-suppr btn btn-danger"><i class="fas fa-times"></i></span>
                                                     {/if}
                                                 {/if}
-                                                   <span class="btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
+                                                {if ($role_session === "administrateur") || $article->getId_Utilisateur() === $smarty.session.utilisateur.id_utilisateur}<span data-article="{$article->getId_Article()}" class="btn-suppr supprArticle btn btn-danger"><i class="fas fa-trash"></i></span>{/if}
                                             </div>
                                             </td>
                                         </tr>
