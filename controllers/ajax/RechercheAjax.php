@@ -8,7 +8,9 @@ if (isset($_GET['recherche'])){
     $article = new Article();
 
     if (!empty($recherche)){
-        $listArticle = $article->getList(null, 'DESC', 'date_publication_article', '*', 'statut_article != "PENDING" AND titre_article LIKE "%'.$recherche.'%" OR contenu_article LIKE "%'.$recherche.'%" OR pseudo_visiteur LIKE "%'.$recherche.'%"');
+        $words = explode(' ', $recherche);
+        $recherche = implode('|', $words);
+        $listArticle = $article->getList(null, 'DESC', 'date_publication_article', '*', 'statut_article != "PENDING" AND titre_article REGEXP "'.$recherche.'" OR contenu_article REGEXP "'.$recherche.'" OR pseudo_visiteur REGEXP "'.$recherche.'"');
         if ($listArticle){
             foreach ($listArticle as $value){
                 array_push($data['article'],
