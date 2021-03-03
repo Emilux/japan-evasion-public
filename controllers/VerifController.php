@@ -65,3 +65,18 @@ if(isset($_SESSION['utilisateur'])){
         header('Location: '._PATH_.'?page=deconnexion');
 
 }
+
+/* Ici on update les articles vieux de 5 jours en published pour que tout les visiteurs y ai accès */
+$article = new Article();
+$articleDates = $article->getList(null,'DESC','id','article.id_article,date_publication_article,statut_article');
+
+foreach ($articleDates as $articleDate){
+    $jour = $Utils->getDayInterval($articleDate->getDate_Publication_Article());
+    if ($jour >= 5){
+        if ($articleDate->getStatut_Article() === 'NEW'){
+            $data['statut_article']='PUBLISHED';
+            $updateArticle = $article->Update($data,$articleDate->getId_Article());
+        }
+
+    }
+}

@@ -57,6 +57,12 @@ class utils
             return $str;
         }
     }
+
+    public function getDayInterval($date)
+    {
+        return intval(floor((time() - strtotime($date))/86400));
+
+    }
 }
 
 

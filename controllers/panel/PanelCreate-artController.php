@@ -9,9 +9,7 @@ if (isset ($_POST['submit_article'])) {
     $titre_article = $Utils->valid_donnees($_POST['titre_article']);
     $temps_lecture_article = $Utils->valid_donnees($_POST['temps_lecture_article']);
     $contenu_article = $Utils->valid_donnees($_POST['contenu_article']);
-    
 
-    var_dump($_FILES);
 
     if($_FILES['photo_article']['error'] == 0){
         $resultat = move_uploaded_file($_FILES['photo_article']['tmp_name'], '../assets/media/article/'.$_FILES['photo_article']['name']);
@@ -35,6 +33,11 @@ if (isset ($_POST['submit_article'])) {
     $article->setId_Utilisateur($_SESSION['utilisateur']['id_utilisateur']);
 
     $article = $article->creerArticle();
+
+    if($article){
+            header('Location: #');
+            exit();
+    }
 
 
 

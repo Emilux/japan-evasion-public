@@ -46,7 +46,11 @@ if(isset($_SESSION['utilisateur'])){
             }
 
             //UPDATE DE L'UTILISATEUR (ajouter update inner visiteur)
-            $utilisateur->Update($data, $_SESSION['utilisateur']['id_utilisateur']);
+            $updatedUtilisateur = $utilisateur->Update($data, $_SESSION['utilisateur']['id_utilisateur']);
+            if ($updatedUtilisateur){
+                header('Location: #');
+                exit();
+            }
 
         }
 
@@ -58,7 +62,11 @@ if(isset($_SESSION['utilisateur'])){
                     if($_POST['new_mdp_utilisateur'] === $_POST['confirmation_mdp_utilisateur']){
 
                         $data['mdp_utilisateur'] = password_hash($_POST['new_mdp_utilisateur'], PASSWORD_DEFAULT);
-                        $utilisateur->update($data, $utilisateur->getId_Utilisateur());
+                        $updatedMdpUtilisateur = $utilisateur->update($data, $utilisateur->getId_Utilisateur());
+                        if ($updatedMdpUtilisateur){
+                            header('Location: #');
+                            exit();
+                        }
 
 
                     } else {

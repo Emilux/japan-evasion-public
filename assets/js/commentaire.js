@@ -157,7 +157,6 @@ $(function(){
                 $(over).attr('data-content','Wait...');
             }
         }).done(function (data) {
-
             if(data.success){
 
                 $(over).attr('data-content',`
@@ -190,9 +189,9 @@ $(function(){
          
                             </div>          
             `);
-                $(over).popover('toggle')
-            }
 
+            }
+            $(over).popover('toggle')
 
         })
 

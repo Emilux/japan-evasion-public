@@ -242,8 +242,6 @@ class Article extends Utilisateur {
 
         );
 
-        var_dump($sql);
-
         $sql = $sql->execute();
         return $sql;
 
