@@ -37,16 +37,16 @@
     <!-- Page level plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
 
+    {if $page === 'panelIndex'}
     <!-- Page level custom scripts -->
     <script src="assets/js/chart-area-demo.js"></script>
     <script src="assets/js/chart-pie-demo.js"></script>
+    {/if}
 
     <!-- Page level plugins -->
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="assets/js/datatables-demo.js"></script>
 
     <!-- Page ajax custom scripts -->
     <script src="assets/js/ajax.js"></script>

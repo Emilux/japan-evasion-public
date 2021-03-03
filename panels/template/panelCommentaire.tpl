@@ -39,23 +39,25 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    {if $commentaires}
                                     {foreach from=$commentaires item=commentaire}
                                     {assign var=estRole value=$role->getItem('id_role',$commentaire->getId_Role())}
                                     {assign var=articleTitre value=$titreArticle->getItem('id_article',$commentaire->getId_Article())}
-                                        <tr>
+                                        <tr data-row-commentaire="{$commentaire->getId_Commentaire()}">
                                             <td>{$commentaire->getPseudo_Visiteur()}</td>
                                             <td>{$commentaire->getEmail_Visiteur()|lower}</td>
                                             <td>{$commentaire->getContenu_Commentaire()} <sup><a href="../?page=articles&id={$commentaire->getId_Article()}#commentaire_{$commentaire->getId_Commentaire()}"><i class="fas fa-sign-out-alt"></i></a></sup></td>
                                             <td>{$commentaire->getDatetime_Commentaire()|date_format:"%d/%m/%Y à %R"}</td>   
                                             <td>{$articleTitre->getTitre_Article()|truncate:20}</td>
-                                            <td>{$estRole->getNom_Role()|capitalize}</td>
+                                            <td>{if $estRole}{$estRole->getNom_Role()|capitalize}{else}Visiteur{/if}</td>
                                             <td>{if $commentaire->getBanni_Utilisateur() === 0}Banni{else}Non banni{/if}</td>
                                             <td style="text-align :center;">
-                                                   <span class="btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
+                                                   <span data-commentaire="{$commentaire->getId_Commentaire()}" class="supprCom btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
                                             </div>
                                             </td>
                                         </tr>
                                     {/foreach}
+                                    {/if}
                                     </tbody>
                                 </table>
                             </div>

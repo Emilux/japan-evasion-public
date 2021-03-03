@@ -1,26 +1,23 @@
 <?php
-$smarty->assign('page', 'panelCreate-user');
+if ($_SESSION['utilisateur']['role'] === 'administrateur'){
+    $smarty->assign('page', 'panelCreate-user');
 
-$utilisateur = new Utilisateur();
-
-
-if (isset ($_POST['submit_utilisateur'])) {
-
-    $pseudo_visiteur = $Utils->valid_donnees($_POST['pseudo_visiteur']);
-    $email_visiteur = $Utils->valid_donnees($_POST['email_visiteur']);
-    $prenom_utilisateur = $Utils->valid_donnees($_POST['prenom_utilisateur']);
-    $nom_utilisateur = $Utils->valid_donnees($_POST['nom_utilisateur']);
-    $date_naissance_utilisateur = $Utils->valid_donnees($_POST['date_naissance_utilisateur']);
-    $mdp_utilisateur = $Utils->valid_donnees($_POST['mdp_utilisateur']);
+    $utilisateur = new Utilisateur();
 
 
+    if (isset ($_POST['submit_utilisateur'])) {
 
-    var_dump($_FILES);
-            
+        $pseudo_visiteur = $Utils->valid_donnees($_POST['pseudo_visiteur']);
+        $email_visiteur = $Utils->valid_donnees($_POST['email_visiteur']);
+        $prenom_utilisateur = $Utils->valid_donnees($_POST['prenom_utilisateur']);
+        $nom_utilisateur = $Utils->valid_donnees($_POST['nom_utilisateur']);
+        $date_naissance_utilisateur = $Utils->valid_donnees($_POST['date_naissance_utilisateur']);
+        $mdp_utilisateur = $Utils->valid_donnees($_POST['mdp_utilisateur']);
+
         if($_FILES['avatar_utilisateur']['error'] == 0){
             $resultat = move_uploaded_file($_FILES['avatar_utilisateur']['tmp_name'], '../assets/media/avatar/'.$_FILES['avatar_utilisateur']['name']);
-            
-            
+
+
             $utilisateur->setAvatar_Utilisateur('./assets/media/avatar/'.$_FILES['avatar_utilisateur']['name']);
 
             if(!$resultat){
@@ -34,26 +31,30 @@ if (isset ($_POST['submit_utilisateur'])) {
 
             $smarty->assign('error', 'Une erreur est survenu lors de l\'upoload sur le serveur');
         }
-        
-    
-
-       
-
-
-
-    
-    
-    $utilisateur->setPseudo_Visiteur($pseudo_visiteur);
-    $utilisateur->setEmail_Visiteur($email_visiteur);
-    $utilisateur->setPrenom_Utilisateur($prenom_utilisateur);
-    $utilisateur->setNom_Utilisateur($nom_utilisateur);
-    $utilisateur->setMdp_Utilisateur(password_hash($mdp_utilisateur,PASSWORD_DEFAULT));
-    $utilisateur->setDate_Naissance_Utilisateur($date_naissance_utilisateur);
-    $utilisateur->setId_Role('membre');
-
-    $utilisateur = $utilisateur->creerUtilisateur();
 
 
 
 
+
+
+
+
+
+        $utilisateur->setPseudo_Visiteur($pseudo_visiteur);
+        $utilisateur->setEmail_Visiteur($email_visiteur);
+        $utilisateur->setPrenom_Utilisateur($prenom_utilisateur);
+        $utilisateur->setNom_Utilisateur($nom_utilisateur);
+        $utilisateur->setMdp_Utilisateur(password_hash($mdp_utilisateur,PASSWORD_DEFAULT));
+        $utilisateur->setDate_Naissance_Utilisateur($date_naissance_utilisateur);
+        $utilisateur->setId_Role('membre');
+
+        $utilisateur = $utilisateur->creerUtilisateur();
+
+
+
+
+    }
+}  else {
+    header('Location: ./');
+    exit();
 }

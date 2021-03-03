@@ -39,7 +39,7 @@ if (isset($_SESSION['utilisateur'])) {
     //récupérer le contenu d'un commentaire 
     $commentaires = $commentaire->getList();
     
-    //récupérer le contenu d'un commentaire
+    //récupérer le contenu d'un article
     if ($_SESSION['utilisateur']['role'] !== "redacteur"){
         $articles = $article->getList();
     } else {

@@ -1,5 +1,14 @@
+function truncateString(str, num) {
+    // If the length of str is less than or equal to num
+    // just return str--don't truncate it.
+    if (str.length <= num) {
+        return str
+    }
+    // Return str truncated with '...' concatenated to the end of str.
+    return str.slice(0, num) + '...'
+}
+
 //NEWSLETTER
-console.log('test');
 $('#form-subscribe').on('submit', function(e) {
     e.preventDefault();
     let formdata = $(this).serialize();
@@ -21,16 +30,6 @@ $('#form-subscribe').on('submit', function(e) {
         $('#msg').html("<div class='alert alert-danger'>Une erreur est survenue, veuillez réessayer !</div>");
     });
 });
-
-
-
-//REPONSE COMMENTAIRE
-$('.reponse-commentaire').on('click', function(e) {
-
-    e.preventDefault();
-    $(`*[data-commentaire="${$(this).data('cible')}"]`).toggle()
-})
-
 
 //CONNEXION
 $('#connexion_form_submit').on('click', function(e) {
@@ -155,6 +154,114 @@ $('#alertsDropdown').on('click', function(e) {
     });
 });
 
+function voirArticle(tag){
+    $.ajax("./?ajax=afficherPlus", {
+        method: "POST",
+        dataType: "JSON",
+        data:{
+            plusArticle : true,
+            row:$(tag).data('row')
+        },
+        beforeSend: function() {
+            $(tag).text("Chargement...");
+        }
+    }).done(function(result) {
+        $(tag).text("VOIR PLUS D'ARTICLE");
+        if (result.success) {
+            $('#plus-article').data('row', $('#plus-article').data('row')+6)
+            result.article.forEach(function (article) {
+                $('#article').append(
+                    `<div class="p-3 col-4">
+                    <div class="card h-100 shadow bg-white rounded">
+                        <div class="cardy-b">
+                            <img class="card-img-top" src="${article.cover}" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><span class="dot">• </span>Écrit par <a
+                                href="?page=profiles&utilisateur={$value->getPseudo_Visiteur()}">${article.pseudo}</a>
+                            </h5>
+                            <h2>${article.titre}</h2>
+                            <p class="card-text">${truncateString(article.contenu, 100)}</p>
+                            <div class="row justify-content-center">
+                                <a class="btn-lire" href="?page=articles&id=${article.id}">LIRE
+                                    L'ARTICLE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+                );
+            })
+
+        } else {
+
+            console.log(result);
+        }
+    }).fail(function(xhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+        $(tag).text("VOIR PLUS D'ARTICLE");
+    });
+}
+
+//VOIR PLUS ARTICLE BUTTON
+$('#plus-article').on('click', function(e) {
+    e.preventDefault();
+    voirArticle(this);
+});
+
+//BARRE DE RECHERCHE DYNAMIQUE
+$('#recherche-text').on('change paste keyup', function(e) {
+    $.ajax("./?ajax=recherche", {
+        method: "GET",
+        dataType: "JSON",
+        data:{
+            recherche : $('#recherche-text').val()
+        }
+    }).done(function(result) {
+        if (result.success) {
+            $('#article').html('');
+            if (result.article !== '' ){
+                $('#plus-article').remove();
+                result.article.forEach(function (article) {
+                    $('#article').append(
+                        `
+                    <div class="p-3 col-4">
+                        <div class="card h-100 shadow bg-white rounded">
+                            <div class="cardy-b">
+                                <img class="card-img-top" src="${article.cover}" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><span class="dot">• </span>Écrit par <a
+                                    href="?page=profiles&utilisateur={$value->getPseudo_Visiteur()}">${article.pseudo}</a>
+                                </h5>
+                                <h2>${article.titre}</h2>
+                                <p class="card-text">${truncateString(article.contenu, 100)}</p>
+                                <div class="row justify-content-center">
+                                    <a class="btn-lire" href="?page=articles&id=${article.id}">LIRE
+                                        L'ARTICLE</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                    );
+                })
+                if ($('#recherche-text').val() === ''){
+                    $('#voir-plus-article').html(`<a data-row="6" id="plus-article" href="#" class="btn btn-dark">VOIR PLUS D'ARTICLE</a>`);
+                    $('#plus-article').on('click', function(e) {
+                        e.preventDefault();
+                        voirArticle(this);
+                    });
+                }
+            }
+
+        } else {
+            console.log(result);
+        }
+    }).fail(function(xhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+    });
+
+});
 
 //MODAL MOT DE PASS OUBLIE 
 

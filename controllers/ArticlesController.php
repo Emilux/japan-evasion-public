@@ -21,17 +21,17 @@ if(isset($_GET['id'])){
     //afficher l'article si il est publié et s'il est NEW l'affiché que au utilisateur connectés
     if(($article)){
 
-        if($article->getStatut_Article() === 'PUBLISHED' || ($article->getStatut_Article() === 'NEW' && isset($_SESSION['utilisateur']))){
+        if($article->getStatut_Article() === 'PUBLISHED' || ($article->getStatut_Article() === 'NEW' && isset($_SESSION['utilisateur'])) || (($article->getStatut_Article() === 'PENDING' && $_SESSION['utilisateur']['role'] === 'moderateur') || ($article->getStatut_Article() === 'PENDING' && $_SESSION['utilisateur']['role'] === 'administrateur'))){
 
             
             //tester si on recupère une variable id en get
             if(isset($_GET['id_commentaire'])){
-
-                $commentaire_id_utilisateur = $commentaire->getItem('id_commentaire',$_GET['id_commentaire'],'id_utilisateur');
+                $id_commentaire = $Utils->valid_donnees($_GET['id_commentaire']);
+                $commentaire_id_utilisateur = $commentaire->getItem('id_commentaire',$id_commentaire,'id_utilisateur');
 
                 if(($commentaire_id_utilisateur && $commentaire_id_utilisateur->getId_Utilisateur() === $_SESSION['utilisateur']['id_utilisateur']) || ($_SESSION['utilisateur']['role'] === "administrateur" || $_SESSION['utilisateur']['role'] === "moderateur")){
 
-                    $commentaire->Delete($_GET['id_commentaire']);
+                    $commentaire->Delete($id_commentaire);
                     header('Location: ?page=articles&id='.$_GET['id'].'#espace_commentaire');
 
                 }

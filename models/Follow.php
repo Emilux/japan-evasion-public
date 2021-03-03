@@ -48,9 +48,9 @@ class Follow extends Model {
     }
 
 
-    /** Redimensionne une image
+    /** Ajoute un follower a un utilisateur
     *
-    * 
+    * @return string
     */
     public function doFollow(){
     

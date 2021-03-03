@@ -38,4 +38,22 @@ class utils
         }
         return implode($pass); //turn the array into a string
     }
+
+    public function getAge($date) {
+
+        return intval(floor((time() - strtotime($date))/31556926));
+
+
+    }
+
+    public function truncateString($str, $num) {
+
+        if (strlen($str) <= $num)  {
+            return $str;
+        }
+
+        return substr($str, 0, -(strlen($str)-($num))).'...';
+    }
+
+
 }

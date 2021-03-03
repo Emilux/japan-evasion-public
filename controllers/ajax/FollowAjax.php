@@ -26,7 +26,7 @@ if(isset($_GET['id_followed'])){
             $follower = $follow->doFollow();
 
             //Données de la notification
-            $dataSend['contenu_notification'] = "<a href='?page=profiles&utilisateur=".$_SESSION['utilisateur']['pseudo_visiteur']."'>".$_SESSION['utilisateur']['pseudo_visiteur']."</a> vous suit.";
+            $dataSend['contenu_notification'] = "<a href='/?page=profiles&utilisateur=".$_SESSION['utilisateur']['pseudo_visiteur']."'>".$_SESSION['utilisateur']['pseudo_visiteur']."</a> vous suit.";
             $dataSend['statut_article'] = 0;
             $dataSend['id_utilisateur'] = $_GET['id_followed'];
 

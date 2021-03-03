@@ -1,4 +1,47 @@
 $(function (){
+    // Call the dataTables jQuery plugin
+    $('#dataTable').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.22/i18n/French.json'
+        }
+    });
+    let coms = $('#dataTable-coms').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.22/i18n/French.json'
+        }
+    });
+    console.log(coms)
+    $('#dataTable-articles').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.22/i18n/French.json',
+
+        },
+    });
+    $('#dataTable-page-articles').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.22/i18n/French.json',
+
+        },
+        pageLength: 50
+    });
+    $('#dataTable-utilisateur').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.22/i18n/French.json',
+
+        },
+        pageLength: 50
+    });
+    $('#dataTable-page-coms').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.22/i18n/French.json',
+
+        },
+        pageLength: 50
+    });
+
+
+
+
     $('.bannir').on('click', function (e) {
         e.preventDefault();
         let thisButton = $(this);
@@ -217,15 +260,92 @@ $(function (){
             }
         }).done(function(result) {
             console.log(result);
+            thisButton.addClass('btn-success');
+            thisButton.removeClass('btn-danger');
             $(thisButton).html(`<i class="fas fa-check"></i>`);
             if (result.success) {
-                thisButton.html(`<i class="fas fa-times"></i>`);
+                $(`*[data-row-article="${result.id}"]`).children(`.statut_article`).text(result.message.toUpperCase());
+                if (result.message === "new"){
+                    thisButton.addClass('btn-danger');
+                    thisButton.removeClass('btn-success');
+                    thisButton.html(`<i class="fas fa-times"></i>`);
+                } else {
+                    thisButton.addClass('btn-success');
+                    thisButton.removeClass('btn-danger');
+                    thisButton.html(`<i class="fas fa-check"></i>`);
+                }
+
             } else {
                 console.log(result);
             }
         }).fail(function(xhr, textStatus, errorThrown) {
             console.log(result);
             $(thisButton).html(`<i class="fas fa-check"></i>`);
+            console.log(errorThrown);
+            console.log(xhr);
+            console.log(textStatus);
+        });
+    })
+
+    //Bouton supprimmer article
+    $('.supprArticle').on('click', function (e){
+        e.preventDefault();
+        let thisButton = $(this);
+        $.ajax("./?ajax=action", {
+            method: "POST",
+            dataType: "JSON",
+            data:{
+                supprArticle:true,
+                id_article:thisButton.data('article')
+            },
+            beforeSend: function(e) {
+                $(thisButton).text('...');
+            }
+        }).done(function(result) {
+            console.log(result);
+            $(thisButton).html('<i class="fas fa-trash"></i>');
+            if (result.success) {
+                $(`*[data-row-article="${result.id}"]`).remove();
+            } else {
+                console.log(result);
+            }
+        }).fail(function(xhr, textStatus, errorThrown) {
+            console.log(result);
+            $(thisButton).html(`<i class="fas fa-trash"></i>`);
+            console.log(errorThrown);
+            console.log(xhr);
+            console.log(textStatus);
+        });
+    })
+
+    /* PARTIE GESTION COMMENTAIRE */
+    //Bouton supprimmer commentaire
+    //Bouton supprimmer article
+    $('.supprCom').on('click', function (e){
+        e.preventDefault();
+        let thisButton = $(this);
+        $.ajax("./?ajax=action", {
+            method: "POST",
+            dataType: "JSON",
+            data:{
+                supprCom:true,
+                id_commentaire:thisButton.data('commentaire')
+            },
+            beforeSend: function(e) {
+                $(thisButton).text('...');
+            }
+        }).done(function(result) {
+            console.log(result);
+            $(thisButton).html('<i class="fas fa-trash"></i>');
+            if (result.success) {
+                $(`*[data-row-commentaire="${result.id}"]`).remove();
+
+            } else {
+                console.log(result);
+            }
+        }).fail(function(xhr, textStatus, errorThrown) {
+            console.log(result);
+            $(thisButton).html(`<i class="fas fa-trash"></i>`);
             console.log(errorThrown);
             console.log(xhr);
             console.log(textStatus);

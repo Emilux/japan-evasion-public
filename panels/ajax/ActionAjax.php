@@ -189,6 +189,26 @@ if ($_SESSION['utilisateur']['role'] === "administrateur" || $_SESSION['utilisat
         echo json_encode($data);
     }
 
+    if (isset($_POST['supprCom'])){
+
+            $dataSend=[];
+            $commentaire = new Commentaire();
+            $id_commentaire = $Utils->valid_donnees($_POST['id_commentaire']);
+            $commentaire = $commentaire->Delete($id_commentaire);
+            if ($commentaire){
+                $data['success'] = TRUE;
+                $data['message'] = 'delete';
+                $data['id'] = $id_commentaire;
+            } else {
+                $data['success'] = FALSE;
+                $data['message'] = 'erreur';
+            }
+
+            echo json_encode($data);
+    }
+
+
+
 }
 
 //Seul un administrateur peut supprimer un utilisateur
@@ -215,3 +235,27 @@ if ($_SESSION['utilisateur']['role'] === "administrateur"){
         echo json_encode($data);
     }
 }
+
+//Seul un administrateur peut supprimer un article ou le possesseur de l'article
+
+if (isset($_POST['supprArticle'])){
+    $article = new Article();
+    $id_article = $Utils->valid_donnees($_POST['id_article']);
+    $possesseurArticle = $article->getItem('','',"utilisateur.id_utilisateur",'article.id_utilisateur = '.$_SESSION['utilisateur']['id_utilisateur'].' AND id_article = '.$id_article);
+        if ($_SESSION['utilisateur']['role'] === "administrateur" || $possesseurArticle){
+        $dataSend=[];
+
+        $article = $article->Delete($id_article);
+        if ($article){
+            $data['success'] = TRUE;
+            $data['message'] = 'delete';
+            $data['id'] = $id_article;
+        } else {
+            $data['success'] = FALSE;
+            $data['message'] = 'erreur';
+        }
+
+        echo json_encode($data);
+    }
+}
+

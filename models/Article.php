@@ -151,11 +151,22 @@ class Article extends Utilisateur {
      */
     public function getItem($champ, $valeur, $selecteur = "*",$where = null,$table = null){
 
-        $sql = $this->_bdd->query(
-            'SELECT '.$selecteur.' FROM '.$this->_table.' 
-                        INNER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
-                        INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur
-                        WHERE '.$champ.' = "'.$valeur.'"');
+        if($where === null){
+            $sql = $this->_bdd->query(
+                'SELECT '.$selecteur.' FROM '.$this->_table.' 
+                    INNER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
+                    INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur
+                    WHERE '.$champ.' = "'.$valeur.'"');
+
+
+        } else{
+            $sql = $this->_bdd->query(
+                'SELECT '.$selecteur.' FROM '.$this->_table.' 
+                    INNER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
+                    INNER JOIN visiteur ON visiteur.id_visiteur = utilisateur.id_visiteur
+                    WHERE '.$where);
+        }
+
         if ($sql)
             $sql = $sql->fetch(PDO::FETCH_ASSOC);
         else
@@ -173,7 +184,7 @@ class Article extends Utilisateur {
 
     /** Récupère la liste des articles ainsi que leurs rédacteur
      *
-     * @param int|null $limit
+     * @param int|string|null $limit
      * @param string $order
      * @param string $champs
      * @param string $selecteur
@@ -181,7 +192,7 @@ class Article extends Utilisateur {
      *
      * @return array|false return un array d'object ou false
      */
-    public function getList(int $limit=null, $order = 'DESC', $champs = 'id',$selecteur = '*', $where=null){
+    public function getList($limit=null, $order = 'DESC', $champs = 'id',$selecteur = '*', $where=null){
         if ($where !== null) $where = 'WHERE '.$where;
         if ($limit !== null) $limit = 'LIMIT '.$limit;
         if ($champs === 'id') $champs = $champs.'_'.$this->_table;
@@ -266,7 +277,6 @@ class Article extends Utilisateur {
             ' WHERE '.$this->_table.'.id_article = '.$id
 
         );
-        var_dump($sql);
         $sql = $sql->execute();
         return $sql;
 

@@ -38,30 +38,31 @@
                                     </tfoot>
                                     <tbody>
 
-                                    
+                                    {if $articles}
                                     {foreach from=$articles item=article}
                                     {assign var=signalement_article value=$signalement_articles->count('id_article', $article->getId_Article())}
-                                        <tr>
+                                        <tr data-row-article="{$article->getId_Article()}">
                                             <td>{$article->getPseudo_Visiteur()}</td>
                                             <td>{$article->getTitre_Article()} <sup><a href="../?page=articles&id={$article->getId_Article()}"><i class="fas fa-sign-out-alt"></i></a></sup></td>
-                                            <td>{$article->getDate_Publication_Article()|date_format:"%d/%m/%Y à %R"}</td>   
-                                            <td>{if $article->getStatut_Article() === 'PENDING'}
-
-
-                                            <span class="text-warning"><i class="fas fa-exclamation-triangle"></i> PENDING</span>
-                                            
-                                            
-                                            {else}<span>PUBLISHED</span>{/if}</td>
+                                            <td>{$article->getDate_Publication_Article()|date_format:"%d/%m/%Y à %R"}</td>
+                                            <td class="statut_article">{if $article->getStatut_Article() === 'PENDING'}
+                                                    <span class="text-warning"><i class="fas fa-exclamation-triangle"></i> PENDING</span>
+                                                {else}<span>{$article->getStatut_Article()|upper}</span>{/if}</td>
                                             <td>{$signalement_article}</td>
-                                            
+
                                             <td style="text-align :center;">
-                                                   <span class="btn-modif btn btn-primary"><i class="fas fa-pen"></i></span>
-                                                   {if $article->getStatut_Article() === 'PENDING'}<span class="btn-suppr btn btn-success"><i class="fas fa-check"></i></span>{/if}
+                                                {if ($role_session === "moderateur" || $role_session === "administrateur")}
+                                                    {if $article->getStatut_Article() === 'PENDING'}<span data-article="{$article->getId_Article()}" class="validArticle btn-suppr btn btn-success"><i class="fas fa-check"></i></span>
+                                                    {else}
+                                                        <span data-article="{$article->getId_Article()}" class="validArticle btn-suppr btn btn-danger"><i class="fas fa-times"></i></span>
+                                                    {/if}
+                                                {/if}
                                                    <span class="btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
                                             </div>
                                             </td>
                                         </tr>
                                     {/foreach}
+                                    {/if}
                                     </tbody>
                                 </table>
                             </div>

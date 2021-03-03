@@ -38,19 +38,17 @@
 <div class="container" id="section1">
     <!-- RECHERCHE - FILTRAGE ARTICLE -->
 
-    <form method="get" class="row domain-search bg-pblue mb-4" id="recherche">
+    <div class="row domain-search bg-pblue mb-4" id="recherche">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="input-group"> <input type="search" name="recherche" class="form-control" placeholder="Rechercher un article...">
-                        <span class="input-group-addon">
-                            <input type="submit" value="Rechercher" class="btn btn-dark">
-                        </span>
+                    <div class="input-group">
+                        <input id="recherche-text" type="text" value="" name="recherche" class="form-control" placeholder="Rechercher un article...">
                     </div>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 
 
     <div class="row">
@@ -80,5 +78,11 @@
             {/if}
 
         </div>
+
+
     </div>
+    <div id="voir-plus-article" class="p-3 d-flex justify-content-center">
+        <a data-row="6" id="plus-article" href="#" class="btn btn-dark">VOIR PLUS D'ARTICLE</a>
+    </div>
+
 </div>

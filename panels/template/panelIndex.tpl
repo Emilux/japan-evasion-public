@@ -200,6 +200,7 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    {if $utilisateurs}
                                     {foreach from=$utilisateurs item=utilisateurInfo}
                                     {assign var=estRole value=$role->getItem('id_role',$utilisateurInfo->getId_Role())}
                                         <tr data-row-user="{$utilisateurInfo->getId_Utilisateur()}">
@@ -242,6 +243,7 @@
                                             </td>
                                         </tr>
                                     {/foreach}
+                                    {/if}
                                     </tbody>
                                 </table>
                             </div>
@@ -283,23 +285,25 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    {if $commentaires}
                                     {foreach from=$commentaires item=commentaire}
-                                    {assign var=estRole value=$role->getItem('id_role',$utilisateurInfo->getId_Role())}
+                                    {assign var=estRole value=$role->getItem('id_role',$commentaire->getId_Role())}
                                     {assign var=articleTitre value=$titreArticle->getItem('id_article',$commentaire->getId_Article())}
-                                        <tr>
+                                        <tr data-row-commentaire="{$commentaire->getId_Commentaire()}">
                                             <td>{$commentaire->getPseudo_Visiteur()}</td>
                                             <td>{$utilisateurInfo->getEmail_Visiteur()|lower}</td>
                                             <td>{$commentaire->getContenu_Commentaire()} <sup><a href="../?page=articles&id={$commentaire->getId_Article()}#commentaire_{$commentaire->getId_Commentaire()}"><i class="fas fa-sign-out-alt"></i></a></sup></td>
                                             <td>{$commentaire->getDatetime_Commentaire()|date_format:"%d/%m/%Y à %R"}</td>
                                             <td>{$articleTitre->getTitre_Article()|truncate:20}</td>
-                                            <td>{$estRole->getNom_Role()|capitalize}</td>
+                                            <td>{if $estRole}{$estRole->getNom_Role()|capitalize}{else}Visiteur{/if}</td>
                                             <td>{if $utilisateurInfo->getBanni_Utilisateur() === 0}Banni{else}Non banni{/if}</td>
                                             <td style="text-align :center;">
-                                                   <span class="btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
+                                                   <span data-commentaire="{$commentaire->getId_Commentaire()}" class="supprCom btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
                                             </div>
                                             </td>
                                         </tr>
                                     {/foreach}
+                                    {/if}
                                     </tbody>
                                 </table>
                             </div>
@@ -336,22 +340,30 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    {if $articles}
                                     {foreach from=$articles item=article}
-                                        <tr>
+                                        <tr data-row-article="{$article->getId_Article()}">
                                             <td>{$article->getPseudo_Visiteur()}</td>
                                             <td>{$article->getTitre_Article()} <sup><a href="../?page=articles&id={$article->getId_Article()}"><i class="fas fa-sign-out-alt"></i></a></sup></td>
                                             <td>{$article->getDate_Publication_Article()|date_format:"%d/%m/%Y à %R"}</td>
-                                            <td>{if $article->getStatut_Article() === 'PENDING'}
-                                            <span data-article="{$article->getId_Article()}" class="text-warning"><i class="fas fa-exclamation-triangle"></i> PENDING</span>
-                                            {else}<span data-article="{$article->getId_Article()}">{$article->getStatut_Article()|upper}</span>{/if}</td>
+                                            <td class="statut_article">{if $article->getStatut_Article() === 'PENDING'}
+                                            <span class="text-warning"><i class="fas fa-exclamation-triangle"></i> PENDING</span>
+                                            {else}<span>{$article->getStatut_Article()|upper}</span>{/if}</td>
                                             <td style="text-align :center;">
-                                                   <span class="btn-modif btn btn-primary"><i class="fas fa-pen"></i></span>
-                                                   {if $article->getStatut_Article() === 'PENDING' && ($role_session === "moderateur" || $role_session === "administrateur")}<span data-article="{$article->getId_Article()}" class="validArticle btn-suppr btn btn-success"><i class="fas fa-check"></i></span>{/if}
-                                                   <span class="btn-suppr btn btn-danger"><i class="fas fa-trash"></i></span>
+
+                                                    {if ($role_session === "moderateur" || $role_session === "administrateur")}
+                                                        {if $article->getStatut_Article() === 'PENDING'}<span data-article="{$article->getId_Article()}" class="validArticle btn-suppr btn btn-success"><i class="fas fa-check"></i></span>
+                                                        {else}
+                                                            <span data-article="{$article->getId_Article()}" class="validArticle btn-suppr btn btn-danger"><i class="fas fa-times"></i></span>
+                                                        {/if}
+                                                    {/if}
+
+                                                {if ($role_session === "administrateur") || $article->getId_Utilisateur() === $smarty.session.utilisateur.id_utilisateur}<span data-article="{$article->getId_Article()}" class="btn-suppr supprArticle btn btn-danger"><i class="fas fa-trash"></i></span>{/if}
                                             </div>
                                             </td>
                                         </tr>
                                     {/foreach}
+                                {/if}
                                     </tbody>
                                 </table>
                             </div>

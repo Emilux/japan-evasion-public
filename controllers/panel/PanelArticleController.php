@@ -1,50 +1,26 @@
 <?php
-$smarty->assign('page', 'panelArticle');
-
-$utilisateur = new Utilisateur();
-$commentaire = new Commentaire();
-$article = new Article();
-$role = new Role();
-$signalement_article = new Signale_Article();
+    $smarty->assign('page', 'panelArticle');
 
 
-if (isset($_SESSION['utilisateur'])) {
+    $article = new Article();
+    $signalement_article = new Signale_Article();
 
 
-    $smarty->assign('session', $_SESSION['utilisateur']);
-
-    //Compteur 
-    $nbUtilisateur = $utilisateur->Count();
-    $nbCommentaire = $commentaire->Count();
-    $nbArticle = $article->Count();
-    $nbArticlePending = $article->Count('statut_article','PENDING');
-
-    //récupérer le contenu de l'utilisateur
-    $utilisateurs = $utilisateur->getList();
-
-    //récupérer le contenu d'un commentaire 
-    $commentaires = $commentaire->getList();
-    
-    //récupérer le contenu d'un commentaire 
-    $articles = $article->getList();
+    if (isset($_SESSION['utilisateur'])) {
 
 
-    //récupérer le contenu de l'utilisateur visionné
-    $utilisateur = $utilisateur->getItem('id_utilisateur',$_SESSION['utilisateur']['id_utilisateur']); 
+        $smarty->assign('session', $_SESSION['utilisateur']);
 
+        //récupérer le contenu d'un article
+        if ($_SESSION['utilisateur']['role'] !== "redacteur"){
+            $articles = $article->getList();
+        } else {
+            $articles = $article->getList(null,'DESC','date_publication_article','*','utilisateur.id_utilisateur = '.$_SESSION['utilisateur']['id_utilisateur']);
+        }
 
-    $smarty->assign(array(
-        'utilisateur' => $utilisateur,
-        'utilisateurs' => $utilisateurs,
-        'nbUtilisateur' => $nbUtilisateur,
-        'nbCommentaire' => $nbCommentaire,
-        'nbArticle' => $nbArticle,
-        'nbArticlePending' => $nbArticlePending,
-        'commentaires' => $commentaires,
-        'articles' => $articles,
-        'role' => $role,
-        'titreArticle' => $article,
-        'signalement_articles' => $signalement_article,
+        $smarty->assign(array(
+            'articles' => $articles,
+            'signalement_articles' => $signalement_article,
         ));
 
-}
+    }

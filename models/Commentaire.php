@@ -207,7 +207,7 @@ class Commentaire extends Utilisateur {
 
     /** Récupère la liste des commentaires ainsi que leurs créateur
      *
-     * @param int|null $limit
+     * @param int|string|null $limit
      * @param string $order
      * @param string $champs
      * @param string $selecteur
@@ -215,7 +215,7 @@ class Commentaire extends Utilisateur {
      *
      * @return array|false return un array d'object ou false
      */
-    public function getList(int $limit=null, $order = 'DESC', $champs = 'id',$selecteur = '*', $where=null){
+    public function getList($limit=null, $order = 'DESC', $champs = 'id',$selecteur = '*', $where=null){
         if ($where !== null) $where = 'WHERE '.$where;
         if ($limit !== null) $limit = 'LIMIT '.$limit;
         if ($champs === 'id') $champs = $champs.'_'.$this->_table;
@@ -228,8 +228,6 @@ class Commentaire extends Utilisateur {
                         LEFT OUTER JOIN utilisateur ON visiteur.id_visiteur = utilisateur.id_visiteur
                         '.$where.'
                         ORDER BY '.$champs.' '.$order.' '.$limit);
-            
-
         if ($sql)
             $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
         else

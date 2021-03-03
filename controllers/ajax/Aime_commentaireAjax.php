@@ -19,20 +19,15 @@ if(isset($_POST['id_commentaire'])) {
     
             if($aime_commentaire->Add($data)){
                 $nb_aime_commentaire = $aime_commentaire->count('id_commentaire', $_POST['id_commentaire']);
-    
-                $array['msg'] = 'success';
-    
+
+                $array['success'] = true;
+                $array['add'] = true;
+
                 $array['number_like'] = $nb_aime_commentaire;
-    
-                echo json_encode($array);
     
             } else {
     
-                $array['msg'] = 'success';
-    
-                $array['number_like'] = null;
-    
-                echo json_encode($array);
+                $array['success'] = false;
                 
             }
 
@@ -42,15 +37,17 @@ if(isset($_POST['id_commentaire'])) {
 
                 $nb_aime_commentaire = $aime_commentaire->count('id_commentaire', $_POST['id_commentaire']);
 
-                $array['msg'] = 'exist';
-        
+                $array['success'] = true;
+                $array['delete'] = true;
                 $array['number_like'] = $nb_aime_commentaire;
-    
-                echo json_encode($array);
 
+            } else {
+                $array['success'] = false;
             }
 
         }
+
+        echo json_encode($array);
 
         
     }
