@@ -124,3 +124,32 @@ if (isset($_POST['plusCommentaire'])){
 
 
 }
+
+
+if (isset($_POST['overProfile'])){
+    $data = [];
+
+    //Appel classes
+    $utilisateur = new Utilisateur();
+    $commentaire = new Commentaire();
+    $article = new Article();
+    $follow = new Follow();
+
+    $id_utilisateur = $_POST['pseudo_utilisateur'];
+    $utilisateur = $utilisateur->getItem('id_utilisateur', $id_utilisateur);
+
+    $commentaire = $commentaire->Count('id_visiteur',$utilisateur->getId_Visiteur());
+    $article = $article->Count('id_utilisateur',$id_utilisateur);
+    $follow = $follow->Count('id_followed',$id_utilisateur);
+
+
+    $data['commentaire'] = $commentaire;
+    $data['article'] = $article;
+    $data['follow'] = $follow;
+    $data['success'] = true;
+
+    echo json_encode($data);
+
+
+
+}

@@ -56,6 +56,28 @@ html {
 body {
     background-color: #fff;
 }
+.popover .arrow:after{
+    border-right-color: white;
+}
+.popover-content, .popover-body {
+    background-color: white;
+    color: #1E1E1E;
+    font-size: 10px!important;
+    border-radius: 0;
+}
+
+.popover-body .buttons{
+    padding: 2em;
+}
+
+.popover-body .buttons li h3{
+    color: #1E1E1E;
+    font-size: 12px!important;
+}
+
+.popover-body .buttons li{
+    font-size: 20px!important;
+}
 
 #background.index {
     height: 100vh;

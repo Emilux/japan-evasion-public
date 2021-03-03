@@ -13,13 +13,12 @@
 
                         {assign var=nom_role value=$role->getItem('id_role',$commentaire->getId_Role())}
 
-
                         <div class="com" id="commentaire_{$commentaire->getId_Commentaire()}">
                             <img class="avatar_utilisateur" src="{if $commentaire->getId_Utilisateur() !== NULL} {$commentaire->getAvatar_Utilisateur()}
                     {else} https://eu.ui-avatars.com/api/?background=1e1e1e&color=ffffff&length=1&bold=true&size=128true&name={$commentaire->getPseudo_Visiteur()}
                     {/if}" alt="avatar">
                             <span class="pseudo">
-                    <a class="{if $nom_role}{$nom_role->getNom_role()}{/if}" href="?page=profiles&utilisateur={$commentaire->getPseudo_Visiteur()}">
+                    <a data-utilisateur="{$commentaire->getId_Utilisateur()}" data-animation="false" data-toggle="popover" data-content='' data-html="true"  class="{if $commentaire->getId_Utilisateur()}overProfile {/if}{if $nom_role}{$nom_role->getNom_role()}{/if}" href="{if $commentaire->getId_Utilisateur()}?page=profiles&utilisateur={$commentaire->getPseudo_Visiteur()}{else}javascript:void(0){/if}">
                     {$commentaire->getPseudo_Visiteur()|capitalize}
                         {if $commentaire->getId_Utilisateur() !== NULL}
                             {if $nom_role->getNom_role() === 'redacteur'}

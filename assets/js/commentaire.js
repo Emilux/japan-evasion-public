@@ -142,6 +142,64 @@ $(function(){
         });
     });
 
+    $('.overProfile').on( 'mouseenter mouseleave',function (e){
+        e.preventDefault();
+        let over = $(this)
+        $.ajax('./?ajax=afficherPlus',{
+            method:'POST',
+            dataType: "JSON",
+            data: {
+                overProfile:true,
+                pseudo_utilisateur:$(this).data('utilisateur')
+
+            },
+            beforeSend(jqXHR, settings) {
+                $(over).attr('data-content','Wait...');
+            }
+        }).done(function (data) {
+
+            if(data.success){
+
+                $(over).attr('data-content',`
+                    <div class="profile-images-card buttons  py-3">
+                   
+                                    <div class="row">
+                    
+                                        <ul class="text-center pr-1 pl-1">
+                                            <li id="nbFollower" class="number-profil">${data.follow}</li>
+                                            <li>
+                                                <h3 class="mt-3">FOLLOWERS</h3>
+                                            </li>
+                                        </ul>
+                    
+                                        <ul class="text-center pr-1 pl-1">
+                                            <li class="number-profil">${data.commentaire}</li>
+                                            <li>
+                                                <h3 class="mt-3">COMMENTAIRE</h3>
+                                            </li>
+                                        </ul>
+                    
+                                        <ul class="text-center pr-1 pl-1">
+                                            <li class="number-profil">${data.article}</li>
+                                            <li>
+                                                <h3 class="mt-3">ARTICLE</h3>
+                                            </li>
+                                        </ul>
+                    
+                                    </div>
+         
+                            </div>          
+            `);
+                $(over).popover('toggle')
+            }
+
+
+        })
+
+
+    })
+
+
 
 
 })

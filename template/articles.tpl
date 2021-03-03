@@ -60,15 +60,6 @@
             </div>
         </div>
 
-        <!-- AIME/SIGNALER ARTICLE -->
-
-        <div class="commentaire row  justify-content-center  mb-5">
-            <div class="col-8 d-flex justify-content-end">       
-                <a href="#"><span class="btn-signaler"><i class="fas fa-flag"></i>Signaler article</span></a>
-                <a href="#"><span class="btn-signaler"><i class="fas fa-heart"></i>1</span></a>
-            </div>
-        </div>
-
 
 
 {include file='template/commentaire.tpl'}
