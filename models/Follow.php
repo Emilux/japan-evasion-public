@@ -12,7 +12,7 @@
 class Follow extends Model {
 
 	protected $_id_follower;
-    protected $_id_followed;
+  protected $_id_followed;
 	protected $_table = 'follow';
 
     //GETTERS
@@ -48,7 +48,7 @@ class Follow extends Model {
     }
 
 
-    /** Redimensionne une image
+    /** Fonction pour follow un utilisateur
     *
     * 
     */
