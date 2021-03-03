@@ -15,20 +15,22 @@ class utils
      * @param string $donnees
      * @return string
      */
-    public function valid_donnees(string $donnees){
+    public function valid_donnees(string $donnees)
+    {
         $donnees = trim($donnees);
         $donnees = stripslashes($donnees);
         $donnees = htmlspecialchars($donnees);
         return $donnees;
     }
 
-    /** Génére un mot de passe aléatoire 
+    /** Génére un mot de passe aléatoire
      *
      *
-     * 
+     *
      * @return string
      */
-    public function randomPassword() {
+    public function randomPassword()
+    {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         $pass = array(); //remember to declare $pass as an array
         $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
@@ -39,21 +41,22 @@ class utils
         return implode($pass); //turn the array into a string
     }
 
-    public function getAge($date) {
 
-        return intval(floor((time() - strtotime($date))/31556926));
+    public function getAge($date)
+    {
+
+        return intval(floor((time() - strtotime($date)) / 31556926));
 
 
     }
 
-    public function truncateString($str, $num) {
+    public function truncateString($str, $num)
+    {
 
-        if (strlen($str) <= $num)  {
+        if (strlen($str) <= $num) {
             return $str;
         }
-
-        return substr($str, 0, -(strlen($str)-($num))).'...';
     }
-
-
 }
+
+

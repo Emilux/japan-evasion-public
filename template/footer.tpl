@@ -99,14 +99,14 @@
                     <div class="modal-body">
                     Veuillez renseigner l'adresse mail liée à votre compte pour recevoir un nouveau mot de passe.
                     </div>
-                    <form method="post">
+                    <form method="post" class>
                         <div class="form-group px-5">
                             <label for="email_reini">Email</label>
                             <input class="form-control" id="email_reini" type="email" name="email_utilisateur" placeholder="Votre email...">
                         </div>
                         <div class="modal-footer">
                             <input id="submit_reinitialisation" class="btn btn-dark" type="submit" name="submit_reinitialisation" value="VALIDER">
-                            <a href="#" data-dismiss="modal" class="btn">FERMER</a>
+                           
                         </div>
                     </form>
                 </div>

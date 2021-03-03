@@ -749,7 +749,8 @@ body {
 #second-modal {
     background-color: white !important;
     border-radius: 0%;
-    margin: -9.5px;
+    width: 500px !important;
+    margin: auto !important;
 }
 
 .modal-title {
