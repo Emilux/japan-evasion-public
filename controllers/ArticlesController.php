@@ -24,7 +24,7 @@ if(isset($_GET['id'])){
         if($article->getStatut_Article() === 'PUBLISHED' || ($article->getStatut_Article() === 'NEW' && isset($_SESSION['utilisateur'])) || (($article->getStatut_Article() === 'PENDING' && $_SESSION['utilisateur']['role'] === 'moderateur') || ($article->getStatut_Article() === 'PENDING' && $_SESSION['utilisateur']['role'] === 'administrateur'))){
 
             
-            //tester si on recupère une variable id en get
+            //Suppression d'un commentaire
             if(isset($_GET['id_commentaire'])){
                 $id_commentaire = $Utils->valid_donnees($_GET['id_commentaire']);
                 $commentaire_id_utilisateur = $commentaire->getItem('id_commentaire',$id_commentaire,'id_utilisateur');
