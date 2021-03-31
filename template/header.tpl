@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
     <link rel="SHORTCUT ICON" href="favicon.ico" />
+    <meta property="og:image" content="https://jordanherth.devcolmar.xyz/Assets/media/vignetteAccueil.png">
 </head>
 
 <body>
